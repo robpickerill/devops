@@ -1,0 +1,43 @@
+#+Author: Yogesh Agrawal
+#+Date: <2016-03-04 Fri>
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+This document describes the basic Linux commands that are used in a day to day
+life of system administrator.
+
+* Linux text processing
+** cut
+cut prints the selected sections of lines. For example below command prints 1st
+and 3rd bytes of each line from file cat.txt. =-b= option specifies the range of
+bytes, multiple ranges can be specified separated by comma.
+#+BEGIN_EXAMPLE
+cut -b1,3 cat.txt
+#+END_EXAMPLE
+If we want range of characters from 1st to 3rd, we can specify that as follows:
+#+BEGIN_EXAMPLE
+cut -b1-3 cat.txt
+#+END_EXAMPLE
+
+** head
+head command is used to print lines or characters from the beginning of the
+file. By default it prints first 10 lines from a file. We can specify the count
+of lines we want to print. For example to print first 20 lines we run following
+command.
+#+BEGIN_EXAMPLE
+head -n20
+#+END_EXAMPLE
+To print first 20 characters from a file.
+#+BEGIN_EXAMPLE
+head -c20
+#+END_EXAMPLE
+
+** tail
+tail command is used to print lines or characters from the end of the file. By
+default it prints last 10 lines from a file. We can specify the count of lines
+we want to print. For example to print last 20 lines we run following command.
+#+BEGIN_EXAMPLE
+tail -n20
+#+END_EXAMPLE
+** tr
+tr command is used to transform characters.
