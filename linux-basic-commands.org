@@ -40,4 +40,16 @@ we want to print. For example to print last 20 lines we run following command.
 tail -n20
 #+END_EXAMPLE
 ** tr
-tr command is used to transform characters.
+tr command is used to translate or deletes characters from standard input,
+writing to standard output.
+#+BEGIN_EXAMPLE
+echo "Hello World!" | tr "l" "T"
+#+END_EXAMPLE
+** sort command
+sort lines of text files, and write the output to standard output.
+#+BEGIN_EXAMPLE
+sort < sort.txt
+sort -n #sort in numeric order
+sort -r #sort in reverse order
+#+END_EXAMPLE
+** 
