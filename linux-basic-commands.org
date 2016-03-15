@@ -74,8 +74,8 @@ grep -n 'the'$ file.txt
 grep -n -e -i
 #+END_EXAMPLE
 ** sed
-Used to search and replace. Its parameters are separated by slash =/=.
-It stands for 'stream editor'
+Used to search and replace. It stands for 'stream editor'.  ['\', '/', ':'] can
+be used as delimiters.
 *** s sub command
 substitute command.
 - Replace first occurrence.
@@ -86,4 +86,13 @@ echo sunday | sed 's/day/night/'
 - Replace all occurrences.
 #+BEGIN_EXAMPLE
 sed 's/old/new/g' oldfile > newfile
+#+END_EXAMPLE
+- In place replace.
+#+BEGIN_EXAMPLE
+sed 's/old/new/g' oldfile
+#+END_EXAMPLE
+*** d sub command
+- Delete the line matching pattern.
+#+BEGIN_EXAMPLE
+sed -i '/word/d' test.txt
 #+END_EXAMPLE
