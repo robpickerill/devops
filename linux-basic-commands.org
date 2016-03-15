@@ -78,7 +78,12 @@ Used to search and replace. Its parameters are separated by slash =/=.
 It stands for 'stream editor'
 *** s sub command
 substitute command.
+- Replace first occurrence.
 #+BEGIN_EXAMPLE
-sed s/day/night old > new
+sed 's/day/night/' old > new
 echo sunday | sed 's/day/night/'
+#+END_EXAMPLE
+- Replace all occurrences.
+#+BEGIN_EXAMPLE
+sed 's/old/new/g' oldfile > newfile
 #+END_EXAMPLE
