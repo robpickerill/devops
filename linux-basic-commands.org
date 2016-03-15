@@ -45,11 +45,40 @@ writing to standard output.
 #+BEGIN_EXAMPLE
 echo "Hello World!" | tr "l" "T"
 #+END_EXAMPLE
-** sort command
+** sort
 sort lines of text files, and write the output to standard output.
 #+BEGIN_EXAMPLE
 sort < sort.txt
 sort -n #sort in numeric order
 sort -r #sort in reverse order
 #+END_EXAMPLE
-** 
+** grep
+Used to search strings or regular expressions. It basically means 'global search
+using regular expressions and prints them'.
+- Search for a specific word.
+#+BEGIN_EXAMPLE
+grep -n '\<word\>' file.txt
+grep -n -w 'word' file.txt
+#+END_EXAMPLE
+- Search for pattern at the start of the line.
+#+BEGIN_EXAMPLE
+grep -n ^'the' file.txt
+#+END_EXAMPLE
+- Search for pattern at the end of the line.
+#+BEGIN_EXAMPLE
+grep -n 'the'$ file.txt
+#+END_EXAMPLE
+- Option =-e= acronym for escape takes the next command as pattern. Following
+  command will search for exact '-i'.
+#+BEGIN_EXAMPLE
+grep -n -e -i
+#+END_EXAMPLE
+** sed
+Used to search and replace. Its parameters are separated by slash =/=.
+It stands for 'stream editor'
+*** s sub command
+substitute command.
+#+BEGIN_EXAMPLE
+sed s/day/night old > new
+echo sunday | sed 's/day/night/'
+#+END_EXAMPLE
