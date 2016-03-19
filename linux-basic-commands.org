@@ -96,3 +96,9 @@ sed 's/old/new/g' oldfile
 #+BEGIN_EXAMPLE
 sed -i '/word/d' test.txt
 #+END_EXAMPLE
+** awk
+awk command is used to data processing that requires some quick scripting.
+- Prints only when number of fields in a line are less than 4.
+#+BEGIN_EXAMPLE
+awk '{ if (NF< 4) print "Not all scores are available for " $1 }'
+#+END_EXAMPLE
