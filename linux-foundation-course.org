@@ -1,0 +1,39 @@
+#+Title: Linux Foundation Course
+#+Author: Yogesh Agrawal
+#+Date: <2016-03-19 Sat>
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+This document has the learning which I learn from the Linux Foundation
+Course: LFS101x in edx.
+
+* Linux Requirements
+The technical differences are mainly about package management systems,
+software versions, and file locations.
+** Key facts about Debian Family
+- The Debian family is upstream for Ubuntu.
+- The Linux Kernel 3.13 is used in Ubuntu 14.04
+- It uses the DPKG-based apt-get package manager to install, update,
+  and remove packages in the system.
+
+** Key facts about Fedora Family
+- The fedora family is upstream for CentOS, RHEL, and Oracle Linux.
+- The linux kernel 2.6.32 is used in RHEL/CentOS 6.x
+- It uses the RPM-based yum package manager to install, update and
+  remove packages in the system.
+
+
+* Linux philosophy
+Linux is derived heavily from UNIX operating system. Files are
+organized in a hierarchical filesystem, with the top node of the
+system being root or =/=. Linux components are made available via
+files or objects that look like files. Processes, devices and network
+sockets are all represented by file-like objects, and can often be
+worked with same utilities used for regular files.
+
+Linux is a multiuser and multitasking operating system, with built in
+networking and service processes known as daemons in the unix world.
+
+* Plan
+Proposed plan to do this course is to spend daily one hour attending
+classes.
