@@ -7,7 +7,7 @@
 This document has the learning which I learn from the Linux Foundation
 Course: LFS101x in edx.
 
-* Linux Requirements
+* Linux requirements
 The technical differences are mainly about package management systems,
 software versions, and file locations.
 ** Key facts about Debian Family
@@ -22,7 +22,6 @@ software versions, and file locations.
 - It uses the RPM-based yum package manager to install, update and
   remove packages in the system.
 
-
 * Linux philosophy
 Linux is derived heavily from UNIX operating system. Files are
 organized in a hierarchical filesystem, with the top node of the
@@ -34,6 +33,44 @@ worked with same utilities used for regular files.
 Linux is a multiuser and multitasking operating system, with built in
 networking and service processes known as daemons in the unix world.
 
+* Linux terminology
+** Kernel
+Kernel is the brain of the Operating System. It controls the hardware
+and make hardware available for applications. Latest Linux kernel can
+be seen from http:://kernel.org site.
+
+** Distribution
+Distribution is the bunch of programs combined together with Linux
+kernel to make a Linux based Operating System. Example are Fedora and
+Debian.
+
+** Boot Loader
+Program that boots the operating system. Example are GRUB and
+ISOLinux.
+
+** Service
+Service is a program that runs as a background process. Example httpd,
+nfsd, ftpd and named.
+
+** Filesystem
+Method for storing and organizing files. Example are ntfs, ext3, ext4,
+FAT, NTFS.
+
+** X Windows System
+Provides toolkit or protocol to build graphical interfaces in nearly
+all Linux system.
+
+** Desktop Environment
+Graphical user interface on top of Linux operating system. Example are
+GNOME and KDE.
+
+** Command Line
+Interface for typing commands on top of the operating system.
+
+** Shell
+Command line interpreter that interprets the command line input and
+instructs the operating system to perform any necessary tasks and
+commands. Example are bash and zshell. 
 * Plan
 Proposed plan to do this course is to spend daily one hour attending
 classes.
