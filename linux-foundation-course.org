@@ -70,7 +70,48 @@ Interface for typing commands on top of the operating system.
 ** Shell
 Command line interpreter that interprets the command line input and
 instructs the operating system to perform any necessary tasks and
-commands. Example are bash and zshell. 
+commands. Example are bash and zshell.
+ 
+* Partitions and Filesystems
+Partition is a logical part of the disk, whereas filesystem is a
+method of storing/finding files on a hard disk. You can think of
+filesystems as being like a family tree and partitions as different
+families each of which as its own tree.
+
+* Filesystem hierarchy standard
+Linux filesystem names are case sensitive, that means =/boot=, =/Boot=
+and =/BOOT= represent three different directories. Many distributions
+distinguish between core utilities needed for proper system operation
+and other programs. So other programs are placed inside =/usr=
+directory. Example of directories inside =/= root directory.
+#+BEGIN_EXAMPLE
+.
+|-- bin
+|-- boot
+|-- cdrom
+|-- dev
+|-- etc
+|-- home
+|-- lib
+|-- lib64
+|-- lost+found
+|-- media
+|-- mnt
+|-- opt
+|-- proc
+|-- root
+|-- run
+|-- sbin
+|-- srv
+|-- sys
+|-- tmp
+|-- usr
+`-- var
+#+END_EXAMPLE
+** Links
+1. http://refspecs.linuxfoundation.org/fhs.shtml
+2. https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
+
 * Plan
 Proposed plan to do this course is to spend daily one hour attending
 classes.
