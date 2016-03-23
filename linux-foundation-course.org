@@ -113,7 +113,6 @@ directory. Example of directories inside =/= root directory.
 2. https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
 
 
-
 * The Boot Process
 - Boot process is the procedure of initializing the system.
 
@@ -149,6 +148,43 @@ systems. Boot loader is responsible for loading kernel image and the
 initial RAM disk (which contains some critical files and device
 drivers needed to start the system) into memory.
 
+*** Boot loader in action
+The boot loader resides at the first sector of the hard disk also
+known as the Master Boot Record (MBR). The size of the MBR is just 512
+bytes. Boot loader first finds the bootable partition. Once it finds
+the bootable partition it then searches for the second level boot
+loader - GRUB. It then loads the grub into the main memory. 
+
+Boot loader displays options which allows us to choose different
+available operating systems. After choosing the operating system boot
+loader loads the kernel into the main memory and passes control to it.
+
+Kernel are always compressed when loaded into main memory so its first
+job is to uncompress itself. After this it will check and analyze the
+system hardware and initialize any hardware device driver built into
+the kernel.
+
+** Linux Kernel
+The boot loader loads the kernel and initial ram file system in the
+main memory. Kernel initializes all hardware systems attached to the
+machine this includes all processors, I/O systems, storage devices
+etc. Kernel also loads some necessary user level applications into the
+main memory.
+
+** /sbin/init process
+Once the kernel has setup all the hardware and mounted the root file
+system, the kernel runs the =/sbin/init= program.
+
+init is responsible for keeping the system running and shutting
+down. It is responsible for all non-kernel processes, cleaning up
+after them when necessary, and restarts user login services as needed
+when using log in and out.
+
+** X Windows system
+We can start the default display manager after logging on to a
+text-mode console, and running *startx* from the command line.
+
 * COMMENT Plan
-Proposed plan to do this course is to spend daily one hour attending
-classes.
+- Proposed plan to do this course is to spend daily one hour attending
+  classes.
+- Revise ch-3 boot process again at the end of the course.
