@@ -112,7 +112,6 @@ directory. Example of directories inside =/= root directory.
 1. http://refspecs.linuxfoundation.org/fhs.shtml
 2. https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
 
-
 * The Boot Process
 - Boot process is the procedure of initializing the system.
 
@@ -183,6 +182,30 @@ when using log in and out.
 ** X Windows system
 We can start the default display manager after logging on to a
 text-mode console, and running *startx* from the command line.
+
+* Linux Installation
+** Choosing Distribution
+Questions that are to be asked while choosing linux distributions:
+- What is the main purpose of the os, server or desktop ?
+- How much disk space is available ?
+- How often packages are updated in a particular distribution ?
+- What is the architecture of the hardware ?
+
+** Partition
+Decide how you want to partition the disk to install os. You may
+choose to have separate partition for =/home=, =/var= and =/root=.
+
+** Source of installation
+- optical disk: cd, dvds
+- usb
+- network boot
+
+** Automating installation
+Installation process can be automated using a configuration file
+specifying the installation options. For debian-based system file is
+called =preseed=. Example preseed file is here hosted on internet by
+help-ubuntu community:
+https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
 
 * COMMENT Plan
 - Proposed plan to do this course is to spend daily one hour attending
