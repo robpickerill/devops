@@ -207,6 +207,14 @@ called =preseed=. Example preseed file is here hosted on internet by
 help-ubuntu community:
 https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
 
+* Restart, sleep and shutdown
+- System asks for confirmation while shutting down because many
+  applications do not save their data properly when terminated while
+  running.
+
+- Sleep mode works by keeping the applications, desktop and so on in
+  RAM and turning off all other hardware.
+
 * COMMENT Plan
 - Proposed plan to do this course is to spend daily one hour attending
   classes.
