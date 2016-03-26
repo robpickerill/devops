@@ -207,13 +207,33 @@ called =preseed=. Example preseed file is here hosted on internet by
 help-ubuntu community:
 https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
 
-* Restart, sleep and shutdown
+** Restart, sleep and shutdown
 - System asks for confirmation while shutting down because many
   applications do not save their data properly when terminated while
   running.
 
 - Sleep mode works by keeping the applications, desktop and so on in
   RAM and turning off all other hardware.
+
+* Gnome desktop environment
+- Gnome is popular desktop environment and graphical user interface
+  that runs on top of the Linux operating system.
+
+- "Nautilus" is the file browser in gnome.
+
+- HOME directory: User's home directory
+
+- Computer: Different drives attached to the system such as hard disk
+  drives, cd/dvd, usb pendrives etc.
+
+- Network: Networked and shared devices such as Network shares,
+  printers and file servers.
+
+- Removing a file, moves the file to trash folder. Trash folder is
+  located at =~/.local/share/Trash/files/=.
+
+- Logging out kills all processes in your current *X* session and
+  returns to the display manager.
 
 * COMMENT Plan
 - Proposed plan to do this course is to spend daily one hour attending
