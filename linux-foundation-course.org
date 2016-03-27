@@ -4,238 +4,265 @@
 #+Email: yogeshiiith@gmail.com
 
 * Introduction
-This document has the learning which I learn from the Linux Foundation
-Course: LFS101x in edx.
+  This document has the learning which I learn from the Linux
+  Foundation Course: LFS101x in edx.
 
 * Linux requirements
-The technical differences are mainly about package management systems,
-software versions, and file locations.
+  The technical differences are mainly about package management
+  systems, software versions, and file locations.
 ** Key facts about Debian Family
-- The Debian family is upstream for Ubuntu.
-- The Linux Kernel 3.13 is used in Ubuntu 14.04
-- It uses the DPKG-based apt-get package manager to install, update,
-  and remove packages in the system.
+   - The Debian family is upstream for Ubuntu.
+   - The Linux Kernel 3.13 is used in Ubuntu 14.04
+   - It uses the DPKG-based apt-get package manager to install,
+     update, and remove packages in the system.
 
 ** Key facts about Fedora Family
-- The fedora family is upstream for CentOS, RHEL, and Oracle Linux.
-- The linux kernel 2.6.32 is used in RHEL/CentOS 6.x
-- It uses the RPM-based yum package manager to install, update and
-  remove packages in the system.
+   - The fedora family is upstream for CentOS, RHEL, and Oracle Linux.
+   - The linux kernel 2.6.32 is used in RHEL/CentOS 6.x
+   - It uses the RPM-based yum package manager to install, update and
+     remove packages in the system.
 
 * Linux philosophy
-Linux is derived heavily from UNIX operating system. Files are
-organized in a hierarchical filesystem, with the top node of the
-system being root or =/=. Linux components are made available via
-files or objects that look like files. Processes, devices and network
-sockets are all represented by file-like objects, and can often be
-worked with same utilities used for regular files.
+  Linux is derived heavily from UNIX operating system. Files are
+  organized in a hierarchical filesystem, with the top node of the
+  system being root or =/=. Linux components are made available via
+  files or objects that look like files. Processes, devices and
+  network sockets are all represented by file-like objects, and can
+  often be worked with same utilities used for regular files.
 
-Linux is a multiuser and multitasking operating system, with built in
-networking and service processes known as daemons in the unix world.
+  Linux is a multiuser and multitasking operating system, with built
+  in networking and service processes known as daemons in the unix
+  world.
 
 * Linux terminology
 ** Kernel
-Kernel is the brain of the Operating System. It controls the hardware
-and make hardware available for applications. Latest Linux kernel can
-be seen from http:://kernel.org site.
+   Kernel is the brain of the Operating System. It controls the
+   hardware and make hardware available for applications. Latest Linux
+   kernel can be seen from http:://kernel.org site.
 
 ** Distribution
-Distribution is the bunch of programs combined together with Linux
-kernel to make a Linux based Operating System. Example are Fedora and
-Debian.
+   Distribution is the bunch of programs combined together with Linux
+   kernel to make a Linux based Operating System. Example are Fedora
+   and Debian.
 
 ** Boot Loader
-Program that boots the operating system. Example are GRUB and
-ISOLinux.
+   Program that boots the operating system. Example are GRUB and
+   ISOLinux.
 
 ** Service
-Service is a program that runs as a background process. Example httpd,
-nfsd, ftpd and named.
+   Service is a program that runs as a background process. Example
+   httpd, nfsd, ftpd and named.
 
 ** Filesystem
-Method for storing and organizing files. Example are ntfs, ext3, ext4,
-FAT, NTFS.
+   Method for storing and organizing files. Example are ntfs, ext3,
+   ext4, FAT, NTFS.
 
 ** X Windows System
-Provides toolkit or protocol to build graphical interfaces in nearly
-all Linux system.
+   Provides toolkit or protocol to build graphical interfaces in
+   nearly all Linux system.
 
 ** Desktop Environment
-Graphical user interface on top of Linux operating system. Example are
-GNOME and KDE.
+   Graphical user interface on top of Linux operating system. Example
+   are GNOME and KDE.
 
 ** Command Line
-Interface for typing commands on top of the operating system.
+   Interface for typing commands on top of the operating system.
 
 ** Shell
-Command line interpreter that interprets the command line input and
-instructs the operating system to perform any necessary tasks and
-commands. Example are bash and zshell.
+   Command line interpreter that interprets the command line input and
+   instructs the operating system to perform any necessary tasks and
+   commands. Example are bash and zshell.
  
 * Partitions and Filesystems
-Partition is a logical part of the disk, whereas filesystem is a
-method of storing/finding files on a hard disk. You can think of
-filesystems as being like a family tree and partitions as different
-families each of which as its own tree.
+  Partition is a logical part of the disk, whereas filesystem is a
+  method of storing/finding files on a hard disk. You can think of
+  filesystems as being like a family tree and partitions as different
+  families each of which as its own tree.
 
 * Filesystem hierarchy standard
-Linux filesystem names are case sensitive, that means =/boot=, =/Boot=
-and =/BOOT= represent three different directories. Many distributions
-distinguish between core utilities needed for proper system operation
-and other programs. So other programs are placed inside =/usr=
-directory. Example of directories inside =/= root directory.
-#+BEGIN_EXAMPLE
-.
-|-- bin
-|-- boot
-|-- cdrom
-|-- dev
-|-- etc
-|-- home
-|-- lib
-|-- lib64
-|-- lost+found
-|-- media
-|-- mnt
-|-- opt
-|-- proc
-|-- root
-|-- run
-|-- sbin
-|-- srv
-|-- sys
-|-- tmp
-|-- usr
-`-- var
-#+END_EXAMPLE
+  Linux filesystem names are case sensitive, that means =/boot=, =/Boot=
+  and =/BOOT= represent three different directories. Many distributions
+  distinguish between core utilities needed for proper system operation
+  and other programs. So other programs are placed inside =/usr=
+  directory. Example of directories inside =/= root directory.
+  #+BEGIN_EXAMPLE
+  .
+  |-- bin
+  |-- boot
+  |-- cdrom
+  |-- dev
+  |-- etc
+  |-- home
+  |-- lib
+  |-- lib64
+  |-- lost+found
+  |-- media
+  |-- mnt
+  |-- opt
+  |-- proc
+  |-- root
+  |-- run
+  |-- sbin
+  |-- srv
+  |-- sys
+  |-- tmp
+  |-- usr
+  `-- var
+  #+END_EXAMPLE
 ** Links
-1. http://refspecs.linuxfoundation.org/fhs.shtml
-2. https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
+   1. http://refspecs.linuxfoundation.org/fhs.shtml
+   2. https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
 
 * The Boot Process
-- Boot process is the procedure of initializing the system.
+  - Boot process is the procedure of initializing the system.
 
-- Understanding boot process will help in troubleshooting systems
-  issues more elegantly.
+  - Understanding boot process will help in troubleshooting systems
+    issues more elegantly.
 
-- The boot process consists of following 9 steps:
-#+BEGIN_EXAMPLE
-1. Power On
-2. BIOS
-3. MBR - Master Boot Record
-4. Boot Loader
-5. Kernel OS
-6. Init Ramfs
-7. /sbin/init
-8. Shell
-9. Graphics
-#+END_EXAMPLE
+  - The boot process consists of following 9 steps:
+    #+BEGIN_EXAMPLE
+    1. Power On
+    2. BIOS
+    3. MBR - Master Boot Record
+    4. Boot Loader
+    5. Kernel OS
+    6. Init Ramfs
+    7. /sbin/init
+    8. Shell
+    9. Graphics
+    #+END_EXAMPLE
 
 ** BIOS
-Basic Input/Output System initializes the hardware, including the
-screen and keyboard, and tests the main memory. The BIOS software is
-stored on ROM chip on motherboard. After this the remainder of the
-boot process is completely controlled by the operating system.
+   Basic Input/Output System initializes the hardware, including the
+   screen and keyboard, and tests the main memory. The BIOS software
+   is stored on ROM chip on motherboard. After this the remainder of
+   the boot process is completely controlled by the operating system.
 
 ** Master boot record
-Searches for the boot loader and loads into the RAM.
+   Searches for the boot loader and loads into the RAM.
 
 ** Boot Loader
-Boot loader is stored on the boot sector. Boot loaders present a user
-interface for user to choose from available option of operating
-systems. Boot loader is responsible for loading kernel image and the
-initial RAM disk (which contains some critical files and device
-drivers needed to start the system) into memory.
+   Boot loader is stored on the boot sector. Boot loaders present a
+   user interface for user to choose from available option of
+   operating systems. Boot loader is responsible for loading kernel
+   image and the initial RAM disk (which contains some critical files
+   and device drivers needed to start the system) into memory.
 
 *** Boot loader in action
-The boot loader resides at the first sector of the hard disk also
-known as the Master Boot Record (MBR). The size of the MBR is just 512
-bytes. Boot loader first finds the bootable partition. Once it finds
-the bootable partition it then searches for the second level boot
-loader - GRUB. It then loads the grub into the main memory. 
-
-Boot loader displays options which allows us to choose different
-available operating systems. After choosing the operating system boot
-loader loads the kernel into the main memory and passes control to it.
-
-Kernel are always compressed when loaded into main memory so its first
-job is to uncompress itself. After this it will check and analyze the
-system hardware and initialize any hardware device driver built into
-the kernel.
+    The boot loader resides at the first sector of the hard disk also
+    known as the Master Boot Record (MBR). The size of the MBR is just
+    512 bytes. Boot loader first finds the bootable partition. Once it
+    finds the bootable partition it then searches for the second level
+    boot loader - GRUB. It then loads the grub into the main memory.
+    
+    Boot loader displays options which allows us to choose different
+    available operating systems. After choosing the operating system
+    boot loader loads the kernel into the main memory and passes
+    control to it.
+    
+    Kernel are always compressed when loaded into main memory so its
+    first job is to uncompress itself. After this it will check and
+    analyze the system hardware and initialize any hardware device
+    driver built into the kernel.
 
 ** Linux Kernel
-The boot loader loads the kernel and initial ram file system in the
-main memory. Kernel initializes all hardware systems attached to the
-machine this includes all processors, I/O systems, storage devices
-etc. Kernel also loads some necessary user level applications into the
-main memory.
+   The boot loader loads the kernel and initial ram file system in the
+   main memory. Kernel initializes all hardware systems attached to
+   the machine this includes all processors, I/O systems, storage
+   devices etc. Kernel also loads some necessary user level
+   applications into the main memory.
 
 ** /sbin/init process
-Once the kernel has setup all the hardware and mounted the root file
-system, the kernel runs the =/sbin/init= program.
-
-init is responsible for keeping the system running and shutting
-down. It is responsible for all non-kernel processes, cleaning up
-after them when necessary, and restarts user login services as needed
-when using log in and out.
+   Once the kernel has setup all the hardware and mounted the root
+   file system, the kernel runs the =/sbin/init= program.
+  
+   init is responsible for keeping the system running and shutting
+   down. It is responsible for all non-kernel processes, cleaning up
+   after them when necessary, and restarts user login services as
+   needed when using log in and out.
 
 ** X Windows system
-We can start the default display manager after logging on to a
-text-mode console, and running *startx* from the command line.
+   We can start the default display manager after logging on to a
+   text-mode console, and running *startx* from the command line.
 
 * Linux Installation
 ** Choosing Distribution
-Questions that are to be asked while choosing linux distributions:
-- What is the main purpose of the os, server or desktop ?
-- How much disk space is available ?
-- How often packages are updated in a particular distribution ?
-- What is the architecture of the hardware ?
+   Questions that are to be asked while choosing linux distributions:
+   - What is the main purpose of the os, server or desktop ?
+   - How much disk space is available ?
+   - How often packages are updated in a particular distribution ?
+   - What is the architecture of the hardware ?
 
 ** Partition
-Decide how you want to partition the disk to install os. You may
-choose to have separate partition for =/home=, =/var= and =/root=.
+   Decide how you want to partition the disk to install os. You may
+   choose to have separate partition for =/home=, =/var= and =/root=.
 
 ** Source of installation
-- optical disk: cd, dvds
-- usb
-- network boot
+   - optical disk: cd, dvds
+   - usb
+   - network boot
 
 ** Automating installation
-Installation process can be automated using a configuration file
-specifying the installation options. For debian-based system file is
-called =preseed=. Example preseed file is here hosted on internet by
-help-ubuntu community:
-https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
+   Installation process can be automated using a configuration file
+   specifying the installation options. For debian-based system file
+   is called =preseed=. Example preseed file is here hosted on
+   internet by help-ubuntu community:
+   https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
 
 ** Restart, sleep and shutdown
-- System asks for confirmation while shutting down because many
-  applications do not save their data properly when terminated while
-  running.
+   - System asks for confirmation while shutting down because many
+     applications do not save their data properly when terminated
+     while running.
 
-- Sleep mode works by keeping the applications, desktop and so on in
-  RAM and turning off all other hardware.
+   - Sleep mode works by keeping the applications, desktop and so on
+     in RAM and turning off all other hardware.
 
 * Gnome desktop environment
-- Gnome is popular desktop environment and graphical user interface
-  that runs on top of the Linux operating system.
+  - Gnome is popular desktop environment and graphical user interface
+    that runs on top of the Linux operating system.
+  - Ubuntu has =unity= desktop manager which is based on gnome.
+  - "Nautilus" is the file browser in gnome.
+  - File manager shows following default directories:
+    + HOME directory :: User's home directory
+    + Computer :: Different drives attached to the system such as hard
+                  disk drives, cd/dvd, usb pendrives etc.
+    + Network :: Networked and shared devices such as Network shares,
+                 printers and file servers.
+  - Removing a file, moves the file to trash folder. Trash folder is
+    located at =~/.local/share/Trash/files/=.
+  - Logging out kills all processes in your current *X* session and
+    returns to the display manager.
 
-- "Nautilus" is the file browser in gnome.
+* System configuration using graphical interface :: start 07:40 :: 
+** Display settings
+   Default configuration is to show a large big screen spanning all
+   the monitors. We can change this to display same screen in all the
+   monitors by =mirroring=.
 
-- HOME directory: User's home directory
+** Data and time settings
+   Linux always uses UTC (Coordinated Universal Time) for its internal
+   time settings.
 
-- Computer: Different drives attached to the system such as hard disk
-  drives, cd/dvd, usb pendrives etc.
+** Network time protocol (NTP)
+   NTP is the most popular and reliable protocol for setting local
+   time from internet servers. Linux can set the system's local time
+   by referring to specific time servers run by distribution.
 
-- Network: Networked and shared devices such as Network shares,
-  printers and file servers.
+** Network Configuration
+   All Linux distributions have configuration files for managing
+   network. Hand editing these files can handle complicated setup. For
+   simple configuration *Network Manager* tool was designed. It can
+   lists all available networks (both wired and wireless), allow the
+   choice of a wired, wireless or mobile broadband network, handle
+   passwords and set vpn. Network manager establishes the connections
+   and keep track of your settings.
 
-- Removing a file, moves the file to trash folder. Trash folder is
-  located at =~/.local/share/Trash/files/=.
-
-- Logging out kills all processes in your current *X* session and
-  returns to the display manager.
+   The hardware interface and presence of signal is automatically
+   detected and then network manager sets the actual network settings
+   via *DHCP*. Static configuration can also be done via network
+   manager.
 
 * COMMENT Plan
-- Proposed plan to do this course is to spend daily one hour attending
-  classes.
-- Revise ch-3 boot process again at the end of the course.
+  - Proposed plan to do this course is to spend daily one hour
+    attending classes.
+  - Revise ch-3 boot process again at the end of the course.
