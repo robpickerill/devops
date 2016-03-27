@@ -233,7 +233,7 @@
   - Logging out kills all processes in your current *X* session and
     returns to the display manager.
 
-* System configuration using graphical interface :: start 07:40 :: 
+* System configuration using graphical interface
 ** Display settings
    Default configuration is to show a large big screen spanning all
    the monitors. We can change this to display same screen in all the
