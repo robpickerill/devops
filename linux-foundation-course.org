@@ -235,32 +235,37 @@
 
 * System configuration using graphical interface
 ** Display settings
-   Default configuration is to show a large big screen spanning all
-   the monitors. We can change this to display same screen in all the
-   monitors by =mirroring=.
+  Default configuration is to show a large big screen spanning all the
+  monitors. We can change this to display same screen in all the
+  monitors by =mirroring=.
 
 ** Data and time settings
    Linux always uses UTC (Coordinated Universal Time) for its internal
    time settings.
 
 ** Network time protocol (NTP)
-   NTP is the most popular and reliable protocol for setting local
-   time from internet servers. Linux can set the system's local time
-   by referring to specific time servers run by distribution.
+  NTP is the most popular and reliable protocol for setting local time
+  from internet servers. Linux can set the system's local time by
+  referring to specific time servers run by distribution.
 
 ** Network Configuration
-   All Linux distributions have configuration files for managing
-   network. Hand editing these files can handle complicated setup. For
-   simple configuration *Network Manager* tool was designed. It can
-   lists all available networks (both wired and wireless), allow the
-   choice of a wired, wireless or mobile broadband network, handle
-   passwords and set vpn. Network manager establishes the connections
-   and keep track of your settings.
+  All Linux distributions have configuration files for managing
+  network. File formats and locations can differ from one distribution
+  to another. Hand editing these files can handle complicated
+  setup. For simple configuration *Network Manager* tool was
+  designed. It can lists all available networks (both wired and
+  wireless), allow the choice of a wired, wireless or mobile broadband
+  network, handle passwords and set vpn. Network manager establishes
+  the connections and keep track of your settings.
 
-   The hardware interface and presence of signal is automatically
-   detected and then network manager sets the actual network settings
-   via *DHCP*. Static configuration can also be done via network
-   manager.
+  The hardware interface and presence of signal is automatically
+  detected and then network manager sets the actual network settings
+  via *DHCP*. Static configuration can also be done via network
+  manager.
+
+  Network manager can manage vpn connections also. It supports many
+  VPN technologies such as IPSec.
+  
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
