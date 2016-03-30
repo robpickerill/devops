@@ -266,8 +266,37 @@
   Network manager can manage vpn connections also. It supports many
   VPN technologies such as IPSec.
   
+* Linux Documentation
+** Man pages
+man stands for manual pages. man program searches, formats and
+displays the information contained in the man pages. Many topics have
+a lot of information, output is piped through a terminal pager program
+such as less to be viewed one page at a time.
+
+man pages are organized together in the form of 9 chapters. The
+chapter number can be used to force man to display the page from a
+particular chapter.
+
+- man -f :: searches for man pages containing a string in
+            them. generates the result as typing *whatis*
+- man -k :: view all man pages that discuss a specified
+            subject. generates the same result as typing *apropos*
+- man -a :: man will display all pages with the given name in all
+            chapters, one after the other.
+
+** info
+we can use =info <topic-name>= to information about the topic.
+** help
+=topic -h= or =topic --help= are used for quick reference.  =help=
+display a short synopsis of built-in shell commands.
+** graphical help system
+we can start the graphical help system from a graphical terminal using
+the =gnome-help= command.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
   - Revise ch-3 boot process again at the end of the course.
+* Useful links
+- http://linuxcommand.org/tlcl.php (resource for commands help)
+- https://www.centos.org/docs/ (centos documentaion)
