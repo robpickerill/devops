@@ -270,8 +270,12 @@
 ** Man pages
 man stands for manual pages. man program searches, formats and
 displays the information contained in the man pages. Many topics have
-a lot of information, output is piped through a terminal pager program
-such as less to be viewed one page at a time.
+a lot of information, output is piped through a terminal pager (less)
+program such as less to be viewed one page at a time.
+
+man pages provide in-depth documentation about programs and other
+topics about the system including configuration files, system calls,
+library routines, and the kernel.
 
 man pages are organized together in the form of 9 chapters. The
 chapter number can be used to force man to display the page from a
@@ -284,14 +288,25 @@ particular chapter.
 - man -a :: man will display all pages with the given name in all
             chapters, one after the other.
 
-** info
+** gnu info
 we can use =info <topic-name>= to information about the topic.
 ** help
 =topic -h= or =topic --help= are used for quick reference.  =help=
 display a short synopsis of built-in shell commands.
-** graphical help system
-we can start the graphical help system from a graphical terminal using
+** Desktop help
+we can start the desktop help system from a graphical terminal using
 the =gnome-help= command.
+
+** Package documentation
+This documentation is directly pulled from the upstream source code.
+It can also contain information about how the distribution is packaged
+and set up the software. Such information is placed under the
+=/usr/share/doc= directory in a subdirectory named after the package,
+perhaps including the version number in the name.
+
+** Online resources
+- https://www.centos.org/docs/ (centos documentation)
+- http://linuxcommand.org/tlcl.php (linux command help)
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
