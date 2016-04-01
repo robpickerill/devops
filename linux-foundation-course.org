@@ -320,6 +320,20 @@ from a production server can be very helpful in maintaining a lean
 system which can be easier to support and keep secure.
 
 ** Virtual Terminals
+Virtual terminals are console sessions that use entire display and
+keyboard outside of a graphical environment. Such terminals are
+considered "virtual" because it is not same as command line terminal
+window. Although you can have multiple active terminals, only one
+terminal remains visible at a time.
+
+Example situation where virtual terminal can be used is when we face
+problem with graphical interface, then we can switch to one of the
+virtual terminal and troubleshoot the problem.
+
+To switch between the VTs, press *ctrl-alt-corresponding function key*
+for the VT. Example you will have to press *ctrl-alt-F6* for VT 6.
+You only have to press *alt-F6* if you are in already in a VT not
+running X and want to switch to another VT. 
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
