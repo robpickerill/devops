@@ -266,7 +266,7 @@
   Network manager can manage vpn connections also. It supports many
   VPN technologies such as IPSec.
   
-* Linux Documentation
+* Linux Documentation Sources
 ** Man pages
 man stands for manual pages. man program searches, formats and
 displays the information contained in the man pages. Many topics have
@@ -307,6 +307,19 @@ perhaps including the version number in the name.
 ** Online resources
 - https://www.centos.org/docs/ (centos documentation)
 - http://linuxcommand.org/tlcl.php (linux command help)
+
+* Command line operations
+** X Windows system
+The customizable nature of Linux allows you to drop (temporarily or
+permanently) the X windows graphical interface, or to start it up
+after the system has been running.
+
+Linux production servers are usually installed without X and even if
+it is installed, usually do not launch it during start up. Removing X
+from a production server can be very helpful in maintaining a lean
+system which can be easier to support and keep secure.
+
+** Virtual Terminals
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
