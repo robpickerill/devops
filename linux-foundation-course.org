@@ -331,9 +331,32 @@ problem with graphical interface, then we can switch to one of the
 virtual terminal and troubleshoot the problem.
 
 To switch between the VTs, press *ctrl-alt-corresponding function key*
-for the VT. Example you will have to press *ctrl-alt-F6* for VT 6.
+for the VT. Example: you will have to press *ctrl-alt-F6* for VT 6.
 You only have to press *alt-F6* if you are in already in a VT not
-running X and want to switch to another VT. 
+running X and want to switch to another VT.
+
+** Command line
+There are three basic elements of a command line:
+- command :: actual command
+- options :: switch to the commands
+- arguments :: input over which command operates on
+
+** Turn off graphical desktop
+In debian based system desktop manager runs as a service. We can stop
+the service at anytime. For rpm-based system the desktop manager is
+run directly by init when set to run level 5; switching to a different
+runlevel stops the desktop.
+
+1. In debian based system
+   #+BEGIN_EXAMPLE
+   sudo service lightdm stop
+   sudo service gdm stop
+   #+END_EXAMPLE
+
+2. In RPM based system
+   #+BEGIN_EXAMPLE
+   sudo telinit 3
+   #+END_EXAMPLE
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
