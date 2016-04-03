@@ -389,6 +389,30 @@ runlevel stops the desktop.
   Change: 2016-04-03 10:36:33.314987042 +0530
   Birth: -
   #+END_EXAMPLE
+** Hard and Soft links
+  - Soft link :: Soft link is a new file which only contains the name
+                 of the original file. It has different inode number
+                 than the original file. Symlinks works across the
+                 filesystem. If the original file is deleted the
+                 symlink will no longer be valid, however the file
+                 will continue to exist.
+                 #+BEGIN_EXAMPLE
+                 ln -s original-file symlink
+                 #+END_EXAMPLE
+  - Hard link :: Hard link is a new file which points to the same
+                 inode number as the original file. If original file
+                 is deleted the hard link will still exist. When
+                 either of the hard link or original file is modified
+                 the changes are reflected in both of the files. If we
+                 delete the original file, the hard link will still
+                 exist. The inode will only be deleted when all the
+                 links to it are deleted. Hard link does not work
+                 across the filesytem. The hard link and the original
+                 file has to be in the same filesystem. To create a
+                 hard link use following command:
+                 #+BEGIN_EXAMPLE
+                 ln original-file hardlink
+                 #+END_EXAMPLE
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
