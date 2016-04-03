@@ -358,6 +358,37 @@ runlevel stops the desktop.
    sudo telinit 3
    #+END_EXAMPLE
 
+** Schedule shutdown
+  Schedule system's shutdown and inform all the users logedin to the
+  system.
+  #+BEGIN_EXAMPLE
+  shutdown -h 10:00 "Shutting down for scheduled maintenance"
+  #+END_EXAMPLE
+
+** Locating applications
+  1. One way is to use which
+     #+BEGIN_EXAMPLE
+     which diff
+     #+END_EXAMPLE
+  2. Another way is to use whereis. It looks for the packages in a
+     broader range of system directories.
+     #+BEGIN_EXAMPLE
+     whereis diff
+     #+END_EXAMPLE
+
+** Stats
+  Statistics of the file can be found using =stat= command.
+  #+BEGIN_EXAMPLE
+  yogesh@machine:~/projects/documents$ stat linux-foundation-course.org 
+  File: 'linux-foundation-course.org'
+  Size: 14462     	Blocks: 32         IO Block: 4096   regular file
+  Device: 807h/2055d	Inode: 4071531     Links: 1
+  Access: (0664/-rw-rw-r--)  Uid: ( 1000/  yogesh)   Gid: ( 1000/  yogesh)
+  Access: 2016-04-03 10:33:40.382986825 +0530
+  Modify: 2016-04-03 10:00:57.074984368 +0530
+  Change: 2016-04-03 10:36:33.314987042 +0530
+  Birth: -
+  #+END_EXAMPLE
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
