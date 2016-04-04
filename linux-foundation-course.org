@@ -377,9 +377,8 @@ runlevel stops the desktop.
      #+END_EXAMPLE
 
 ** Stats
-  Statistics of the file can be found using =stat= command. Links
-  values shows the number of hard links the file have including
-  itself.
+  Status of the file can be found using =stat= command. Links values
+  shows the number of hard links the file have including itself.
   #+BEGIN_EXAMPLE
   yogesh@machine:~/projects/documents$ stat linux-foundation-course.org 
   File: 'linux-foundation-course.org'
