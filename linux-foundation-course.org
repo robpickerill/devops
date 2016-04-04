@@ -414,6 +414,24 @@ runlevel stops the desktop.
                  #+BEGIN_EXAMPLE
                  ln original-file hardlink
                  #+END_EXAMPLE
+** File streams
+  When a command is run, three file descriptors are open by default
+  one for reading standard input (*stdin*), one for writing standard
+  output (*std out*) and one for writing standard error (*std
+  err*). These files are accessed via file descriptors. 
+
+  In Linux all open files are represented by file descriptors. File
+  descriptors are number starting with 0 for stdin, 1 for stdout and 2
+  for stderr. If any other descriptors are open in addition to these
+  default descriptors, then there numbering will start after 3.
+
+  stdin is usually keyboard, stdout and stederr are terminal by
+  default. These descriptors can be changed as per the
+  requirements. For example we can make command to take input from a
+  file and write to a file instead of keyboard using redirection. We
+  can also send output of one command to be as the input for another
+  command using pipe.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
