@@ -458,6 +458,17 @@ runlevel stops the desktop.
   pipeline. Which saves disk space and improves efficiency as disk I/O
   is often slowest bottleneck in getting something done.
 
+** locate
+  locate command uses database of files and directories for
+  searching. =updatedb= command updates the database. Linux does
+  update once in a day, but the command can be run explicitly as well.
+
+  Following example command will print absolute path of all the files
+  and directories matching the give name.
+  #+BEGIN_EXAMPLE
+  locate test
+  #+END_EXAMPLE
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
