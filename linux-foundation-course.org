@@ -478,7 +478,39 @@ runlevel stops the desktop.
   find /usr -type f -iname file_name
   find /usr -type l -iname link_name
   #+END_EXAMPLE
-  
+   
+  find command has very useful options used for administration.  With
+  these options number can be expressed either as =n= that means
+  exactly that value, =+n= which means greater than that number, or
+  =-n= which means lesser than the number.
+
+  1. To find files based on their size, =-size= option is used
+     #+BEGIN_EXAMPLE
+     find / -size +10M
+     find / -size 0
+     #+END_EXAMPLE
+
+  2. To find files and execute some command on them, =-exec= option is
+     used.
+     #+BEGIN_EXAMPLE
+     find / -size +10M -exec rm {} \;
+     #+END_EXAMPLE
+     Where 'rm' is the command to run, '{}' is the placeholder which
+     will be replaced with files and ';' is used to indicate end.
+
+  3. To find files based on time:
+     + =-ctime= for searching based on created time
+     + =-atime= for searching based on accessed/read time
+     + =-mtime= for searching based on modified/write time
+     
+     The number is the number of days.
+     #+BEGIN_EXAMPLE
+     find \ -ctime 1
+     #+END_EXAMPLE
+    
+     There are similar options for times in minutes (as in =-cmin=,
+     =-amin= and =-mmin=)
+    
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
