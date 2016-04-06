@@ -441,10 +441,22 @@ runlevel stops the desktop.
   stderr use:
   #+BEGIN_EXAMPLE
   some_program 2> errorout
-  some_program > outfile 2>&1
+  some_program > outfile
   #+END_EXAMPLE
 
-** Pipes
+** Pipe
+  Many small programs cooperate together to accomplish some complex
+  task. This is done by using =pipes=.
+  #+BEGIN_EXAMPLE
+  prog1 | prog2 | prog3
+  #+END_EXAMPLE
+
+  This is very efficient as prog2 and prog3 does not have to wait for
+  the previous pipe programs to complete before they begin hacking at
+  the data in their input streams. In addition to this there is no
+  need to save output in a temporary file between the stages in
+  pipeline. Which saves disk space and improves efficiency as disk I/O
+  is often slowest bottleneck in getting something done.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
