@@ -432,6 +432,20 @@ runlevel stops the desktop.
   can also send output of one command to be as the input for another
   command using pipe.
 
+** I/O redirection
+  In shell we can redirect the standard file stream so that we can get
+  input from a file, or from keyboard. We can redirect standard output
+  and standard error to a file, or terminal or to command.
+
+  To redirect use file descriptor number, for example to redirect
+  stderr use:
+  #+BEGIN_EXAMPLE
+  some_program 2> errorout
+  some_program > outfile 2>&1
+  #+END_EXAMPLE
+
+** Pipes
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
