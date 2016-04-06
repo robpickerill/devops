@@ -469,6 +469,17 @@ runlevel stops the desktop.
   locate test
   #+END_EXAMPLE
 
+** find
+  find command recurses down the file system tree from the specified
+  directory and searches for file matching given conditions. The
+  default directory is present directory.
+  #+BEGIN_EXAMPLE
+  find /usr -type d -iname directory_name
+  find /usr -type f -iname file_name
+  find /usr -type l -iname link_name
+  #+END_EXAMPLE
+  
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
