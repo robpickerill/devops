@@ -511,7 +511,24 @@ runlevel stops the desktop.
      There are similar options for times in minutes (as in =-cmin=,
      =-amin= and =-mmin=)
     
-
+** Working with files
+|---------+--------------------------------------------------------------------------------|
+| command | usage                                                                          |
+|---------+--------------------------------------------------------------------------------|
+| cat     | Used for viewing files that are not very long; it does provide any scroll-back |
+|---------+--------------------------------------------------------------------------------|
+| tac     | Used to look files backwards;                                                  |
+|---------+--------------------------------------------------------------------------------|
+| less    | Used to view larger files because it is a paging program; it pauses at each    |
+|         | screenful of text, provides scroll-back capabilities, and lets you search and  |
+|         | navigate within the file.                                                      |
+|---------+--------------------------------------------------------------------------------|
+| tail    | Used to print the last 10 lines of a file by default. The number of lines can  |
+|         | be changed by doing -n 15 or just -15                                          |
+|---------+--------------------------------------------------------------------------------|
+| head    | The opposite of tail                                                           |
+|---------+--------------------------------------------------------------------------------|
+ 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
