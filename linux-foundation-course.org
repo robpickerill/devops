@@ -512,6 +512,7 @@ runlevel stops the desktop.
      =-amin= and =-mmin=)
     
 ** Working with files
+  Following commands can be used to view files.
 |---------+--------------------------------------------------------------------------------|
 | command | usage                                                                          |
 |---------+--------------------------------------------------------------------------------|
@@ -529,6 +530,21 @@ runlevel stops the desktop.
 | head    | The opposite of tail                                                           |
 |---------+--------------------------------------------------------------------------------|
  
+** touch
+  touch is used to set or update access, change and modify times of
+  files. By default it resets a file's time stamp to match the current
+  time.
+
+  touch command can also be used to create empty files. This is
+  normally done to create empty files as a placefolder for a later
+  purpose.
+
+  To set timestamp of a file use =touch= command with =-t= option.
+  #+BEGIN_EXAMPLE
+  touch -t 03201600 file
+  #+END_EXAMPLE
+
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
