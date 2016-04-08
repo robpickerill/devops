@@ -544,7 +544,12 @@ runlevel stops the desktop.
   touch -t 03201600 file
   #+END_EXAMPLE
 
-
+** mkdir
+  mkdir command is used to create a directory.
+  #+BEGIN_EXAMPLE
+  mkdir test
+  mkdir test/test2
+  #+END_EXAMPLE
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
