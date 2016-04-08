@@ -558,6 +558,19 @@ runlevel stops the desktop.
   \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$
   #+END_EXAMPLE
 
+* Package management
+  Package management systems provide two tool levels; a low-level tool
+  (such as dpkg or rpm), takes care of the unpacking of individual
+  packages, running scripts, getting the software installed correctly,
+  while a high level tool (such as apt-get or yum) works with groups
+  of packages, downloads packages from the vendor, and figures out
+  dependencies.
+
+  Dependency tracking is a particularly important feature of the
+  high-level tool as it handles the details of finding and installing
+  each dependency. Installing a single packages could result in many
+  dozens or even hundreds of dependent packages being installed.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
