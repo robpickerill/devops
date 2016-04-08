@@ -550,6 +550,14 @@ runlevel stops the desktop.
   mkdir test
   mkdir test/test2
   #+END_EXAMPLE
+** command line prompt
+  The PS1 variable is the character string that is displayed as the
+  prompt on the command line.
+  #+BEGIN_EXAMPLE
+  yogesh@machine:~/projects/documents$ echo $PS1
+  \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+  #+END_EXAMPLE
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
