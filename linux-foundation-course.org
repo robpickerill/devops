@@ -366,14 +366,16 @@ runlevel stops the desktop.
   #+END_EXAMPLE
 
 ** Locating applications
-  1. One way is to use which
+  1. One way is to use which, it searches only for executables.
      #+BEGIN_EXAMPLE
-     which diff
+     $ which apt-get 
+     /usr/bin/apt-get
      #+END_EXAMPLE
   2. Another way is to use whereis. It looks for the packages in a
      broader range of system directories.
      #+BEGIN_EXAMPLE
-     whereis diff
+     $ whereis apt-get
+     apt-get: /usr/bin/apt-get /usr/bin/X11/apt-get /usr/share/man/man8/apt-get.8.gz
      #+END_EXAMPLE
 
 ** Stats
@@ -571,6 +573,44 @@ runlevel stops the desktop.
   each dependency. Installing a single packages could result in many
   dozens or even hundreds of dependent packages being installed.
 
+** apt
+  The advanced packaging tool (apt) is the package management system
+  that manages software on Debian-based systems. It forms the backend
+  for graphical package managers, such as the Ubuntu Software Center
+  and synaptic. Its native user interface at the command line, with
+  programs that include =apt-get= and =apt-cache=.
+
+  Following table presents some basic commands using for debian and
+  fedora family system.
+|--------------------------------+--------------------+-------------------------|
+| Operation                      | RPM                | deb                     |
+|--------------------------------+--------------------+-------------------------|
+| Install package                | rpm -i foo.rpm     | dpkg --install foo.deb  |
+|--------------------------------+--------------------+-------------------------|
+| Install package, dependencies  | yum install foo    | apt-get install foo     |
+|--------------------------------+--------------------+-------------------------|
+| Remove package                 | rpm -e foo.rpm     | dpkg --remove foo.deb   |
+|--------------------------------+--------------------+-------------------------|
+| Remove package, dependencies   | yum remove foo     | apt-get remove foo      |
+|--------------------------------+--------------------+-------------------------|
+| Update package                 | rpm -U foo.rpm     | dpkg --install foo.deb  |
+|--------------------------------+--------------------+-------------------------|
+| Update package, dependencies   | yum update foo     | apt-get install foo     |
+|--------------------------------+--------------------+-------------------------|
+| Update entire system           | yum update         | apt-get dist-upgrade    |
+|--------------------------------+--------------------+-------------------------|
+| Show all installed packages    | rpm -qa or         | dpkg --list             |
+|                                | yum list installed |                         |
+|--------------------------------+--------------------+-------------------------|
+| Get information on package     | rpm -qil foo       | dpkg --listfiles foo    |
+|--------------------------------+--------------------+-------------------------|
+| Show packages named foo        | yum list "foo"     | apt-cache search foo    |
+|--------------------------------+--------------------+-------------------------|
+| Show all available packages    | yum list           | apt-cache dumpavail foo |
+|--------------------------------+--------------------+-------------------------|
+| What packages is file part of? | rpm -qf file       | dpkg --search file      |
+|--------------------------------+--------------------+-------------------------|
+  
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
