@@ -11,16 +11,16 @@
   The technical differences are mainly about package management
   systems, software versions, and file locations.
 ** Key facts about Debian Family
-   - The Debian family is upstream for Ubuntu.
-   - The Linux Kernel 3.13 is used in Ubuntu 14.04
-   - It uses the DPKG-based apt-get package manager to install,
-     update, and remove packages in the system.
+  - The Debian family is upstream for Ubuntu.
+  - The Linux Kernel 3.13 is used in Ubuntu 14.04
+  - It uses the DPKG-based apt-get package manager to install, update,
+    and remove packages in the system.
 
 ** Key facts about Fedora Family
-   - The fedora family is upstream for CentOS, RHEL, and Oracle Linux.
-   - The linux kernel 2.6.32 is used in RHEL/CentOS 6.x
-   - It uses the RPM-based yum package manager to install, update and
-     remove packages in the system.
+  - The fedora family is upstream for CentOS, RHEL, and Oracle Linux.
+  - The Linux kernel 2.6.32 is used in RHEL/CentOS 6.x
+  - It uses the RPM-based yum package manager to install, update and
+    remove packages in the system.
 
 * Linux philosophy
   Linux is derived heavily from UNIX operating system. Files are
@@ -31,47 +31,47 @@
   often be worked with same utilities used for regular files.
 
   Linux is a multiuser and multitasking operating system, with built
-  in networking and service processes known as daemons in the unix
+  in networking and service processes known as daemons in the UNIX
   world.
 
 * Linux terminology
 ** Kernel
-   Kernel is the brain of the Operating System. It controls the
-   hardware and make hardware available for applications. Latest Linux
-   kernel can be seen from http:://kernel.org site.
+  Kernel is the brain of the Operating System. It controls the
+  hardware and make hardware available for applications. Latest Linux
+  kernel can be seen from http:://kernel.org site.
 
 ** Distribution
-   Distribution is the bunch of programs combined together with Linux
-   kernel to make a Linux based Operating System. Example are Fedora
-   and Debian.
+  Distribution is the bunch of programs combined together with Linux
+  kernel to make a Linux based Operating System. Example are Fedora
+  and Debian.
 
 ** Boot Loader
-   Program that boots the operating system. Example are GRUB and
-   ISOLinux.
+  Program that boots the operating system. Example are GRUB and
+  ISOLinux.
 
 ** Service
-   Service is a program that runs as a background process. Example
-   httpd, nfsd, ftpd and named.
+  Service is a program that runs as a background process. Example
+  httpd, nfsd, ftpd and named.
 
 ** Filesystem
-   Method for storing and organizing files. Example are ntfs, ext3,
-   ext4, FAT, NTFS.
+  Method for storing and organizing files. Example are ntfs, ext3,
+  ext4, FAT, NTFS.
 
 ** X Windows System
-   Provides toolkit or protocol to build graphical interfaces in
-   nearly all Linux system.
+  Provides toolkit or protocol to build graphical interfaces in nearly
+  all Linux system.
 
 ** Desktop Environment
-   Graphical user interface on top of Linux operating system. Example
-   are GNOME and KDE.
+  Graphical user interface on top of Linux operating system. Example
+  are GNOME and KDE.
 
 ** Command Line
-   Interface for typing commands on top of the operating system.
+  Interface for typing commands on top of the operating system.
 
 ** Shell
-   Command line interpreter that interprets the command line input and
-   instructs the operating system to perform any necessary tasks and
-   commands. Example are bash and zshell.
+  Command line interpreter that interprets the command line input and
+  instructs the operating system to perform any necessary tasks and
+  commands. Example are bash and zshell.
  
 * Partitions and Filesystems
   Partition is a logical part of the disk, whereas filesystem is a
@@ -109,9 +109,6 @@
   |-- usr
   `-- var
   #+END_EXAMPLE
-** Links
-   1. http://refspecs.linuxfoundation.org/fhs.shtml
-   2. https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
 
 * The Boot Process
   - Boot process is the procedure of initializing the system.
@@ -133,20 +130,20 @@
     #+END_EXAMPLE
 
 ** BIOS
-   Basic Input/Output System initializes the hardware, including the
-   screen and keyboard, and tests the main memory. The BIOS software
-   is stored on ROM chip on motherboard. After this the remainder of
-   the boot process is completely controlled by the operating system.
+  Basic Input/Output System initializes the hardware, including the
+  screen and keyboard, and tests the main memory. The BIOS software is
+  stored on ROM chip on motherboard. After this the remainder of the
+  boot process is completely controlled by the operating system.
 
 ** Master boot record
-   Searches for the boot loader and loads into the RAM.
+  Searches for the boot loader and loads into the RAM.
 
 ** Boot Loader
-   Boot loader is stored on the boot sector. Boot loaders present a
-   user interface for user to choose from available option of
-   operating systems. Boot loader is responsible for loading kernel
-   image and the initial RAM disk (which contains some critical files
-   and device drivers needed to start the system) into memory.
+  Boot loader is stored on the boot sector. Boot loaders present a
+  user interface for user to choose from available option of operating
+  systems. Boot loader is responsible for loading kernel image and the
+  initial RAM disk (which contains some critical files and device
+  drivers needed to start the system) into memory.
 
 *** Boot loader in action
     The boot loader resides at the first sector of the hard disk also
@@ -166,56 +163,56 @@
     driver built into the kernel.
 
 ** Linux Kernel
-   The boot loader loads the kernel and initial ram file system in the
-   main memory. Kernel initializes all hardware systems attached to
-   the machine this includes all processors, I/O systems, storage
-   devices etc. Kernel also loads some necessary user level
-   applications into the main memory.
+  The boot loader loads the kernel and initial ram file system in the
+  main memory. Kernel initializes all hardware systems attached to the
+  machine this includes all processors, I/O systems, storage devices
+  etc. Kernel also loads some necessary user level applications into
+  the main memory.
 
 ** /sbin/init process
-   Once the kernel has setup all the hardware and mounted the root
-   file system, the kernel runs the =/sbin/init= program.
+  Once the kernel has setup all the hardware and mounted the root file
+  system, the kernel runs the =/sbin/init= program.
   
-   init is responsible for keeping the system running and shutting
-   down. It is responsible for all non-kernel processes, cleaning up
-   after them when necessary, and restarts user login services as
-   needed when using log in and out.
+  init is responsible for keeping the system running and shutting
+  down. It is responsible for all non-kernel processes, cleaning up
+  after them when necessary, and restarts user login services as
+  needed when using log in and out.
 
 ** X Windows system
-   We can start the default display manager after logging on to a
-   text-mode console, and running *startx* from the command line.
+  We can start the default display manager after logging on to a
+  text-mode console, and running *startx* from the command line.
 
 * Linux Installation
 ** Choosing Distribution
-   Questions that are to be asked while choosing linux distributions:
-   - What is the main purpose of the os, server or desktop ?
-   - How much disk space is available ?
-   - How often packages are updated in a particular distribution ?
-   - What is the architecture of the hardware ?
+  Questions that are to be asked while choosing Linux distributions:
+  - What is the main purpose of the OS, server or desktop ?
+  - How much disk space is available ?
+  - How often packages are updated in a particular distribution ?
+  - What is the architecture of the hardware ?
 
 ** Partition
-   Decide how you want to partition the disk to install os. You may
-   choose to have separate partition for =/home=, =/var= and =/root=.
+  Decide how you want to partition the disk to install OS. You may
+  choose to have separate partition for =/home=, =/var= and =/root=.
 
 ** Source of installation
-   - optical disk: cd, dvds
-   - usb
-   - network boot
+  - optical disk: cd, dvds
+  - usb
+  - network boot
 
 ** Automating installation
-   Installation process can be automated using a configuration file
-   specifying the installation options. For debian-based system file
-   is called =preseed=. Example preseed file is here hosted on
-   internet by help-ubuntu community:
-   https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
+  Installation process can be automated using a configuration file
+  specifying the installation options. For debian-based system file is
+  called =preseed=. Example preseed file is here hosted on internet by
+  help-ubuntu community:
+  https://help.ubuntu.com/lts/installation-guide/example-preseed.txt
 
 ** Restart, sleep and shutdown
-   - System asks for confirmation while shutting down because many
-     applications do not save their data properly when terminated
-     while running.
+  - System asks for confirmation while shutting down because many
+    applications do not save their data properly when terminated while
+    running.
 
-   - Sleep mode works by keeping the applications, desktop and so on
-     in RAM and turning off all other hardware.
+  - Sleep mode works by keeping the applications, desktop and so on in
+    RAM and turning off all other hardware.
 
 * Gnome desktop environment
   - Gnome is popular desktop environment and graphical user interface
@@ -240,8 +237,8 @@
   monitors by =mirroring=.
 
 ** Data and time settings
-   Linux always uses UTC (Coordinated Universal Time) for its internal
-   time settings.
+  Linux always uses UTC (Coordinated Universal Time) for its internal
+  time settings.
 
 ** Network time protocol (NTP)
   NTP is the most popular and reliable protocol for setting local time
@@ -268,95 +265,97 @@
   
 * Linux Documentation Sources
 ** Man pages
-man stands for manual pages. man program searches, formats and
-displays the information contained in the man pages. Many topics have
-a lot of information, output is piped through a terminal pager (less)
-program such as less to be viewed one page at a time.
+  man stands for manual pages. man program searches, formats and
+  displays the information contained in the man pages. Many topics
+  have a lot of information, output is piped through a terminal pager
+  (less) program such as less to be viewed one page at a time.
 
-man pages provide in-depth documentation about programs and other
-topics about the system including configuration files, system calls,
-library routines, and the kernel.
+  man pages provide in-depth documentation about programs and other
+  topics about the system including configuration files, system calls,
+  library routines, and the kernel.
 
-man pages are organized together in the form of 9 chapters. The
-chapter number can be used to force man to display the page from a
-particular chapter.
+  man pages are organized together in the form of 9 chapters. The
+  chapter number can be used to force man to display the page from a
+  particular chapter.
 
-- man -f :: searches for man pages containing a string in
-            them. generates the result as typing *whatis*
-- man -k :: view all man pages that discuss a specified
-            subject. generates the same result as typing *apropos*
-- man -a :: man will display all pages with the given name in all
-            chapters, one after the other.
+  - man -f :: searches for man pages containing a string in
+              them. generates the result as typing *whatis*
+  - man -k :: view all man pages that discuss a specified
+              subject. generates the same result as typing *apropos*
+  - man -a :: man will display all pages with the given name in all
+              chapters, one after the other.
 
 ** gnu info
-we can use =info <topic-name>= to information about the topic.
+  we can use =info <topic-name>= to information about the topic.
+
 ** help
-=topic -h= or =topic --help= are used for quick reference.  =help=
-display a short synopsis of built-in shell commands.
+  =topic -h= or =topic --help= are used for quick reference.  =help=
+  display a short synopsis of built-in shell commands.
+
 ** Desktop help
-we can start the desktop help system from a graphical terminal using
-the =gnome-help= command.
+  we can start the desktop help system from a graphical terminal using
+  the =gnome-help= command.
 
 ** Package documentation
-This documentation is directly pulled from the upstream source code.
-It can also contain information about how the distribution is packaged
-and set up the software. Such information is placed under the
-=/usr/share/doc= directory in a subdirectory named after the package,
-perhaps including the version number in the name.
+  This documentation is directly pulled from the upstream source code.
+  It can also contain information about how the distribution is
+  packaged and set up the software. Such information is placed under
+  the =/usr/share/doc= directory in a subdirectory named after the
+  package, perhaps including the version number in the name.
 
 ** Online resources
-- https://www.centos.org/docs/ (centos documentation)
-- http://linuxcommand.org/tlcl.php (linux command help)
+  - https://www.centos.org/docs/ (centos documentation)
+  - http://linuxcommand.org/tlcl.php (Linux command help)
 
 * Command line operations
 ** X Windows system
-The customizable nature of Linux allows you to drop (temporarily or
-permanently) the X windows graphical interface, or to start it up
-after the system has been running.
+  The customizable nature of Linux allows you to drop (temporarily or
+  permanently) the X windows graphical interface, or to start it up
+  after the system has been running.
 
-Linux production servers are usually installed without X and even if
-it is installed, usually do not launch it during start up. Removing X
-from a production server can be very helpful in maintaining a lean
-system which can be easier to support and keep secure.
+  Linux production servers are usually installed without X and even if
+  it is installed, usually do not launch it during start up. Removing
+  X from a production server can be very helpful in maintaining a lean
+  system which can be easier to support and keep secure.
 
 ** Virtual Terminals
-Virtual terminals are console sessions that use entire display and
-keyboard outside of a graphical environment. Such terminals are
-considered "virtual" because it is not same as command line terminal
-window. Although you can have multiple active terminals, only one
-terminal remains visible at a time.
+  Virtual terminals are console sessions that use entire display and
+  keyboard outside of a graphical environment. Such terminals are
+  considered "virtual" because it is not same as command line terminal
+  window. Although you can have multiple active terminals, only one
+  terminal remains visible at a time.
 
-Example situation where virtual terminal can be used is when we face
-problem with graphical interface, then we can switch to one of the
-virtual terminal and troubleshoot the problem.
+  Example situation where virtual terminal can be used is when we face
+  problem with graphical interface, then we can switch to one of the
+  virtual terminal and troubleshoot the problem.
 
-To switch between the VTs, press *ctrl-alt-corresponding function key*
-for the VT. Example: you will have to press *ctrl-alt-F6* for VT 6.
-You only have to press *alt-F6* if you are in already in a VT not
-running X and want to switch to another VT.
+  To switch between the VTs, press *ctrl-alt-corresponding function
+  key* for the VT. Example: you will have to press *ctrl-alt-F6* for
+  VT 6.  You only have to press *alt-F6* if you are in already in a VT
+  not running X and want to switch to another VT.
 
 ** Command line
-There are three basic elements of a command line:
-- command :: actual command
-- options :: switch to the commands
-- arguments :: input over which command operates on
+  There are three basic elements of a command line:
+  - command :: actual command
+  - options :: switch to the commands
+  - arguments :: input over which command operates on
 
 ** Turn off graphical desktop
-In debian based system desktop manager runs as a service. We can stop
-the service at anytime. For rpm-based system the desktop manager is
-run directly by init when set to run level 5; switching to a different
-runlevel stops the desktop.
+  In debian based system desktop manager runs as a service. We can
+  stop the service at anytime. For rpm-based system the desktop
+  manager is run directly by init when set to run level 5; switching
+  to a different runlevel stops the desktop.
 
-1. In debian based system
-   #+BEGIN_EXAMPLE
-   sudo service lightdm stop
-   sudo service gdm stop
-   #+END_EXAMPLE
+  1. In debian based system
+     #+BEGIN_EXAMPLE
+     sudo service lightdm stop
+     sudo service gdm stop
+     #+END_EXAMPLE
 
-2. In RPM based system
-   #+BEGIN_EXAMPLE
-   sudo telinit 3
-   #+END_EXAMPLE
+  2. In RPM based system
+     #+BEGIN_EXAMPLE
+     sudo telinit 3
+     #+END_EXAMPLE
 
 ** Schedule shutdown
   Schedule system's shutdown and inform all the users logedin to the
@@ -392,6 +391,7 @@ runlevel stops the desktop.
   Change: 2016-04-03 10:36:33.314987042 +0530
   Birth: -
   #+END_EXAMPLE
+
 ** Hard and Soft links
   - Soft link :: Soft link is a new file which only contains the name
                  of the original file. It has different inode number
@@ -552,6 +552,7 @@ runlevel stops the desktop.
   mkdir test
   mkdir test/test2
   #+END_EXAMPLE
+
 ** command line prompt
   The PS1 variable is the character string that is displayed as the
   prompt on the command line.
@@ -615,6 +616,11 @@ runlevel stops the desktop.
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
   - Revise ch-3 boot process again at the end of the course.
+
 * Useful links
-- http://linuxcommand.org/tlcl.php (resource for commands help)
-- https://www.centos.org/docs/ (centos documentaion)
+  - http://linuxcommand.org/tlcl.php (resource for commands help)
+  - https://www.centos.org/docs/ (centos documentaion)
+  - http://refspecs.linuxfoundation.org/fhs.shtml (file system)
+  -
+    https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
+   (filesystem)
