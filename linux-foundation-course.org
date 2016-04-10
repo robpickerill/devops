@@ -612,6 +612,23 @@
 | What packages is file part of? | rpm -qf file       | dpkg --search file      |
 |--------------------------------+--------------------+-------------------------|
   
+* File operations
+** Partitions in linux
+  Each filesytem resides on a hard disk partition. Partitions help
+  organize the contents of disks according to the kind of data
+  contained and how it is used. For example important programs
+  required to run the system are often kept on a separate partition
+  (known as root or /) than the one that contains files owned by
+  regular users of that system (/home). Temporary files created and
+  destroyed during normal linux operations are kept on a separate
+  partition (/tmp).
+
+** Mount points
+  Filesystem are usable only after they are mounted on some
+  directory. Filesystem are often mounted on empty directory. If
+  mounted on nonempty directory the rest of the directory contents
+  unusable till the filesystem is mounted.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -624,3 +641,5 @@
   -
     https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
    (filesystem)
+  - http://www.pathname.com/fhs/pub/fhs-2.3.pdf (Filesystem hierarchy
+    standard)
