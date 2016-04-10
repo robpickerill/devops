@@ -626,8 +626,39 @@
 ** Mount points
   Filesystem are usable only after they are mounted on some
   directory. Filesystem are often mounted on empty directory. If
-  mounted on nonempty directory the rest of the directory contents
-  unusable till the filesystem is mounted.
+  mounted on nonempty directory the former contents is covered up and
+  not accessible until the filesystem is unmounted. Thus filesystems
+  are mounted on empty directory.
+
+  The =mount= command is used to attach a filesystem (which can be
+  local to computer or on a network) somewhere within the filesystem
+  tree. Arguments include the =device node= and =mount point=. For
+  example following command will attach the filesystem contained in
+  the disk partition associated with the =/dev/sda5= device node, into
+  the filesystem tree at the =/home= mount point.
+  #+BEGIN_EXAMPLE
+  $ mount /dev/sda5 /home
+  #+END_EXAMPLE
+
+  To make the partition, mount automatically at the time of startup,
+  we need to edit the =/etc/fstab= file. Looking at this file will
+  show us the configuration of all pre-configured filesystems.
+
+  The command =df -Th= will display information about the mounted
+  filesystems including usage statistics.
+  #+BEGIN_EXAMPLE
+  $ df -Th
+  Filesystem     Type      Size  Used Avail Use% Mounted on
+  udev           devtmpfs  1.9G  4.0K  1.9G   1% /dev
+  tmpfs          tmpfs     385M  1.3M  383M   1% /run
+  /dev/sda5      ext4       20G  7.5G   12G  41% /
+  none           tmpfs     4.0K     0  4.0K   0% /sys/fs/cgroup
+  none           tmpfs     5.0M     0  5.0M   0% /run/lock
+  none           tmpfs     1.9G  328K  1.9G   1% /run/shm
+  none           tmpfs     100M   60K  100M   1% /run/user
+  /dev/sda7      ext4      100G   62G   33G  66% /home
+  #+END_EXAMPLE
+  
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
