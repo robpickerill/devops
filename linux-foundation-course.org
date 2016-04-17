@@ -659,6 +659,19 @@
   /dev/sda7      ext4      100G   62G   33G  66% /home
   #+END_EXAMPLE
   
+* Network Filesystems (NFS)
+  Network filesystem is one of the methods used for sharing data
+  across physical systems. Remote user's home directory can be mounted
+  on a server to allow access to the same files and configuration
+  files across multiple client systems. This allow users to log in to
+  different computers yet still have access to the same files and
+  resources.
+** NFS on the server
+  On the server machine, directories permissions can be defined to
+  allow sharing of files over nfs. File =/etc/exports= contains the
+  directories and permissions that a host is willing to share with
+  other systems over NFS.
+
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
