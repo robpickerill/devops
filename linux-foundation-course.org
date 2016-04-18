@@ -667,10 +667,32 @@
   different computers yet still have access to the same files and
   resources.
 ** NFS on the server
-  On the server machine, directories permissions can be defined to
+  On the server machine, directories and permissions are defined to
   allow sharing of files over nfs. File =/etc/exports= contains the
   directories and permissions that a host is willing to share with
-  other systems over NFS.
+  other systems over NFS. Below example allows =/projects= directory
+  to be remotely mounted with read and write permissions.
+  #+BEGIN_EXAMPLE
+  /projects *.example.com(rw)
+  #+END_EXAMPLE
+  
+  After modifying the =/etc/exports= file we can notify Linux about
+  the change by executing =exportfs -av= command. Restarting NFS with
+  =sudo service nfs restart= will also work, but is heavier as it
+  halts NFS for a short while before starting it up again.
+
+** NFS on the client
+  On the client machine we can mount the remote filesystem by
+  following command.
+  #+BEGIN_EXAMPLE
+  mount servername:/projects /mnt/nfs/projects
+  #+END_EXAMPLE
+  To automatically mount the remote filesystem make an entry in
+  =/etc/fstab= as follows:
+  #+BEGIN_EXAMPLE
+  servername:/projects /mnt/nfs/projects nfs default 0 0
+  #+END_EXAMPLE
+  
 
 
 * COMMENT Plan
