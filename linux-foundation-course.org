@@ -659,7 +659,7 @@
   /dev/sda7      ext4      100G   62G   33G  66% /home
   #+END_EXAMPLE
   
-* Network Filesystems (NFS)
+* Network Filesystem (NFS)
   Network filesystem is one of the methods used for sharing data
   across physical systems. Remote user's home directory can be mounted
   on a server to allow access to the same files and configuration
@@ -694,6 +694,18 @@
   #+END_EXAMPLE
   
 
+* Proc Filesystem
+  The =/proc= filesystem contains virtual files, that exist only in
+  memory that permit viewing constantly varying kernel data. This
+  filesystem contains files and directories that mimic kernel
+  structure and configuration information.
+
+  =/proc= has subdirectories such as:
+  1. =/proc/<process-id-#>= : There is a directory for every process
+     running on the system which contains vital information about it.
+
+  2. =/proc/sys= : This directory contains a lot of information about
+     the entire system.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
