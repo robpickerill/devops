@@ -377,7 +377,7 @@
      apt-get: /usr/bin/apt-get /usr/bin/X11/apt-get /usr/share/man/man8/apt-get.8.gz
      #+END_EXAMPLE
 
-** Stats
+** Stat
   Status of the file can be found using =stat= command. Links values
   shows the number of hard links the file have including itself.
   #+BEGIN_EXAMPLE
@@ -612,7 +612,7 @@
 | What packages is file part of? | rpm -qf file       | dpkg --search file      |
 |--------------------------------+--------------------+-------------------------|
   
-* File operations
+* File Systems
 ** Partitions in linux
   Each filesytem resides on a hard disk partition. Partitions help
   organize the contents of disks according to the kind of data
@@ -693,7 +693,22 @@
   servername:/projects /mnt/nfs/projects nfs default 0 0
   #+END_EXAMPLE
   
+* Filesystem architecture
+** /bin and /sbin directories
+  The =/bin= directories contains executable binaries, essential
+  commands used in single-user mode, and essential commands required
+  by all system users.
+  
+  =/usr/bin= directory contains commands that are not essential for
+  the system. =/sbin= directory contains commands that are essential
+  for system administration. =/usr/sbin= contains commands that are
+  less essential for system administration.
 
+  The reason essential commands were separately placed in =/sbin= is
+  because sometimes =/usr= directory may be mounted on separate
+  partition and may not be available in a single-user mode.
+
+  
 * Proc Filesystem
   The =/proc= filesystem contains virtual files, that exist only in
   memory that permit viewing constantly varying kernel data. This
