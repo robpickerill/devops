@@ -691,7 +691,19 @@
   =/etc/fstab= as follows:
   #+BEGIN_EXAMPLE
   servername:/projects /mnt/nfs/projects nfs default 0 0
-  #+END_EXAMPLE
+  #+END_EXAMPLE  
+* Proc Filesystem
+  The =/proc= filesystem contains virtual files, that exist only in
+  memory that permit viewing constantly varying kernel data. This
+  filesystem contains files and directories that mimic kernel
+  structure and configuration information.
+
+  =/proc= has subdirectories such as:
+  1. =/proc/<process-id-#>= : There is a directory for every process
+     running on the system which contains vital information about it.
+
+  2. =/proc/sys= : This directory contains a lot of information about
+     the entire system.
   
 * Filesystem architecture
 ** /bin and /sbin directories
@@ -705,22 +717,17 @@
   less essential for system administration.
 
   The reason essential commands were separately placed in =/sbin= is
-  because sometimes =/usr= directory may be mounted on separate
-  partition and may not be available in a single-user mode.
+  because sometimes =/usr= directory may be mounted on a separate
+  partition and may not be available/mounted in a single-user mode.
 
-  
-* Proc Filesystem
-  The =/proc= filesystem contains virtual files, that exist only in
-  memory that permit viewing constantly varying kernel data. This
-  filesystem contains files and directories that mimic kernel
-  structure and configuration information.
-
-  =/proc= has subdirectories such as:
-  1. =/proc/<process-id-#>= : There is a directory for every process
-     running on the system which contains vital information about it.
-
-  2. =/proc/sys= : This directory contains a lot of information about
-     the entire system.
+** /dev directory
+  =/dev= directory contains files that are used by most hardware and
+  software devices, except for network devices. It creates and manages
+  device nodes on Linux, creating them dynamically when devices are
+  found.
+  1. /dev/sda1 (first program on the first hard disk)
+  2. /dev/lp1 (printer)
+  3. /dev/dvd1 (DVD drive)
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
