@@ -1,0 +1,48 @@
+#+Title: Introduction to Ansible
+#+Date: <2016-04-21 Thu>
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com; yogesh@vlabs.ac.in
+
+
+* Introduction
+  This document describes Ansible.
+
+* Concepts
+  - Ansible is agentless, there is no agent running on the systems we
+    control.
+  - Ansible can manage thousands of nodes.
+  - Ansible uses SSH protocol.
+
+* Key components
+  1. Inventory
+  2. Modules/Tasks
+  3. Plays
+  4. Playbooks
+
+** Inventory
+  Inventory consists of:
+*** hosts
+  #+BEGIN_EXAMPLE
+  - hosts:
+  webservers
+  - hosts:
+  127.0.0.1
+  #+END_EXAMPLE
+
+*** inventory specific data
+  #+BEGIN_EXAMPLE
+  http_port:
+  max_clients:
+  #+END_EXAMPLE
+  
+*** static or dynamic sources
+  #+BEGIN_EXAMPLE
+  
+  #+END_EXAMPLE
+
+* Ad-Hoc commands
+  1. adhoc command to check uptime of the systems.
+  #+BEGIN_EXAMPLE
+  ansible localhost -m command -a "uptime"
+  #+END_EXAMPLE
+
