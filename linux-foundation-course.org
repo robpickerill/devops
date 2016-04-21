@@ -745,6 +745,16 @@
   Network service directories such as =/var/ftp= (the ftp service) and
   =/var/www= (the http service) are also found under =/var=.
 
+** /etc directory
+  =/etc= directory contains system configuration files. For example,
+  =/etc/resolv.conf= tells the system where to go for resolving host
+  name to ip address. Files like =passwd=, =shadow= and =group= are
+  found in the =/etc= directory.
+
+  System run level scripts are found inside subdirectories of
+  =/etc=. For example =/etc/rc2.d= contains links to scripts for
+  entering and leaving run level 2.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
