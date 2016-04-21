@@ -729,6 +729,22 @@
   2. /dev/lp1 (printer)
   3. /dev/dvd1 (DVD drive)
 
+** /var directory
+  =var= stands for variable. =/var= directory contains files that are
+  expected to change in size and content as the system is running.
+  Example files are:
+  1. System log files: /var/log
+  2. Database and packages: /var/lib
+  3. Print queue: /var/spool
+  4. Temp files: /var/tmp
+
+  The =/var= directory can be put in its own filesystem so that the
+  growth of the files can be accommodated and the file sizes do not
+  affect the system.
+
+  Network service directories such as =/var/ftp= (the ftp service) and
+  =/var/www= (the http service) are also found under =/var=.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
