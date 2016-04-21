@@ -755,6 +755,16 @@
   =/etc=. For example =/etc/rc2.d= contains links to scripts for
   entering and leaving run level 2.
 
+** /boot directory
+  =/boot= directory contains files needed to boot the system. For
+  every alternative kernel installed on the system there are following
+  four corresponding files:
+  1. vmlinuz: The compressed Linux kernel, required for booting.
+  2. initramfs:
+  3. config
+  4. system.map:
+
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
