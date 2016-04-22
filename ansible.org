@@ -41,13 +41,7 @@
     apt, copy, ec2, file, service, template, user
     #+END_EXAMPLE
 
-* Ad-Hoc commands
-  1. adhoc command to check uptime of the systems.
-     #+BEGIN_EXAMPLE
-     ansible localhost -m command -a "uptime"
-     #+END_EXAMPLE
-
-* Examples
+** Modules
   1. Using modules in tasks
      #+BEGIN_EXAMPLE
      - name: add cache dir
@@ -57,3 +51,14 @@
      - name: start nginx
        service: name=nginx enabled=yes state=started
      #+END_EXAMPLE
+  2. raw module can be used to run ssh commands which does not have
+     python installed. We can use this also for bootstrapping instance
+     with python.
+
+* Ad-Hoc commands
+  1. adhoc command to check uptime of the systems.
+     #+BEGIN_EXAMPLE
+     ansible localhost -m command -a "uptime"
+     #+END_EXAMPLE
+
+* Examples
