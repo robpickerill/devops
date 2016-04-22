@@ -1,4 +1,4 @@
-#+Title: Introduction to Ansible
+z#+Title: Introduction to Ansible
 #+Date: <2016-04-21 Thu>
 #+Author: Yogesh Agrawal
 #+Email: yogeshiiith@gmail.com; yogesh@vlabs.ac.in
@@ -91,4 +91,17 @@
      #+BEGIN_EXAMPLE
      ansible localhost -m setup
      #+END_EXAMPLE
-* Examples
+* Playbook
+  #+BEGIN_EXAMPLE
+  ---
+  - name: install apache package
+    hosts: webservers
+    sudo: true
+
+    tasks:
+      - name: install apache
+        apt: name=apache state=present
+
+      - name: start and enable apache
+        service: name=apache enabled=yes state=started 
+  #+END_EXAMPLE
