@@ -47,3 +47,13 @@
      ansible localhost -m command -a "uptime"
      #+END_EXAMPLE
 
+* Examples
+  1. Using modules in tasks
+     #+BEGIN_EXAMPLE
+     - name: add cache dir
+       file: path=/opt/cache state=directory
+     - name: install nginx
+       yum: name=nginx state=present
+     - name: start nginx
+       service: name=nginx enabled=yes state=started
+     #+END_EXAMPLE
