@@ -1,0 +1,8 @@
+---
+- name: install apache package
+  hosts: webservers
+  sudo: true
+
+  tasks:
+  - name: install apache
+    apt: name=apache state=present 
