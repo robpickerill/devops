@@ -759,11 +759,22 @@
   =/boot= directory contains files needed to boot the system. For
   every alternative kernel installed on the system there are following
   four corresponding files:
-  1. vmlinuz: The compressed Linux kernel, required for booting.
-  2. initramfs:
-  3. config
-  4. system.map:
+  1. vmlinuz: the compressed Linux kernel, required for booting
+  2. initramfs: the initial ram filesystem, required for booting
+  3. config: the configuration file, only used for debugging and bookkeeping
+  4. system.map: kernel symbol table used for debugging
 
+  The Grand Unified Bootloader (GRUB) files (such as
+  =/boot/grub/grub.conf=) are also found under the =/boot= directory.
+
+** /lib and /media directory
+  =/lib= directory contains libraries for the essential programs in
+  =/bin= and =/sbin=. These library filenames either start with =ld=
+  or with =lib=.
+
+  =/media= is typically located where removable media such as CDs,
+  DVDs and USB drives are mounted. Linux automatically mounts the
+  removable media in the =/media= directory when they are detected.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
