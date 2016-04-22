@@ -507,7 +507,7 @@
      
      The number is the number of days.
      #+BEGIN_EXAMPLE
-     find \ -ctime 1
+     find / -ctime 1
      #+END_EXAMPLE
     
      There are similar options for times in minutes (as in =-cmin=,
@@ -790,6 +790,24 @@
 | /usr/src       | Source code usually for the Linux kernel             |
 |----------------+------------------------------------------------------|
  
+* Comparing files and filetypes
+  =diff= command is used to compare files and directories. To compare
+  two files use following command.
+  #+BEGIN_EXAMPLE
+  diff <filename1> <filename2> 
+  #+END_EXAMPLE
+
+|-------------+--------------------------------------------|
+| diff option | Usage                                      |
+|-------------+--------------------------------------------|
+| -r          | Used to recursively compare subdirectories |
+|             | as well as the current directory           |
+|-------------+--------------------------------------------|
+| -i          | ignore the case of letters                 |
+|-------------+--------------------------------------------|
+| -w          | ignore differences in spaces and tabs      |
+|-------------+--------------------------------------------|
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
