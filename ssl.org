@@ -1,8 +1,0 @@
-#+title: SSL (Secure Socket Layer)
-#+author: Yogesh Agrawal
-#+date: <2016-03-10 Thu>
-
-* Introduction
-This document describes about the secure socket layer. SSL.
-
-
