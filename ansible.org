@@ -55,6 +55,24 @@
      python installed. We can use this also for bootstrapping instance
      with python.
 
+** Play
+  #+BEGIN_EXAMPLE
+  - name: This is a play
+    hosts: web-servers
+    remote_user: yogesh
+    sudo: yes
+    connection: ssh
+    vars:
+      http_port: 80
+      cache_dir: /opt/cache
+    tasks:
+      - name: create a cache dir
+        file: path={{ cache_dir }} state=directory
+
+      - name: install nginx
+        yum: name=httpd state=present
+        when: ansible_os_family == "RedHat"
+  #+END_EXAMPLE
 * Ad-Hoc commands
   1. adhoc command to check uptime of the systems.
      #+BEGIN_EXAMPLE
