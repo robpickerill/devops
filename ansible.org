@@ -73,10 +73,22 @@
         yum: name=httpd state=present
         when: ansible_os_family == "RedHat"
   #+END_EXAMPLE
+
+* Roles
+  A redistributable and reusable collection of:
+  - tasks
+  - files
+  - scripts
+  - templates
+  - variables
 * Ad-Hoc commands
   1. adhoc command to check uptime of the systems.
      #+BEGIN_EXAMPLE
      ansible localhost -m command -a "uptime"
      #+END_EXAMPLE
-
+  2. setup module gives variable values that can be used as
+     conditional.
+     #+BEGIN_EXAMPLE
+     ansible localhost -m setup
+     #+END_EXAMPLE
 * Examples
