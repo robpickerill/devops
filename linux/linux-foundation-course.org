@@ -725,7 +725,7 @@
   software devices, except for network devices. It creates and manages
   device nodes on Linux, creating them dynamically when devices are
   found.
-  1. /dev/sda1 (first program on the first hard disk)
+  1. /dev/sda1 (first partition on the first hard disk)
   2. /dev/lp1 (printer)
   3. /dev/dvd1 (DVD drive)
 
