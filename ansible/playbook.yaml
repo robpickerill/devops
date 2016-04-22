@@ -4,8 +4,8 @@
   sudo: true
 
   tasks:
-  - name: install apache
-    apt: name=apache state=present
+    - name: install apache
+      apt: name=apache state=present
 
-  - name: start and enable apache
-    service: name=apache enabled=yes state=started  
+    - name: start and enable apache
+      service: name=apache enabled=yes state=started  
