@@ -5,4 +5,7 @@
 
   tasks:
   - name: install apache
-    apt: name=apache state=present 
+    apt: name=apache state=present
+
+  - name: start and enable apache
+    service: name=apache enabled=yes state=started  
