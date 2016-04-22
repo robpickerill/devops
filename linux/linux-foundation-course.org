@@ -776,6 +776,20 @@
   DVDs and USB drives are mounted. Linux automatically mounts the
   removable media in the =/media= directory when they are detected.
 
+** Additional directories under /
+|----------------+------------------------------------------------------|
+| Directory Name | Usage                                                |
+|----------------+------------------------------------------------------|
+| /opt           | Optional application software packages               |
+|----------------+------------------------------------------------------|
+| /tmp           | Temporary files; on some distributions erased across |
+|                | a reboot and/or may actually be a ramdisk in memory  |
+|----------------+------------------------------------------------------|
+| /usr/lib       | Libraries for programs in /usr/bin and /usr/sbin     |
+|----------------+------------------------------------------------------|
+| /usr/src       | Source code usually for the Linux kernel             |
+|----------------+------------------------------------------------------|
+ 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
