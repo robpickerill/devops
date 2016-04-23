@@ -1,11 +1,11 @@
 ---
 - name: install apache package
-  hosts: webservers
+  hosts: localhost
   sudo: true
 
   tasks:
     - name: install apache
       apt: name=apache state=present
 
-    - name: start and enable apache
-      service: name=apache enabled=yes state=started  
+    - name: start
+      service: name=apache state=started  
