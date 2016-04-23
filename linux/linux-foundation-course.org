@@ -803,10 +803,27 @@
 | -r          | Used to recursively compare subdirectories |
 |             | as well as the current directory           |
 |-------------+--------------------------------------------|
-| -i          | ignore the case of letters                 |
+| -i          | Ignore the case of letters                 |
 |-------------+--------------------------------------------|
-| -w          | ignore differences in spaces and tabs      |
+| -w          | Ignore differences in spaces and tabs      |
 |-------------+--------------------------------------------|
+
+* Backup
+  =rsync= utility in Linux provides useful way to take backup of files
+  and folders. =rsync= command can be used to copy files to/from local
+  machine as well as to/from network machine.
+
+  =rsync= is efficient in a way that it transfers only the differences
+  between the files. Whereas =cp= command transfers the complete
+  file.
+
+  =rsync= utility can be destructive if not handled with care. It is
+  advisable to always do a dry run using =-dry-run= or =-n= option,
+  before doing the actual transfer. Dry run is used in conjunction
+  with =--verbose= option.
+  #+BEGIN_EXAMPLE
+  rsync -r -v -n ~/projects ~/Desktop
+  #+END_EXAMPLE
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
