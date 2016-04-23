@@ -860,6 +860,13 @@
      tar -zcvf mydir.tar.gz mydir
      #+END_EXAMPLE
 
+* Disk to disk copying
+  =dd= command is very useful for making copies of raw disk space. To
+  make a copy of one disk onto another, deleting everything that
+  perviously existed on the second disk, type:
+  #+BEGIN_EXAMPLE
+  dd if=/dev/sda of=/dev/sdb
+  #+END_EXAMPLE
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
