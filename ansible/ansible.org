@@ -111,3 +111,29 @@ z#+Title: Introduction to Ansible
   #+BEGIN_EXAMPLE
   ansible-galaxy init <role-name>
   #+END_EXAMPLE
+
+  Sample site.yaml
+  #+BEGIN_EXAMPLE
+  ---
+  - name: apply common configuration to all roles
+    hosts: all
+    sudo: true
+
+    roles:
+      - common
+
+  - name: configure and deploy database server
+    hosts: dbserver
+    sudo: true
+
+    roles:
+      - mysql
+
+  - name: configure and deploy the web servers
+    hosts: webservers
+    sudo: true
+
+    roles:
+      - apache
+      - php
+  #+END_EXAMPLE
