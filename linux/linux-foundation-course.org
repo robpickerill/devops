@@ -825,6 +825,41 @@
   rsync -r -v -n ~/projects ~/Desktop
   #+END_EXAMPLE
 
+* Archive and compression
+  Compression is used to save disk space and reduce the time it takes
+  to transfer the files over network. In addition tar utility is often
+  used to group files in an archive and then compress the whole
+  archive at once.
+
+  =tar= stands for tape archive and is used to archive files to a
+  magnetic tape.
+  1. Creating a tar of all the files and folders in present working
+     directory.
+     #+BEGIN_EXAMPLE
+     tar -cvf my.tar *
+     #+END_EXAMPLE
+
+  Files can be saved in the compressed form, for future use. =xz= is
+  the most efficient compression (produces smallest files)
+  1. Compress all the files in present working directory.
+     #+BEGIN_EXAMPLE
+     xz *
+     #+END_EXAMPLE
+  2. Compress the file foo
+     #+BEGIN_EXAMPLE
+     xz foo
+     #+END_EXAMPLE
+
+  Archiving and compression can be done together using =tar=
+  1. Create the archive and compress with =xz=
+     #+BEGIN_EXAMPLE
+     tar -Jcvf mydir.tar.xz mydir
+     #+END_EXAMPLE
+  2. Create the archive and compress with =gzip=
+     #+BEGIN_EXAMPLE
+     tar -zcvf mydir.tar.gz mydir
+     #+END_EXAMPLE
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
