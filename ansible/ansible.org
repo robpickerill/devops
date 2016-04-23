@@ -73,14 +73,6 @@ z#+Title: Introduction to Ansible
         yum: name=httpd state=present
         when: ansible_os_family == "RedHat"
   #+END_EXAMPLE
-
-* Roles
-  A redistributable and reusable collection of:
-  - tasks
-  - files
-  - scripts
-  - templates
-  - variables
 * Ad-Hoc commands
   1. adhoc command to check uptime of the systems.
      #+BEGIN_EXAMPLE
@@ -104,4 +96,18 @@ z#+Title: Introduction to Ansible
 
       - name: start and enable apache
         service: name=apache enabled=yes state=started 
+  #+END_EXAMPLE
+
+* Roles
+  A redistributable and reusable collection of:
+  - tasks
+  - files
+  - scripts
+  - templates
+  - variables
+
+  To create a role with all the components initialized use following
+  command:
+  #+BEGIN_EXAMPLE
+  ansible-galaxy init <role-name>
   #+END_EXAMPLE
