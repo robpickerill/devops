@@ -1,0 +1,22 @@
+---
+- name: apply common configuration to all roles
+  hosts: all
+  sudo: true
+
+  roles:
+    - common
+
+- name: configure and deploy database server
+  hosts: dbserver
+  sudo: true
+
+  roles:
+    - mysql
+
+- name: configure and deploy the web servers
+  hosts: webservers
+  sudo: true
+
+  roles:
+    - apache
+    - php
