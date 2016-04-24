@@ -878,6 +878,32 @@
   These numbers are associated with the names through the files
   =/etc/passwd= and =/etc/group=.
 
+** Adding and removing user
+  Users can be added and deleted only by the root user. Normal user
+  can not perform this action. =adduser= command is used to create
+  user and =deluser= command is used to delete user.
+
+  To create an user =turkey= execute following command, which will
+  sets the home directory to =/home/turkey=, populates with some basic
+  files (copied from =/etc/skel=) and adds a line to =/etc/passwd=
+  file.
+  #+BEGIN_EXAMPLE
+  sudo adduser turkey
+  #+END_EXAMPLE
+
+  Removing a user is as simple as typing =deluser turkey=. However
+  this will leave the =/home/turkey= directory intact. This might be
+  useful if this is a temporary inactivation. To remove the home
+  directory while removing the account we can use =-r= option with
+  =deluser= command.
+
+  To get the current user information use =id= command.
+  #+BEGIN_EXAMPLE
+  id
+  uid=1000(yogesh) gid=1000(yogesh) groups=1000(yogesh),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare),999(docker)
+  #+END_EXAMPLE
+  
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
