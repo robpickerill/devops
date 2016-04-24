@@ -867,6 +867,17 @@
   #+BEGIN_EXAMPLE
   dd if=/dev/sda of=/dev/sdb
   #+END_EXAMPLE
+* Basics of users and groups
+  Control of group membership is administered through the =/etc/group=
+  file, which shows a list of groups and their members.
+
+  All Linux users are assigned a unique user ID (uid), which is just
+  an integer, as well as one or more group ID's (gid), including the
+  default one which is the same as the user ID.
+
+  These numbers are associated with the names through the files
+  =/etc/passwd= and =/etc/group=.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
