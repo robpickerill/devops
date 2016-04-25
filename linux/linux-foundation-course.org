@@ -920,6 +920,21 @@
      $ usermod -G <newgroup> turkey
      #+END_EXAMPLE
   
+** root account
+  The root account is very powerful and has full access to the
+  system. Extreme caution must be taken before granting root access to
+  a user. =sudo= feature is used to assign more limited privileges to
+  user accounts:
+  + on only a temporary basis
+  + only for a specific subset of commands
+
+** su and sudo
+  We can use =su= command to switch to a new user, launch a new shell
+  running as another user. It is almost always a bad (dangerous for
+  both security and stability) practise to use =su= to become root.
+
+  Granting privileges using =sudo= is less dangerous and is
+  preferred. By default, =sudo= must be enabled on a per-user basis.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
