@@ -878,7 +878,7 @@
   These numbers are associated with the names through the files
   =/etc/passwd= and =/etc/group=.
 
-** Adding and removing user
+** Adding and removing users
   Users can be added and deleted only by the root user. Normal user
   can not perform this action. =adduser= command is used to create
   user and =deluser= command is used to delete user.
@@ -902,6 +902,23 @@
   id
   uid=1000(yogesh) gid=1000(yogesh) groups=1000(yogesh),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare),999(docker)
   #+END_EXAMPLE
+  
+** Adding and removing groups
+  1. Adding a new group can be done with =addgroup= command
+     #+BEGIN_EXAMPLE
+     sudo addgroup <groupname>
+     #+END_EXAMPLE
+  2. The group can be removed with
+     #+BEGIN_EXAMPLE
+     delgroup <groupname>
+     #+END_EXAMPLE
+  3. Adding a user to an already existing group is done with =usermod=
+     command.
+     #+BEGIN_EXAMPLE
+     $ groups turkey
+     turkey: turkey
+     $ usermod -G <newgroup> turkey
+     #+END_EXAMPLE
   
 
 * COMMENT Plan
