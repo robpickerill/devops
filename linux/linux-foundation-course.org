@@ -1008,6 +1008,16 @@
    path1::path2 - there is null directory between path1 and path2
    #+END_EXAMPLE
 
+** PS1 Variable
+   *PS1* is the primary prompt variable which controls what your
+   command line prompt looks like.
+
+   A better practise would be to save the old prompt first and then
+   restore it as in
+   #+BEGIN_EXAMPLE
+   $ OLD_PS1=$PS1
+   #+END_EXAMPLE
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
