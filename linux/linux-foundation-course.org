@@ -945,7 +945,7 @@
   =/etc/sudoers.d= directory.
  
 * Startup files
-  In Linux, the command shell program (generally bash) uses one or
+  In Linux, the command shell program (generally *bash*) uses one or
   more startup files to configure the environment. Files in =/etc=
   directory define global settings for all users while initialization
   files in the user's home directory can include and/or override the
@@ -955,7 +955,22 @@
   1. Customizing the user's prompt
   2. Defining command line aliases and shortcuts
   3. Setting the default text editor
-  4. Setting the path for where to find executable programs
+  4. Setting the *path* for where to find executable programs
+
+** Order of the startup files
+  On the first login to Linux, =/etc/profile= is read and
+  evaluated. After this following files are searched in the listed
+  order:
+  1. =~/.bash_profile=
+  2. =~/.bash_login=
+  3. =~/.profile=
+
+  The Linux login shell evaluates whatever startup file that it comes
+  across first and ignores the rest.
+
+  When you create a new shell, or terminal window, etc, you do not
+  perform a full system login; only the =~/.bashrc= file is read and
+  evaluated. 
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
