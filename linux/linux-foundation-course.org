@@ -1018,6 +1018,10 @@
    $ OLD_PS1=$PS1
    #+END_EXAMPLE
 
+** SHELL Variable
+   The environment variable shell points to the user's default command
+   shell (the program that is handling whatever you type in a command
+   window, usually bash) and contains the full pathname to the shell.
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
