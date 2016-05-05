@@ -868,8 +868,10 @@
   dd if=/dev/sda of=/dev/sdb
   #+END_EXAMPLE
 * Basics of users and groups
-  Control of group membership is administered through the =/etc/group=
-  file, which shows a list of groups and their members.
+  Linux uses groups for organizing users. Groups are collection of
+  user accounts with certain shared permissions. Control of group
+  membership is administered through the =/etc/group= file, which
+  shows a list of groups and their members.
 
   All Linux users are assigned a unique user ID (uid), which is just
   an integer, as well as one or more group ID's (gid), including the
@@ -918,23 +920,42 @@
      $ groups turkey
      turkey: turkey
      $ usermod -G <newgroup> turkey
+     $ groups turkey
+     turkey: turkey newgroup
      #+END_EXAMPLE
   
 ** root account
   The root account is very powerful and has full access to the
   system. Extreme caution must be taken before granting root access to
-  a user. =sudo= feature is used to assign more limited privileges to
+  a user. *sudo* feature is used to assign more limited privileges to
   user accounts:
   + on only a temporary basis
   + only for a specific subset of commands
 
 ** su and sudo
-  We can use =su= command to switch to a new user, launch a new shell
-  running as another user. It is almost always a bad (dangerous for
-  both security and stability) practise to use =su= to become root.
+  We can use =su= command to switch to a new user, and launch a new
+  shell running as another user. It is almost always a bad (dangerous
+  for both security and stability) practise to use =su= to become
+  root.
 
   Granting privileges using =sudo= is less dangerous and is
   preferred. By default, =sudo= must be enabled on a per-user basis.
+
+  =sudo= configuration files are stored in =/etc/sudoers= file and in
+  =/etc/sudoers.d= directory.
+ 
+* Startup files
+  In Linux, the command shell program (generally bash) uses one or
+  more startup files to configure the environment. Files in =/etc=
+  directory define global settings for all users while initialization
+  files in the user's home directory can include and/or override the
+  global settings.
+
+  Startup files can do the following:
+  1. Customizing the user's prompt
+  2. Defining command line aliases and shortcuts
+  3. Setting the default text editor
+  4. Setting the path for where to find executable programs
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
