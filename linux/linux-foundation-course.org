@@ -990,6 +990,12 @@
   Depending on the state of your system, *set* may print out many more
   lines than the other two methods.
 
+** Setting environment variables
+  By default, variables created within a script are only available to
+  the current shell; child processes (sub-shells) will not have access
+  to values that have been set or modified. Allowing child processes
+  to see the values requires use of the *export* command.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
