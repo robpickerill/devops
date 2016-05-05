@@ -972,6 +972,24 @@
   perform a full system login; only the =~/.bashrc= file is read and
   evaluated. 
 
+* Environment Variables
+  Environment variables are simply named quantities that have specific
+  values and are understood by the command shell, such as *bash*. Some
+  of these are pre-set (built-in) by the system, and others are set by
+  the user either at the command line or within startup and other
+  scripts. An environment variable is actually no more than a
+  character string that contains information used by one or more
+  applications.
+
+  To view values of currently set environment variables we can type
+  any of the following command.
+  1. set 
+  2. env 
+  3. export
+
+  Depending on the state of your system, *set* may print out many more
+  lines than the other two methods.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -985,4 +1003,4 @@
     https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
    (filesystem)
   - http://www.pathname.com/fhs/pub/fhs-2.3.pdf (Filesystem hierarchy
-    standard)
+    standard
