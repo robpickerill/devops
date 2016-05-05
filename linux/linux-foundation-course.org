@@ -996,6 +996,18 @@
   to values that have been set or modified. Allowing child processes
   to see the values requires use of the *export* command.
 
+** PATH Variable
+   PATH is an ordered list of directories (the path) which is scanned
+   when a command is given to find the appropriate program or script
+   to run. Each directory in the path is separated by colons(:). A
+   null (empty) directory name (or ./) indicates the current working
+   directory at any given time.
+
+   #+BEGIN_EXAMPLE
+   :path1:path2 - there is null directory before the first colon
+   path1::path2 - there is null directory between path1 and path2
+   #+END_EXAMPLE
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
