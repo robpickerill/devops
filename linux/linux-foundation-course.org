@@ -1043,6 +1043,33 @@
    3. HISTSIZE stores the maximum number of lines in the history file
       for the current session.
 
+* Keyboard shortcuts
+|-------------------+---------------------------------------------------|
+| Keyboard shortcut | Task                                              |
+|-------------------+---------------------------------------------------|
+| CTRL-L            | Clears the screen                                 |
+|-------------------+---------------------------------------------------|
+| CTRL-H            | Works same as backspace                           |
+|-------------------+---------------------------------------------------|
+| CTRL-U            | Deletes the string from the beginning of the line |
+|                   | to the cursor position                            |
+|-------------------+---------------------------------------------------|
+| CTRL-W            | Deletes the word before the cursor                |
+|-------------------+---------------------------------------------------|
+| CTRL-Z            | Puts the current process to background in         |
+|                   | suspended state                                   |
+|-------------------+---------------------------------------------------|
+| CTRL-D            | Exits the current shell                           |
+|-------------------+---------------------------------------------------|
+| CTRL-C            | Kills the current process                         |
+|-------------------+---------------------------------------------------|
+| CTRL-A            | Goes to the beginning of the line                 |
+|-------------------+---------------------------------------------------|
+| CTRL-E            | Goes to the end of the line                       |
+|-------------------+---------------------------------------------------|
+| TAB               | Auto completes files, directories and binaries    |
+|-------------------+---------------------------------------------------|
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
