@@ -1070,6 +1070,24 @@
 | TAB               | Auto completes files, directories and binaries    |
 |-------------------+---------------------------------------------------|
 
+* Aliases
+  We can create customized commands or modify the behaviour of
+  already existing commands by creating aliases. These aliases are
+  placed in =~/.bashrc= file so they are available to any command
+  shells you create.
+
+  Typing =alias= with no arguments will list currently defined
+  aliases. Alias can be defined temporarily using =alias=
+  command. Example
+  #+BEGIN_EXAMPLE
+  $ alias ls='ls -l'
+  #+END_EXAMPLE
+
+  - Note :: There should not be any spaces on either side of the equal
+            sign and the alias definition needs to be placed within
+            either single quotes or double quotes if it contains any
+            spaces.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
