@@ -1024,6 +1024,25 @@
    The environment variable shell points to the user's default command
    shell (the program that is handling whatever you type in a command
    window, usually bash) and contains the full pathname to the shell.
+* Recalling previous commands
+  *bash* keeps track of previously entered commands and statements in
+   a history buffer; you can recall previously used commands simply by
+   using the up and down cursor keys.
+
+   The list of commands is displayed with the most recent command
+   appearing last in the list. The information is stored in
+   =~/.bash_history=
+
+** History environment variable
+   Several associated environment variable can be used to get
+   information about the history file.
+
+   1. HISTFILE stores the information about the history file.
+   2. HISTFILESIZE stores the maximum number of lines in the history
+      file.
+   3. HISTSIZE stores the maximum number of lines in the history file
+      for the current session.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
