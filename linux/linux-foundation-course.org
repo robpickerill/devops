@@ -1094,15 +1094,15 @@
   users) which has an interest in the file and certain rights, or
   permissions: read, write and execute.
 
-|---------+-------------------------------------|
-| Command | Usage                               |
-|---------+-------------------------------------|
-| chown   | Used to change the file ownership   |
-|---------+-------------------------------------|
-| chgrp   | Used to change the group ownership  |
-|---------+-------------------------------------|
-| chmod   | Used to modify the file permissions |
-|---------+-------------------------------------|
+|----------+-------------------------------------|
+| *Command | Usage*                              |
+|----------+-------------------------------------|
+| chown    | Used to change the file ownership   |
+|----------+-------------------------------------|
+| chgrp    | Used to change the group ownership  |
+|----------+-------------------------------------|
+| chmod    | Used to modify the file permissions |
+|----------+-------------------------------------|
 
   #+BEGIN_EXAMPLE
   chmod uo+x,g-w test1
