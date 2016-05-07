@@ -1113,6 +1113,67 @@
   2. write is 2
   3. execute is 1
 
+* Text Editors
+  Files can be created without using text editors. There are two
+  standard way to create files
+  1. echo
+     #+BEGIN_EXAMPLE
+     echo "File content" > test
+     echo "More file content" >> test
+     #+END_EXAMPLE
+  2. cat
+     #+BEGIN_EXAMPLE
+     cat << EOF > test
+     This text is written inside file
+     EOF
+     #+END_EXAMPLE
+
+** vi
+   Modes in vi
+|---------+---------------------------------------------------------|
+| *Mode   | Feature*                                                |
+|---------+---------------------------------------------------------|
+| Command | - By default vi starts in command mode.                 |
+|         | - Each key is an editor command.                        |
+|         | - Keyboard strokes are interpreted as commands that can |
+|         | modify file contents.                                   |
+|---------+---------------------------------------------------------|
+| Insert  | - Type 'i' to switch to insert mode from command mode   |
+|         | - Insert mode is used to insert text into a file        |
+|         | - Insert mode is indicated by the text "-- INSERT --"   |
+|         | at the bottom of the screen                             |
+|         | - Press Esc to exit insert mode and return to command   |
+|         |   mode                                                  |
+|---------+---------------------------------------------------------|
+| Line    | - Type ":" to switch to line mode from command mode.    |
+|---------+---------------------------------------------------------|
+
+** Working with files in vi
+|--------------+------------------------------------------------|
+| *Command     | Usage*                                         |
+|--------------+------------------------------------------------|
+| vi file      | start vi editor and edit file                  |
+|--------------+------------------------------------------------|
+| vi -r file   | start vi editor and edit file in recovery mode |
+|              | from system crash                              |
+|--------------+------------------------------------------------|
+| :w           | save content to file                           |
+|--------------+------------------------------------------------|
+| :w file      | write the content to file                      |
+|--------------+------------------------------------------------|
+| :r file      | Read in file and insert at current position    |
+|--------------+------------------------------------------------|
+| :x or :wq    | save the content to file and exit              |
+|--------------+------------------------------------------------|
+| :q           | quit                                           |
+|--------------+------------------------------------------------|
+| :q!          | quit even if there are unsaved modifications   |
+|              | to the file                                    |
+|--------------+------------------------------------------------|
+| vi myfile -R | open file in read mode                         |
+|--------------+------------------------------------------------|
+
+  
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
