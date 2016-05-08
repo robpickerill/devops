@@ -1174,34 +1174,38 @@
 |--------------+------------------------------------------------|
 
 ** vi commands
-|-------------------------+-----------------------------------------------|
-| *Command                | Usage*                                        |
-|-------------------------+-----------------------------------------------|
-| CTRL-G                  | Show location in the file and the file status |
-|-------------------------+-----------------------------------------------|
-| G                       | move to the bottom of the file                |
-|-------------------------+-----------------------------------------------|
-| gg                      | move to the start of the file                 |
-|-------------------------+-----------------------------------------------|
-| CTRL-o                  | go back to where you came from                |
-|-------------------------+-----------------------------------------------|
-| Search command - /      | search for the phrase                         |
-|-------------------------+-----------------------------------------------|
-| Match parentheses - %   | find matching ), ], or }                      |
-|-------------------------+-----------------------------------------------|
+|-----------------------+-----------------------------------------------|
+| *Command              | Usage*                                        |
+|-----------------------+-----------------------------------------------|
+| CTRL-G                | Show location in the file and the file status |
+|-----------------------+-----------------------------------------------|
+| G                     | move to the bottom of the file                |
+|-----------------------+-----------------------------------------------|
+| gg                    | move to the start of the file                 |
+|-----------------------+-----------------------------------------------|
+| CTRL-o                | go back to where you came from                |
+|-----------------------+-----------------------------------------------|
+| Search command - /    | search for the phrase                         |
+|-----------------------+-----------------------------------------------|
+| Match parentheses - % | find matching ), ], or }                      |
+|-----------------------+-----------------------------------------------|
+| R                     | To start replace mode                         |
+|-----------------------+-----------------------------------------------|
 
 ** vi operators
    1. To delete the text use =d=
    2. To replace the text use =r=
    3. To change the text use =c=
+   4. To copy the text use =y=
+
 ** Substitute command
    1. To substitute new for the first old in a line type: =:s/old/new=.
-   2. To substitute new for all occurrences of old in the line type =:s/old/new/g=.
+   2. To substitute new for all occurrences of old in the line type
+      =:s/old/new/g=.
    3. To substitute new for all occurrences of old in the whole file
       type: =:%s/old/new/g=.
    4. To substitute new for all occurrences of old in the whole file
       with confirmation type: =:%s/old/new/gc=.
-
       
 ** External command
    Type =:!= followed by an external command to execute that command.
@@ -1209,6 +1213,19 @@
    :!ls
    :!rm test
    #+END_EXAMPLE
+
+** Selecting text to write
+   To highlight the text type =v= and then move the cursor to select
+   the text. Once the text is highlighted we can save the text into a
+   file by typing =:= and then =w test=.
+
+** set option
+   1. set 'ic' (Ignore case) option by entering =:set ic=.
+   2. set 'is' ('incsearch') option to show partial matches for a
+      search phrase.
+   2. set the 'hlsearch' option to highlight all matching phrase.
+   3. To disable ignoring case enter: =:set noic=.
+   4. To remove the highlighting of matches enter: =:nohlsearch=.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
