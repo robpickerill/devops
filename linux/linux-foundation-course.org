@@ -1173,7 +1173,43 @@
 | vi myfile -R | open file in read mode                         |
 |--------------+------------------------------------------------|
 
-  
+** vi commands
+|-------------------------+-----------------------------------------------|
+| *Command                | Usage*                                        |
+|-------------------------+-----------------------------------------------|
+| CTRL-G                  | Show location in the file and the file status |
+|-------------------------+-----------------------------------------------|
+| G                       | move to the bottom of the file                |
+|-------------------------+-----------------------------------------------|
+| gg                      | move to the start of the file                 |
+|-------------------------+-----------------------------------------------|
+| CTRL-o                  | go back to where you came from                |
+|-------------------------+-----------------------------------------------|
+| Search command - /      | search for the phrase                         |
+|-------------------------+-----------------------------------------------|
+| Match parentheses - %   | find matching ), ], or }                      |
+|-------------------------+-----------------------------------------------|
+
+** vi operators
+   1. To delete the text use =d=
+   2. To replace the text use =r=
+   3. To change the text use =c=
+** Substitute command
+   1. To substitute new for the first old in a line type: =:s/old/new=.
+   2. To substitute new for all occurrences of old in the line type =:s/old/new/g=.
+   3. To substitute new for all occurrences of old in the whole file
+      type: =:%s/old/new/g=.
+   4. To substitute new for all occurrences of old in the whole file
+      with confirmation type: =:%s/old/new/gc=.
+
+      
+** External command
+   Type =:!= followed by an external command to execute that command.
+   #+BEGIN_EXAMPLE
+   :!ls
+   :!rm test
+   #+END_EXAMPLE
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
