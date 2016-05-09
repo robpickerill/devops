@@ -1197,6 +1197,8 @@
 |-----------------------+----------------------------------------------------|
 | CTRL-W                | Jump to another windows                            |
 |-----------------------+----------------------------------------------------|
+| x                     | delete character at current position               |
+|-----------------------+----------------------------------------------------|
 
 ** vi operators
    1. To delete the text use =d=
@@ -1218,7 +1220,10 @@
    #+BEGIN_EXAMPLE
    :!ls
    :!rm test
+   :! wc %
+   :%!fmt
    #+END_EXAMPLE
+   Here =%= represents the file currently being edited.
 
 ** Selecting text to write
    To highlight the text type =v= and then move the cursor to select
