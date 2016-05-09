@@ -1239,11 +1239,61 @@
     3. To disable ignoring case enter: =:set noic=.
     4. To remove the highlighting of matches enter: =:nohlsearch=.
 
+** Emacs
+   Following table represents common key combination used while
+   editing files in emacs.
+   |---------------+-----------------------------------|
+   | *key          | Usage*                            |
+   |---------------+-----------------------------------|
+   | emacs myfile  | Start emacs and edit file         |
+   |---------------+-----------------------------------|
+   | CTRL-x i      | insert prompted for file          |
+   |               | at current position               |
+   |---------------+-----------------------------------|
+   | CTRL-x s      | save all files                    |
+   |---------------+-----------------------------------|
+   | CTRL-x CTRL-w | write to the file giving new      |
+   |               | name when prompted                |
+   |---------------+-----------------------------------|
+   | CTRL-x CTRL-s | saves the current file            |
+   |---------------+-----------------------------------|
+   | CTRL-x CTRL-c | exit after being prompted to save |
+   |               | any modified files                |
+   |---------------+-----------------------------------|
+
+*** Searching for text in emacs
+    The table lists the key combinations that are used for searching
+    for text in emacs.
+    |--------+---------------------------------------|
+    | *Key   | Usage*                                |
+    |--------+---------------------------------------|
+    | CTRL-s | Search forward for prompted pattern   |
+    |--------+---------------------------------------|
+    | CTRL-r | Search backwards for prompted pattern |
+    |--------+---------------------------------------|
+
+*** Working with text in emacs
+    The table lists the key combination used for changing, adding and
+    deleting text in emacs.
+    |--------------+---------------------------------------------|
+    | *Key         | Usage*                                      |
+    |--------------+---------------------------------------------|
+    | CTRL-k       | delete rest of the current line             |
+    |--------------+---------------------------------------------|
+    | CTRL-(space) | mark the beginning of the selected region   |
+    |--------------+---------------------------------------------|
+    | CTRL-w       | delete the current marked text and write it |
+    |              | to the buffer                               |
+    |--------------+---------------------------------------------|
+    | CTRL-y       | insert at current cursor location whatever  |
+    |              | was most recently deleted                   |
+    |--------------+---------------------------------------------|
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
   - Revise ch-3 boot process again at the end of the course.
-
+    
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
   - https://www.centos.org/docs/ (centos documentaion)
