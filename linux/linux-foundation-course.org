@@ -1129,7 +1129,7 @@
      #+END_EXAMPLE
 
 ** vi
-   Modes in vi
+*** Modes in vi
 |---------+---------------------------------------------------------|
 | *Mode   | Feature*                                                |
 |---------+---------------------------------------------------------|
@@ -1148,7 +1148,7 @@
 | Line    | - Type ":" to switch to line mode from command mode.    |
 |---------+---------------------------------------------------------|
 
-** Working with files in vi
+*** Working with files in vi
 |------------+------------------------------------------------|
 | *Command   | Usage*                                         |
 |------------+------------------------------------------------|
@@ -1175,7 +1175,7 @@
 | :e file    | start editing file                             |
 |------------+------------------------------------------------|
 
-** vi commands
+*** vi commands
 |-----------------------+----------------------------------------------------|
 | *Command              | Usage*                                             |
 |-----------------------+----------------------------------------------------|
@@ -1200,43 +1200,44 @@
 | x                     | delete character at current position               |
 |-----------------------+----------------------------------------------------|
 
-** vi operators
-   1. To delete the text use =d=
-   2. To replace the text use =r=
-   3. To change the text use =c=
-   4. To copy the text use =y=
+*** vi operators
+    1. To delete the text use =d=
+    2. To replace the text use =r=
+    3. To change the text use =c=
+    4. To copy the text use =y=
 
-** Substitute command
-   1. To substitute new for the first old in a line type: =:s/old/new=.
-   2. To substitute new for all occurrences of old in the line type
-      =:s/old/new/g=.
-   3. To substitute new for all occurrences of old in the whole file
-      type: =:%s/old/new/g=.
-   4. To substitute new for all occurrences of old in the whole file
-      with confirmation type: =:%s/old/new/gc=.
+*** Substitute command
+    1. To substitute new for the first old in a line type:
+       =:s/old/new=.
+    2. To substitute new for all occurrences of old in the line type
+       =:s/old/new/g=.
+    3. To substitute new for all occurrences of old in the whole file
+       type: =:%s/old/new/g=.
+    4. To substitute new for all occurrences of old in the whole file
+       with confirmation type: =:%s/old/new/gc=.
       
-** External command
-   Type =:!= followed by an external command to execute that command.
-   #+BEGIN_EXAMPLE
-   :!ls
-   :!rm test
-   :! wc %
-   :%!fmt
-   #+END_EXAMPLE
-   Here =%= represents the file currently being edited.
+*** External command
+    Type =:!= followed by an external command to execute that command.
+    #+BEGIN_EXAMPLE
+    :!ls
+    :!rm test
+    :! wc %
+    :%!fmt
+    #+END_EXAMPLE
+    Here =%= represents the file currently being edited.
 
-** Selecting text to write
-   To highlight the text type =v= and then move the cursor to select
-   the text. Once the text is highlighted we can save the text into a
-   file by typing =:= and then =w test=.
+*** Selecting text to write
+    To highlight the text type =v= and then move the cursor to select
+    the text. Once the text is highlighted we can save the text into a
+    file by typing =:= and then =w test=.
 
-** set option
-   1. set 'ic' (Ignore case) option by entering =:set ic=.
-   2. set 'is' ('incsearch') option to show partial matches for a
-      search phrase.
-   2. set the 'hlsearch' option to highlight all matching phrase.
-   3. To disable ignoring case enter: =:set noic=.
-   4. To remove the highlighting of matches enter: =:nohlsearch=.
+*** set option
+    1. set 'ic' (Ignore case) option by entering =:set ic=.
+    2. set 'is' ('incsearch') option to show partial matches for a
+       search phrase.
+    2. set the 'hlsearch' option to highlight all matching phrase.
+    3. To disable ignoring case enter: =:set noic=.
+    4. To remove the highlighting of matches enter: =:nohlsearch=.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
