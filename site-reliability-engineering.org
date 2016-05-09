@@ -1,0 +1,26 @@
+#+Title: Site Reliability Engineering
+#+Author: Yogesh Agrawal
+#+Date: <2016-05-09 Mon>
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document describes the learning and important points from site
+  reliability engineering book - google.
+
+* SRE
+  SRE are engineers: apply principles of computer science and
+  engineering to build complex and distributed systems.
+
+  Reliability is the most fundamental feature of any
+  product. Definition of reliability is the probability that a system
+  will perform accurately under stated conditions for a stated period
+  of time.
+
+  Belief in the value of preparation and documentation, and an
+  awareness of what could go wrong, coupled with a strong desire to
+  prevent it.
+
+* TODO
+  1. Translate the text - "Google grew at a time when the traditional
+     role of the system administrator was being transformed."
+
