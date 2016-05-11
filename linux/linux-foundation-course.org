@@ -1290,15 +1290,16 @@
     |--------------+---------------------------------------------|
 
 * Security Principles
-  Linux kernel allows authenticated users to access files and
-  applications. While each user is identified by a unique integer (the
-  user id or UID), a separate database associates a username with each
-  UID. Upon account creation, new user information is added to the
-  user database and the user's home directory must be created and
-  populated with some essential files.
+** User accounts
+   Linux kernel allows authenticated users to access files and
+   applications. While each user is identified by a unique integer
+   (the user id or UID), a separate database associates a username
+   with each UID. Upon account creation, new user information is added
+   to the user database and the user's home directory must be created
+   and populated with some essential files.
 
-  For each user following seven fields are maintained in the
-  =/etc/passwd= file.
+   For each user following seven fields are maintained in the
+   =/etc/passwd= file.
 
 |----------------+---------------------------------------------+------------------------------------------------|
 | *Field Name    | Details                                     | REmarks*                                       |
@@ -1331,11 +1332,29 @@
 |                | shell                                       |                                                |
 |----------------+---------------------------------------------+------------------------------------------------|
 
-  Example entry of /etc/passwd file:
+   Example entry of /etc/passwd file:
 
-  #+BEGIN_EXAMPLE
-  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
-  #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+   #+END_EXAMPLE
+
+** Types of accounts
+   Linux has four types of accounts:
+   1. root
+   2. System
+   3. Normal
+   4. Network
+    
+   For a safe working environment, it is advised to grant the minimum
+   privileges possible and necessary to accounts, and remove inactive
+   accounts. The *last* command, which shows the last time each user
+   logged into the system, can be used to help identify potentially
+   inactive accounts which are candidates for system removal.
+
+   The practices you use on multi-user business systems are more
+   strict than practices you can use on personal desktop systems that
+   only affect the casual user. This is especially true with security.
+
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
