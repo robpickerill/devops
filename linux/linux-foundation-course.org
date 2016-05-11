@@ -1289,6 +1289,49 @@
     |              | was most recently deleted                   |
     |--------------+---------------------------------------------|
 
+* Security Principles
+  Linux kernel allows authenticated users to access files and
+  applications. While each user is identified by a unique integer (the
+  user id or UID), a separate database associates a username with each
+  UID. Upon account creation, new user information is added to the
+  user database and the user's home directory must be created and
+  populated with some essential files.
+
+  For each user following seven fields are maintained in the
+  =/etc/passwd= file.
+
+|----------------+---------------------------------------------+------------------------------------------------|
+| *Field Name    | Details                                     | REmarks*                                       |
+|----------------+---------------------------------------------+------------------------------------------------|
+| Username       | User login name                             | Should be in beetween 1 and 32 characters long |
+|----------------+---------------------------------------------+------------------------------------------------|
+| Password       | User password (or the character x           | Is never shown while typing                    |
+|                | if the password is stored in /etc/shadow    |                                                |
+|                | file) in encrypted format.                  |                                                |
+|----------------+---------------------------------------------+------------------------------------------------|
+| User ID (UID)  | Every user must have a user id (UID)        | - UID 0 is reserved for root user              |
+|                |                                             | - UID's ranging from 1-99 are reserved for     |
+|                |                                             | other predefined accounts                      |
+|                |                                             | - UID's ranging from 100-999 are reserved for  |
+|                |                                             | systems accounts and groups                    |
+|                |                                             | - Normal user have UID's of 1000 or greater    |
+|----------------+---------------------------------------------+------------------------------------------------|
+| Group ID (GID) | The primary Group ID (GID); Group           |                                                |
+|                | identification number stored in the         |                                                |
+|                | /etc/group file                             |                                                |
+|----------------+---------------------------------------------+------------------------------------------------|
+| User Info      | This field is optional and allows insertion |                                                |
+|                | of extra information about the user such as |                                                |
+|                | their name                                  |                                                |
+|----------------+---------------------------------------------+------------------------------------------------|
+| Home Directory | The absolute path location of user's home   |                                                |
+|                | directory                                   |                                                |
+|----------------+---------------------------------------------+------------------------------------------------|
+| Shell          | The absolute location of a user's default   |                                                |
+|                | shell                                       |                                                |
+|----------------+---------------------------------------------+------------------------------------------------|
+
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
