@@ -1331,6 +1331,11 @@
 |                | shell                                       |                                                |
 |----------------+---------------------------------------------+------------------------------------------------|
 
+  Example entry of /etc/passwd file:
+
+  #+BEGIN_EXAMPLE
+  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+  #+END_EXAMPLE
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
