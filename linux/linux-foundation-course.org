@@ -1302,7 +1302,7 @@
    =/etc/passwd= file.
 
 |----------------+---------------------------------------------+------------------------------------------------|
-| *Field Name    | Details                                     | REmarks*                                       |
+| *Field Name    | Details                                     | Remarks*                                       |
 |----------------+---------------------------------------------+------------------------------------------------|
 | Username       | User login name                             | Should be in beetween 1 and 32 characters long |
 |----------------+---------------------------------------------+------------------------------------------------|
@@ -1355,6 +1355,12 @@
    strict than practices you can use on personal desktop systems that
    only affect the casual user. This is especially true with security.
 
+** root account
+   =root= is the most privileged account in Linux system. This account
+   has the ability to carry out all facets of system administration,
+   including root accounts, changing passwords, examining log files,
+   installing software, etc. It has no security restrictions imposed
+   upon it.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
