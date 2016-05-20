@@ -1356,11 +1356,22 @@
    only affect the casual user. This is especially true with security.
 
 ** root account
-   =root= is the most privileged account in Linux system. This account
-   has the ability to carry out all facets of system administration,
-   including root accounts, changing passwords, examining log files,
-   installing software, etc. It has no security restrictions imposed
-   upon it.
+   =root= is the most privileged account in Linux system.  This
+   account has the ability to carry out all facets of system
+   administration, including root accounts, changing passwords,
+   examining log files, installing software, etc.  It has no security
+   restrictions imposed upon it.
+
+** Operations that require root privileges
+   =root= privileges are required to perform operations such as:
+   1. creating, removing and managing user accounts.
+   2. managing software packages.
+   3. removing or modifying system files.
+   4. restarting system services.
+
+   =root= privilege is required for performing administration tasks
+   such as restarting services and managing parts of the filesystem
+   that are outside the normal user's directories.
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
