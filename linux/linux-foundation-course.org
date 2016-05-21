@@ -1373,6 +1373,15 @@
    such as restarting services and managing parts of the filesystem
    that are outside the normal user's directories.
 
+** Operations that do not require root privileges
+   A regular account user can perform some operations requiring
+   special permissions.
+
+   SUID (Set owner User ID upon execution) - is a special kind of file
+   permission given to a file. SUID provides temporary permissions to
+   a user to run a program with the permissions of file *owner* (which
+   may be root) instead of permissions held by the user.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
