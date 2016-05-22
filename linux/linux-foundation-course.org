@@ -1423,6 +1423,26 @@
     find / -perm +4000
     #+END_EXAMPLE
 
+** sudo vs su
+   In Linux you can use either =su= or =sudo= to temporarily grant
+   root access to a normal user.
+
+   |--------------------------------------------+---------------------------------------------|
+   | *su                                        | sudo*                                       |
+   |--------------------------------------------+---------------------------------------------|
+   | While elevating privileges root password   | While elevating privileges user's password  |
+   | is required. Giving the root password      | is required not the root password           |
+   | to a normal user should never ever be done |                                             |
+   |--------------------------------------------+---------------------------------------------|
+   | Once entered using su, a user can perform  | sudo provides various configurable features |
+   | all the tasks of root user, for as long as | to control and limit access. User has to    |
+   | the user wants without being asked again   | every time provide password while executing |
+   | for the password.                          | command or the password will be saved for   |
+   |                                            | the configurable interval.                  |
+   |--------------------------------------------+---------------------------------------------|
+   | It has limited logging features.           | Actions details are logged in a log file.   |
+   |--------------------------------------------+---------------------------------------------|
+  
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
