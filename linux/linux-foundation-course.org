@@ -1373,7 +1373,7 @@
    such as restarting services and managing parts of the filesystem
    that are outside the normal user's directories.
 
-** Operations that do not require root privileges
+** Operations that do not require root privileges - SUID
    A regular account user can perform some operations requiring
    special permissions.
 
@@ -1381,6 +1381,47 @@
    permission given to a file. SUID provides temporary permissions to
    a user to run a program with the permissions of file *owner* (which
    may be root) instead of permissions held by the user.
+ 
+   - refer: http://www.linuxnix.com/suid-set-suid-linuxunix/
+
+   - Example1: passwd command ::
+        When we try to change password of a user, using passwd command
+        which is owned by the root. This =passwd= command will try to
+        edit some system config files such as =/etc/passwd= and
+        =/etc/shadow= etc when we try to change our password. Some of
+        these files can not be viewed/edited by the normal user, only
+        root user will have permissions. So if we try to remove SUID
+        and give full permissions to this passwd command file it
+        cannot open other files such as /etc/shadow file to update the
+        changes and we will get permission denied error or some other
+        error when tried to execute password command. So passwd
+        command is set with SUID to give root user permissions to
+        normal user so that it can update /etc/shadow and other files.
+
+   - Example2: ping command ::
+	When we execute ping command, it creates sockets internally
+        and open ports to send and receive IP packets. Normal user
+        don't have permissions to create sockets and open ports, root
+        privileges is required to perform this tasks. Hence SUID bit
+        is set in ping command/file so that whoever executes this
+        command will get owner (root) permissions to open socket files
+        and ports.
+
+*** How to set SUID for a file
+    1. Symbolic way
+       #+BEGIN_EXAMPLE
+       u+s file.txt
+       #+END_EXAMPLE
+
+    2. Numerical way
+       #+BEGIN_EXAMPLE
+       chmod 4750 file.txt
+       #+END_EXAMPLE
+
+*** Find all the SUID set files
+    #+BEGIN_EXAMPLE
+    find / -perm +4000
+    #+END_EXAMPLE
 
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
