@@ -1481,17 +1481,38 @@
    #+END_EXAMPLE 
 
 ** Process Isolation
-   Linux is considered to be more secure than other operating
+   Linux is considered to be more secure than many other operating
    systems, because processes are naturally isolated from each
    other. One process normally can not access the resources of another
    process, even when that process is running with the same user
    privileges. Linux thus makes it difficult for viruses and security
    exploits to access and attack random resources on a system.
 
-* COMMENT Plan
+** Security mechanism
+   Additional security features that have been recently introduced in
+   order to make risks even smaller are:
+
+*** Control Groups (cgroups):
+    Allow system administrators to group processes and associate
+    finite resources to each cgroup.
+
+*** Linux Containers (LXC):
+    Makes it possible to run multiple Linux systems (containers) on a
+    single system by relying on *cgroups*.
+
+*** Virtualization
+    Hardware is emulated in such a way that not only processes can be
+    isolated, but entire systems are run simultaneously as isolated
+    and insulated guests (virtual machine) on one physical host.
+
+   
+
+* COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
   - Revise ch-3 boot process again at the end of the course.
+  - Learn why Linux is virus secured. Are there any anti-virus system
+    for Linux.
     
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
