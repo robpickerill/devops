@@ -1453,6 +1453,33 @@
    permissions, refuses to write out the file and exit if there is an
    error in the changes made.
 
+   The basic structure of an entry is:
+   #+BEGIN_EXAMPLE
+   who where = (as_whom) what
+   #+END_EXAMPLE
+
+   It is preferred to add a file in the directory =/etc/sudoers.d=
+   with a name the same as the user. This file contains the individual
+   user's sudo configuration, and one should leave the master
+   configuration untouched except for changes that affect all users.
+
+** command logging
+   *sudo* commands are logged in =/var/log/auth.log= under the Debian
+   distribution, and in =/var/log/secure= or =/var/log/messages= on
+   other systems.
+
+   A typical entry of the message contains:
+   - calling username
+   - terminal info
+   - working directory
+   - user account invoked
+   - command with arguments
+
+   Running a command such as sudo results in a log file entry such as:
+   #+BEGIN_EXAMPLE
+   1 May 23 08:06:17 machine sudo:   yogesh : TTY=pts/11 ; PWD=/home/yogesh/work/projects/documents/linux ; USER=root ; COMMAND=/usr/bin/whoami
+   #+END_EXAMPLE 
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
