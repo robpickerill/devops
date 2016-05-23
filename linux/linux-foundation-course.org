@@ -1480,6 +1480,14 @@
    1 May 23 08:06:17 machine sudo:   yogesh : TTY=pts/11 ; PWD=/home/yogesh/work/projects/documents/linux ; USER=root ; COMMAND=/usr/bin/whoami
    #+END_EXAMPLE 
 
+** Process Isolation
+   Linux is considered to be more secure than other operating
+   systems, because processes are naturally isolated from each
+   other. One process normally can not access the resources of another
+   process, even when that process is running with the same user
+   privileges. Linux thus makes it difficult for viruses and security
+   exploits to access and attack random resources on a system.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
