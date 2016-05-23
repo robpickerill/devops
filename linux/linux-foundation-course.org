@@ -1443,6 +1443,16 @@
    | It has limited logging features.           | Actions details are logged in a log file.   |
    |--------------------------------------------+---------------------------------------------|
   
+** Sudoers file
+   Whenever sudo is invoked, a trigger will look at =/etc/sudoers= and
+   the files in =/etc/sudoers.d= to determine if the user has the
+   right to use sudo and what the scope of their privilege is.
+
+   We can edit the sudoers file using =visudo= command. This ensures
+   that only one person is editing the file at a time, has the proper
+   permissions, refuses to write out the file and exit if there is an
+   error in the changes made.
+
 * COMMENT Plan
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
