@@ -1532,6 +1532,22 @@
    easily obliterate the filesystem stored on it in a way that cannot
    be repaired without great effort, if at all.
 
+** Update System
+   When security problems in either the Linux kernel or applications
+   and libraries are discovered, Linux distributions have a good
+   record of reacting quickly and pushing out fixes to all systems by
+   updating their software repositories and sending notifications to
+   update immediately. The same thing is true with bug fixes and
+   performance improvements that are not security related.
+
+   Many of the most successful attack vectors come from exploiting
+   security holes for which fixes are already known but not
+   universally deployed.
+
+   So the best practise is to take advantage of your Linux
+   distribution's mechanism for automatic updates and never postpone
+   them. It is extremely rare that such an update will cause new
+   problems.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
