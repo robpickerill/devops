@@ -1561,13 +1561,29 @@
    file named =/etc/shadow=. Only those with root access can
    modify/read this file.
 
+** Password Encryption
+   Linux distributions rely on a modern password encryption algorithm
+   called *SHA-12* (Secure Hashing Algorithm 512 bits). The SHA-12
+   algorithm is widely used for security applications and
+   protocols. These security applications and protocols include TLS,
+   SSL, PHP, SSH, S/MIME and IPSec. *SHA-12* is one of the most tested
+   hashing algorithms.
+  
+   Example:
+   #+BEGIN_EXAMPLE
+   $ echo -n test | sha512sum 
+   0e3e75234abc68f4378a86b3f4b32a198ba301845b0cd6e50106e874345700cc6663a86c1ea125dc5e92be17c98f9a0f85ca9d5f595db2012f7cc3571945c123  -
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
   - Revise ch-3 boot process again at the end of the course.
   - Learn why Linux is virus secured. Are there any anti-virus systems
     for Linux.
-    
+  - Read about National Security Agency. 
+
+
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
   - https://www.centos.org/docs/ (centos documentaion)
