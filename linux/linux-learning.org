@@ -1,0 +1,13 @@
+#+Title: Concepts of Linux
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+#+Date: <2016-05-25 Wed>
+
+* Introduction
+  This document contains learning of Linux.
+
+* apt-get
+** update
+   update is used to resynchronize the package index files from their
+   sources. The indexes of available packages are fetched from the
+   location(s) specified in /etc/apt/sources.list.
