@@ -1575,6 +1575,35 @@
    0e3e75234abc68f4378a86b3f4b32a198ba301845b0cd6e50106e874345700cc6663a86c1ea125dc5e92be17c98f9a0f85ca9d5f595db2012f7cc3571945c123  -
    #+END_EXAMPLE
 
+** Good Password Practices
+*** Password aging
+    It is a method to ensure that user get prompts that remind them to
+    create a new password after a specific period. This can ensure
+    that passwords, if cracked, will only be usable for a limited
+    amount of time. This feature is implemented using *chage*, which
+    configures the password expiry information for a user.
+  
+    Executing change command requires root privileges because it
+    command edits the user information in =/etc/shadow= file which is
+    owned by the root. =/etc/shadow= has following permissions:
+    #+BEGIN_EXAMPLE
+    -rw-r----- 1 root shadow 1154 May 25 20:00 /etc/shadow
+    #+END_EXAMPLE
+
+    Examples:
+    1. set maximum number of days during which password is valid. When
+       MAX_DAYS plus LAST_DAYS is less than the current day, the user
+       will be required to change the password before being able to
+       use the account.
+
+       Passing the number =-1= as the expiry date will remove an
+       account expiration date.
+          
+       #+BEGIN_EXAMPLE
+       sudo chage yogesh -M 2
+       #+END_EXAMPLE
+
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
