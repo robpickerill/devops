@@ -613,7 +613,10 @@
 |--------------------------------+--------------------+-------------------------|
 | What packages is file part of? | rpm -qf file       | dpkg --search file      |
 |--------------------------------+--------------------+-------------------------|
-  
+| List packages matching given   |                    | dpkg -l <package-name>  |
+| pattern                        |                    |                         |
+|--------------------------------+--------------------+-------------------------|
+
 * File Systems
 ** Partitions in linux
    Each filesytem resides on a hard disk partition. Partitions help
