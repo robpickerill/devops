@@ -1552,6 +1552,15 @@
    them. It is extremely rare that such an update will cause new
    problems.
 
+** Passwords
+   The system verifies authenticity and identify using user
+   credentials. Originally, encrypted passwords were stored in the
+   =/etc/passwd= file, which was readable by everyone. This made it
+   rather easier for passwords, to be cracked. On modern systems,
+   passwords are actually stored in an encrypted format in a secondary
+   file named =/etc/shadow=. Only those with root access can
+   modify/read this file.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
