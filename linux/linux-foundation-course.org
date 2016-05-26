@@ -1609,6 +1609,28 @@
     implemented using a library called *pam_cracklib.so*, which can
     also be replaced by *pam_passwdqc.so* for more options.
 
+** Securing the boot process and hardware resources
+   You can secure the boot process with a secure password to prevent
+   someone from bypassing the user authentication step. For systems
+   using the GRUB boot loader, for the older GRUB version 1, you can
+   invoke *grub-md5-crypt* which will prompt you for a password and
+   then encrypt.
+
+   You must then edit =/etc/grub/grub.cfg= file by adding the
+   following line below the timeout entry:
+   #+BEGIN_EXAMPLE
+   password --md5 $1$Wnvo.1$qz781HRVG4jUnJXmdSCZ30
+   #+END_EXAMPLE
+   
+   You can also force passwords for only certain boot choices rather
+   than all.
+
+   You never edit the configuration file, =/boot/grub/grub.cfg=,
+   directly rather you edit system configuration files in
+   =/etc/grub.d= and then run =update-grub=.
+
+   - refer :: https://help.ubuntu.com/community/Grub2/Passwords
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
