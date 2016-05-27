@@ -1631,6 +1631,8 @@
 
    - refer :: https://help.ubuntu.com/community/Grub2/Passwords
 
+** Hardware Vulnerability
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
