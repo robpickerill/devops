@@ -1632,6 +1632,36 @@
    - refer :: https://help.ubuntu.com/community/Grub2/Passwords
 
 ** Hardware Vulnerability
+   When hardware is physically accessible, security can be compromised
+   by:
+*** Key Logging
+    Recording the real time activity of a computer used including the
+    keys they press. The captured data can either be stored locally or
+    transmitted to remote machines.
+
+*** Network sniffing
+    Capturing and viewing the network packet level data on your
+    network.
+
+*** Live
+    Booting with a live cd or rescue disk.
+
+*** Remounting and modifying disk content
+    
+    IT security policy should start with requirements on how to
+    properly secure physical access to servers and
+    workstations. Physical access to a system makes it possible for
+    attackers to easily leverage several attack vectors, in a way that
+    makes all operating system level recommendations irrelevant.
+
+    The guidelines for security are:
+    1. Lock down workstations and servers.
+    2. Protect your network link such that it can not be accessed by
+       people you do not trust.
+    3. Protect your keyboards where passwords are entered to ensure
+       the keyboards cannot be tampered with.
+    4. Ensure a password protects the BIOS in such a way that system
+       cannot be booted with a live or rescue DVD or USB key.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
@@ -1642,6 +1672,7 @@
   - Read about National Security Agency. 
   - Revise nfs.
   - Revise apt-get.
+  - Try out boot loader password.
 
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
