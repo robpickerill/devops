@@ -1675,6 +1675,15 @@
 
   This way if there are any errors in the file, visudo will prompt to
   correct it, and prevent from landing in some difficult situation.
+
+  If there are any syntax errors in the sudoers file then you will not
+  be able to execute root privileged command. Then you have to use
+  =pkexec= command as follows to correct the error.
+
+  #+BEGIN_EXAMPLE
+  pkexec visudo -f /etc/sudoers.d/filename
+  #+END_EXAMPLE
+
   Refer the below link to understand better:
   http://askubuntu.com/questions/73864/how-to-modify-a-invalid-etc-sudoers-file-it-throws-out-an-error-and-not-allowi
 
