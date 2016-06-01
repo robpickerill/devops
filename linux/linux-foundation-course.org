@@ -1619,14 +1619,14 @@
    You must then edit =/etc/grub/grub.cfg= file by adding the
    following line below the timeout entry:
    #+BEGIN_EXAMPLE
-   password --md5 $1$Wnvo.1$qz781HRVG4jUnJXmdSCZ30
+   password --md5 <encrypted-password>
    #+END_EXAMPLE
    
    You can also force passwords for only certain boot choices rather
    than all.
 
-   You never edit the configuration file, =/boot/grub/grub.cfg=,
-   directly rather you edit system configuration files in
+   You never edit the configuration file, =/boot/grub/grub.cfg=
+   directly, rather you edit system configuration files in
    =/etc/grub.d= and then run =update-grub=.
 
    - refer :: https://help.ubuntu.com/community/Grub2/Passwords
@@ -1643,32 +1643,48 @@
     Capturing and viewing the network packet level data on your
     network.
 
-*** Live
+*** Live CD
     Booting with a live cd or rescue disk.
 
 *** Remounting and modifying disk content
-    
-    IT security policy should start with requirements on how to
-    properly secure physical access to servers and
-    workstations. Physical access to a system makes it possible for
-    attackers to easily leverage several attack vectors, in a way that
-    makes all operating system level recommendations irrelevant.
 
-    The guidelines for security are:
-    1. Lock down workstations and servers.
-    2. Protect your network link such that it can not be accessed by
-       people you do not trust.
-    3. Protect your keyboards where passwords are entered to ensure
-       the keyboards cannot be tampered with.
-    4. Ensure a password protects the BIOS in such a way that system
-       cannot be booted with a live or rescue DVD or USB key.
+   IT security policy should start with requirements on how to
+   properly secure physical access to servers and
+   workstations. Physical access to a system makes it possible for
+   attackers to easily leverage several attack vectors, in a way that
+   makes all operating system level recommendations irrelevant.
+
+   The guidelines for security are:
+
+   1. Lock down workstations and servers.
+   2. Protect your network link such that it can not be accessed by
+      people you do not trust.
+   3. Protect your keyboards where passwords are entered to ensure the
+      keyboards cannot be tampered with.
+   4. Ensure a password protects the BIOS in such a way that system
+      cannot be booted with a live or rescue DVD or USB key.
+
+** Labs
+   sudoers file must be edited carefully. If there are any mistakes in
+   the file, then you will not be able to execute the sudo
+   command. Hence the best way to edit sudoers file is to use =visudo=
+   command, for example:
+   #+BEGIN_EXAMPLE
+   sudo visudo -f /etc/sudoers.d/user1
+   #+END_EXAMPLE
+
+  This way if there are any errors in the file, visudo will prompt to
+  correct it, and prevent from landing in some difficult situation.
+  Refer the below link to understand better:
+  http://askubuntu.com/questions/73864/how-to-modify-a-invalid-etc-sudoers-file-it-throws-out-an-error-and-not-allowi
+
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
   - Revise ch-3 boot process again at the end of the course.
   - Learn why Linux is virus secured. Are there any anti-virus systems
-    for Linux.
+    for Linux. refer [[Process Isolation]]
   - Read about National Security Agency. 
   - Revise nfs.
   - Revise apt-get.
