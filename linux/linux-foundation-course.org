@@ -888,7 +888,7 @@
 ** Adding and removing users
    Users can be added and deleted only by the root user. Normal user
    can not perform this action. =adduser= command is used to create
-   user and =deluser= command is used to delete user.
+   user and =userdel= command is used to delete user.
 
    To create an user =turkey= execute following command, which will
    sets the home directory to =/home/turkey=, populates with some
@@ -898,11 +898,11 @@
    sudo adduser turkey
    #+END_EXAMPLE
 
-   Removing a user is as simple as typing =deluser turkey=. However
+   Removing a user is as simple as typing =userdel turkey=. However
    this will leave the =/home/turkey= directory intact. This might be
    useful if this is a temporary inactivation. To remove the home
    directory while removing the account we can use =-r= option with
-   =deluser= command.
+   =userdel= command.
 
    To get the current user information use =id= command.
    #+BEGIN_EXAMPLE
