@@ -1444,6 +1444,10 @@
    |                                            | the configurable interval.                  |
    |--------------------------------------------+---------------------------------------------|
    | It has limited logging features.           | Actions details are logged in a log file.   |
+   |                                            | sudo commands and failures are logged in    |
+   |                                            | /var/log/auth.log under the Debian system   |
+   |                                            | and /var/log/messages in other distribution |
+   |                                            | system.                                     |
    |--------------------------------------------+---------------------------------------------|
   
 ** Sudoers file
@@ -1701,6 +1705,7 @@
   - Revise nfs.
   - Revise apt-get.
   - Try out boot loader password.
+  - Revise security principles chapter.
 
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
