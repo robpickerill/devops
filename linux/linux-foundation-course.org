@@ -1684,6 +1684,9 @@
   pkexec visudo -f /etc/sudoers.d/filename
   #+END_EXAMPLE
 
+  =pkexec= is a similar command to =sudo=. It allows user to execute a
+  command as another user.
+
   Refer the below link to understand better:
   http://askubuntu.com/questions/73864/how-to-modify-a-invalid-etc-sudoers-file-it-throws-out-an-error-and-not-allowi
 
