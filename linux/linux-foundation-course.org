@@ -1601,11 +1601,11 @@
 
 ** Password Encryption
    Linux distributions rely on a modern password encryption algorithm
-   called *SHA-12* (Secure Hashing Algorithm 512 bits). The SHA-12
+   called *SHA-512* (Secure Hashing Algorithm 512 bits). The SHA-12
    algorithm is widely used for security applications and
    protocols. These security applications and protocols include TLS,
-   SSL, PHP, SSH, S/MIME and IPSec. *SHA-12* is one of the most tested
-   hashing algorithms.
+   SSL, PHP, SSH, S/MIME and IPSec. *SHA-512* is one of the most
+   tested hashing algorithms.
   
    Example:
    #+BEGIN_EXAMPLE
