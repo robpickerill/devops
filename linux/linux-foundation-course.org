@@ -1394,6 +1394,11 @@
    permission given to a file. SUID provides temporary permissions to
    a user to run a program with the permissions of file *owner* (which
    may be root) instead of permissions held by the user.
+
+   Example of a file, with suid set:
+   #+BEGIN_EXAMPLE
+   -rwsr-xr-x 1 root root 47032 Jan 27 06:20 /usr/bin/passwd
+   #+END_EXAMPLE
  
    - refer: http://www.linuxnix.com/suid-set-suid-linuxunix/
 
