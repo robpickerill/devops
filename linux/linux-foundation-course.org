@@ -1395,10 +1395,17 @@
    a user to run a program with the permissions of file *owner* (which
    may be root) instead of permissions held by the user.
 
-   Example of a file, with suid set:
-   #+BEGIN_EXAMPLE
-   -rwsr-xr-x 1 root root 47032 Jan 27 06:20 /usr/bin/passwd
-   #+END_EXAMPLE
+   Examples of files, with suid set:
+
+   1. chmod the user permissions:
+      #+BEGIN_EXAMPLE
+      -rwsr-xr-x 1 root root 47032 Jan 27 06:20 /usr/bin/passwd
+      #+END_EXAMPLE
+
+   2. chmod the group permissions: it runs as someone in the group.
+      #+BEGIN_EXAMPLE
+      -rwxr-sr-x 1 root shadow 55000 Jan 27 06:20 /usr/bin/chage
+      #+END_EXAMPLE
  
    - refer: http://www.linuxnix.com/suid-set-suid-linuxunix/
 
