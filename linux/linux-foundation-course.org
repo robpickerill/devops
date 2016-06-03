@@ -1352,7 +1352,17 @@
    privileges possible and necessary to accounts, and remove inactive
    accounts. The *last* command, which shows the last time each user
    logged into the system, can be used to help identify potentially
-   inactive accounts which are candidates for system removal.
+   inactive accounts which are candidates for system removal. 
+
+   Last searches back through the file /var/log/wtmp and displays list
+   of all users logged in (and out) since that file was created. A
+   pseudo user logs in each time the system is rebooted.  The last
+   reboot command will show a log of all reboots since the log file
+   was created.
+
+   *lastb* is the same as *last*, except that by default it shows a
+   log of the file =/var/log/btmp=, which contains all the bad login
+   attempts.
 
    The practices you use on multi-user business systems are more
    strict than practices you can use on personal desktop systems that
