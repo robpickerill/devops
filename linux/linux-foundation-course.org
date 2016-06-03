@@ -1470,20 +1470,40 @@
    the files in =/etc/sudoers.d= to determine if the user has the
    right to use sudo and what the scope of their privilege is.
 
-   We can edit the sudoers file using =visudo= command. This ensures
-   that only one person is editing the file at a time, has the proper
-   permissions, refuses to write out the file and exit if there is an
-   error in the changes made.
+   It is preferred to add a file in the directory =/etc/sudoers.d=
+   with a name the same as the user. This file contains the individual
+   user's sudo configuration, and one should leave the master
+   configuration untouched except for changes that affect all users.
 
    The basic structure of an entry is:
    #+BEGIN_EXAMPLE
    who where = (as_whom) what
    #+END_EXAMPLE
 
-   It is preferred to add a file in the directory =/etc/sudoers.d=
-   with a name the same as the user. This file contains the individual
-   user's sudo configuration, and one should leave the master
-   configuration untouched except for changes that affect all users.
+   sudoers file must be edited carefully. We can edit the sudoers file
+   using =visudo= command. If there are any mistakes in the file, then
+   you will not be able to execute the sudo command. The best way to
+   edit sudoers file is to use =visudo= command, for example:
+   #+BEGIN_EXAMPLE
+   sudo visudo -f /etc/sudoers.d/user1
+   #+END_EXAMPLE
+   This ensures that only one person is editing the file at a time,
+   has the proper permissions, refuses to write out the file and exit
+   if there is an error in the changes made.
+
+   If there are any syntax errors in the sudoers file then you will
+   not be able to execute root privileged command. Then you have to
+   use =pkexec= command as follows to correct the error.
+
+   #+BEGIN_EXAMPLE
+   pkexec visudo -f /etc/sudoers.d/filename
+   #+END_EXAMPLE
+
+   =pkexec= is a similar command to =sudo=. It allows user to execute
+   a command as another user.
+
+   Refer the below link to understand better:
+   http://askubuntu.com/questions/73864/how-to-modify-a-invalid-etc-sudoers-file-it-throws-out-an-error-and-not-allowi
 
 ** command logging
    *sudo* commands are logged in =/var/log/auth.log= under the Debian
@@ -1683,31 +1703,6 @@
    4. Ensure a password protects the BIOS in such a way that system
       cannot be booted with a live or rescue DVD or USB key.
 
-** Labs
-   sudoers file must be edited carefully. If there are any mistakes in
-   the file, then you will not be able to execute the sudo
-   command. Hence the best way to edit sudoers file is to use =visudo=
-   command, for example:
-   #+BEGIN_EXAMPLE
-   sudo visudo -f /etc/sudoers.d/user1
-   #+END_EXAMPLE
-
-  This way if there are any errors in the file, visudo will prompt to
-  correct it, and prevent from landing in some difficult situation.
-
-  If there are any syntax errors in the sudoers file then you will not
-  be able to execute root privileged command. Then you have to use
-  =pkexec= command as follows to correct the error.
-
-  #+BEGIN_EXAMPLE
-  pkexec visudo -f /etc/sudoers.d/filename
-  #+END_EXAMPLE
-
-  =pkexec= is a similar command to =sudo=. It allows user to execute a
-  command as another user.
-
-  Refer the below link to understand better:
-  http://askubuntu.com/questions/73864/how-to-modify-a-invalid-etc-sudoers-file-it-throws-out-an-error-and-not-allowi
 
 
 * COMMENT TODO
