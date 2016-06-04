@@ -1598,7 +1598,7 @@
    problems.
 
 ** Passwords
-   The system verifies authenticity and identify using user
+   The system verifies authenticity and identifies, using user
    credentials. Originally, encrypted passwords were stored in the
    =/etc/passwd= file, which was readable by everyone. This made it
    rather easier for passwords, to be cracked. On modern systems,
@@ -1694,6 +1694,7 @@
 
 *** Remounting and modifying disk content
 
+** Security Policy
    IT security policy should start with requirements on how to
    properly secure physical access to servers and
    workstations. Physical access to a system makes it possible for
@@ -1710,8 +1711,6 @@
    4. Ensure a password protects the BIOS in such a way that system
       cannot be booted with a live or rescue DVD or USB key.
 
-
-
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -1722,7 +1721,6 @@
   - Revise nfs.
   - Revise apt-get.
   - Try out boot loader password.
-  - Revise security principles chapter.
 
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
