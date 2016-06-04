@@ -617,6 +617,16 @@
 | pattern                        |                    |                         |
 |--------------------------------+--------------------+-------------------------|
 
+*** remove
+    It is used to remove packages. Removing a package leaves its
+    configuration files on the system.
+*** purge
+    It is identical to remove except that the packages are removed and
+    purged (any configuration files are deleted too).
+*** autoremove
+    It is used to remove packages that were automatically installed to
+    satisfy dependencies of other packages and are now no longer needed.
+
 * File Systems
 ** Partitions in linux
    Each filesytem resides on a hard disk partition. Partitions help
