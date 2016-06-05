@@ -1721,6 +1721,34 @@
    4. Ensure a password protects the BIOS in such a way that system
       cannot be booted with a live or rescue DVD or USB key.
 
+* Network Operations
+  A network is a group of computers connected together via a
+  communication channels such as cable or wireless.
+
+  Network is used to share devices such as printers and scanners among
+  various users. It is also used to share and manage information
+  across computers easily.
+
+  Most organizations have both internal network and an internet
+  connection for users to communicate with machines and people outside
+  the organization. The internet is the largest network in the world
+  and is often called the "network of networks".
+
+** IP Address
+   Machine connected to the network must have at least one unique
+   network address identifier known as the IP (Internet Protocol)
+   address. The address is essential for routing packets of
+   information through network.
+
+   Packets contains data buffers together with headers which contain
+   information about where the packet is going to and coming from, and
+   where it fits in the sequence of packets that constitute the
+   stream.
+
+   Networking protocols and software are rather complicated due to the
+   diversity of machines and operating systems they must deal with, as
+   well as the fact that even old standards must be supported.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
