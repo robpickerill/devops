@@ -1749,6 +1749,15 @@
    diversity of machines and operating systems they must deal with, as
    well as the fact that even old standards must be supported.
 
+*** IPv4
+    It uses 32-bits for addresses; there are only 2^32 = 4.3 billion
+    unique addresses available.
+
+*** IPv6
+    It uses 128-bits for addresses; this allows for 3.4 * 10^38
+    addresses. It is difficult to move to IPv6 as the two protocols do
+    not inter-operate.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
