@@ -1752,11 +1752,26 @@
 *** IPv4
     It uses 32-bits for addresses; there are only 2^32 = 4.3 billion
     unique addresses available.
+    #+BEGIN_EXAMPLE
+    10.4.1.12
+    #+END_EXAMPLE
+
+**** Decoding IPv4 address
+     IPv4 address consists of four 8-bits sections called octets.
+     Network addresses are divided into five classes: A, B, C, D and
+     E. Class A, B and C are classified into two parts: *Network
+     address (Net ID) and Host address (Host ID)*. The Net ID is used
+     to identify the network, while the Host ID is used to identify a
+     host in the network. Class D is used for special multicast
+     applications and class E is reserved for future/research use.
 
 *** IPv6
     It uses 128-bits for addresses; this allows for 3.4 * 10^38
     addresses. It is difficult to move to IPv6 as the two protocols do
     not inter-operate.
+    #+BEGIN_EXAMPLE
+    2001:0db8:0a0b:12f0:0000:0000:0000:0001
+    #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
