@@ -1768,11 +1768,11 @@
 ***** Class A address
       Class A ip addresses use first octet as the Network ID and use
       the other three octets as the Host ID. The first bit of the
-      first octet is always set to zero. So you can use only 7-bits
-      for unique network numbers. As a result we can use maximum of
-      126 class A networks available (the addresses 0000000 and
-      1111111 are reserved). This was only useful when there were few
-      networks with large number of hosts.
+      first octet is always set to =0=. So you can use only 7-bits for
+      unique network numbers. As a result we can use maximum of 126
+      class A networks available (the addresses 0000000 and 1111111
+      are reserved). This was only useful when there were few networks
+      with large number of hosts.
 
       Each class A network can have up to 16.7 million unique hosts on
       its network. The range of host address is from 1.0.0.0 to
@@ -1781,13 +1781,25 @@
 ***** Class B address
       Class B address use the first two octets of the IP address as
       their Net ID and the last two octets as the Host ID. The first
-      two bits of the first octet are always set to binary 10, so
+      two bits of the first octet are always set to binary =10=, so
       there are a maximum of (14-bits) class B networks. The first
       octet of a class B address has values from 128 to 191.
 
       Each class B network can support a maximum of 65,536 unique
       hosts on its network. The range of host address is from
       128.0.0.0 to 191.255.255.255.
+
+***** Class C address
+      Class C address use the first three octets of the IP address as
+      their Net ID and the last octet as their Host ID. The first
+      three bits of the first octet are set to binary =110=. The first
+      octet of a class C address has values from 192 to 223. These are
+      most common for smaller networks which don't have many unique
+      hosts.
+
+      Each class C network can support up to 256 (8-bit) unique
+      hosts. The range of hosts address is from 192.0.0.0 to
+      223.255.255.255.
 
 *** IPv6
     It uses 128-bits for addresses; this allows for 3.4 * 10^38
@@ -1796,6 +1808,19 @@
     #+BEGIN_EXAMPLE
     2001:0db8:0a0b:12f0:0000:0000:0000:0001
     #+END_EXAMPLE
+
+** IP Address allocation
+   A range of IP addresses are requested from Internet Service
+   Provider (ISP) by an organization's network administrator. Often
+   the choice of which class of IP address given depends on the size
+   of network and expected growth needs.
+
+   We can assign IP address to computers over a network manually or
+   dynamically. When you assign IP addresses manually, you add
+   *static* (never changing) addresses to the network. When you assign
+   IP addresses dynamically (they can change every time you reboot or
+   even more often), the *Dynamic Host Configuration Protocol* (DHCP)
+   is used to assign IP addresses.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
