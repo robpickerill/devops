@@ -1778,6 +1778,17 @@
       its network. The range of host address is from 1.0.0.0 to
       127.255.255.255.
 
+***** Class B address
+      Class B address use the first two octets of the IP address as
+      their Net ID and the last two octets as the Host ID. The first
+      two bits of the first octet are always set to binary 10, so
+      there are a maximum of (14-bits) class B networks. The first
+      octet of a class B address has values from 128 to 191.
+
+      Each class B network can support a maximum of 65,536 unique
+      hosts on its network. The range of host address is from
+      128.0.0.0 to 191.255.255.255.
+
 *** IPv6
     It uses 128-bits for addresses; this allows for 3.4 * 10^38
     addresses. It is difficult to move to IPv6 as the two protocols do
