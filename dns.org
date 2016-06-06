@@ -74,3 +74,16 @@
     lies with (ICANN). The generic top level domains are
     authoritatively administered by ICANN and delegated to a series of
     accredited registrars.
+
+    Consider following example:
+    #+BEGIN_EXAMPLE
+    www.us.example.com
+    #+END_EXAMPLE
+    Its domain name is =example.com=, =www= probably indicates a web
+    site.
+    
+    The owner can delegate, in any way they want, anything to the left
+    of the domain name they own. The owner is also responsible for
+    administering this delegation which means running, or delegating
+    the task of running, a DNS containing Authoritative information
+    (or records) for their Domain Name (or zone).
