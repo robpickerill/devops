@@ -1822,6 +1822,12 @@
    even more often), the *Dynamic Host Configuration Protocol* (DHCP)
    is used to assign IP addresses.
 
+*** Manually allocating an IP address
+    Before an ip address can be allocated manually, one must identify
+    the size of the network by determining the host range; this
+    determines which network class (A, B, or C) can be used. The
+    *ipcalc* program can be used to ascertain the host range.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
