@@ -1756,7 +1756,7 @@
     10.4.1.12
     #+END_EXAMPLE
 
-**** Decoding IPv4 address
+**** IPv4 classes
      IPv4 address consists of four 8-bits sections called octets.
      Network addresses are divided into five classes: A, B, C, D and
      E. Class A, B and C are classified into two parts: *Network
@@ -1764,6 +1764,19 @@
      to identify the network, while the Host ID is used to identify a
      host in the network. Class D is used for special multicast
      applications and class E is reserved for future/research use.
+
+***** Class A address
+      Class A ip addresses use first octet as the Network ID and use
+      the other three octets as the Host ID. The first bit of the
+      first octet is always set to zero. So you can use only 7-bits
+      for unique network numbers. As a result we can use maximum of
+      126 class A networks available (the addresses 0000000 and
+      1111111 are reserved). This was only useful when there were few
+      networks with large number of hosts.
+
+      Each class A network can have up to 16.7 million unique hosts on
+      its network. The range of host address is from 1.0.0.0 to
+      127.255.255.255.
 
 *** IPv6
     It uses 128-bits for addresses; this allows for 3.4 * 10^38
