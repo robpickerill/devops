@@ -40,3 +40,37 @@
   |                             | and not part of the domain naming hierarchy. |
   |-----------------------------+----------------------------------------------|
 
+* Name Server
+  As our network grows we start to build up a serious number of Names
+  in our Name Server (database). This gives rise to following three
+  problems:
+  1. Lot of names - Searching becomes slow.
+  2. All the queries come to single name server, load becomes very high.
+  3. Administration and updation of entries becomes difficult.
+
+* DNS concepts and implementation
+  The Internet's Domain Name Service (DNS) is just a specific
+  implementation of the Name Server concept optimized for the
+  prevailing conditions on the internet.
+
+  From the brief history of name servers following three needs
+  emerged:
+  1. The need for a hierarchy of names.
+  2. The need to separate operational loads on our name servers.
+  3. The need to delegate the administration of our name servers.
+
+  The Internet Domain Name System elegantly solves all these problems
+  [[https://tools.ietf.org/html/rfc1035][(RFC 1034)]]. 
+
+** Domains and Delegation
+   The Domain Name System uses a tree (or hierarchical) name
+   structure. At the top of the tree is the root followed by the Top
+   level Domains (TLDs) then the domain-name and any number of lower
+   levels each separated with a dot.
+
+*** Authority and Delegation
+    The concepts of Delegation and Authority lies at the core of the
+    domain name system hierarchy. The authority of the root domain
+    lies with (ICANN). The generic top level domains are
+    authoritatively administered by ICANN and delegated to a series of
+    accredited registrars.
