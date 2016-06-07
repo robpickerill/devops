@@ -1854,6 +1854,21 @@
 
    =ifconfig= utility is used to report network interfaces.
 
+** Network configuration files
+   Network configuration files are essential to ensure that interfaces
+   function correctly.
+
+   For *Debian* family configuration, the basic configuration file is
+   =/etc/network/interfaces=. We use =/etc/init.d/networking start= to
+   start the networking configuration.
+
+   For *Fedora* family system configuration, the routing and host
+   information is contained in =/etc/sysconfig/network=. The network
+   interface configuration script is located at
+   =/etc/sysconfig/network-scripts/ifcfg-eth0=. We use
+   =/etc/init.d/network start= to start the networking configuration.
+   
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
