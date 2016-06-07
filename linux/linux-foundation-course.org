@@ -1847,7 +1847,12 @@
     #+END_EXAMPLE
 
 ** Network Interfaces
-   
+   Network interfaces are a connection channel between a device and a
+   network. System can have multiple network interfaces operating at
+   once. Specific interfaces can be brought up (activated) or brought
+   down (deactivated) at any time.
+
+   =ifconfig= utility is used to report network interfaces.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
