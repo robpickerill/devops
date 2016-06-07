@@ -1816,9 +1816,9 @@
    of network and expected growth needs.
 
    We can assign IP address to computers over a network manually or
-   dynamically. When you assign IP addresses manually, you add
-   *static* (never changing) addresses to the network. When you assign
-   IP addresses dynamically (they can change every time you reboot or
+   dynamically. When we assign IP addresses manually, we add *static*
+   (never changing) addresses to the network. When we assign IP
+   addresses dynamically (they can change every time you reboot or
    even more often), the *Dynamic Host Configuration Protocol* (DHCP)
    is used to assign IP addresses.
 
@@ -1827,6 +1827,21 @@
     the size of the network by determining the host range; this
     determines which network class (A, B, or C) can be used. The
     *ipcalc* program can be used to ascertain the host range.
+    #+BEGIN_EXAMPLE
+    $ ipcalc 192.168.0.0/24
+    Address:   192.168.0.0          11000000.10101000.00000000. 00000000
+    Netmask:   255.255.255.0 = 24   11111111.11111111.11111111. 00000000
+    Wildcard:  0.0.0.255            00000000.00000000.00000000. 11111111
+    =>
+    Network:   192.168.0.0/24       11000000.10101000.00000000. 00000000
+    HostMin:   192.168.0.1          11000000.10101000.00000000. 00000001
+    HostMax:   192.168.0.254        11000000.10101000.00000000. 11111110
+    Broadcast: 192.168.0.255        11000000.10101000.00000000. 11111111
+    Hosts/Net: 254                   Class C, Private Internet
+    #+END_EXAMPLE
+
+** Network Interfaces
+   
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
