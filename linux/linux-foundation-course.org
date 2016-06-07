@@ -724,12 +724,18 @@
 ** /bin and /sbin directories
    The =/bin= directories contains executable binaries, essential
    commands used in single-user mode, and essential commands required
-   by all system users.
+   by all system users. These executable programs are used to bring
+   the system up or repair it.
   
+   =/sbin= directory contains commands that are essential for system
+   administration. These commands are usually not used by normal
+   users.
+
    =/usr/bin= directory contains commands that are not essential for
-   the system. =/sbin= directory contains commands that are essential
-   for system administration. =/usr/sbin= contains commands that are
-   less essential for system administration.
+   the system.
+
+   =/usr/sbin= contains commands that are less essential for system
+   administration.
 
    The reason essential commands were separately placed in =/sbin= is
    because sometimes =/usr= directory may be mounted on a separate
