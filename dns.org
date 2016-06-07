@@ -87,3 +87,33 @@
     administering this delegation which means running, or delegating
     the task of running, a DNS containing Authoritative information
     (or records) for their Domain Name (or zone).
+** DNS Organization and structure
+   There are currently 13 [[http://www.root-servers.org/][root-servers world wide]]. The root servers
+   are known to every public DNS server in the world and are starting
+   point for every name lookup operation. To create resilience each
+   root-server typically has multiple instances (copies) spread
+   throughout the world. Each instance has the same ip address but the
+   data is sent to the closest instance using a process called
+   *anycasting.*
+
+   When any DNS cannot answer (resolve) a request (a query) for a
+   domain name from a client, for instance, example.com, the query is
+   passed to a root-server which will direct (refer) the query to the
+   appropriate TLD DNS server (for .com) which will in turn direct
+   (refer) it to the appropriate Domain (User) DNS server.
+
+** DNS System Components
+   A Domain Name System (DNS) includes three parts:
+   1. Data which describes the domain(s).
+   2. One or more Name Server programs.
+   3. A resolver program or library.
+
+   A single DNS server may support many domains. The data for each
+   domain describes global properties of the domain and its hosts (or
+   services). This data is defined in the form of textual resource
+   records organized in zone files. The format of zone file is defined
+   in RFC 1035 and is supported by most DNS software.
+
+* Questions
+  1. What is the significance of non-authoritative name server.
+  2. =/var/named/named.ca= contains the root name servers.
