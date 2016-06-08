@@ -1899,7 +1899,24 @@
     10.42.0.0/24 dev wlan0  proto kernel  scope link  src 10.42.0.1  metric 9 
     172.17.0.0/16 dev docker0  proto kernel  scope link  src 172.17.0.1
     #+END_EXAMPLE
-*** View route information using route command
+*** Ping
+    Ping command is used to check whether or not a machine attached to
+    the network is online and is responding.
+
+    Ping is frequently used for network testing and management.
+
+*** route
+    Data moves from source to destination by passing through a series
+    of routers and potentially across multiple networks. Servers
+    maintain routing table containing the address of each node in the
+    network. The IP routing protocols enables routers to build up a
+    forwarding table that correlates final destinations with the next
+    hop address.
+
+    route is used to view and change the ip routing table. We can
+    delete, add or modify specific (static) routes to specific hosts
+    or networks.
+
     #+BEGIN_EXAMPLE
     $ route -n
     Kernel IP routing table
@@ -1909,17 +1926,11 @@
     10.42.0.0       0.0.0.0         255.255.255.0   U     9      0        0 wlan0
     172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
     #+END_EXAMPLE
-     
+
     Here =0.0.0.0= as gateway means there is no gateway set. The
     destination ip if belongs to the same ip subnet as the interface
     ip it is directly sent to the destination without the need of
     route.
-
-*** Ping
-    Ping command is used to check whether or not a machine attached to
-    the network is online and is responding.
-
-    Ping is frequently used for network testing and management.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
