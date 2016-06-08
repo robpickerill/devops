@@ -56,3 +56,29 @@
    are then made available so the corresponding remote RPC services
    access them. *portmap* responds to requests for RPC services and
    sets up connections to the requested RPC service.
+* NFS Client Configuration
+  NFS shares are mounted on the client side using the *mount*
+  command.
+  #+BEGIN_EXAMPLE
+  mount -t <nfs-type> -o <options> <host>:</remote/export> </local/directory>
+  #+END_EXAMPLE
+  - <nfs-type> : nfs or nfs4
+  - <options> : comma separated list of options
+  - <host> : remote host
+  - </remote/export> : remote directory being mounted
+  - </local/directory> : local directory where the remote file system
+    is to be mounted. 
+
+** Mounting NFS File Systems using /etc/fstab
+   To mount an NFS share from another machine is to add a line to the
+   =/etc/fstab= file.
+   #+BEGIN_EXAMPLE
+   <server>:</remote/export> </local/directory> <nfs-type> <options> 0 0
+   #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   server:/usr/local/pub    /pub   nfs    rsize=8192,wsize=8192,timeo=14,intr
+   #+END_EXAMPLE
+   The mount point =/pub= must exist on the client machine before this
+   command can be executed. After adding this line to =/etc/fstab= on
+   the client system, type the command =mount /pub= at a shell prompt,
+   and the mount point =/pub= is mounted from the server.
