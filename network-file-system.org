@@ -127,28 +127,6 @@
   #+BEGIN_EXAMPLE
   /sbin/service nfs reload
   #+END_EXAMPLE
-* Security Concerns
-  Some important security and performance parameters while setting up
-  nfs server.
-
-** Port 1024 and higher
-   Services started on port numbers less than 1024 must be started as
-   root. Port number can be selected such that NFS service can be
-   started by a user other than root.
-
-** Sync write operations
-   Server can be configured to not reply to requests before the
-   changes made by the requests are written to the disk.
-
-** Export only if mounted
-   A directory to be exported only if it has been mounted.
-** Treat remote user as local root
-   By default, the user and group IDs of the root user are
-   both 0. Root squashing maps the user ID 0 and the group ID 0 to the
-   user and group IDs of anonymous so that root on the client does not
-   have root privileges on the NFS server. Root may not be mapped to
-   anonymous, and root on a client has root privileges to exported
-   directories.
 * Command Line Configuration
   =/etc/exports= file controls what directories the NFS server
   exports. Its format is as follows:
@@ -172,3 +150,49 @@
   unexport directories without restarting the NFS service. If no
   options are passed to the =/usr/sbin/exportfs= command, it displays
   a list of currently exported file systems. 
+* Security Concerns
+  Some important security and performance parameters while setting up
+  nfs server.
+
+** Port 1024 and higher
+   Services started on port numbers less than 1024 must be started as
+   root. Port number can be selected such that NFS service can be
+   started by a user other than root.
+
+** Sync write operations
+   Server can be configured to not reply to requests before the
+   changes made by the requests are written to the disk.
+
+** Export only if mounted
+   A directory to be exported only if it has been mounted.
+** Root sqaushing
+   By default, the user and group IDs of the root user are
+   both 0. Root squashing maps the user ID 0 and the group ID 0 to the
+   user and group IDs of anonymous so that root on the client does not
+   have root privileges on the NFS server.
+
+** User level access control
+   NFS controls who can mount an exported file system based on the
+   host making the mount request, not the user that actually uses the
+   file system. Access control is not possible for users, other than
+   through file and directory permissions. Once a file system is
+   exported via NFS, any user on any remote host connected to the NFS
+   server can access the shared data. 
+
+   NFSv4 has the feature of providing user level ACLs.
+** DNS compromised
+   If an attacker gains control of the DNS server used by the system
+   exporting the NFS file system, the system associated with a
+   particular hostname or fully qualified domain name can be pointed
+   to an unauthorized machine. At this point, the unauthorized machine
+   is the system permitted to mount the NFS share, since no username
+   or password information is exchanged to provide additional security
+   for the NFS mount.
+** File permissions
+   Once the NFS file system is mounted read/write by a remote host,
+   the only protection each shared file has is its permissions. If two
+   users that share the same user ID value mount the same NFS file
+   system, they can modify each others files. Additionally, anyone
+   logged in as root on the client system can use the *su -* command
+   to become a user who could access particular files via the NFS
+   share.
