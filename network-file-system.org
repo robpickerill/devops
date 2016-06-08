@@ -150,4 +150,21 @@
    anonymous, and root on a client has root privileges to exported
    directories.
 * Command Line Configuration
-  
+  =/etc/exports= file controls what directories the NFS server
+  exports. Its format is as follows:
+  #+BEGIN_EXAMPLE
+  directory hostname(options)
+  #+END_EXAMPLE
+  #+BEGIN_EXAMPLE
+  /misc/export     speedy.example.com(rw,sync)
+  #+END_EXAMPLE
+  This would allow users from speedy.example.com to mount
+  =/misc/export= with the read/write permissions.
+
+  Each time you change =/etc/exports= we must inform the NFS daemon of
+  the change, or reload the configuration file with the following
+  command
+  #+BEGIN_EXAMPLE
+  /sbin/service nfs reload
+  #+END_EXAMPLE
+
