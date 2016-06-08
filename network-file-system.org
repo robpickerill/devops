@@ -127,3 +127,27 @@
   #+BEGIN_EXAMPLE
   /sbin/service nfs reload
   #+END_EXAMPLE
+* Security Concerns
+  Some important security and performance parameters while setting up
+  nfs server.
+
+** Port 1024 and higher
+   Services started on port numbers less than 1024 must be started as
+   root. Port number can be selected such that NFS service can be
+   started by a user other than root.
+
+** Sync write operations
+   Server can be configured to not reply to requests before the
+   changes made by the requests are written to the disk.
+
+** Export only if mounted
+   A directory to be exported only if it has been mounted.
+** Treat remote user as local root
+   By default, the user and group IDs of the root user are
+   both 0. Root squashing maps the user ID 0 and the group ID 0 to the
+   user and group IDs of anonymous so that root on the client does not
+   have root privileges on the NFS server. Root may not be mapped to
+   anonymous, and root on a client has root privileges to exported
+   directories.
+* Command Line Configuration
+  
