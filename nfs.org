@@ -6,3 +6,29 @@
 * Introduction
   This document describes about the network file system.
 
+* NFS
+  A Network File System (NFS) allows remote hosts to mount file
+  systems over a network and interact with those file systems as
+  though they are mounted locally.
+
+* Communication Protocol
+  NFS can use Transmission Control Protocol (TCP) running over an IP
+  network. NFS can also use the User Datagram Protocol (UDP) running
+  over an IP network to provide stateless network connection between
+  the client and server.
+
+** UDP vs TCP
+   Using NFS with UDP under normal conditions has less Protocol
+   overhead than TCP which can translate into better performance on
+   clean, non-congested networks. However, if the server goes down
+   unexpectedly, UDP clients continue to saturate the network with
+   requests for the server. For this reason TCP is preferred protocol
+   when connecting to an NFS server.
+
+   NFSv4 listens on the well known TCP port (2049).
+
+   - Note :: TCP is the default transport protocol for NFS. UDP can be
+             used compatibility purposes as needed, but it is not
+             recommended for wide usage. All the RPC/NFS daemon have a
+             '-p' command line option that can set the port, making
+             firewall configuration easier.
