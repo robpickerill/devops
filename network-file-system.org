@@ -82,3 +82,48 @@
    command can be executed. After adding this line to =/etc/fstab= on
    the client system, type the command =mount /pub= at a shell prompt,
    and the mount point =/pub= is mounted from the server.
+* NFS Mount Options
+  There are various mount options that one can use depending upon the
+  requirements. [[https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-nfs-client-config-options.html][Refer]]
+* Starting and Stopping NFS
+  To run an NFS server, the portmap service must be running. To verify
+  that *portmap* is active, type the following command as root:
+  #+BEGIN_EXAMPLE
+  /sbin/service portmap status
+  #+END_EXAMPLE
+  If the portmap service is running, then the nfs service can be
+  started. To start an NFS server, as root type:
+  #+BEGIN_EXAMPLE
+  /sbin/service nfs start
+  #+END_EXAMPLE
+  Start nfslock service for both the client and server to function
+  properly. If nfs is set to start at boot, please ensure that nfslock
+  also starts.
+  #+BEGIN_EXAMPLE
+  /sbin/service nfslock start
+  #+END_EXAMPLE
+
+  To stop the server
+  #+BEGIN_EXAMPLE
+  /sbin/service nfs stop
+  #+END_EXAMPLE
+
+  Restarting the server is the most efficient way to make
+  configuration changes take effect after editing the configuration
+  file for NFS.
+  #+BEGIN_EXAMPLE
+  /sbin/service nfs restart  
+  #+END_EXAMPLE
+
+  The *condrestart* (conditional restart) option only start nfs if it
+  is currently running. This option is useful for scripts, because it
+  does not start the daemon if it is not running.
+  #+BEGIN_EXAMPLE
+  /sbin/service nfs condrestart
+  #+END_EXAMPLE
+
+  To reload the NFS server configuration file without restart the
+  service, as root type:
+  #+BEGIN_EXAMPLE
+  /sbin/service nfs reload
+  #+END_EXAMPLE
