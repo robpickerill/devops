@@ -32,3 +32,27 @@
              recommended for wide usage. All the RPC/NFS daemon have a
              '-p' command line option that can set the port, making
              firewall configuration easier.
+
+** NFS Port
+   In order for NFS to work with a default installation, IPTables with
+   the default TCP port 2049 must be configured. Without proper
+   IPTables configuration, NFS does not function properly.
+* Required Services
+  NFS relies on Remote Procedure Calls (RPC) between client and
+  servers. RPC services under Linux are controlled by *portmap*
+  service. To share or mount NFS file systems, the following services
+  work together, depending on which version of NFS is implemented.
+
+** nfs - (/sbin/service nfs start)
+   starts the NFS server and the appropriate RPC processes to service
+   requests for shared NFS file systems.
+
+** nfslock - (/sbin/service nfslock start)
+   It is a mandatory service that starts the appropriate RPC processes
+   to allows NFS clients to lock files on the server.
+
+** portmap
+   It accepts port reservations from local RPC services. These ports
+   are then made available so the corresponding remote RPC services
+   access them. *portmap* responds to requests for RPC services and
+   sets up connections to the requested RPC service.
