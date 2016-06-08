@@ -167,4 +167,8 @@
   #+BEGIN_EXAMPLE
   /sbin/service nfs reload
   #+END_EXAMPLE
-
+* The exportfs command
+  =/usr/sbin/exportfs= allows the root user to selectively export or
+  unexport directories without restarting the NFS service. If no
+  options are passed to the =/usr/sbin/exportfs= command, it displays
+  a list of currently exported file systems. 
