@@ -1904,6 +1904,9 @@
     the network is online and is responding.
 
     Ping is frequently used for network testing and management.
+    #+BEGIN_EXAMPLE
+    ping <hostname>
+    #+END_EXAMPLE
 
 *** route
     Data moves from source to destination by passing through a series
