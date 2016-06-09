@@ -1912,7 +1912,7 @@
     Data moves from source to destination by passing through a series
     of routers and potentially across multiple networks. Servers
     maintain routing table containing the address of each node in the
-    network. The IP routing protocols enables routers to build up a
+    network. The *IP routing protocols* enables routers to build up a
     forwarding table that correlates final destinations with the next
     hop address.
 
@@ -1934,6 +1934,17 @@
     destination ip if belongs to the same ip subnet as the interface
     ip it is directly sent to the destination without the need of
     route.
+
+*** traceroute
+    traceroute is used to inspect the route that the data packet takes
+    to reach the destination host, which makes it quite useful for
+    troubleshooting network delays and errors. By using *traceroute*
+    we can isolate connectivity issues between hops, which helps
+    resolve the issue faster.
+
+    #+BEGIN_EXAMPLE
+    traceroute <domain>
+    #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
