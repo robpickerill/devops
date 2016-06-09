@@ -2000,6 +2000,18 @@
     Nmap done: 1 IP address (1 host up) scanned in 0.17 seconds
     #+END_EXAMPLE
 
+*** tcpdump
+    Dumps network traffic for analysis.
+    #+BEGIN_EXAMPLE
+    $ tcpdump -n port 53
+    #+END_EXAMPLE
+
+*** iptraf
+    Monitors network traffic in text mode.
+    #+BEGIN_EXAMPLE
+    $ sudo iptraf
+    #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
