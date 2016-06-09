@@ -1946,6 +1946,37 @@
     traceroute <domain>
     #+END_EXAMPLE
 
+*** ethtool
+    Queries network interfaces and can also set various parameters
+    such as speed.
+    #+BEGIN_EXAMPLE
+    $ ethtool eth0
+    Settings for eth0:
+	Supported ports: [ TP MII ]
+	Supported link modes:   10baseT/Half 10baseT/Full 
+	                        100baseT/Half 100baseT/Full 
+	Supported pause frame use: No
+	Supports auto-negotiation: Yes
+	Advertised link modes:  10baseT/Half 10baseT/Full 
+	                        100baseT/Half 100baseT/Full 
+	Advertised pause frame use: Symmetric Receive-only
+	Advertised auto-negotiation: Yes
+	Link partner advertised link modes:  10baseT/Half 10baseT/Full 
+	                                     100baseT/Half 100baseT/Full 
+	Link partner advertised pause frame use: No
+	Link partner advertised auto-negotiation: Yes
+	Speed: 100Mb/s
+	Duplex: Full
+	Port: MII
+	PHYAD: 0
+	Transceiver: internal
+	Auto-negotiation: on
+    Cannot get wake-on-lan settings: Operation not permitted
+	Current message level: 0x00000033 (51)
+			       drv probe ifdown ifup
+	Link detected: yes
+    #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
