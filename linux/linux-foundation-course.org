@@ -1977,6 +1977,13 @@
 	Link detected: yes
     #+END_EXAMPLE
 
+*** netstat
+    Displays all the active connections and routing tables. Useful for
+    monitoring performance and troubleshooting.
+    #+BEGIN_EXAMPLE
+    $ netstat -nlp
+    #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
