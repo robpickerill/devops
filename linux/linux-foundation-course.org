@@ -1984,6 +1984,22 @@
     $ netstat -nlp
     #+END_EXAMPLE
 
+*** nmap
+    Scans open ports on a network, important for security analysis.
+    #+BEGIN_EXAMPLE
+    $ nmap localhost
+    Starting Nmap 6.40 ( http://nmap.org ) at 2016-06-09 08:20 IST
+    Nmap scan report for localhost (127.0.0.1)
+    Host is up (0.00032s latency).
+    Not shown: 996 closed ports
+    PORT     STATE SERVICE
+    22/tcp   open  ssh
+    80/tcp   open  http
+    631/tcp  open  ipp
+    3306/tcp open  mysql
+    Nmap done: 1 IP address (1 host up) scanned in 0.17 seconds
+    #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
