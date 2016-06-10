@@ -149,3 +149,18 @@
      kristin   --     540       0       0            125     0     0 
      testuser  --  440400  500000  550000          37418     0     0
      #+END_EXAMPLE
+
+* Keeping Quotas Accurate
+  When a file system fails to unmount cleanly, it is necessary to run
+  *quotacheck*.
+  
+  Following process is to be adopted:
+  #+BEGIN_EXAMPLE
+  quotaoff -vaug /file_system
+  quotacheck -vaug /file_system
+  quotaon -vaug /file_system
+  #+END_EXAMPLE
+
+  If necessary, it is possible to run quotacheck on a machine during a
+  time when no users are logged in, and thus have no open files on the
+  file system being checked.
