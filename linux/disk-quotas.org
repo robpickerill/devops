@@ -6,4 +6,120 @@
 * Introduction
   This document describes about the linux disk quotas.
 
-* 
+* Disk Quotas
+  Disk space can be restricted by implementing disk quotas which alert
+  system administrator before a user consumes too much disk space or a
+  partition becomes full.
+
+  Disk quotas can be configured for individual users as well as user
+  groups.
+
+  In addition, quotas can be set not just to control the number of
+  disk blocks consumed, but to control the number of inodes (data
+  structure that contain information about files in UNIX file
+  systems). Because inodes are used to contain file-related
+  information, this allows control over the number of files that can
+  be created.
+
+* Configuring Disk Quotas
+  To implement disk quotas, use the following steps:
+  1. Enable quotas per file system by modifying the =/etc/fstab= file.
+  2. Remount the file system(s).
+  3. Create the quota database files and generate the disk usage
+     table.
+  4. Assign quota policies.
+
+** Enabling Quotas
+   Edit =/etc/fstab= file, add the =usrquota= and/or =groupquota=
+   options to the file systems that require quotas:
+   #+BEGIN_EXAMPLE
+   /dev/VolGroup00/LogVol00 /         ext3    defaults        1 1 
+   LABEL=/boot              /boot     ext3    defaults        1 2 
+   none                     /dev/pts  devpts  gid=5,mode=620  0 0 
+   none                     /dev/shm  tmpfs   defaults        0 0 
+   none                     /proc     proc    defaults        0 0 
+   none                     /sys      sysfs   defaults        0 0 
+   /dev/VolGroup00/LogVol02 /home     ext3    defaults,usrquota,grpquota  1 2 
+   /dev/VolGroup00/LogVol01 swap      swap    defaults        0 0 . . .
+   #+END_EXAMPLE
+   In the above example, the /home file system has both user and group
+   quotas enabled.
+** Remounting the File Systems
+   After adding the usrquota and/or grpquota options, remount each
+   file system whose fstab entry has been modified.
+   #+BEGIN_EXAMPLE
+   umount /mount-point
+   umount /work
+   mount /file-system /mount-point
+   mount /dev/vdb1 /work
+   #+END_EXAMPLE
+   If the file system is currently in use, the easiest method for
+   remounting the file system is to reboot the system.
+** Creating the Quota Database Files
+   After each quota-enabled file system is remounted run the
+   =quotacheck= command.
+   
+   The =quotacheck= command examines the quota-enabled file systems
+   and builds a table of the current disk usage per file system. The
+   table is then used to update the operating system's copy of disk
+   usage. In addition, the file system's disk quota files are updated.
+
+   To create the quota files (aquota.user and aquota.group) on the
+   file system, use the -c option of the quotacheck command.
+
+   #+BEGIN_EXAMPLE
+   quotacheck -cug /home
+   #+END_EXAMPLE
+   - *-u* : check for user quotas
+   - *-g* : check for group quotas
+
+   After the files are created, run the following command to generate
+   the table of current disk usage per file system with quotas
+   enabled:
+   #+BEGIN_EXAMPLE
+   quotacheck -avug
+   #+END_EXAMPLE
+
+   After quotacheck has finished running, the quota files
+   corresponding to the enabled quotas (user and/or group) are
+   populated with data for each quota-enabled locally-mounted file
+   system such as /home.
+** Assigning Quotas per User
+   To configure the quota for a user,
+   #+BEGIN_EXAMPLE
+   endquota username
+   #+END_EXAMPLE
+   We need to perform the above command for each user who needs a
+   quota.
+   #+BEGIN_EXAMPLE
+   Disk quotas for user testuser (uid 501):   
+   Filesystem                blocks     soft     hard    inodes   soft   hard   
+   /dev/VolGroup00/LogVol02  440436        0        0     37418      0      0
+   #+END_EXAMPLE
+   
+   The hard block limit defines the maximum amount of disk space that
+   a user or a group can use. Once this limit is reached, no further
+   disk space can be used.
+
+   The soft block limit defines the maximum amount of disk space that
+   can be used. The soft limit can be exceeded for a certain amount of
+   time. That time is known as the grace period. The grace period can
+   be expressed in seconds, minutes, hours, days, weeks or months.
+
+   Verify the quota for the user has been set.
+   #+BEGIN_EXAMPLE
+   quota username
+   #+END_EXAMPLE
+** Assigning Quotas per Group
+   Set quota
+   #+BEGIN_EXAMPLE
+   endquota -g <group-name>
+   #+END_EXAMPLE
+   Verify quota
+   #+BEGIN_EXAMPLE
+   quota -g <group-name>
+   #+END_EXAMPLE
+** Setting the grace period for soft limits
+   #+BEGIN_EXAMPLE
+   endquota -t
+   #+END_EXAMPLE
