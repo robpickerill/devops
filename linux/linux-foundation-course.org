@@ -2057,6 +2057,20 @@
    The content of the main index file at the website will be saved in
    saved.html.
 
+** ftp
+   To transfer files from one machine to another over a network,
+   *File Transfer Protocol (FTP)* can be used. This method is built on
+   a client-server model.
+
+   *FTP* clients enables to transfer files with remote computers using
+   the FTP protocol. Some command line FTP clients are:
+   1. ftp
+   2. sftp
+ 
+   *sftp* is a secure mode of connection, which uses the *Secure
+   Shell (ssh)* protocol. sftp encrypts its data and thus sensitive
+   information is transmitted more securely.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
