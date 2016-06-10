@@ -1869,7 +1869,7 @@
    =/etc/init.d/network start= to start the networking configuration.
    
 ** Network configuration commands
-*** View the IP address:
+*** ip addr
     #+BEGIN_EXAMPLE
     $ /sbin/ip addr show
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default 
@@ -1891,7 +1891,7 @@
     inet6 fe80::be85:56ff:fe45:3e8d/64 scope link 
       valid_lft forever preferred_lft forever
     #+END_EXAMPLE
-*** View route information using ip command
+*** ip route
     #+BEGIN_EXAMPLE
     $ /sbin/ip route show
     default via 10.1.65.1 dev eth0  proto static 
@@ -2011,6 +2011,34 @@
     #+BEGIN_EXAMPLE
     $ sudo iptraf
     #+END_EXAMPLE
+
+** Browser
+   Browsers are used to retrieve, transmit, and explore information
+   resources, usually on the *World wide web*. Linux users commonly
+   use both graphical and non-graphical browser applications.
+ 
+   Non graphical browsers:
+   |-------+--------------------------------------|
+   | lynx  | Configurable text-based web browser; |
+   |-------+--------------------------------------|
+   | links | Based on lynx                        |
+   |-------+--------------------------------------|
+
+
+** wget
+   Sometimes you need to download files and information but a browser
+   is not the best choice, either because you want to download
+   multiple files, or you want to perform the action from a command
+   line or a script. *wget* is a command line utility that can capably
+   handle the following types of downloads:
+   1. Recursive file downloads, where a web page refers to other web
+      pages and all are downloaded at once.
+   2. Password required downloads.
+   3. Multiple file downloads.
+
+   #+BEGIN_EXAMPLE
+   $ wget <url>
+   #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
