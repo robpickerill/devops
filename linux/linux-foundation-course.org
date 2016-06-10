@@ -2071,6 +2071,10 @@
    Shell (ssh)* protocol. sftp encrypts its data and thus sensitive
    information is transmitted more securely.
 
+   #+BEGIN_EXAMPLE
+   ftp -p <server-url>
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
