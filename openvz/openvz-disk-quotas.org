@@ -1,0 +1,40 @@
+#+Title: Openvz Disk Quotas
+#+Author: Yogesh Agrawal
+#+Email: yogesh@vlabs.ac.in
+#+Date: <2016-06-10 Fri>
+
+* Disk quota in Openvz
+  Openvz offers two levels of disk quotas.
+
+** First level
+   Restriction on container disk usages. We use =diskspace=,
+   =diskinodes= and =quotatime=.
+
+** Second level quotas for container
+   OpenVZ enables the container administrator to limit disk usage and
+   the number of inodes that individual users and groups in that CT
+   can use. These quotas are called per-ser and per-group quotas.
+
+   The parameter that controls the second-level disk quotas is
+   =QUOTAUGIDLIMIT= in the container configuration file. By default
+   this parameter is zero and this corresponds to disabled
+   per-user/group quotas.
+
+
+*** Start second-level quotas for container
+    The value that we assign to this parameter will be the limit for
+    the number of file owners and groups of this container, including
+    Linux system users. Note that theoretically extra users can be
+    created in the container, but if the number of file owners inside
+    the container has already reached the limit, these users will not
+    be able to own files.
+
+    #+BEGIN_EXAMPLE
+    vzctl set 101 --quotaugidlimit 100 --save
+    vzctl restart 101
+    #+END_EXAMPLE
+*** Setup second-level quotas
+    Install standard quota tools inside the container
+    #+BEGIN_EXAMPLE
+    
+    #+END_EXAMPLE
