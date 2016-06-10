@@ -123,3 +123,29 @@
    #+BEGIN_EXAMPLE
    endquota -t
    #+END_EXAMPLE
+
+* Managing Disk Quotas
+  1. Disable quota
+     #+BEGIN_EXAMPLE
+     quotaoff -vaug
+     #+END_EXAMPLE
+  2. Enable quota
+     #+BEGIN_EXAMPLE
+     quotaon -vaug
+     #+END_EXAMPLE
+  3. Enable quota for a specific file system
+     #+BEGIN_EXAMPLE
+     quotaon -vaug /home
+     #+END_EXAMPLE
+  4. Report disk quotas
+     #+BEGIN_EXAMPLE
+     $ repquota /home
+     *** Report for user quotas on device /dev/mapper/VolGroup00-LogVol02 
+     Block grace time: 7days; Inode grace time: 7days
+			Block limits			File limits		
+     User		used	soft	hard	grace	used	soft	hard	grace 
+     ---------------------------------------------------------------------- 
+     root      --      36       0       0              4     0     0 
+     kristin   --     540       0       0            125     0     0 
+     testuser  --  440400  500000  550000          37418     0     0
+     #+END_EXAMPLE
