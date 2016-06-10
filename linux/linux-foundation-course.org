@@ -2040,6 +2040,23 @@
    $ wget <url>
    #+END_EXAMPLE
 
+** curl
+   Besides downloading you may want to obtain information about a URL,
+   such as the source code being used. *curl* also allows to save the
+   contents of a web page to a file as does *wget*.
+
+   To read the URL type
+   #+BEGIN_EXAMPLE
+   curl <url>
+   #+END_EXAMPLE
+
+   To get the contents of a web page and store it to a file, type
+   #+BEGIN_EXAMPLE
+   curl -o saved.html http://www.mysite.com
+   #+END_EXAMPLE
+   The content of the main index file at the website will be saved in
+   saved.html.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
