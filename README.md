@@ -1,2 +1,3 @@
-# documents
-This repository contains documents which I prepare while learning any technologies or anything in general.
+# Linux System Administration
+Here I document learning related to Linux.
+The repository contains skills essential for linux system administration.
