@@ -43,3 +43,28 @@ fi
    ((counter++))
    done
    #+END_EXAMPLE
+* Functions
+** Simple function
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   function quit{
+   exit
+   }
+   function hello{
+   echo hello
+   }
+   hello
+   quit
+   echo hello
+   #+END_EXAMPLE
+
+** Function with parameters
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   function e {
+       echo $1
+   }
+   e hello
+   e world
+   echo foo
+   #+END_EXAMPLE
