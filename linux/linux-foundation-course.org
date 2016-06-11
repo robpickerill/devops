@@ -2024,7 +2024,6 @@
    | links | Based on lynx                        |
    |-------+--------------------------------------|
 
-
 ** wget
    Sometimes you need to download files and information but a browser
    is not the best choice, either because you want to download
@@ -2074,6 +2073,15 @@
    #+BEGIN_EXAMPLE
    ftp -p <server-url>
    #+END_EXAMPLE
+
+** ssh
+   ssh is a cryptographic network protocol used for secure data
+   communication. It is used for remote services and other secure
+   services between two devices.
+
+** scp
+   We can also move files securely between two networked hosts. scp
+   uses the SSH protocol for transferring data.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
