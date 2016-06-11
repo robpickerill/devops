@@ -1,0 +1,45 @@
+#+Title: Bash Programming
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+#+Date: <2016-06-11 Sat>
+
+* Introduction
+  This document describes about the bash programming.
+
+
+* Conditionals
+#+BEGIN_EXAMPLE
+#!/bin/bash
+if [ "foo" = "foo" ];
+then
+echo "expression evaluated as true"
+else
+echo "expression evaluated as false"
+fi
+#+END_EXAMPLE
+
+* Loops
+** For Sample
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   for i in $(ls); do
+   echo item: $i
+   done
+   #+END_EXAMPLE
+
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   for i in `seq 1 10`; do
+   echo $i
+   done
+   #+END_EXAMPLE
+
+** While Sample
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   counter=0
+   while [ $counter -lt 10 ]; do
+   echo the counter is: $counter
+   ((counter++))
+   done
+   #+END_EXAMPLE
