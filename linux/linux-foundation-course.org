@@ -1852,7 +1852,8 @@
    once. Specific interfaces can be brought up (activated) or brought
    down (deactivated) at any time.
 
-   =ifconfig= utility is used to report network interfaces.
+** ifconfig
+   ifconfig command is used to display active network interfaces.
 
 ** Network configuration files
    Network configuration files are essential to ensure that interfaces
