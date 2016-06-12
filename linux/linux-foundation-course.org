@@ -2084,6 +2084,24 @@
    We can also move files securely between two networked hosts. scp
    uses the SSH protocol for transferring data.
 
+* Manipulating Text
+** cat
+   cat is short for concatenate. It is used to read and print
+   files. The main purpose of cat, is to combine multiple files
+   together.
+   |-------------------------------------+------------------------------|
+   | cat file.txt                        | display file content         |
+   |-------------------------------------+------------------------------|
+   | cat > file.txt                      | write follows into a file    |
+   |                                     | terminated by CTRL-D         |
+   |-------------------------------------+------------------------------|
+   | cat file1.txt file2.txt > file3.txt | Combine file1 and file2,     |
+   |                                     | and write into file3         |
+   |-------------------------------------+------------------------------|
+   | cat file1.txt >> file2.txt          | append contents of file1.txt |
+   |                                     | into file2.txt               |
+   |-------------------------------------+------------------------------|
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
