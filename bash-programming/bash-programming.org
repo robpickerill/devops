@@ -116,3 +116,23 @@ fi
   sum=$(($arg1+$arg2))
   echo $sum
   #+END_EXAMPLE
+* Return value of program
+  Bash stores return value of a program in a variable whose value is
+  accessed by $?
+  #+BEGIN_EXAMPLE
+  #!/bin/bash
+  
+  cd /var/not &> /dev/null
+  echo $?
+  cd $(pwd) $> /dev/null
+  echo $?
+  #+END_EXAMPLE
+* Capturing command output
+  #+BEGIN_EXAMPLE
+  #!/bin/bash
+
+  DBS=`mysql -uroot -e"show databases"`
+  for db in $DBS; do
+      mysql -uroot -e"show tables from $db"
+  done
+  #+END_EXAMPLE
