@@ -2119,6 +2119,39 @@
    echo -e "this is a test of \n new line"
    #+END_EXAMPLE
 
+** sed
+   sed is a powerful text processing tool. It is used to modify
+   the contents of a file, usually placing the contents into a new
+   file. Its name is an abbreviation for *stream editor*. 
+
+   sed can filter text as well as perform substitutions in data
+   streams, working like a churn-mill.
+
+   Data from an input source/file (or stream) is taken and moved to a
+   working space. The entire list of operations/modifications is
+   applied over the data in the working space and the final contents
+   are moved to the standard output space (or stream).
+
+   |------------------------------+-----------------------------------|
+   | sed -e command <filename>    | Specify editing commands at the   |
+   |                              | command line, operate on file and |
+   |                              | put the output on standard out    |
+   |------------------------------+-----------------------------------|
+   | sed -f scriptfile <filename> | Specify a scriptfile containing   |
+   |                              | sed commands, operate on file and |
+   |                              | put output on standard out.       |
+   |------------------------------+-----------------------------------|
+
+   Replace first occurrence of pattern with replace_string.
+   #+BEGIN_EXAMPLE
+   sed s/pattern/replace_string/ file
+   #+END_EXAMPLE
+
+   Replace all occurrences of pattern with replace_string.
+   #+BEGIN_EXAMPLE
+   sed s/pattern/replace_string/g file
+   sed s/pattern/replace_string/g file > file2.txt
+   #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
