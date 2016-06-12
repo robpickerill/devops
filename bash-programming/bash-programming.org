@@ -98,3 +98,12 @@ fi
   OF=$(date +%Y%m%d).tgz
   tar -czf $TRGTD$OF $SRCD
   #+END_EXAMPLE
+* Read user input
+  Prompt user for input.
+  #+BEGIN_EXAMPLE
+  #!/bin/bash
+  
+  echo Please, enter your name
+  read name
+  echo hi $name
+  #+END_EXAMPLE
