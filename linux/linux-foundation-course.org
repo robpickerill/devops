@@ -2153,6 +2153,16 @@
    sed s/pattern/replace_string/g file > file2.txt
    #+END_EXAMPLE
 
+** awk
+   awk is used to extract and then print specific contents of a file
+   and is often used to construct reports. It was created at Bell
+   Labs in the 1970s.
+
+   *awk* has following features:
+   1. It is a powerful utility and interpreted programming language.
+   2. It is used to manipulate data files, retrieving, and processing
+      text.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
