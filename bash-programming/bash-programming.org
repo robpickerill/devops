@@ -68,3 +68,20 @@ fi
    e world
    echo foo
    #+END_EXAMPLE
+* Select to make simple menus
+  #+BEGIN_EXAMPLE
+  #!/bin/bash
+  
+  OPTIONS="Hello Quit"
+  select opt in $OPTIONS; do
+      if [ $opt = Hello ]; then
+          echo Hello World
+      elif [ $opt = Quit ]; then
+          echo done
+          exit
+      else
+          clear
+          echo bad option
+      fi
+  done
+  #+END_EXAMPLE
