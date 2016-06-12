@@ -2102,6 +2102,24 @@
    |                                     | into file2.txt               |
    |-------------------------------------+------------------------------|
 
+** echo
+   echo displays(echoes) text.
+   #+BEGIN_EXAMPLE
+   echo string
+   #+END_EXAMPLE
+   echo can be used to display a string on standard output (i.e. the
+   terminal) or to place in a new file.
+
+   echo is particularly useful for viewing the values of environment
+   variables (built-in shell variables).
+
+   The =-e= option enables special character sequences, such as the
+   newline character or horizontal tab.
+   #+BEGIN_EXAMPLE
+   echo -e "this is a test of \n new line"
+   #+END_EXAMPLE
+
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
