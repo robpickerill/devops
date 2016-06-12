@@ -107,3 +107,12 @@ fi
   read name
   echo hi $name
   #+END_EXAMPLE
+* Arithmetic Evaluation
+  #+BEGIN_EXAMPLE
+  #!/bin/bash
+  
+  arg1=1
+  arg2=3
+  sum=$(($arg1+$arg2))
+  echo $sum
+  #+END_EXAMPLE
