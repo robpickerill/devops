@@ -2189,6 +2189,15 @@
    |                                     | of every line.              |
    |-------------------------------------+-----------------------------|
 
+   The awk command/action in awk needs to be surrounded with
+   apostrophes (or single-quote (')). Otherwise it will throw error as
+   follows:
+   #+BEGIN_EXAMPLE
+   awk: line 2: missing } near end of file
+   #+END_EXAMPLE
+
+
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
