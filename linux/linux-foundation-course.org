@@ -2153,6 +2153,15 @@
    sed s/pattern/replace_string/g file > file2.txt
    #+END_EXAMPLE
 
+   Few more examples:
+   #+BEGIN_EXAMPLE
+   $ echo day | sed s/day/night
+   night
+
+   $ echo "123 abc" | sed 's/[0-9]*/& &/'
+   123 123 abc
+   #+END_EXAMPLE
+
 ** awk
    awk is used to extract and then print specific contents of a file
    and is often used to construct reports. It was created at Bell
