@@ -2162,6 +2162,32 @@
    1. It is a powerful utility and interpreted programming language.
    2. It is used to manipulate data files, retrieving, and processing
       text.
+   3. It works well with fields (containing a single piece of data,
+      essentially a column) and records (a collection of fields,
+      essentially a line in a file).
+
+   |----------------------------------+------------------------------------------------|
+   | *Command                         | Usage*                                         |
+   |----------------------------------+------------------------------------------------|
+   | awk `command` var=value file     | Specify a command directly at the command line |
+   |----------------------------------+------------------------------------------------|
+   | awk -f scriptfile var=value file | Specify a file that contains the script to be  |
+   |                                  | executed along with                            |
+   |----------------------------------+------------------------------------------------|
+
+
+   |-------------------------------------+-----------------------------|
+   | *Command                            | Usage*                      |
+   |-------------------------------------+-----------------------------|
+   | awk '{print $0}' /etc/passwd        | Print entire file           |
+   |-------------------------------------+-----------------------------|
+   | awk -F: '{print $1}' /etc/passwd    | Print first field (column)  |
+   |                                     | of every line, separated by |
+   |                                     | space                       |
+   |-------------------------------------+-----------------------------|
+   | awk -F: '{print $1 $6}' /etc/passwd | Print first and sixth field |
+   |                                     | of every line.              |
+   |-------------------------------------+-----------------------------|
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
