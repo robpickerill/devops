@@ -485,6 +485,32 @@
    locate test
    #+END_EXAMPLE
 
+** Wildcards and matching file name
+   |-----------+-----------------------------------|
+   | Wildcards | Result                            |
+   |-----------+-----------------------------------|
+   | ?         | Matches any single character      |
+   |-----------+-----------------------------------|
+   | *         | Matches any string of characters  |
+   |-----------+-----------------------------------|
+   | [set]     | Matches any characters in the set |
+   |           | of characters                     |
+   |-----------+-----------------------------------|
+
+   To search for files using =?= wildcard, replace each unknown
+   character with ?, e.g. if you know only the first 2 letters are
+   'ba' of a 3-letter filename with an extension of .out, type:
+   #+BEGIN_EXAMPLE
+   ls ba?.out
+   #+END_EXAMPLE
+  
+   To search for files using the =*= wildcard, replace the unknown
+   string with *, e.g. If you remember only that the extension was
+   .out, type:
+   #+BEGIN_EXAMPLE
+   ls *.out
+   #+END_EXAMPLE
+
 ** find
    find command recurses down the file system tree from the specified
    directory and searches for file matching given conditions. The
