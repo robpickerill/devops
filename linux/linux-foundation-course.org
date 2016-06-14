@@ -462,10 +462,22 @@
    I/O is often slowest bottleneck in getting something done.
 
 ** locate
-   locate command uses database of files and directories for
-   searching. =updatedb= command updates the database. Linux does
-   update once in a day, but the command can be run explicitly as
-   well.
+   locate command perform search through a previously constructed
+   database of files and directories on your system, matching all
+   entries that contain a specified character string. This can
+   sometimes result in a very long list.
+
+   To get a shorter more relevant list we can use the grep program as
+   filter; grep will print only lines that contain one or more
+   specified strings as in:
+   #+BEGIN_EXAMPLE
+   $ locate zip | grep bin
+   #+END_EXAMPLE
+
+
+   locate utilizes database created by another program called
+   =updatedb=. Linux does update automatically once in a day, but the
+   database can be updated manually using the =updatedb=.
 
    Following example command will print absolute path of all the files
    and directories matching the give name.
@@ -2204,7 +2216,6 @@
    #+BEGIN_EXAMPLE
    awk: line 2: missing } near end of file
    #+END_EXAMPLE
-
 
 
 * COMMENT TODO
