@@ -2243,6 +2243,11 @@
    awk: line 2: missing } near end of file
    #+END_EXAMPLE
 
+* Regular Expressions
+  Regular expression are text strings used for matching a specific
+  *pattern*, or to search for a specific location, such as the start
+  or end of a line or a word. Regular expressions can contain both
+  normal characters or so-called metacharacters, such as * and $.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
