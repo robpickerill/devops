@@ -712,6 +712,30 @@
    /dev/sda7      ext4      100G   62G   33G  66% /home
    #+END_EXAMPLE
   
+** fstab
+   *fstab* is a configuration file that contains information of all
+    the partitions and storage devices in a computer. The file is
+    located at =/etc=, so the full path to the file is =/etc/fstab=.
+
+    =/etc/fstab= contains information of where your partitions and
+    storage devices should be mounted and how. If we can't access the
+    Windows partition from Linux, are not able to mount the CD or
+    write to the floppy as a normal user, then the =/etc/fstab= file
+    may be misconfigured.
+    
+    #+BEGIN_EXAMPLE
+    UUID=aa823ffc-d42f-45f3-b322-35f582c3e1c4 /               ext4    errors=remount-ro 0       1
+    # /home was on /dev/sda7 during installation
+    UUID=d38fca95-52a3-4536-8555-c5d345062587 /home           ext4    defaults        0       2
+    # swap was on /dev/sda6 during installation
+    UUID=e1402b0a-971b-4bc6-a84f-4650d04f77a5 none            swap    sw              0       0
+    #+END_EXAMPLE
+
+    The first column contains the device name, the second one its
+    mount point, third its file system type, fourth the mount options,
+    fifth (a number) dump options, and sixth (another number) file
+    system check options.
+
 * Network Filesystem (NFS)
   Network filesystem is one of the methods used for sharing data
   across physical systems. Remote user's home directory can be mounted
