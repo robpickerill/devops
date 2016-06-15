@@ -2303,27 +2303,42 @@
    | the.*   | matches whole sentence |
    |---------+------------------------|
 
-
-* grep
-  grep is extensively used as a primary text searching tool. It scans
-  files for specified patterns and can be used with regular
-  expressions as well as simple strings
+** grep
+   grep is extensively used as a primary text searching tool. It scans
+   files for specified patterns and can be used with regular
+   expressions as well as simple strings
   
-  |--------------------------------+---------------------------------------|
-  | Command                        | Usage                                 |
-  |--------------------------------+---------------------------------------|
-  | grep [pattern] <filename>      | Search for a pattern in a file        |
-  |                                | and print all matching lines          |
-  |--------------------------------+---------------------------------------|
-  | grep -v [pattern] <filename>   | Print all lines that do not           |
-  |                                | match pattern                         |
-  |--------------------------------+---------------------------------------|
-  | grep -C 3 [pattern] <filename> | Print context of lines (specified     |
-  |                                | number of lines above and below       |
-  |                                | the pattern) for matching the pattern |
-  |--------------------------------+---------------------------------------|
+   |--------------------------------+---------------------------------------|
+   | Command                        | Usage                                 |
+   |--------------------------------+---------------------------------------|
+   | grep [pattern] <filename>      | Search for a pattern in a file        |
+   |                                | and print all matching lines          |
+   |--------------------------------+---------------------------------------|
+   | grep -v [pattern] <filename>   | Print all lines that do not           |
+   |                                | match pattern                         |
+   |--------------------------------+---------------------------------------|
+   | grep -C 3 [pattern] <filename> | Print context of lines (specified     |
+   |                                | number of lines above and below       |
+   |                                | the pattern) for matching the pattern |
+   |--------------------------------+---------------------------------------|
 
+** tr
+   *tr* is used to translate specified characters into other
+    characters or to delete them.
+    #+BEGIN_EXAMPLE
+    $ tr [options] set1 [set2]
+    #+END_EXAMPLE
 
+    It is a good practise to surround these sets by apostrophes in
+    order to have the shell ignore that they mean something special to
+    the shell.
+
+    Translates braces into paranthesis:
+    #+BEGIN_EXAMPLE
+    $ tr '{}' '()' < inputfile > outputfile
+    #+END_EXAMPLE
+
+  
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
