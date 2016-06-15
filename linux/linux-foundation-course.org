@@ -2333,9 +2333,9 @@
     order to have the shell ignore that they mean something special to
     the shell.
 
-    Translates braces into paranthesis:
     #+BEGIN_EXAMPLE
     $ tr '{}' '()' < inputfile > outputfile
+    $ cat file | tr a-z A-Z
     #+END_EXAMPLE
 
 ** tee
