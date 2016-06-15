@@ -2273,6 +2273,37 @@
   or end of a line or a word. Regular expressions can contain both
   normal characters or so-called metacharacters, such as * and $.
 
+  |-----------------+----------------------------|
+  | *Search Pattern | Usage*                     |
+  |-----------------+----------------------------|
+  | .(dot)          | Match any single character |
+  |-----------------+----------------------------|
+  | $               | Match end of string        |
+  |-----------------+----------------------------|
+  | *               | Match preceding item 0     |
+  |                 | or more times              |
+  |-----------------+----------------------------|
+
+** Using regular expression and search patterns
+   #+BEGIN_EXAMPLE
+   the quick brown fox jumped over the lazy dog
+   #+END_EXAMPLE
+
+   |---------+------------------------|
+   | Command | Example                |
+   |---------+------------------------|
+   | a..     | matches lazy           |
+   |---------+------------------------|
+   | ..$     | matches og             |
+   |---------+------------------------|
+   | l.*     | matches lazy dog       |
+   |---------+------------------------|
+   | l.*y    | matches lazy           |
+   |---------+------------------------|
+   | the.*   | matches whole sentence |
+   |---------+------------------------|
+
+  
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -2283,6 +2314,7 @@
   - Revise nfs.
   - Revise apt-get.
   - Try out boot loader password.
+  - Revise proc filesystem
 
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
