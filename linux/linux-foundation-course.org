@@ -2348,6 +2348,25 @@
    ls -l | tee lsoutput
    #+END_EXAMPLE
 
+** wc
+   wc (word count) counts the number of characters, words and lines in
+   a file or list of files.
+
+** cut
+   cut is used for manipulating column-based files and is designed to
+   extract specific columns. Default column separator is the tab
+   character. A different delimiter can be given as a command option.
+
+   using cut
+   #+BEGIN_EXAMPLE
+   ls -l | cut -d" " -f5
+   #+END_EXAMPLE
+
+   using awk
+   #+BEGIN_EXAMPLE
+   ls -l | awk '{print $5}'
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
