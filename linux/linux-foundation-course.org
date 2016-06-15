@@ -2303,7 +2303,27 @@
    | the.*   | matches whole sentence |
    |---------+------------------------|
 
+
+* grep
+  grep is extensively used as a primary text searching tool. It scans
+  files for specified patterns and can be used with regular
+  expressions as well as simple strings
   
+  |--------------------------------+---------------------------------------|
+  | Command                        | Usage                                 |
+  |--------------------------------+---------------------------------------|
+  | grep [pattern] <filename>      | Search for a pattern in a file        |
+  |                                | and print all matching lines          |
+  |--------------------------------+---------------------------------------|
+  | grep -v [pattern] <filename>   | Print all lines that do not           |
+  |                                | match pattern                         |
+  |--------------------------------+---------------------------------------|
+  | grep -C 3 [pattern] <filename> | Print context of lines (specified     |
+  |                                | number of lines above and below       |
+  |                                | the pattern) for matching the pattern |
+  |--------------------------------+---------------------------------------|
+
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
