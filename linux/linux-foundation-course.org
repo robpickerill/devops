@@ -2303,6 +2303,7 @@
    | the.*   | matches whole sentence |
    |---------+------------------------|
 
+* Miscellaneous text utilities
 ** grep
    grep is extensively used as a primary text searching tool. It scans
    files for specified patterns and can be used with regular
@@ -2324,19 +2325,19 @@
 
 ** tr
    *tr* is used to translate specified characters into other
-    characters or to delete them.
-    #+BEGIN_EXAMPLE
-    $ tr [options] set1 [set2]
-    #+END_EXAMPLE
+   characters or to delete them.
+   #+BEGIN_EXAMPLE
+   $ tr [options] set1 [set2]
+   #+END_EXAMPLE
 
-    It is a good practise to surround these sets by apostrophes in
-    order to have the shell ignore that they mean something special to
-    the shell.
-
-    #+BEGIN_EXAMPLE
-    $ tr '{}' '()' < inputfile > outputfile
-    $ cat file | tr a-z A-Z
-    #+END_EXAMPLE
+   It is a good practise to surround these sets by apostrophes in
+   order to have the shell ignore that they mean something special to
+   the shell.
+   
+   #+BEGIN_EXAMPLE
+   $ tr '{}' '()' < inputfile > outputfile
+   $ cat file | tr a-z A-Z
+   #+END_EXAMPLE
 
 ** tee
    tee takes the output from any command, and while sending it to
@@ -2366,6 +2367,69 @@
    #+BEGIN_EXAMPLE
    ls -l | awk '{print $5}'
    #+END_EXAMPLE
+
+* Working with large files
+  System administrators need to work with configuration files, log
+  files, text files and documentation files.
+
+  Directly opening files in an editor will cause issue, due to high
+  memory utilization, as an editor will usually try to read the whole
+  file into memory first. 
+
+** less
+   We can use =less= command to view the contents of such a large
+   file, scrolling up and down page by page without the system having
+   to place the entire file in memory before starting. This is mush
+   faster than using a text editor.
+
+   #+BEGIN_EXAMPLE
+   $ less <filename>
+   $ cat <filename> | less
+   #+END_EXAMPLE
+
+** head
+   head reads the first few lines of each named file (10 by default)
+   and displays it on standard output.
+   #+BEGIN_EXAMPLE
+   head -n 5 file
+   #+END_EXAMPLE
+
+** tail
+   tail displays the last few lines of each named file on standard
+   output.
+   #+BEGIN_EXAMPLE
+   tail -n 15 log.txt
+   tail -15 log.txt
+   #+END_EXAMPLE
+
+   To continually monitor new output in a growing log file:
+   #+BEGIN_EXAMPLE
+   tail -f /var/log/apache2/access.log
+   #+END_EXAMPLE
+   This command will continually display any new lines of output in
+   the file, as soon as they appear. It enables to monitor any current
+   activity that is being reported and recorded.
+
+   
+** strings
+   strings is used to extract all printable character strings found in
+   the file or files given as arguments. It is useful in locating
+   human readable content embedded in binary files: for text one can
+   just use grep.
+
+   To search for a string in spreadsheet.
+   #+BEGIN_EXAMPLE
+   strings book1.xls | grep my_string
+   #+END_EXAMPLE
+
+** z commands
+   For many commonly-used file and text manipulation programs there is
+   also a version especially designed to work directly with compressed
+   files. These utilities have the letter z prefixed to their name.
+   1. zcat
+   2. zless
+   3. zgrep
+   4. zdiff
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
