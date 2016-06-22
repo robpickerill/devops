@@ -1,0 +1,27 @@
+#+Title: Script to monitor disk io
+#+Author: Yogesh Agrawal
+#+Date: <2016-06-22 Wed>
+
+* Description
+  A script is to be created to monitor disk i/o. If the disk usage
+  exceeds a specific threshold, the script should trigger an
+  action. That action will kill the process which is throttling the
+  disk usage.
+
+* Idea
+  We can use =df= utility of linux to monitor available free space and
+  take actions accordingly.
+
+* df command
+  df reports the disk space usage of the mounted file systems.
+  #+BEGIN_EXAMPLE
+  $ df -h
+  udev            1.9G  4.0K  1.9G   1% /dev
+  tmpfs           385M  1.4M  383M   1% /run
+  /dev/sda5        20G   14G  5.6G  71% /
+  none            4.0K     0  4.0K   0% /sys/fs/cgroup
+  none            5.0M     0  5.0M   0% /run/lock
+  none            1.9G  1.7M  1.9G   1% /run/shm
+  none            100M   48K  100M   1% /run/user
+  /dev/sda7       100G   65G   30G  69% /home
+  #+END_EXAMPLE
