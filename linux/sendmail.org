@@ -1,0 +1,16 @@
+#+Title: Sendmail - Mail Transfer Agent
+#+Author: Yogesh Agrawal
+#+Date: <2016-06-22 Wed>
+
+* Introduction
+  Sendmail is a mail transfer agent (MTA). Mail Transfer Agent (MTA)
+  The Mail Transfer Agent (MTA) is responsible for receiving incoming
+  mail and delivering outgoing mail.
+
+* Setup
+  1. Installation
+     #+BEGIN_EXAMPLE
+     apt-get install sendmail
+     #+END_EXAMPLE
+
+  2. 
