@@ -8,7 +8,7 @@ out=${out/G}
 
 echo "Disk usage: $out"
 
-if [ $out -gt 13 ];
+if [ $out -gt $threshold ];
 then
 echo 'disk usage is high!'
 pid=$(ps aux | grep $program | awk '{print $2}' | head -1)
