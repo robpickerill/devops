@@ -2409,7 +2409,6 @@
    This command will continually display any new lines of output in
    the file, as soon as they appear. It enables to monitor any current
    activity that is being reported and recorded.
-
    
 ** strings
    strings is used to extract all printable character strings found in
@@ -2430,6 +2429,57 @@
    2. zless
    3. zgrep
    4. zdiff
+
+* Printing
+  To manage printers and print directly from a computer or across a
+  networked environment, we need to know how to configure and install
+  a printer. Printing requires software that converts the information
+  from the application to a language that a printer can understand.
+
+  The Linux standard for printing software is the Common Unix
+  Printing System (CUPS). CUPS uses modular printing system which
+  accommodates a wide variety of printers and also processes various
+  data formats.
+
+  The only time we need to configure printer is when we use if for the
+  first time.
+
+  CUPS carries out the printing process with the help of its various
+  components:
+   
+** Scheduler
+   Scheduler manages the print jobs through the use of configuration
+   files. It allows users to get printer status, schedule jobs.
+
+   CUPS has a browser-based interface which allows to view and
+   manipulate the order and status of pending print jobs.
+   
+** Configuration files
+   The system reads its configuration from several configuration
+   files, the two most important of which are =cupsd.conf= and
+   =printers.conf=. These and all other CUPS related configuration
+   files are located at =/etc/cups=.
+   
+   =cupsd.conf= is where most system-wide settings are located; it
+   does not contain any printer-specific details. Most of the settings
+   available in the file relate to network security, i.e. which
+   systems can access CUPS network capabilities, how printers are
+   advertised on the local network, what management features are
+   offered, and so on.
+
+   =printers.conf= is for configuring printer-specific settings. For
+   every printer connected to the system, a corresponding section
+   describes the printer's status and capabilities. This file is
+   generated only after adding the printer to the system and should
+   not be modified by hand.
+
+** Job files
+   
+** Log files
+** Filter
+** Printer Drivers
+** Backend
+
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
