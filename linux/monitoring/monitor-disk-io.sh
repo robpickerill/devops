@@ -1,6 +1,6 @@
 #!/bin/bash
 
-program=apache
+source monitor.conf
 
 out=$(df -BG /dev/sda5 | awk '{print $3}' | grep -iv used)
 
