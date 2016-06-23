@@ -1,0 +1,53 @@
+#+Title: Logwatch
+#+Author: Yogesh Agrawal
+#+Date: <2016-06-22 Wed>
+
+* Introduction
+  Logwatch Perl based log management tool for analyzing, summarizing
+  and reporting on a server's log files.
+
+* Logwatch setup Steps
+** Install logwatch
+   #+BEGIN_EXAMPLE
+   sudo apt-get update
+   sudo apt-get install logwatch
+   #+END_EXAMPLE
+
+** Configure logwatch
+   Local configuration options can be added in:
+   =/etc/logwatch/conf/logwatch.conf=. Default configuration opions
+   can be added in =/usr/share/logwatch/default.conf/logwatch.conf=
+   
+   Edit logwatch.conf as follows:
+   #+BEGIN_EXAMPLE
+   MailTo = me@example.com
+   Detail = High
+   sudo cp /usr/share/logwatch/default.conf/logfiles/http.conf /etc/logwatch/conf/logfiles/
+   #+END_EXAMPLE
+
+** Running logwatch manually
+   #+BEGIN_EXAMPLE
+   $ logwatch --detail Low --mailto email@address --service http --range today
+   #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   $ logwatch
+   #+END_EXAMPLE
+* Sendmail Steps
+  1. Install sendmail
+     #+BEGIN_EXAMPLE
+     $ sudo apt-get install sendmail
+     #+END_EXAMPLE
+
+  2. Test sendmail
+     #+BEGIN_EXAMPLE
+     $ echo "test mail from sendmail" | /usr/sbin/sendmail yogeshiiith@gmail.com
+     Jun 22 10:37:19 LT0459 sendmail[12063]: My unqualified host name (LT0459) unknown; sleeping for retry
+     Jun 22 10:38:19 LT0459 sendmail[12063]: unable to qualify my own domain name (LT0459) -- using short name
+     Jun 22 10:38:19 LT0459 sendmail[12063]: u5M58JNi012063: from=yogesh, size=24, class=0, nrcpts=1, msgid=<201606220508.u5M58JNi012063@LT0459>, relay=yogesh@localhost
+     Jun 22 10:38:20 LT0459 sm-mta[12065]: u5M58JJI012065: from=<yogesh@LT0459>, size=288, class=0, nrcpts=1, msgid=<201606220508.u5M58JNi012063@LT0459>, proto=ESMTP, daemon=MTA-v4, relay=localhost [127.0.0.1]
+     Jun 22 10:38:20 LT0459 sendmail[12063]: u5M58JNi012063: to=yogeshiiith@gmail.com, ctladdr=yogesh (1001/1001), delay=00:00:01, xdelay=00:00:01, mailer=relay, pri=30024, relay=[127.0.0.1] [127.0.0.1], dsn=2.0.0, stat=Sent (u5M58JJI012065 Message accepted for delivery)
+     Jun 22 10:38:21 LT0459 sm-mta[12067]: STARTTLS=client, relay=gmail-smtp-in.l.google.com., version=TLSv1/SSLv3, verify=FAIL, cipher=ECDHE-RSA-AES128-GCM-SHA256, bits=128/128
+     Jun 22 10:38:23 LT0459 sm-mta[12067]: u5M58JJI012065: to=<yogeshiiith@gmail.com>, ctladdr=<yogesh@LT0459> (1001/1001), delay=00:00:03, xdelay=00:00:03, mailer=esmtp, pri=120288, relay=gmail-smtp-in.l.google.com. [74.125.68.26], dsn=5.0.0, stat=Service unavailable
+     Jun 22 10:38:23 LT0459 sm-mta[12067]: u5M58JJI012065: u5M58NJI012067: DSN: Service unavailable
+     Jun 22 10:38:23 LT0459 sm-mta[12067]: u5M58NJI012067: to=<yogesh@LT0459>, delay=00:00:00, xdelay=00:00:00, mailer=local, pri=30000, dsn=2.0.0, stat=Sent
+     #+END_EXAMPLE
