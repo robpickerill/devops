@@ -2474,7 +2474,14 @@
    not be modified by hand.
 
 ** Job files
-   
+   CUPS stores print requests as files under the =/var/spool/cups=
+   directory (these can actually be accessed before a document is sent
+   to a printer). Data files are prefixed with the letter *d* while
+   control files are prefixed with the letter *c*. After a printer
+   successfully handles a job, data files are automatically
+   removed. These data files belong to what is commonly known as
+   the *print queue*.
+
 ** Log files
 ** Filter
 ** Printer Drivers
