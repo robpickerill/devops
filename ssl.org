@@ -1,0 +1,28 @@
+#+Title: SSL
+#+Author: Yogesh Agrawal
+#+Date: <2016-06-24 Fri>
+#+Email: yogeshiiith@gmail.com;
+
+* Introduction
+  SSL (Secure Socket Layer) is a standard security technology for
+  establishing an encrypted link between a server and a client.
+
+  SSL allows sensitive information such as credit card numbers, social
+  security numbers and login credentials to be transmitted securely.
+
+  SSL certificates have a key pair: a public key and a private
+  key. These keys work together to establish an encrypted connection.
+
+  To get a certificate, you must create a certificate signing request
+  (CSR) on your server. This process creates a private key and public
+  key on your server.
+ 
+  The CSR data file that you send to SSL certificate issues (called a
+  certificate authority or CA) contains the public key. The CA uses
+  the CSR data file to create a data structure to match your private
+  key without compromising the key itself. The CA never sees the
+  private key.
+
+  Anyone can create a certificate, but browsers only trust
+  certificates that come from an organization on their list of
+  trusted CAs.
