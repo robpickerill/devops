@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source monitor.conf
+#source monitor.conf
+
+logfile=/var/log/monitoring/monitoring.log
+program=apache
+threshold=14
 
 out=$(df -BG /dev/sda5 | awk '{print $3}' | grep -iv used)
 
@@ -17,7 +21,7 @@ if [ $? -eq 0 ];
 then
 echo "Process $program with pid- $pid, is throttling the disk resource!" >> $logfile
 else
-echo "Some process is throttling the disk resource!" >> $loggile
+echo "Some process is throttling the disk resource!" >> $logfile
 fi
 else
 echo "disk usage is normal!" >> $logfile
