@@ -2489,10 +2489,13 @@
    
    To view log files type =ls -l /var/log/cups=.
 
-** Filter
-** Printer Drivers
-** Backend
-
+** Filters,  Printer Drivers, Backend
+   When we execute a print command, scheduler validates the command
+   and processes the print job creating job files according to the
+   settings specified in configuration files. Simultaneously, the
+   scheduler records activities in the log files. Job files are
+   processed with the help of the filter, printer driver, and backend,
+   and then sent to the printer.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
