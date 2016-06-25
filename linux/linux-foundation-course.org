@@ -2436,12 +2436,12 @@
   a printer. Printing requires software that converts the information
   from the application to a language that a printer can understand.
 
-  The Linux standard for printing software is the Common Unix
-  Printing System (CUPS). CUPS uses modular printing system which
+  The Linux standard for printing software is the *Common Unix
+  Printing System (CUPS)*. CUPS uses modular printing system which
   accommodates a wide variety of printers and also processes various
   data formats.
 
-  The only time we need to configure printer is when we use if for the
+  The only time we need to configure printer is when we use it for the
   first time.
 
   CUPS carries out the printing process with the help of its various
@@ -2449,7 +2449,7 @@
    
 ** Scheduler
    Scheduler manages the print jobs through the use of configuration
-   files. It allows users to get printer status, schedule jobs.
+   files. It allow users to get printer status, schedule jobs.
 
    CUPS has a browser-based interface which allows to view and
    manipulate the order and status of pending print jobs.
@@ -2483,6 +2483,12 @@
    the *print queue*.
 
 ** Log files
+   Log files are placed inside the =/var/log/cups= and are used by
+   the scheduler to record activities that have taken place. These
+   files include access, error and page records.
+   
+   To view log files type =ls -l /var/log/cups=.
+
 ** Filter
 ** Printer Drivers
 ** Backend
