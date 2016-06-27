@@ -2523,6 +2523,23 @@
       sudo update-rc.d cups disable
       #+END_EXAMPLE
 
+** CUPS web interfaces
+   CUPS comes with its own web server, which makes a configuration
+   interface available via a set of CGI scripts.
+
+   The web interface allows to:
+   - Add and remove local/remote printers.
+   - Configure printers:
+     - Local/remote printers
+     - Share a printer as a CUPS server
+   - Control print jobs:
+     - Monitor jobs
+     - Show completed or pending jobs
+     - Cancel or move jobs
+
+   The cups web interface is available on browser at:
+   http://localhost:631
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
