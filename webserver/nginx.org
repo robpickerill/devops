@@ -14,8 +14,10 @@
    the request.
 
 *** 502 Bad Gateway
-    The server was acting as a gateway or proxy and received an
-    invalid response from the upstream server.
+    What does this error message means ? A gateway is like an access
+    point, a bridge that communicates one service with another. The
+    server was acting as a gateway or proxy and received an invalid
+    response from the upstream server.
 
     Nginx 502 Bad Gateway error message:
     1. PHP daemon stop working, or get's overloaded by requests, it
@@ -23,3 +25,23 @@
        not be served, so, a 502 Bad Gateway error will appear.
 
     2. Increase buffer and timeouts inside http block.
+
+**** Possible solutions
+     1. Is PHP-FPM running ?
+        #+BEGIN_EXAMPLE
+	ps aux | grep php
+	sudo service php5-fpm restart/stop/start
+	#+END_EXAMPLE
+
+     2. Is PHP-FPM listening correctly ?
+	
+	Ensure =listen= parameter in =/etc/php5/fpm/pool.d/www.conf=
+	and =fastcgi_pass= parameter in =/etc/nginx/sites-available=
+        are set to the same value as follows:
+	#+BEGIN_EXAMPLE
+	127.0.0.1:9000
+	#+END_EXAMPLE
+
+**** References
+     - https://www.keycdn.com/support/502-bad-gateway/
+     - http://jvdc.me/fix-502-bad-gateway-error-on-nginx-server-after-upgrading-php/
