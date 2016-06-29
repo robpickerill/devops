@@ -2566,6 +2566,21 @@
     | lpadmin                  | To configure printer queues            |
     |--------------------------+----------------------------------------|
 
+** Managing print jobs
+   |--------------------------+--------------------------------------|
+   | Command                  | Usage                                |
+   |--------------------------+--------------------------------------|
+   | lpstat -p -d             | To get a list of available printers, |
+   |                          | along with their status              |
+   |--------------------------+--------------------------------------|
+   | lpstat -a                | To check the status of all connected |
+   |                          | printers, including job numbers      |
+   |--------------------------+--------------------------------------|
+   | cancel job-id            | To cancel a print job                |
+   |--------------------------+--------------------------------------|
+   | lpmove job-id newprinter | To move a print job to new printer   |
+   |--------------------------+--------------------------------------|
+  
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
