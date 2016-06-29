@@ -2588,7 +2588,24 @@
     provide quality printouts. It is purely a text format that
     contains the data fed to a PostScript interpreter.
    
-   
+*** pdftk
+    We can merge, split, or rotate PDF files; not all of these
+    operations can be achieved using a PDF viewer. PDF tool
+    kit *pdfkt* allows sophisticated operations such as:
+
+    - Merging/splitting/rotating pdf files
+    - Repairing corrupted pdf pages
+    - Pulling single page from a file
+    - Encrypting and decrypting pdf filse
+    - Adding, updating, and exporting a PDF's metadata
+    - Exporting bookmarks to a text file
+    - Filling out PDF forms
+
+    pdftk can be installed using following command in ubuntu
+    #+BEGIN_EXAMPLE
+    sudo apt-get install pdftk
+    #+END_EXAMPLE
+    
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
