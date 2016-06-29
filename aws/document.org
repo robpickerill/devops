@@ -1,0 +1,28 @@
+#+Title: AWS
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+#+Date: <2016-06-28 Tue>
+
+* Introduction
+  This document describes the learning related to AWS.
+
+* AWS India region
+  NDTV is a leading media house which is watched by millions of
+  people across the world. NDTV has been using AWS since 2009 to run
+  their video platform and all their web properties. Based on the
+  tests that NDTV technical team have run in India, they determined
+  that the network latency from the AWS India infrastructure region
+  are far more superior compared to other alternatives. With the
+  portfolio of services AWS will offer at launch, low latency, great
+  reliability, and the ability to meet regulatory requirements
+  within India, NDTV has decided to move these critical applications
+  and IT infrastructure all-in to the AWS India region from our
+  current set-up.
+* Data Privacy
+  Refer: https://aws.amazon.com/compliance/data-privacy-faq/
+** Storage
+   Customers chose the region(s) in which their customer content will
+   be stored. AWS does not move or replicate customer content outside
+   of the customer's chose region(s), except as legally required and
+   as necessary to maintain the AWS services and provide them to our
+   customers and their end users.
