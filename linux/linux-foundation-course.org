@@ -2540,6 +2540,32 @@
    The cups web interface is available on browser at:
    http://localhost:631
 
+** Printing from the command line interface
+   *CUPS* provides two command-line interfaces, descended from the
+   System V and BSD flavours of Unix. We can use either *lp* or *lpr*
+   to print text, PostScript, pdf and image file.
+
+   These command are useful in cases where printing operations must
+   be automated from shell scripts.
+
+*** lp
+    |--------------------------+----------------------------------------|
+    | *Command                 | Usage*                                 |
+    |--------------------------+----------------------------------------|
+    | lp <filename>            | To print the file to default printer   |
+    |--------------------------+----------------------------------------|
+    | lp -d printer <filename> | To print to a specific printer (useful |
+    |                          | if multiple printers are available)    |
+    |--------------------------+----------------------------------------|
+    | lp -n number <filename>  | To print multiple copies               |
+    |--------------------------+----------------------------------------|
+    | lpoptions -d printer     | To set the default printer             |
+    |--------------------------+----------------------------------------|
+    | lpq -a                   | To show the queue status               |
+    |--------------------------+----------------------------------------|
+    | lpadmin                  | To configure printer queues            |
+    |--------------------------+----------------------------------------|
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
