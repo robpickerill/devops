@@ -2581,6 +2581,14 @@
    | lpmove job-id newprinter | To move a print job to new printer   |
    |--------------------------+--------------------------------------|
   
+** Manipulating Postscripts and PDF files
+*** Postscripts
+    PostScript is a standard *page description language*. It
+    effectively manages scaling of fonts and vector graphics to
+    provide quality printouts. It is purely a text format that
+    contains the data fed to a PostScript interpreter.
+   
+   
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
