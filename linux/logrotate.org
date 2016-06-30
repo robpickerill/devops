@@ -1,0 +1,93 @@
+#+Title: Logrotate
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+#+Date: <2016-06-29 Wed>
+
+* Introduction
+  This document describes logrotate.
+
+* Description
+  Logrotate is designed to ease administration of systems that
+  generate large numbers of log files. It allows automatic rotation,
+  compression, removal, and mailing of log files. Each log file can be
+  handled daily, weekly, monthly, or when it grows too large.
+* Installation
+** Install logrotate
+   Logrotate can be installed using following command:
+   #+BEGIN_EXAMPLE
+   sudo apt-get install logrotate
+   #+END_EXAMPLE
+
+** Verify Installation
+   Verify the logrotate installation with the following command. This
+   command will not rotate any logs, it will print version
+   information and usage message.   
+   #+BEGIN_EXAMPLE
+   logrotate
+   #+END_EXAMPLE
+
+* Setup
+** Configure
+   Configuration file is located at
+   =/etc/logrotate.conf=. Application specific log file information
+   are kept at: =/etc/logrotate.d/=.
+
+   Example:
+   #+BEGIN_EXAMPLE
+   /var/log/dpkg.log {
+	monthly
+        rotate 12
+	compress
+	delaycompress
+        missingok
+	notifempty
+	create 640 root adm
+   }
+   #+END_EXAMPLE
+
+   - logrotation monitors /var/log/dpkg.log file and does this on a
+     monthly basis.
+   - 'rotate 12' signifies that 12 days worth of logs would be kept.
+   - logfiles can be compressed using the gzip format by specifying
+     'compress' and 'delaycompress' delays the logrotation process
+     till the next log rotation.
+   - 'missingok' avoids halting on any errors and carries on with the
+     next log file.
+   - 'notifempty' avoids log rotation if the log file is empty.
+   - 'create <mode> <owner> <group>' creates a new empty file with
+     the specified properties after log rotation.
+
+** Update configuration file
+   =logrotate= uses crontab to work. It is scheduled work not a
+   daemon, so no need to reload its configuration. When the crontab
+   executes it will automatically use new configuration.
+
+** Set cron
+   logrotate is scheduled to run daily, by following shell script at
+   =/etc/cron.daily/logrotate=:
+   #+BEGIN_EXAMPLE
+   #!/bin/sh
+
+   # Clean non existent log file entries from status file
+   cd /var/lib/logrotate
+   test -e status || touch status
+   head -1 status > status.clean
+   sed 's/"//g' status | while read logfile date
+   do
+    [ -e "$logfile" ] && echo "\"$logfile\" $date"
+   done >> status.clean
+   mv status.clean status
+   
+   test -x /usr/sbin/logrotate || exit 0
+   /usr/sbin/logrotate /etc/logrotate.conf
+   #+END_EXAMPLE
+
+** Running manual
+   Logrotate command can be run manually using following command,
+   =-s= option specifies the filename to write logrotate status.
+   #+BEGIN_EXAMPLE
+   logrotate -s /var/log/logstatus logrotate.conf
+   #+END_EXAMPLE
+
+* Reference
+  - https://www.digitalocean.com/community/tutorials/how-to-manage-log-files-with-logrotate-on-ubuntu-12-10
