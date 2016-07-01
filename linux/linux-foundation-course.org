@@ -2641,6 +2641,15 @@
      I tried exporting an image from a pdf document, but the image
      was not properly visible and was damaged.
 
+*** Creating pdf files
+    enscript package can be used to create a postscript file.
+
+    Example:
+    #+BEGIN_EXAMPLE
+    $ enscript -p syslog.ps /var/log/syslog
+    $ ps2pdf syslog.ps
+    #+END_EXAMPLE
+
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
