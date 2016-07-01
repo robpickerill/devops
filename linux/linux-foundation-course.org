@@ -2590,8 +2590,8 @@
    
 *** pdftk
     We can merge, split, or rotate PDF files; not all of these
-    operations can be achieved using a PDF viewer. PDF tool
-    kit *pdfkt* allows sophisticated operations such as:
+    operations can be achieved while using a PDF viewer. PDF tool
+    kit *pdftk* allows sophisticated operations such as:
 
     - Merging/splitting/rotating pdf files
     - Repairing corrupted pdf pages
@@ -2605,7 +2605,21 @@
     #+BEGIN_EXAMPLE
     sudo apt-get install pdftk
     #+END_EXAMPLE
+
+    Example: Merge two documents 1.pdf and 2.pdf. The output will be
+    saved to 12.pdf.
+    #+BEGIN_EXAMPLE
+    pdftk 1.pdf 2.pdf cat output 12.pdf
+    #+END_EXAMPLE
     
+*** encrypting pdf files
+    PDF files containing confidential information can be encrypted by
+    applying a password to it using the =user_pw= option.
+
+    #+BEGIN_EXAMPLE
+    $ pdftk public.pdf output private.pdf user_pw PROMPT
+    #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
