@@ -2673,6 +2673,17 @@
    path of the command interpreter (in this case =/bin/bash=) that is
    to be used on the file.
 
+** Shell choices
+   Linux provides a wide choices of shells, exactly what is available
+   on the system is listed in =/etc/shells= file. Typical choices are:
+   #+BEGIN_EXAMPLE
+   /bin/sh
+   /bin/bash
+   /bin/tcsh
+   /bin/csh
+   /bin/ksh
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
