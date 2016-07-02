@@ -2651,6 +2651,27 @@
     $ ps2pdf syslog.ps
     #+END_EXAMPLE
 
+* Bash Shell Scripting
+** Introduction
+   Shell is a command line interpreter which provides the user
+   interface for terminal windows. It can also be used to run scripts,
+   even in non-interactive sessions without a terminal window, as if
+   the commands were being directly typed in.
+
+   Example executing following command in the terminal
+   #+BEGIN_EXAMPLE
+   $ find . -iname '*.c' -ls
+   #+END_EXAMPLE
+
+   is equivalent to executing following shell script
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   find . -iname '*.c' -ls
+   #+END_EXAMPLE
+
+   The first line of the script starts with =#!=, contains the full
+   path of the command interpreter (in this case =/bin/bash=) that is
+   to be used on the file.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
