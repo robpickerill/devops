@@ -2589,9 +2589,10 @@
     contains the data fed to a PostScript interpreter.
    
 *** pdftk
-    We can merge, split, or rotate PDF files; not all of these
-    operations can be achieved while using a PDF viewer. PDF tool
-    kit *pdftk* allows sophisticated operations such as:
+    Using pdf tool kit (pdftk) we can merge, split, or rotate PDF
+    files; not all of these operations can be achieved while using a
+    PDF viewer. PDF tool kit *pdftk* allows sophisticated operations
+    such as:
 
     - Merging/splitting/rotating pdf files
     - Repairing corrupted pdf pages
@@ -2638,8 +2639,8 @@
      subject and author; add keywords; and combine documents using
      drag-and-drop action.
 
-     I tried exporting an image from a pdf document, but the image
-     was not properly visible and was damaged.
+     I tried exporting an image from a pdf document, but the image was
+     damaged and not properly visible.
 
 *** Creating pdf files
     enscript package can be used to create a postscript file.
