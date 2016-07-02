@@ -2684,6 +2684,22 @@
    /bin/ksh
    #+END_EXAMPLE
 
+** Example
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   echo "Please enter your name"
+   read name
+   echo "Hi $name!"
+   exit 0
+   #+END_EXAMPLE
+** Return Values
+   All shell scripts generate a return value upon finishing execution;
+   the value can be set with the =exit= statement. Return values
+   permit a process to monitor the exit status of another process
+   often in a parent-child relationship. This helps to determine how
+   this process terminated and take any appropriate steps necessary,
+   contingent(dependent) on success or failure.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
