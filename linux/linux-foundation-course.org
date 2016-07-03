@@ -2749,6 +2749,19 @@
    Arguments passed to the function can be referred as $1, $2 and so
    on.
    
+** Built-in commands
+   Types of commands:
+   1. Compiled application
+   2. Built-in bash commands
+   3. Other scripts
+
+   Compiled applications are binary executable files that we can find
+   on the filesystem. Example rm, ls, df, vi.
+
+   *bash* has many built-in commands which can only be used to
+   display the output within a terminal shell or shell
+   script. Example cd, pwd, echo, read and logout.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
