@@ -2770,14 +2770,37 @@
    - By enclosing the inner command in =$()=
 
    No matter the method, the inner command will be executed in a newly
-   launched shell environment, and the standard output of the of the
-   shell will be inserted where the command substitution was done.
+   launched shell environment, and the standard output of the shell
+   will be inserted where the command substitution was done.
    
    =$()= method allows command nesting. New scripts should always use
    this modern method.
    #+BEGIN_EXAMPLE
    $ cd /lib/modules/$(uname -r)/
    #+END_EXAMPLE
+
+** Environment Variables
+   Almost all scripts use variables containing a value, which can be
+   used anywhere in the script. These variables can either be user or
+   system defined. Many applications use such *environment variables*
+   for supplying inputs, validation, and controlling behaviour.
+
+   Examples of standard environment variables are =HOME=, =PATH=, and
+   =HOST=. These environment variable can be referenced with the =$=
+   symbol as in =$HOME=. We can view and set the value of environment
+   variables.
+   #+BEGIN_EXAMPLE
+   echo $PATH
+   #+END_EXAMPLE
+
+   #+BEGIN_EXAMPLE
+   test=2
+   #+END_EXAMPLE
+
+   We can get the list of environment variables with the =env=, =set=,
+   or =printenv= command.
+
+** read about export and without export.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
