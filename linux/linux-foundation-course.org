@@ -2762,6 +2762,23 @@
    display the output within a terminal shell or shell
    script. Example cd, pwd, echo, read and logout.
 
+** Command substitution
+   At times, we may need to substitute the result of a command as a
+   portion of another command. It can be done in two ways:
+   
+   - By enclosing the inner command with backticks =`=
+   - By enclosing the inner command in =$()=
+
+   No matter the method, the inner command will be executed in a newly
+   launched shell environment, and the standard output of the of the
+   shell will be inserted where the command substitution was done.
+   
+   =$()= method allows command nesting. New scripts should always use
+   this modern method.
+   #+BEGIN_EXAMPLE
+   $ cd /lib/modules/$(uname -r)/
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
