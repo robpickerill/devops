@@ -2739,6 +2739,15 @@
       $ cat file1  || cat file2 || cat file3
       #+END_EXAMPLE
 
+** Functions
+   #+BEGIN_EXAMPLE
+   function_name () {
+       echo "This is a sample function";
+   }
+   #+END_EXAMPLE
+
+   Arguments passed to the function can be referred as $1, $2 and so
+   on.
    
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
