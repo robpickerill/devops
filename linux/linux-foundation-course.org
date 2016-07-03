@@ -2683,23 +2683,63 @@
    /bin/csh
    /bin/ksh
    #+END_EXAMPLE
-
-** Example
-   #+BEGIN_EXAMPLE
-   #!/bin/bash
-   echo "Please enter your name"
-   read name
-   echo "Hi $name!"
-   exit 0
-   #+END_EXAMPLE
 ** Return Values
    All shell scripts generate a return value upon finishing execution;
    the value can be set with the =exit= statement. Return values
-   permit a process to monitor the exit status of another process
+   permit a process to monitor the exit status of another process,
    often in a parent-child relationship. This helps to determine how
    this process terminated and take any appropriate steps necessary,
    contingent(dependent) on success or failure.
+   
+   Return values are stored in the environment variable, and can be
+   viewed by =ehco $?=.
+** Example
+   1. exit status example
+      #+BEGIN_EXAMPLE
+      #!/bin/bash
+      echo "Please enter your name"
+      read name
+      echo "Hi $name!"
+      exit 0
+      #+END_EXAMPLE
 
+** Syntax
+   |-------------+--------------------------------------|
+   | *Characters | Description*                         |
+   |-------------+--------------------------------------|
+   | "#"         | Used to add a comment, except        |
+   |             | when used as \#, or as #! when       |
+   |             | starting a script.                   |
+   |-------------+--------------------------------------|
+   | \           | Used at the end of the line to       |
+   |             | indicate continuation of the line    |
+   |-------------+--------------------------------------|
+   | ;           | Used to interpret what follows       |
+   |             | is a new command.                    |
+   |-------------+--------------------------------------|
+   | "$"         | Indicates what follows is a variable |
+   |-------------+--------------------------------------|
+
+** Multiple commands in one line
+   1. The three commands in the following example will all execute
+      even if the ones preceding them fails.
+      #+BEGIN_EXAMPLE
+      $ make; make install; make clean
+      #+END_EXAMPLE
+
+   2. Abort subsequent commands if one fails, using "and (&&)"
+      operator.
+      #+BEGIN_EXAMPLE
+      $ make && make install && make clean
+      #+END_EXAMPLE
+
+   3. Proceed until something succeeds and then stop executing any
+      further steps, using "or (||)" operator.
+      #+BEGIN_EXAMPLE
+      $ cat file1  || cat file2 || cat file3
+      #+END_EXAMPLE
+
+   
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
