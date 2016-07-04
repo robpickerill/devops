@@ -2878,6 +2878,74 @@
    $ free >> /tmp/free.out
    #+END_EXAMPLE
 
+** If statement
+   The syntax for an =if= statement is as follows:
+   
+   Format of the if statement:
+   #+BEGIN_EXAMPLE
+   if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
+   #+END_EXAMPLE
+
+   #+BEGIN_EXAMPLE
+   if condition
+   then
+   statements
+   else
+   statements
+   fi
+   #+END_EXAMPLE
+
+   Examples:
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   
+   file=$1
+   
+   if [ -f $file ]
+   then
+   echo -e "file $file exists"
+   else
+   echo -e 'file does not exists!'
+   fi
+   #+END_EXAMPLE
+   
+   Following is a simple and learning example of the *else if*
+   condition, using =elif= directive.
+
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+
+   echo "simple calculator"
+   
+   echo "Enter variables:"
+   read var1
+   read var2
+   
+   echo "Enter number corresponding to operator!"
+   echo "1. addition"
+   echo "2. subtraction"
+   echo "3. multiplication"
+   echo "4. division"
+   
+   read operator
+   
+   if [ $operator -eq 1 ] 
+   then
+   echo "addition result " $(($var1 + $var2))
+   elif [ $operator -eq 2 ] 
+   then
+   echo "subtraction result " $(($var1 - $var2))
+   elif [ $operator -eq 3 ] 
+   then
+   echo "multiplication result " $(($var1 * $var2))
+   elif [ $operator -eq 4 ] 
+   then
+   echo "division result " $(($var1 / $var2))
+   else
+   echo "invalid operator"
+   fi
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
