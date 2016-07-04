@@ -2806,11 +2806,13 @@
    (sub-shells) does not have access to the values of these variables.
 
    To make the variable accessible to child processes, variable must
-   be promoted to environment variables using the =export= command as
-   follows:
+   be promoted to environment variables using the =export=
+   command. One of the following ways can be followed:
+
    #+BEGIN_EXAMPLE
    $ export variable=value
    #+END_EXAMPLE
+
    #+BEGIN_EXAMPLE
    $ variable=value
    $ export variable
@@ -2825,9 +2827,10 @@
    a spawned process does not make it available in the process that
    launched it.
 
-   If we define variable without =export= then the variable scope is
+   If we define variable without =export=, then the variable scope is
    restricted to the shell and is not available to any other process.
    We use this for loop variables, temporary variables etc.
+
    #+BEGIN_EXAMPLE
    $ variable=value
    #+END_EXAMPLE
@@ -2852,6 +2855,28 @@
    |------------+-----------------------------|
    | $#         | Number of arguments         |
    |------------+-----------------------------|
+
+** Input and Output redirection
+   The input of a command can be read from a file. The process of
+   reading input from a file is called input redirection.
+
+   #+BEGIN_EXAMPLE
+   $ wc -l < file.txt
+   #+END_EXAMPLE
+
+
+   The process of diverting the output of a program to a file is
+   called output redirection.
+
+   Example:
+   #+BEGIN_EXAMPLE
+   $ free > /tmp/free.out
+   #+END_EXAMPLE
+
+   To append the output to already existing file use =>>=.
+   #+BEGIN_EXAMPLE
+   $ free >> /tmp/free.out
+   #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
