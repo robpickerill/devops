@@ -2800,7 +2800,25 @@
    We can get the list of environment variables with the =env=, =set=,
    or =printenv= command.
 
-** read about export and without export.
+** Defining a variable
+   To make the variable accessible to any process we run from the
+   shell, we have to use =export= command. =export= makes the variable
+   available to sub-processes.
+   #+BEGIN_EXAMPLE
+   $ export variable=value
+   #+END_EXAMPLE
+
+   If we define variable without =export= then the variable scope is
+   restricted to the shell and is not available to any other process.
+   We use this for loop variables, temporary variables etc.
+   #+BEGIN_EXAMPLE
+   $ variable=value
+   #+END_EXAMPLE
+
+   It is important to note that =export= doesn't make it available to
+   parent processes. That is, specifying and exporting a variable in
+   a spawned process does not make it available in the process that
+   launched it. 
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
