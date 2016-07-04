@@ -2832,6 +2832,27 @@
    $ variable=value
    #+END_EXAMPLE
 
+** Script parameters
+   Users often need to pass parameter values to a script, such as a
+   filename, data, etc.
+
+   Within a script, the parameters or an argument is represented with
+   a =$= and a number.
+
+   |------------+-----------------------------|
+   | Parameter  | Meaning                     |
+   |------------+-----------------------------|
+   | $0         | script name                 |
+   |------------+-----------------------------|
+   | $1         | First parameter             |
+   |------------+-----------------------------|
+   | $2,$3,etc. | Second,third parameter etc. |
+   |------------+-----------------------------|
+   | $*         | All parameters              |
+   |------------+-----------------------------|
+   | $#         | Number of arguments         |
+   |------------+-----------------------------|
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
