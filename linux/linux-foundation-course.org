@@ -2972,6 +2972,13 @@
    | -le       | less than or equal to    |
    |-----------+--------------------------|
 
+** Arithmetic Expressions
+   Arithmetic expressions can be evaluated in the following three
+   ways:
+   1. expr 8 + 8
+   2. let x=( 1 + 2 ); echo $x
+   3. echo $((x+1))
+  
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
