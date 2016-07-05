@@ -2946,6 +2946,32 @@
    fi
    #+END_EXAMPLE
 
+   String comparison example:
+   #+BEGIN_EXAMPLE
+   if [ string1 == string2 ]; then
+       ACTION
+   fi
+   #+END_EXAMPLE
+
+** Numerical tests
+   We can use specially defined operators with the if statement to
+   compare numbers.
+   |-----------+--------------------------|
+   | *Operator | Meaning*                 |
+   |-----------+--------------------------|
+   | -eq       | Equal to                 |
+   |-----------+--------------------------|
+   | -lt       | less than                |
+   |-----------+--------------------------|
+   | -gt       | greater than             |
+   |-----------+--------------------------|
+   | -ne       | not equal to             |
+   |-----------+--------------------------|
+   | -ge       | greater than or equal to |
+   |-----------+--------------------------|
+   | -le       | less than or equal to    |
+   |-----------+--------------------------|
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -2957,6 +2983,7 @@
   - Revise apt-get.
   - Try out boot loader password.
   - Revise proc filesystem
+  - Understand sgid and suid properly.
 
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
