@@ -21,9 +21,10 @@
   choose to devote special attention to, the reliability is one we
   regard as primary.
 
-  Belief in the value of preparation and documentation, and an
-  awareness of what could go wrong, coupled with a strong desire to
-  prevent it.
+* SRE principle
+  Thoroughness and dedication, belief in the value of preparation and
+  documentation, and an awareness of what could go wrong, coupled with
+  a strong desire to prevent it.
 
   Common to all SREs is the belief in and aptitude for developing
   software systems to solve complex problems.
