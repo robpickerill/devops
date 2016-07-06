@@ -4,17 +4,22 @@
 #+Email: yogeshiiith@gmail.com
 
 * Introduction
-  This document describes the learning and important points from site
-  reliability engineering book - google.
+  This document describes the learnings from reading of the book *site
+  reliability engineering - Google*.
 
-* SRE
+* SRE Definition
   SRE are engineers: apply principles of computer science and
   engineering to build complex and distributed systems.
 
-  Reliability is the most fundamental feature of any
-  product. Definition of reliability is the probability that a system
-  will perform accurately under stated conditions for a stated period
+* Reliability
+  Reliability is the probability that a system will perform a required
+  function without failure under stated conditions for a state period
   of time.
+
+  Reliability is the most fundamental feature of any product. From all
+  the post deployment characteristics of a software that we could
+  choose to devote special attention to, the reliability is one we
+  regard as primary.
 
   Belief in the value of preparation and documentation, and an
   awareness of what could go wrong, coupled with a strong desire to
