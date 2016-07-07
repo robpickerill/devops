@@ -26,8 +26,25 @@
   documentation, and an awareness of what could go wrong, coupled with
   a strong desire to prevent it.
 
-  Common to all SREs is the belief in and aptitude for developing
-  software systems to solve complex problems.
+* System Administrator
+  The system administrator involves assembling existing software
+  components and deploying them to work together to produce a service.
+
+  We need systems that are automati,c not just automated.
+
+* Tenets of SRE
+  A SRE team is responsible for the availability, latency,
+  performance, efficiency, change management, monitoring, emergency
+  response, and capacity planning of the service(s).
+
+  Postmortems should be written for all significant incidents,
+  regardless of whether or not they paged; postmortems that did not
+  trigger a page are even more valuable, as they likely point to clear
+  monitoring gaps. This investigation should establish what happened
+  in detail, find all root causes of the event, and assign actions to
+  correct the problem or improve how it is addressed next time. The
+  goal should be to fix these faults, rather than avoiding or
+  minimizing them.
 
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
