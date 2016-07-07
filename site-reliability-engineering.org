@@ -37,6 +37,7 @@
   performance, efficiency, change management, monitoring, emergency
   response, and capacity planning of the service(s).
 
+* Postmortems
   Postmortems should be written for all significant incidents,
   regardless of whether or not they paged; postmortems that did not
   trigger a page are even more valuable, as they likely point to clear
@@ -45,6 +46,19 @@
   correct the problem or improve how it is addressed next time. The
   goal should be to fix these faults, rather than avoiding or
   minimizing them.
+
+* Monitoring
+  Monitoring is one of the primary means by which service owners keep
+  track of a system's health and availability. A classic and common
+  approach to monitoring is to watch for a specific value or
+  condition, and then to trigger an email alert when that value is
+  exceeded or that condition occurs. However, this type of email
+  alerting is not an effective solution: a system that requires a
+  human to read an email and decide whether or not some type of action
+  needs to be taken in response is fundamentally flawed. Monitoring
+  should never require a human to interpret any part of the alerting
+  domain. Instead, software should do the interpreting, and human
+  should be notified only when they need to take action.
 
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
