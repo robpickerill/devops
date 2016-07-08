@@ -60,7 +60,16 @@
   domain. Instead, software should do the interpreting, and human
   should be notified only when they need to take action.
 
+* Efficiency and Performance
+  Efficient use of resources is important any time a service cares
+  about money. 
+
+  Resource use is a function of demand(load), capacity, and software
+  efficiency. SREs predict demand, provision capacity, and can modify
+  the software. These three factors are a large part (though not the
+  entirety) of a service's efficiency.
+
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
      role of the system administrator was being transformed."
-
+  2. OpenFlow open-standard communications protocol.
