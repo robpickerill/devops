@@ -75,6 +75,33 @@
   be able to eliminate this type of work completely, but we have to
   continually work toward minimizing it.
 
+* Engineering
+  Engineering work is novel and intrinsically requires human
+  judgment. It produces a permanent improvement in the service, and is
+  guided by strategy. It is frequently creative and innovative,
+  taking a design-driven approach to solving a problem - the more
+  generalized, the better. Engineering work helps the team or the SRE
+  organization handle a larger service, or more services, with the
+  same level of staffing.
+
+  Typical SRE activities fall into the following approximate
+  categories:
+
+** Software Engineering
+   Involves writing or modifying code, in addition to any associated
+   design and documentation work. Example include writing automation
+   scripts, creating tools or frameworks, adding service features for
+   scalability and reliability, or modifying infrastructure code to
+   make it more robust.
+
+** Systems Engineering
+   Involves configuring production systems, modifying configurations,
+   or documenting systems in a way that produces lasting improvements
+   from a one-time effort. Example include monitoring setup and
+   updates, load balancing configuration, server configuration, tuning
+   OS parameters. Systems engineering also includes consulting on
+   architecture, design, and productionization for developers team.
+
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
      role of the system administrator was being transformed."
