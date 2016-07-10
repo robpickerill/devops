@@ -84,6 +84,9 @@
   organization handle a larger service, or more services, with the
   same level of staffing.
 
+  Every SRE needs to spend at least 50% of their time on engineering
+  work, when averaged over a few quarters or a year.
+
   Typical SRE activities fall into the following approximate
   categories:
 
