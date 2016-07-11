@@ -146,6 +146,18 @@
    Used to indicate a single instance of a running kernel in either a
    physical server, virtual machine, or container. There might be
    multiple services worth monitoring on a single machine.
+* Why monitor
+** Analyzing long-term trends
+   How big is my database and how fast is it growing ? How quickly is
+   my daily-active user count growing ?
+
+** Comparing over time or experiment groups
+   How much better is my memcache hit rate with an extra node? Is my
+   site slower than it was last week?
+* Principle of monitoring
+  Monitoring system that direct to a pager need to be very simple and
+  robust. Rules that generate alerts for humans should be simple to
+  understand and represent a clear failure.
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
      role of the system administrator was being transformed."
