@@ -105,6 +105,47 @@
    OS parameters. Systems engineering also includes consulting on
    architecture, design, and productionization for developers team.
 
+* Monitoring Distributed Systems
+** Monitoring
+   Collecting, processing, aggregating, and displaying real-time
+   quantitative data about a system, such as query counts and types,
+   error counts and types, processing times, and server lifetimes.
+
+** White-box monitoring
+   Monitoring based on metrics exposed by the internals of the system,
+   including logs, interfaces like the java virtual machine profiling
+   interface, or an HTTP handler that emits internal statistics.
+
+** Black-box monitoring
+   Testing externally visible behavior as a user would see it.
+
+** Dashboard
+   An application that provides a summary view of a service's core
+   metrics. A dashboard may have filters, selectors, and so on, but
+   is prebuilt to expose the metrics most important to its users. The
+   dashboard might also display team information such as ticket queue
+   length, a list of high priority bugs, the current on-call engineer
+   for a given area of responsibility, or recent pushes.
+
+** Alert
+   A notification intended to be read by a human and that is pushed
+   to a system such as a bug or ticket queue, an email alias, or a
+   pager.
+
+** Root Cause
+   A defect in a software or human system that, if repaired, instills
+   confidence that this event won't happen again in the same way. A
+   given incident might have root causes: for example, perhaps it was
+   caused by a combination of insufficient process automation,
+   software that crashed on bogus input, and insufficient testing of
+   the script used to generate the configuration. Each of these
+   factors might stand alone as a root cause, and each should be
+   repaired.
+
+** Node and machine
+   Used to indicate a single instance of a running kernel in either a
+   physical server, virtual machine, or container. There might be
+   multiple services worth monitoring on a single machine.
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
      role of the system administrator was being transformed."
