@@ -2953,6 +2953,31 @@
    fi
    #+END_EXAMPLE
 
+   Following is an interesting program which checks whether the input
+   entered by user is a number or not, and then take actions
+   accordingly. Note how the if statement is evaluated using =echo=
+   and =grep -q= command.
+   #+BEGIN_EXAMPLE
+   echo "Enter 1 or 2"
+   read number
+   
+   if echo $number | egrep -q '^[0-9]+$'; then
+   if [ $number -eq 1 ] 
+   then
+   variable=1
+   export variable
+   else
+   variable=2
+   export variable
+   fi
+   else
+   variable=123
+   export variable
+   fi
+   
+   echo $variable
+   #+END_EXAMPLE
+
 ** Numerical tests
    We can use specially defined operators with the if statement to
    compare numbers.
