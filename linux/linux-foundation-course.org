@@ -2749,6 +2749,33 @@
    Arguments passed to the function can be referred as $1, $2 and so
    on.
    
+   Examples: Input number is used to call the function with that
+   number in its name.
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   
+   func1() {
+   echo "This message is from function 1"
+   
+   }
+   
+   func2() {
+   echo "This message is from function 2"
+   
+   }
+   
+   func3() {
+   echo "This message is from function 3"
+   
+   }
+   
+   echo "Enter 1, 2 or 3"
+   
+   read variable
+   
+   func$variable
+   #+END_EXAMPLE
+
 ** Built-in commands
    Types of commands:
    1. Compiled application
