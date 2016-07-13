@@ -2749,7 +2749,7 @@
    Arguments passed to the function can be referred as $1, $2 and so
    on.
    
-   Examples: Input number is used to call the function with that
+   Example: Input number is used to call the function with that
    number in its name.
    #+BEGIN_EXAMPLE
    #!/bin/bash
@@ -2774,6 +2774,43 @@
    read variable
    
    func$variable
+   #+END_EXAMPLE
+
+   Example: An arithmetic example, a simple calculator. Program
+   checks if the number of arguments passed are less than 3, then it
+   prints the usage message. Otherwise it does computation on the
+   provided numbers based on the argument passed.
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+
+   if [ $# -lt 3 ]
+   then
+   echo "please provide input in the following format: a number1 number2"
+   exit 1
+   else
+   choise=$1
+   number1=$2
+   number2=$3
+   fi
+   
+   if echo $choise | egrep -q 'a' 
+   then
+   answer=$(( $number1 + $number2 ))
+   else if echo $choise | egrep -q 'm' 
+   then
+   answer=$(( $number1 * $number2 ))
+   else if echo $choise | egrep -q 's' 
+   then
+   answer=$(( $number1 - $number2 ))
+   else if echo $choise | egrep -q 'd' 
+   then
+   answer=$(( $number1 / $number2 ))
+   fi
+   fi
+   fi
+   fi
+   
+   echo $answer
    #+END_EXAMPLE
 
 ** Built-in commands
