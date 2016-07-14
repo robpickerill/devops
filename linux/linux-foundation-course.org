@@ -2693,17 +2693,17 @@
    
    Return values are stored in the environment variable, and can be
    viewed by =ehco $?=.
-** Example
-   1. exit status example
-      #+BEGIN_EXAMPLE
-      #!/bin/bash
-      echo "Please enter your name"
-      read name
-      echo "Hi $name!"
-      exit 0
-      #+END_EXAMPLE
+  
+   Example:
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+   echo "Please enter your name"
+   read name
+   echo "Hi $name!"
+   exit 0
+   #+END_EXAMPLE
 
-** Syntax
+** Syntaxes
    |-------------+--------------------------------------|
    | *Characters | Description*                         |
    |-------------+--------------------------------------|
@@ -2776,10 +2776,14 @@
    func$variable
    #+END_EXAMPLE
 
-   Example: An arithmetic example, a simple calculator. Program
-   checks if the number of arguments passed are less than 3, then it
-   prints the usage message. Otherwise it does computation on the
-   provided numbers based on the argument passed.
+   Example: An arithmetic example, a simple calculator. Program checks
+   if the number of arguments passed are less than 3, then it prints
+   the usage message. Otherwise it does computation on the provided
+   numbers based on the argument passed. Note how the if condition is
+   constructed with the use of =echo= and =grep -q= commands. If
+   commands successfully executes it will return true(0) and if it
+   fails it will return false(1). "If" statement will act according to
+   the exit status of command.
    #+BEGIN_EXAMPLE
    #!/bin/bash
 
@@ -2788,21 +2792,21 @@
    echo "please provide input in the following format: a number1 number2"
    exit 1
    else
-   choise=$1
+   choice=$1
    number1=$2
    number2=$3
    fi
    
-   if echo $choise | egrep -q 'a' 
+   if echo $choice | egrep -q 'a' 
    then
    answer=$(( $number1 + $number2 ))
-   else if echo $choise | egrep -q 'm' 
+   else if echo $choice | egrep -q 'm' 
    then
    answer=$(( $number1 * $number2 ))
-   else if echo $choise | egrep -q 's' 
+   else if echo $choice | egrep -q 's' 
    then
    answer=$(( $number1 - $number2 ))
-   else if echo $choise | egrep -q 'd' 
+   else if echo $choice | egrep -q 'd' 
    then
    answer=$(( $number1 / $number2 ))
    fi
@@ -2928,7 +2932,6 @@
    $ wc -l < file.txt
    #+END_EXAMPLE
 
-
    The process of diverting the output of a program to a file is
    called output redirection.
 
@@ -2944,8 +2947,6 @@
 
 ** If statement
    The syntax for an =if= statement is as follows:
-   
-   Format of the if statement:
    #+BEGIN_EXAMPLE
    if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
    #+END_EXAMPLE
@@ -2959,7 +2960,7 @@
    fi
    #+END_EXAMPLE
 
-   Examples:
+   Example:
    #+BEGIN_EXAMPLE
    #!/bin/bash
    
@@ -3011,6 +3012,7 @@
    #+END_EXAMPLE
 
    String comparison example:
+
    #+BEGIN_EXAMPLE
    if [ string1 == string2 ]; then
        ACTION
@@ -3019,8 +3021,8 @@
 
    Following is an interesting program which checks whether the input
    entered by user is a number or not, and then take actions
-   accordingly. Note how the if statement is evaluated using =echo=
-   and =grep -q= command.
+   accordingly.
+
    #+BEGIN_EXAMPLE
    echo "Enter 1 or 2"
    read number
