@@ -3070,6 +3070,11 @@
    2. let x=( 1 + 2 ); echo $x
    3. echo $((x+1))
   
+* Advanced Bash Scripting
+** String Manipulation
+   String operators include those that do comparison, sorting, and
+   finding the length.
+  
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
