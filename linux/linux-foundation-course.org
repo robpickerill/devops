@@ -2831,8 +2831,8 @@
    script. Example cd, pwd, echo, read and logout.
 
 ** Command substitution
-   At times, we may need to substitute the result of a command as a
-   portion of another command. It can be done in two ways:
+   Command substitution allows to substitute the result of a command
+   as a portion of another command. It can be done in two ways:
    
    - By enclosing the inner command with backticks =`=
    - By enclosing the inner command in =$()=
