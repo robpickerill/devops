@@ -3074,7 +3074,34 @@
 ** String Manipulation
    String operators include those that do comparison, sorting, and
    finding the length.
-  
+   
+   |--------------------+----------------------------------------|
+   | *Operator          | Meaning*                               |
+   |--------------------+----------------------------------------|
+   | string1 > string2  | Compares the sorting order of string1  |
+   |                    | string2                                |
+   |--------------------+----------------------------------------|
+   | string1 == string2 | Compares the character in string1 with |
+   |                    | the characters in string2              |
+   |--------------------+----------------------------------------|
+   | mylen1=${#string1} | Saves the length of string1 in the     |
+   |                    | variable mylen1                        |
+   |--------------------+----------------------------------------|
+
+   Example:
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+
+   file=$1
+   
+   if [ -f $file ];
+   then
+   echo "File $file exists!"
+   else
+   echo "File $file does not exist!"
+   fi
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
