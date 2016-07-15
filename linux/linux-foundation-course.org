@@ -3088,7 +3088,44 @@
    |                    | variable mylen1                        |
    |--------------------+----------------------------------------|
 
-   Example:
+** Parts of a string
+   To extract first character of a string.
+   #+BEGIN_EXAMPLE
+   ${string:0:1}
+   #+END_EXAMPLE
+   Here zero is the offset in the string (i.e., which character to
+   begin from) where the extraction needs to start and 1 is the
+   number of characters to be extracted.
+
+   To extract all characters in a string after a dot(.), we can use
+   the following expression:
+   #+BEGIN_EXAMPLE
+   ${string#*.}
+   #+END_EXAMPLE
+   
+** Examples
+   Test status of ping command, to check if machine is reachable or
+   not.
+   #+BEGIN_EXAMPLE
+   #!/bin/bash
+
+   ip=$1
+   
+   if [ ! -z $ip ]
+   then
+   ping -c 1 $ip > /dev/null
+   if [ $? -eq 0 ] 
+   then
+   echo "Machine is reachable and running!"
+   else
+   echo "Machine is not reachable!"
+   fi
+   else
+   echo "IP address is not provided!"
+   fi
+   #+END_EXAMPLE
+
+   Test if file exists or not.
    #+BEGIN_EXAMPLE
    #!/bin/bash
 
@@ -3101,7 +3138,7 @@
    echo "File $file does not exist!"
    fi
    #+END_EXAMPLE
-
+   
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
