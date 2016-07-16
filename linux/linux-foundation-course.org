@@ -3142,26 +3142,46 @@
 ** Looping constructs
    In loop construct the set of commands that are to be executed
    should be enclosed between do and done.
-   #+BEGIN_EXAMPLE
-   #!/bin/bash
 
-   for x in $(ls)
-   do
-   ext=${x##*.}
-   echo $ext
-   case $ext in
-   c) echo "$x : c source file";;
-   sh) echo "$x : bash source file";;
-   txt) echo "$x : text file";;
-   *) echo "$x: unknown file type";;
-   esac
-   done
-   #+END_EXAMPLE
+   1. for loop example: Objective is to find the type of files from
+      the filename extension.
+      #+BEGIN_EXAMPLE
+      #!/bin/bash
+      
+      for x in $(ls)
+      do
+      ext=${x##*.}
+      echo $ext
+      case $ext in
+      c) echo "$x : c source file";;
+      sh) echo "$x : bash source file";;
+      txt) echo "$x : text file";;
+      *) echo "$x: unknown file type";;
+      esac
+      done
+      #+END_EXAMPLE
 
-   - Points to note in the above example ::
-     1. extension of file is extracted using double hash "{x##*.}"
-     2. case construct has to be closed by "esac"
-     3. patterns are not enclosed within double quotes
+      - Points to note in the above example ::
+        1. extension of file is extracted using double hash "{x##*.}"
+        2. case construct has to be closed by "esac"
+        3. patterns are not enclosed within double quotes
+   2. while loop example: Objective is to display the contents of an
+      existing file. 
+      #+BEGIN_EXAMPLE
+      #!/bin/bash
+
+      echo "Enter the absolute path of the file to be read"
+      read file
+      exec <$file # redirect stdin to a file
+      while read line
+      do
+      echo "$line"
+      done
+      #+END_EXAMPLE
+      - Points to note in the above example ::
+	1. stdin is redirected to a file using 'exec' command.
+        2. "$line" is enclosed within double quotes, to avoid
+           interpretation of any special characters by shell.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
