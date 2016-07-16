@@ -1,0 +1,58 @@
+#+Title: Cron in Linux
+#+Author: Yogesh Agrawal
+#+Date: <2016-07-16 Sat>
+
+* Introduction
+  This is an introduction to cron.
+
+* What is cron
+  Cron is the name of the program which enables unix users to execute
+  commands or scripts automatically at a specified time/date.
+
+* How to start cron
+  Cron is a daemon, which means that it only needs to be started
+  once, and will lay dormant until it is required. The cron daemon,
+  or crond, stays dormant until a time specified in one of the config
+  files, or crontabs.
+
+  Vixie cron will automatically reload the files after they have been
+  edited with the crontab command. Some cron version reload the file
+  every minute, and some require restarting, but vixie cron just
+  reloads the file if they have changed.
+* Using cron
+  There are different ways to use cron.
+
+  In the /etc/ directory we will find some sub directories called
+  'cron.hourly', 'cron.daily', 'cron.weekly' and 'cron.monthly'. If
+  we place a script into one of those directories it will be run
+  either hourly, daily, weekly or monthly, depending on the name of
+  the directory.
+
+  Editing crontab (the name for cron's config files) provides more
+  flexibility than above method. The main configuration file is
+  normally /etc/crontab. 
+
+  An entry in cron is made up of a series of fields. There are
+  normally seven fields in one entry. The fields are:
+  #+BEGIN_EXAMPLE
+  minute hour dom month dow user cmd
+  #+END_EXAMPLE
+
+  - minute :: This controls what minute of the hour the command will
+              run on, and is between '0' and '59'.
+  - hour :: This controls what hour the command will run on, and is
+            specified in the 24 hour clock, values must be between '0'
+            and '23' (0 is midnight).
+  - dom :: This is the Day of the month, that we want to run command
+           on, e.g. to run a command on the 19th of each month, the
+           dom would be 19.
+  - month :: This is the month the specified command will run on, it
+             may be specified numerically (0-12), or as the name of
+             the month (e.g. May).
+  - dow :: This is the day of week that we want a command to be run
+           on, it can also be numeric (0-7) or as the name of the day
+           (e.g. sun).
+  - user :: This is the user who runs the command.
+  - cmd :: This is the command that we want to run.
+
+  If we do not wish to specify any field we can place * at its place.
