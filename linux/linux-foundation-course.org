@@ -3141,7 +3141,7 @@
    
 ** Looping constructs
    In loop construct the set of commands that are to be executed
-   should be enclosed between do and done.
+   should be enclosed between =do= and =done=.
 
    1. for loop example: Objective is to find the type of files from
       the filename extension.
@@ -3182,6 +3182,18 @@
 	1. stdin is redirected to a file using 'exec' command.
         2. "$line" is enclosed within double quotes, to avoid
            interpretation of any special characters by shell.
+      #+BEGIN_EXAMPLE
+      #!/bin/bash
+
+      echo "Enter the absolute path of the file to be read"
+      read file
+      exec 4<$file # create a file descriptor
+      exec <&4 # redirects stdin to a file
+      while read line
+      do
+      echo "$line"
+      done
+      #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
