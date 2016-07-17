@@ -3195,6 +3195,23 @@
       done
       #+END_EXAMPLE
 
+* Script Debugging
+  Debugging helps to troubleshoot resolve errors, and is one of the
+  most important tasks a system administrator performs.
+
+  Before fixing an error(bug), it is vital to know its source.
+
+  In bash shell, we can run a script in debug mode by doing =bash -x
+  ./script.sh=. Debug mode helps identify error because:
+  1. It traces and prefixes each command with the + character.
+  2. It displays each command before executing it.
+  3. It can debug selected parts of a script with:
+     #+BEGIN_EXAMPLE
+     set -x    # turns on debugging
+     ...
+     set +x    # turns off debugging
+     #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
