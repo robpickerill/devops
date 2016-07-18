@@ -3253,6 +3253,18 @@
    echo $var > $TEMP
    #+END_EXAMPLE
 
+** Discarding output with /dev/null
+   Certain commands like find will produce voluminous amounts of
+   output which can overwhelm the console. To avoid this, we can
+   redirect the large output to a special file (a device node) called
+   =/dev/null=.
+
+   It discards all the data that gets written to it and never returns
+   a failure on write operations.
+   #+BEGIN_EXAMPLE
+   find / -iname *.txt > /dev/null
+   #+END_EXAMPLE
+   
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
