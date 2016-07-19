@@ -3288,6 +3288,43 @@
    17315
    #+END_EXAMPLE
 
+** How kernel generate random numbers
+   - Hardware random number generator ::
+	Some servers have hardware random number generators that take
+        input noise signals such as thermal noise and photoelectric
+        effect. Then a *transducer* converts this noise into electric
+        signal, and *A-D converter* then converts this into a digital
+        number which is considered as a random number.
+
+   - Software random number generator ::
+	Most common computer do not contain such specialized hardware
+        and instead rely on events created during booting to create
+        raw data needed.
+
+   Regardless of which of these sources used to generate random number
+   the system maintains a so-called *entropy pool* of these digital
+   numbers/random bits. Random numbers are created from this entropy
+   pool.
+
+   The linux kernel offers the */dev/random* and */dev/urandom* device
+   nodes which draw on the entropy pool to generate random numbers.
+
+   #+BEGIN_EXAMPLE
+   $ ls -l /dev/*random
+   crw-rw-rw- 1 root root 1, 8 Jul 19 07:34 /dev/random
+   crw-rw-rw- 1 root root 1, 9 Jul 19 07:34 /dev/urandom
+   #+END_EXAMPLE
+
+   */dev/random* is used where high quality randomness is required,
+   such as one time pad or key generation, but it is relatively slow
+   to provide values. */dev/urandom* is faster and suitable (good
+   enough) for most cryptographic purposes.
+
+   When entropy pool is empty, =/dev/random= is blocked and does not
+   generate any number until additional environmental noise (network
+   traffic, mouse movement, etc.) is gathered whereas =/dev/urandom=
+   reuses the internal pool to produce more pseudo-random bits.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
