@@ -621,46 +621,47 @@
    and synaptic. Its native user interface at the command line, with
    programs that include =apt-get= and =apt-cache=.
 
-   Following table presents some basic commands using for debian and
+   Following table presents some basic commands used for debian and
    fedora family system.
-|--------------------------------+--------------------+-------------------------|
-| Operation                      | RPM                | deb                     |
-|--------------------------------+--------------------+-------------------------|
-| Install package                | rpm -i foo.rpm     | dpkg --install foo.deb  |
-|--------------------------------+--------------------+-------------------------|
-| Install package, dependencies  | yum install foo    | apt-get install foo     |
-|--------------------------------+--------------------+-------------------------|
-| Remove package                 | rpm -e foo.rpm     | dpkg --remove foo.deb   |
-|--------------------------------+--------------------+-------------------------|
-| Remove package, dependencies   | yum remove foo     | apt-get remove foo      |
-|--------------------------------+--------------------+-------------------------|
-| Update package                 | rpm -U foo.rpm     | dpkg --install foo.deb  |
-|--------------------------------+--------------------+-------------------------|
-| Update package, dependencies   | yum update foo     | apt-get install foo     |
-|--------------------------------+--------------------+-------------------------|
-| Update entire system           | yum update         | apt-get dist-upgrade    |
-|--------------------------------+--------------------+-------------------------|
-| Show all installed packages    | rpm -qa or         | dpkg --list             |
-|                                | yum list installed |                         |
-|--------------------------------+--------------------+-------------------------|
-| Get information on package     | rpm -qil foo       | dpkg --listfiles foo    |
-|--------------------------------+--------------------+-------------------------|
-| Show packages named foo        | yum list "foo"     | apt-cache search foo    |
-|--------------------------------+--------------------+-------------------------|
-| Show all available packages    | yum list           | apt-cache dumpavail foo |
-|--------------------------------+--------------------+-------------------------|
-| What packages is file part of? | rpm -qf file       | dpkg --search file      |
-|--------------------------------+--------------------+-------------------------|
-| List packages matching given   |                    | dpkg -l <package-name>  |
-| pattern                        |                    |                         |
-|--------------------------------+--------------------+-------------------------|
+
+   |--------------------------------+--------------------+------------------------|
+   | *Operation                     | RPM                | deb*                   |
+   |--------------------------------+--------------------+------------------------|
+   | Install package                | rpm -i foo.rpm     | dpkg --install foo.deb |
+   |--------------------------------+--------------------+------------------------|
+   | Install package, dependencies  | yum install foo    | apt-get install foo    |
+   |--------------------------------+--------------------+------------------------|
+   | Remove package                 | rpm -e foo.rpm     | dpkg --remove foo.deb  |
+   |--------------------------------+--------------------+------------------------|
+   | Remove package, dependencies   | yum remove foo     | apt-get remove foo     |
+   |--------------------------------+--------------------+------------------------|
+   | Update package                 | rpm -U foo.rpm     | dpkg --install foo.deb |
+   |--------------------------------+--------------------+------------------------|
+   | Update package, dependencies   | yum update foo     | apt-get install foo    |
+   |--------------------------------+--------------------+------------------------|
+   | Update entire system           | yum update         | apt-get dist-upgrade   |
+   |--------------------------------+--------------------+------------------------|
+   | Show all installed packages    | rpm -qa or         | dpkg --list            |
+   |                                | yum list installed |                        |
+   |--------------------------------+--------------------+------------------------|
+   | Get information on package     | rpm -qil foo       | dpkg --listfiles foo   |
+   |--------------------------------+--------------------+------------------------|
+   | Show packages named foo        | yum list "foo"     | apt-cache search foo   |
+   |--------------------------------+--------------------+------------------------|
+   | Show all available packages    | yum list           | apt-cache dumpavail    |
+   |--------------------------------+--------------------+------------------------|
+   | What packages is file part of? | rpm -qf file       | dpkg --search file     |
+   |--------------------------------+--------------------+------------------------|
+   | List packages matching given   |                    | dpkg -l <package-name> |
+   | pattern                        |                    |                        |
+   |--------------------------------+--------------------+------------------------|
 
 *** remove
     It is used to remove packages. Removing a package leaves its
     configuration files on the system.
 *** purge
-    It is identical to remove except that the packages are removed and
-    purged (any configuration files are deleted too).
+    It is identical to remove, except that the packages are removed
+    and purged (any configuration files are deleted too).
 *** autoremove
     It is used to remove packages that were automatically installed to
     satisfy dependencies of other packages and are now no longer needed.
@@ -3364,11 +3365,8 @@
   - Revise ch-3 boot process again at the end of the course.
   - Learn why Linux is virus secured. Are there any anti-virus systems
     for Linux. refer [[Process Isolation]]
-  - Read about National Security Agency. 
-  - Revise nfs.
-  - Revise apt-get.
+  - Read about National Security Agency.
   - Try out boot loader password.
-  - Revise proc filesystem
   - Understand sgid and suid properly.
   - try in a test machine
     #+BEGIN_EXAMPLE
