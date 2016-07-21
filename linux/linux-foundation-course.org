@@ -3089,6 +3089,23 @@
    |                    | variable mylen1                        |
    |--------------------+----------------------------------------|
 
+** Boolean Expression
+   |-----------+-----------+---------------------------------------|
+   | *Operator | Operation | Meaning*                              |
+   |-----------+-----------+---------------------------------------|
+   | &&        | AND       | The action will be performed only if  |
+   |           |           | both the conditions evaluate to true. |
+   |-----------+-----------+---------------------------------------|
+   |           | OR        | The action will be performed if any   |
+   |           |           | of the conditions evaluate to true.   |
+   |-----------+-----------+---------------------------------------|
+   | !         | NOT       | The action will be performed only if  |
+   |           |           | the condition evaluates to false.     |
+   |-----------+-----------+---------------------------------------|
+   
+   Example: =[ $number1 -gt $number2 ]= returns *TRUE* if number1 is
+   greater than number2.
+
 ** Parts of a string
    To extract first character of a string.
    #+BEGIN_EXAMPLE
