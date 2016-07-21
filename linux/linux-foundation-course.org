@@ -3376,6 +3376,31 @@
      
      exit 0
   #+END_EXAMPLE
+* Processes
+** Objectives
+   - Describe what a process is and distinguish between types of
+     processes.
+   - Enumerate process attributes.
+   - Manage processes using *ps* and *top* command.
+   - Understand the use of load averages other process metrics.
+   - Manipulate processes by putting them in background and restoring
+     them to foreground.
+   - Use *at*, *cron*, and *sleep* to schedule processes in the
+     future or pause them.
+** What is a process
+   A process is an instance of one or more related tasks(threads)
+   executing on the computer. It is not the same as program or a
+   command; a single program may actually start several processes
+   simultaneously. Some processes are independent of each other and
+   others are related. A failure of one process may or may not affect
+   the others running on the system.
+
+   Process use many system resources, such as memory, CPU cycles, and
+   peripheral devices such as printers and displays. The operating
+   system (especially the kernel) is responsible for allocating a
+   proper share of these resources to each process and ensuring
+   overall optimum utilization.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
