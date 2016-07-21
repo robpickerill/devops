@@ -3401,6 +3401,18 @@
    proper share of these resources to each process and ensuring
    overall optimum utilization.
 
+** Process types
+   A terminal window (one kind of command shell), is a process that
+   runs as long as needed. It allows users to execute programs and
+   access resources in an interactive environment.
+
+   We can also run programs in the background, which means they
+   become *detached* from the shell.
+
+   Process can be of different types according to the task being
+   performed. Here are some different process types along with their
+   descriptions and examples.
+     
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
