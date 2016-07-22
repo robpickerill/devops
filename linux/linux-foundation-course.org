@@ -3457,6 +3457,31 @@
                not asked for its state. It is not alive, but still
                shows up in the system's list of processes.
    
+** Process and thread IDs
+   The operating system keeps track of processes by assigning each
+   process a unique *ID*. This id is used to track process state,
+   resource usages and other characteristics.
+
+   New PIDs are assigned in ascending order as processes are
+   born. Thus PID1 denotes the *init* process (initialization
+   process), and succeeding processes are gradually assigned higher
+   numbers.
+   
+   |--------------------------+----------------------------|
+   | *ID type                 | Description*               |
+   |--------------------------+----------------------------|
+   | Process ID (PID)         | Unique process ID number   |
+   |--------------------------+----------------------------|
+   | Parent Process ID (PPID) | Process (parent) that      |
+   |                          | started this process       |
+   |--------------------------+----------------------------|
+   | Thread ID (TID)          | This is the same as the    |
+   |                          | PID for single-threaded    |
+   |                          | processes. For a multi     |
+   |                          | threaded process, each     |
+   |                          | thread shares the same PID |
+   |                          | but has a unique TID.      |
+   |--------------------------+----------------------------|
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
