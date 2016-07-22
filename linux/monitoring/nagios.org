@@ -95,6 +95,21 @@
      #+BEGIN_EXAMPLE
      sudo /etc/init.d/nagios-nrpe-server restart
      #+END_EXAMPLE
+* Mail alert
+  - Edit =/etc/nagios/objects/contacts.cfg= configuration file to add email
+    address
+    #+BEGIN_EXAMPLE
+    email                           admin@example.com
+    #+END_EXAMPLE
+  - Edit host file =/etc/nagios/servers/host.cfg= file to add contacts
+    #+BEGIN_EXAMPLE
+    contacts                <contact_name>
+    #+END_EXAMPLE
+  - Restart nagios service
+    #+BEGIN_EXAMPLE
+    service nagios restart
+    #+END_EXAMPLE
 * References
   - https://www.digitalocean.com/community/tutorials/how-to-install-nagios-on-centos-6
   - http://tecadmin.net/install-nrpe-on-ubuntu/
+  - https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Console_Administration_Guide/Configuring_Nagios_to_Send_Mail_Notifications.html
