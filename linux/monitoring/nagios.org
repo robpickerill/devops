@@ -36,27 +36,27 @@
      mkdir /etc/nagios/servers
      echo "cfg_dir=/etc/nagios/servers" >> /etc/nagios/nagios.cfg
      cd /etc/nagios/servers
-     touch test-cf-website.com.cfg
+     touch host.cfg
      #+END_EXAMPLE
    - Edit /etc/nagios/servers/test-cf-website.capitalfloat.com.cfg file
      #+BEGIN_EXAMPLE
      define host {
         use                     linux-server
-        host_name               test-cf-website.capitalfloat.com
-        alias                   test-cf-website.capitalfloat.com
-        address                 52.41.103.175
+        host_name               <host-name>
+        alias                   <host-name>
+        address                 <ip-address>
         }
 
      define service {
         use                             generic-service
-        host_name                       test-cf-website.capitalfloat.com
+        host_name                       <host-name>
         service_description             PING
         check_command                   check_ping!100.0,20%!500.0,60%
         }
 
      define service {
         use                             generic-service
-        host_name                       test-cf-website.capitalfloat.com
+        host_name                       <host-name>
         service_description             SSH
         check_command                   check_ssh
         notifications_enabled           0
@@ -64,9 +64,16 @@
 
      define service {
         use                             generic-service
-        host_name                       test-cf-website.capitalfloat.com
+        host_name                       <host-name>
         service_description             Current Load
         check_command                   check_local_load!5.0,4.0,3.0!10.0,6.0,4.0
+        }
+
+     define service {
+        use                             generic-service         ; Inherit default values from a template
+        host_name                       <host-name>
+        service_description             HTTP
+        check_command                   check_http
         }
      #+END_EXAMPLE
    - Set folder permission correctly
