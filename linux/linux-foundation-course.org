@@ -3403,16 +3403,46 @@
 
 ** Process types
    A terminal window (one kind of command shell), is a process that
-   runs as long as needed. It allows users to execute programs and
-   access resources in an interactive environment.
-
-   We can also run programs in the background, which means they
-   become *detached* from the shell.
+   runs as long as needed. We can also run programs in the background,
+   which means they become *detached* from the shell.
 
    Process can be of different types according to the task being
-   performed. Here are some different process types along with their
-   descriptions and examples.
-     
+   performed. Following table list different process types along with
+   their descriptions and examples.
+
+   |----------------+--------------------------------------------------+----------------|
+   | *Process type  | Description                                      | Example*       |
+   |----------------+--------------------------------------------------+----------------|
+   | Interactive    | Need to be started                               | bash, firefox, |
+   | Processes      | by a user                                        | top            |
+   |----------------+--------------------------------------------------+----------------|
+   | Batch          | Automatic processes                              | updatedb       |
+   | Processes      | which are scheduled from                         |                |
+   |                | and then disconnected from                       |                |
+   |                | the terminal. These tasks                        |                |
+   |                | are queued and work on a                         |                |
+   |                | *FIFO* basis                                     |                |
+   |----------------+--------------------------------------------------+----------------|
+   | Daemons        | Server processes that run                        | httpd, sshd,   |
+   |                | continuously. Many are launched                  | xinetd         |
+   |                | during system startup and then                   |                |
+   |                | wait for a user or system request                |                |
+   |                | indicating that their service is                 |                |
+   |                | required.                                        |                |
+   |----------------+--------------------------------------------------+----------------|
+   | Threads        | Lightweight processes. These are tasks           | firefox,       |
+   |                | that run under the umbrella of a main process,   | gnome-terminal |
+   |                | sharing memory and other resources. But are      |                |
+   |                | scheduled and run by the system. An individual   |                |
+   |                | thread can end without terminating the main      |                |
+   |                | process, and main process can create new threads |                |
+   |                | at any time.                                     |                |
+   |----------------+--------------------------------------------------+----------------|
+   | Kernel threads | Threads that user neither create nor terminate,  | kswapd0,       |
+   |                | and have little control over. Tasks such as      | migration,     |
+   |                | moving threads from one cpu to another.          | ksoftirqd      |
+   |----------------+--------------------------------------------------+----------------|
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
