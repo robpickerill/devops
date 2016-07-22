@@ -3443,6 +3443,21 @@
    |                | moving threads from one cpu to another.          | ksoftirqd      |
    |----------------+--------------------------------------------------+----------------|
 
+** Process states
+   - running :: It means it is either currently executing instructions
+                on a CPU, or is currently waiting for a share (or time
+                slice) so it can run. In this state process is
+                sitting on a run queue.
+
+   - sleeping :: It means process is waiting for something to
+                 happen. In this state process is sitting on a wait
+                 queue.
+
+   - zombie :: It means child process terminated but its parent has
+               not asked for its state. It is not alive, but still
+               shows up in the system's list of processes.
+   
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
