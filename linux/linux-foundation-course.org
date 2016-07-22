@@ -3463,7 +3463,7 @@
    resource usages and other characteristics.
 
    New PIDs are assigned in ascending order as processes are
-   born. Thus PID1 denotes the *init* process (initialization
+   born. Thus PID 1 denotes the *init* process (initialization
    process), and succeeding processes are gradually assigned higher
    numbers.
    
@@ -3482,6 +3482,23 @@
    |                          | thread shares the same PID |
    |                          | but has a unique TID.      |
    |--------------------------+----------------------------|
+
+** Listing processes
+   *ps* program provides information about the currently running
+   processes. Which process to examine, what information to display
+   and precisely what should be the output format, all these things
+   can be specified by various options.
+   
+   Example:
+   1. ps command without any options display all processes running
+      under the current shell.
+      #+BEGIN_EXAMPLE
+      $ ps
+        PID TTY          TIME CMD
+      2875 pts/7    00:00:00 bash
+      2989 pts/7    00:00:54 emacs
+      3804 pts/7    00:00:00 ps
+      #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
