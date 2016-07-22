@@ -1,0 +1,11 @@
+#+Title: Nagios Monitoring
+#+Author: Yogesh Agrawal
+#+Email: yogesh.agrwal@capitalfloat.com; yogeshiiith@gmail.com
+#+Date: <2016-07-22 Fri>
+
+* Introduction
+  This document describes about the monitoring using Nagios tool.
+
+* Objective
+  - Setup nagios in a centos box.
+  - Monitor website, starting with URL monitoring.
