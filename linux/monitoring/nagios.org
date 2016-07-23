@@ -1,0 +1,122 @@
+#+Title: Nagios Monitoring
+#+Author: Yogesh Agrawal
+#+Email: yogesh.agrwal@capitalfloat.com; yogeshiiith@gmail.com
+#+Date: <2016-07-22 Fri>
+
+* Introduction
+  This document describes about the monitoring using Nagios tool.
+
+* Objective
+  - Setup nagios in a centos box.
+  - Monitor website, starting with URL monitoring.
+
+* Setup
+** Server setup
+   - Install packages on monitoring server:
+     #+BEGIN_EXAMPLE
+     sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+     sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+     sudo yum -y install nagios nagios-plugins-all nagios-plugins-nrpe nrpe php httpd
+     sudo chkconfig httpd on && sudo chkconfig nagios on
+     sudo service httpd start && sudo service nagios start
+     #+END_EXAMPLE
+   - Set nagios admin panel password:
+     #+BEGIN_EXAMPLE
+     htpasswd -c /etc/nagios/passwd nagiosadmin
+     #+END_EXAMPLE
+   - Now we can navigate to the nagios interface:
+     #+BEGIN_EXAMPLE
+     http://<nagios-ip>/nagios/
+     #+END_EXAMPLE
+   - For public port we can monitor ping, any open ports such as webserver,
+     e-mail server, etc. For internal service that are listening on localhost,
+     such as Mysql, memcached, system services, we will need to use NRPE.
+   - Create config files for each servers
+     #+BEGIN_EXAMPLE
+     mkdir /etc/nagios/servers
+     echo "cfg_dir=/etc/nagios/servers" >> /etc/nagios/nagios.cfg
+     cd /etc/nagios/servers
+     touch host.cfg
+     #+END_EXAMPLE
+   - Edit /etc/nagios/servers/test-cf-website.capitalfloat.com.cfg file
+     #+BEGIN_EXAMPLE
+     define host {
+        use                     linux-server
+        host_name               <host-name>
+        alias                   <host-name>
+        address                 <ip-address>
+        }
+
+     define service {
+        use                             generic-service
+        host_name                       <host-name>
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+        }
+
+     define service {
+        use                             generic-service
+        host_name                       <host-name>
+        service_description             SSH
+        check_command                   check_ssh
+        notifications_enabled           0
+        }
+
+     define service {
+        use                             generic-service
+        host_name                       <host-name>
+        service_description             Current Load
+        check_command                   check_local_load!5.0,4.0,3.0!10.0,6.0,4.0
+        }
+
+     define service {
+        use                             generic-service         ; Inherit default values from a template
+        host_name                       <host-name>
+        service_description             HTTP
+        check_command                   check_http
+        }
+     #+END_EXAMPLE
+   - Set folder permission correctly
+     #+BEGIN_EXAMPLE
+     chown -R nagios. /etc/nagios
+     service nagios restart
+     #+END_EXAMPLE
+   - Navigate to monitoring server's ip address http://IP/nagios
+** Client setup
+   - Install NRPE on clients
+     #+BEGIN_EXAMPLE  (centos)
+     sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+     sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+     sudo yum -y install nagios nagios-plugins-all nrpe
+     sudo chkconfig nrpe on
+     #+END_EXAMPLE
+     #+BEGIN_EXAMPLE (ubuntu)
+     sudo apt-get install nagios-nrpe-server nagios-plugins
+     #+END_EXAMPLE
+   - Edit =/etc/nagios/nrpe.cfg= to add which nagios server it accepts requests
+     from.
+     #+BEGIN_EXAMPLE
+     allowed_hosts=127.0.0.1, <nagios-server-ip>
+     #+END_EXAMPLE
+   - Restart nrpe
+     #+BEGIN_EXAMPLE
+     sudo /etc/init.d/nagios-nrpe-server restart
+     #+END_EXAMPLE
+* Mail alert
+  - Edit =/etc/nagios/objects/contacts.cfg= configuration file to add email
+    address
+    #+BEGIN_EXAMPLE
+    email                           admin@example.com
+    #+END_EXAMPLE
+  - Edit host file =/etc/nagios/servers/host.cfg= file to add contacts
+    #+BEGIN_EXAMPLE
+    contacts                <contact_name>
+    #+END_EXAMPLE
+  - Restart nagios service
+    #+BEGIN_EXAMPLE
+    service nagios restart
+    #+END_EXAMPLE
+* References
+  - https://www.digitalocean.com/community/tutorials/how-to-install-nagios-on-centos-6
+  - http://tecadmin.net/install-nrpe-on-ubuntu/
+  - https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Console_Administration_Guide/Configuring_Nagios_to_Send_Mail_Notifications.html
