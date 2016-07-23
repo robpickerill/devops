@@ -3534,6 +3534,26 @@
    to him, processes belonging to another user are off limits. However
    a root can kill other user's processes also.
 
+** Live system monitoring using top command
+   *top* command displays constant real-time updates (every two
+   seconds) by default. *top* clearly highlights which processes are
+   consuming the most CPU cycles and memory.
+
+*** First line of top output
+    #+BEGIN_EXAMPLE
+    top - 09:06:31 up 53 min,  3 users,  load average: 0.14, 0.24, 0.28
+    #+END_EXAMPLE
+    - how long the system has been up
+    - how many users are logged on
+    - what is the load average
+
+    The load average describes how busy the system is. A load average
+    of 1.00 per cpu indicates a fully subscribed, but not overloaded
+    system. If the load average is greater than *1*, that means
+    processes are competing for CPU time. If the load average is very
+    high that might indicate that the system is having a problem,
+    such as runaway process.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
