@@ -3519,6 +3519,21 @@
       $ ps aux
       #+END_EXAMPLE
 
+** Process tree
+   At some point one of your applications may stop working
+   properly. Then to view the relationship of the application process
+   with its parent and siblings we can =pstree= command.
+   
+   =pstree= displays processes running on the system in the form of
+   a *tree diagram* showing the relationship between a process and its
+   parent process and its siblings. *Threads* are displayed in curly
+   braces.
+
+   To terminate process we can use =kill -p <pid>= command or =kill
+   -SIGKILL <pid>= command. A user can only kill processes belonging
+   to him, processes belonging to another user are off limits. However
+   a root can kill other user's processes also.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
