@@ -3485,9 +3485,9 @@
 
 ** Listing processes
    *ps* program provides information about the currently running
-   processes. Which process to examine, what information to display
-   and precisely what should be the output format, all these things
-   can be specified by various options.
+   processes keyed by *PID*. Which process to examine, what
+   information to display and precisely what should be the output
+   format, all these things can be specified by various options.
    
    Example:
    1. ps command without any options display all processes running
@@ -3498,6 +3498,21 @@
       2875 pts/7    00:00:00 bash
       2989 pts/7    00:00:54 emacs
       3804 pts/7    00:00:00 ps
+      #+END_EXAMPLE
+   2. ps command with =-u= option display information of processes
+      for a specified username.
+      #+BEGIN_EXAMPLE
+      $ ps -u
+      #+END_EXAMPLE
+   3. ps command with =-ef= option displays all the processes in the
+      system in full detail.
+      #+BEGIN_EXAMPLE
+      $ ps -ef
+      #+END_EXAMPLE
+   4. ps command with =-eLf= option displays all the processes and
+      one line of information for every thread.
+      #+BEGIN_EXAMPLE
+      $ ps -eLf
       #+END_EXAMPLE
 
 * COMMENT TODO
