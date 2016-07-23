@@ -3490,8 +3490,7 @@
    format, all these things can be specified by various options.
    
    Example:
-   1. ps command without any options display all processes running
-      under the current shell.
+   1. To display all processes running under the current shell:
       #+BEGIN_EXAMPLE
       $ ps
         PID TTY          TIME CMD
@@ -3499,20 +3498,25 @@
       2989 pts/7    00:00:54 emacs
       3804 pts/7    00:00:00 ps
       #+END_EXAMPLE
-   2. ps command with =-u= option display information of processes
-      for a specified username.
+   2. To display information of processes for a specified username,
+      use command with =-u= option:
       #+BEGIN_EXAMPLE
       $ ps -u
       #+END_EXAMPLE
-   3. ps command with =-ef= option displays all the processes in the
-      system in full detail.
+   3. To display all the processes in the system in full detail, use
+      command with =-ef= option:
       #+BEGIN_EXAMPLE
       $ ps -ef
       #+END_EXAMPLE
-   4. ps command with =-eLf= option displays all the processes and
-      one line of information for every thread.
+   4. To display all the processes along with their threads use ps
+      command with =-eLf= option:
       #+BEGIN_EXAMPLE
       $ ps -eLf
+      #+END_EXAMPLE
+   5. To display all the processes for all the users use ps command
+      with =aux= option:
+      #+BEGIN_EXAMPLE
+      $ ps aux
       #+END_EXAMPLE
 
 * COMMENT TODO
