@@ -75,7 +75,7 @@
  
 * Partitions and Filesystems
   Partition is a logical part of the disk, whereas filesystem is a
-  method of storing/finding files on a hard disk. You can think of
+  method of storing/finding files on a hard disk. We can think of
   filesystems as being like a family tree and partitions as different
   families each of which as its own tree.
 
@@ -191,7 +191,7 @@
    - What is the architecture of the hardware ?
 
 ** Partition
-   Decide how you want to partition the disk to install OS. You may
+   Decide how we want to partition the disk to install OS. we may
    choose to have separate partition for =/home=, =/var= and =/root=.
 
 ** Source of installation
@@ -227,7 +227,7 @@
                  printers and file servers.
   - Removing a file, moves the file to trash folder. Trash folder is
     located at =~/.local/share/Trash/files/=.
-  - Logging out kills all processes in your current *X* session and
+  - Logging out kills all processes in our current *X* session and
     returns to the display manager.
 
 * System configuration using graphical interface
@@ -253,7 +253,7 @@
    was designed. It can lists all available networks (both wired and
    wireless), allow the choice of a wired, wireless or mobile
    broadband network, handle passwords and set vpn. Network manager
-   establishes the connections and keep track of your settings.
+   establishes the connections and keep track of our settings.
 
    The hardware interface and presence of signal is automatically
    detected and then network manager sets the actual network settings
@@ -309,7 +309,7 @@
 
 * Command line operations
 ** X Windows system
-   The customizable nature of Linux allows you to drop (temporarily or
+   The customizable nature of Linux allows us to drop (temporarily or
    permanently) the X windows graphical interface, or to start it up
    after the system has been running.
 
@@ -323,7 +323,7 @@
    Virtual terminals are console sessions that use entire display and
    keyboard outside of a graphical environment. Such terminals are
    considered "virtual" because it is not same as command line
-   terminal window. Although you can have multiple active terminals,
+   terminal window. Although we can have multiple active terminals,
    only one terminal remains visible at a time.
 
    Example situation where virtual terminal can be used is when we
@@ -331,9 +331,9 @@
    the virtual terminal and troubleshoot the problem.
 
    To switch between the VTs, press *ctrl-alt-corresponding function
-   key* for the VT. Example: you will have to press *ctrl-alt-F6* for
-   VT 6.  You only have to press *alt-F6* if you are in already in a
-   VT not running X and want to switch to another VT.
+   key* for the VT. Example: we will have to press *ctrl-alt-F6* for
+   VT 6. We only have to press *alt-F6* if we are in already in a VT
+   not running X and want to switch to another VT.
 
 ** Command line
    There are three basic elements of a command line:
@@ -474,14 +474,14 @@
    |-----------+-----------------------------------|
 
    To search for files using =?= wildcard, replace each unknown
-   character with ?, e.g. if you know only the first 2 letters are
-   'ba' of a 3-letter filename with an extension of .out, type:
+   character with ?, e.g. if we know only the first 2 letters are 'ba'
+   of a 3-letter filename with an extension of .out, type:
    #+BEGIN_EXAMPLE
    ls ba?.out
    #+END_EXAMPLE
   
    To search for files using the =*= wildcard, replace the unknown
-   string with *, e.g. If you remember only that the extension was
+   string with *, e.g. If we remember only that the extension was
    .out, type:
    #+BEGIN_EXAMPLE
    ls *.out
@@ -489,7 +489,7 @@
 
 ** locate
    locate command perform search through a previously constructed
-   database of files and directories on your system, matching all
+   database of files and directories on our system, matching all
    entries that contain a specified character string. This can
    sometimes result in a very long list.
 
@@ -563,7 +563,7 @@
 | tac     | Used to look files backwards;                                                  |
 |---------+--------------------------------------------------------------------------------|
 | less    | Used to view larger files because it is a paging program; it pauses at each    |
-|         | screenful of text, provides scroll-back capabilities, and lets you search and  |
+|         | screenful of text, provides scroll-back capabilities, and lets us search and   |
 |         | navigate within the file.                                                      |
 |---------+--------------------------------------------------------------------------------|
 | tail    | Used to print the last 10 lines of a file by default. The number of lines can  |
@@ -718,7 +718,7 @@
     the partitions and storage devices in a computer. The file is
     located at =/etc=, so the full path to the file is =/etc/fstab=.
 
-    =/etc/fstab= contains information of where your partitions and
+    =/etc/fstab= contains information of where our partitions and
     storage devices should be mounted and how. If we can't access the
     Windows partition from Linux, are not able to mount the CD or
     write to the floppy as a normal user, then the =/etc/fstab= file
@@ -1052,7 +1052,7 @@
    The Linux login shell evaluates whatever startup file that it comes
    across first and ignores the rest.
 
-   When you create a new shell, or terminal window, etc, you do not
+   When we create a new shell, or terminal window, etc, we do not
    perform a full system login; only the =~/.bashrc= file is read and
    evaluated.
 
@@ -1071,7 +1071,7 @@
   2. env 
   3. export
 
-  Depending on the state of your system, *set* may print out many more
+  Depending on the state of our system, *set* may print out many more
   lines than the other two methods.
 
 ** Setting environment variables
@@ -1093,7 +1093,7 @@
    #+END_EXAMPLE
 
 ** PS1 Variable
-   *PS1* is the primary prompt variable which controls what your
+   *PS1* is the primary prompt variable which controls what our
    command line prompt looks like.
 
    A better practise would be to save the old prompt first and then
@@ -1104,11 +1104,11 @@
 
 ** SHELL Variable
    The environment variable shell points to the user's default command
-   shell (the program that is handling whatever you type in a command
+   shell (the program that is handling whatever we type in a command
    window, usually bash) and contains the full pathname to the shell.
 * Recalling previous commands
   *bash* keeps track of previously entered commands and statements in
-   a history buffer; you can recall previously used commands simply by
+   a history buffer; we can recall previously used commands simply by
    using the up and down cursor keys.
 
    The list of commands is displayed with the most recent command
@@ -1153,10 +1153,10 @@
 |-------------------+---------------------------------------------------|
 
 * Aliases
-  We can create customized commands or modify the behaviour of
-  already existing commands by creating aliases. These aliases are
-  placed in =~/.bashrc= file so they are available to any command
-  shells you create.
+  We can create customized commands or modify the behaviour of already
+  existing commands by creating aliases. These aliases are placed in
+  =~/.bashrc= file so they are available to any command shells we
+  create.
 
   Typing =alias= with no arguments will list currently defined
   aliases. Alias can be defined temporarily using =alias=
@@ -1267,7 +1267,7 @@
 |-----------------------+----------------------------------------------------|
 | gg                    | move to the start of the file                      |
 |-----------------------+----------------------------------------------------|
-| CTRL-o                | go back to where you came from                     |
+| CTRL-o                | go back to where we came from                      |
 |-----------------------+----------------------------------------------------|
 | Search command - /    | search for the phrase                              |
 |-----------------------+----------------------------------------------------|
@@ -1443,9 +1443,9 @@
    log of the file =/var/log/btmp=, which contains all the bad login
    attempts.
 
-   The practices you use on multi-user business systems are more
-   strict than practices you can use on personal desktop systems that
-   only affect the casual user. This is especially true with security.
+   The practices we use on multi-user business systems are more strict
+   than practices we can use on personal desktop systems that only
+   affect the casual user. This is especially true with security.
 
 ** root account
    =root= is the most privileged account in Linux system.  This
@@ -1528,8 +1528,8 @@
     #+END_EXAMPLE
 
 ** sudo vs su
-   In Linux you can use either =su= or =sudo= to temporarily grant
-   root access to a normal user.
+   In Linux we can use either =su= or =sudo= to temporarily grant root
+   access to a normal user.
 
    |--------------------------------------------+---------------------------------------------|
    | *su                                        | sudo*                                       |
@@ -1568,7 +1568,7 @@
 
    sudoers file must be edited carefully. We can edit the sudoers file
    using =visudo= command. If there are any mistakes in the file, then
-   you will not be able to execute the sudo command. The best way to
+   we will not be able to execute the sudo command. The best way to
    edit sudoers file is to use =visudo= command, for example:
    #+BEGIN_EXAMPLE
    sudo visudo -f /etc/sudoers.d/user1
@@ -1577,9 +1577,9 @@
    has the proper permissions, refuses to write out the file and exit
    if there is an error in the changes made.
 
-   If there are any syntax errors in the sudoers file then you will
-   not be able to execute root privileged command. Then you have to
-   use =pkexec= command as follows to correct the error.
+   If there are any syntax errors in the sudoers file then we will not
+   be able to execute root privileged command. Then we have to use
+   =pkexec= command as follows to correct the error.
 
    #+BEGIN_EXAMPLE
    pkexec visudo -f /etc/sudoers.d/filename
@@ -1671,7 +1671,7 @@
    security holes for which fixes are already known but not
    universally deployed.
 
-   So the best practise is to take advantage of your Linux
+   So the best practise is to take advantage of our Linux
    distribution's mechanism for automatic updates and never postpone
    them. It is extremely rare that such an update will cause new
    problems.
@@ -1735,23 +1735,23 @@
     also be replaced by *pam_passwdqc.so* for more options.
 
 ** Securing the boot process and hardware resources
-   You can secure the boot process with a secure password to prevent
+   We can secure the boot process with a secure password to prevent
    someone from bypassing the user authentication step. For systems
-   using the GRUB boot loader, for the older GRUB version 1, you can
-   invoke *grub-md5-crypt* which will prompt you for a password and
+   using the GRUB boot loader, for the older GRUB version 1, we can
+   invoke *grub-md5-crypt* which will prompt us for a password and
    then encrypt.
 
-   You must then edit =/etc/grub/grub.cfg= file by adding the
-   following line below the timeout entry:
+   We must then edit =/etc/grub/grub.cfg= file by adding the following
+   line below the timeout entry:
    #+BEGIN_EXAMPLE
    password --md5 <encrypted-password>
    #+END_EXAMPLE
    
-   You can also force passwords for only certain boot choices rather
+   We can also force passwords for only certain boot choices rather
    than all.
 
-   You never edit the configuration file, =/boot/grub/grub.cfg=
-   directly, rather you edit system configuration files in
+   We never edit the configuration file, =/boot/grub/grub.cfg=
+   directly, rather we edit system configuration files in
    =/etc/grub.d= and then run =update-grub=.
 
    - refer :: https://help.ubuntu.com/community/Grub2/Passwords
@@ -1765,7 +1765,7 @@
     transmitted to remote machines.
 
 *** Network sniffing
-    Capturing and viewing the network packet level data on your
+    Capturing and viewing the network packet level data on our
     network.
 
 *** Live CD
@@ -1783,9 +1783,9 @@
    The guidelines for security are:
 
    1. Lock down workstations and servers.
-   2. Protect your network link such that it can not be accessed by
-      people you do not trust.
-   3. Protect your keyboards where passwords are entered to ensure the
+   2. Protect our network link such that it can not be accessed by
+      people we do not trust.
+   3. Protect our keyboards where passwords are entered to ensure the
       keyboards cannot be tampered with.
    4. Ensure a password protects the BIOS in such a way that system
       cannot be booted with a live or rescue DVD or USB key.
@@ -1837,7 +1837,7 @@
 ***** Class A address
       Class A ip addresses use first octet as the Network ID and use
       the other three octets as the Host ID. The first bit of the
-      first octet is always set to =0=. So you can use only 7-bits for
+      first octet is always set to =0=. So we can use only 7-bits for
       unique network numbers. As a result we can use maximum of 126
       class A networks available (the addresses 0000000 and 1111111
       are reserved). This was only useful when there were few networks
@@ -1887,9 +1887,9 @@
    We can assign IP address to computers over a network manually or
    dynamically. When we assign IP addresses manually, we add *static*
    (never changing) addresses to the network. When we assign IP
-   addresses dynamically (they can change every time you reboot or
-   even more often), the *Dynamic Host Configuration Protocol* (DHCP)
-   is used to assign IP addresses.
+   addresses dynamically (they can change every time we reboot or even
+   more often), the *Dynamic Host Configuration Protocol* (DHCP) is
+   used to assign IP addresses.
 
 *** Manually allocating an IP address
     Before an ip address can be allocated manually, one must identify
@@ -2089,11 +2089,11 @@
    |-------+--------------------------------------|
 
 ** wget
-   Sometimes you need to download files and information but a browser
-   is not the best choice, either because you want to download
-   multiple files, or you want to perform the action from a command
-   line or a script. *wget* is a command line utility that can capably
-   handle the following types of downloads:
+   Sometimes we need to download files and information but a browser
+   is not the best choice, either because we want to download multiple
+   files, or we want to perform the action from a command line or a
+   script. *wget* is a command line utility that can capably handle
+   the following types of downloads:
    1. Recursive file downloads, where a web page refers to other web
       pages and all are downloaded at once.
    2. Password required downloads.
@@ -2104,7 +2104,7 @@
    #+END_EXAMPLE
 
 ** curl
-   Besides downloading you may want to obtain information about a URL,
+   Besides downloading we may want to obtain information about a URL,
    such as the source code being used. *curl* also allows to save the
    contents of a web page to a file as does *wget*.
 
@@ -2635,7 +2635,7 @@
 
 **** pdfmod
      Its a simple application that provides a graphical interface for
-     modifying PDF documents. Using this tool you can reorder, rotate
+     modifying PDF documents. Using this tool we can reorder, rotate
      and remove pages; export images from a document; edit the title,
      subject and author; add keywords; and combine documents using
      drag-and-drop action.
@@ -3520,7 +3520,7 @@
       #+END_EXAMPLE
 
 ** Process tree
-   At some point one of your applications may stop working
+   At some point one of our applications may stop working
    properly. Then to view the relationship of the application process
    with its parent and siblings we can =pstree= command.
    
@@ -3614,7 +3614,8 @@
     #+END_EXAMPLE
 
     Each line in the process list displays information about a
-    process. Following parameters are displayed:
+    process. By default processes are ordered by highest CPU
+    usage. Following parameters about each process are displayed:
     - Process ID (PID)
     - Process owner (USER)
     - Priority (PR) and nice value (NI)
