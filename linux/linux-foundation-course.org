@@ -3570,17 +3570,17 @@
     %Cpu(s):  2.1 us,  1.2 sy,  0.0 ni, 96.2 id,  0.5 wa,  0.0 hi,  0.0 si,  0.0 st
     #+END_EXAMPLE
     Third line of the top output indicates how the CPU time is divided
-    between the users(*us*) and kernel(*sy*) by displaying the
+    between the users (*us*) and kernel (*sy*) by displaying the
     percentage of CPU time used for each.
 
     Then percentage of user jobs running at a lower priority
-    (niceness - *ni*) is then listed. Then percentage of cpu idle
-    time(*id*) is displayed. Idle mode should be low if load average
-    is high and vice versa. Then percentage of jobs waiting (*wa*) for
-    I/O is listed. Interrupts include the percentage of hardware(hi)
-    vs. software interrupts(*si*). Steal time(*st*) is generally used
-    with virtual machines, which has some of its idle CPU time taken
-    for other uses.
+    (niceness - *ni*) is then listed. Then percentage of cpu idle time
+    (*id*) is displayed. Idle mode should be low if load average is
+    high and vice versa. Then percentage of jobs waiting (*wa*) for
+    I/O is listed. Interrupts include the percentage of hardware
+    (*hi*) vs. software interrupts (*si*). Steal time (*st*) is
+    generally used with virtual machines, which has some of its idle
+    CPU time taken for other uses.
 
 *** Fourth and Fifth line of top output
     #+BEGIN_EXAMPLE
@@ -3605,6 +3605,24 @@
     If the system starts using swap more often, we can add more swap
     space. However, adding more physical RAM should also be
     considered.
+
+*** Process list of the top output
+    #+BEGIN_EXAMPLE
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+    1501 root      20   0  391340  67052  56672 S   0.7  1.7   0:52.12 Xorg
+    2617 yogesh    20   0 1182252 343052  66556 S   0.7  8.7   0:47.23 firefox
+    #+END_EXAMPLE
+
+    Each line in the process list displays information about a
+    process. Following parameters are displayed:
+    - Process ID (PID)
+    - Process owner (USER)
+    - Priority (PR) and nice value (NI)
+    - Virtual (VIRT), physical (RES) and shared memory (SHR)
+    - Status (S)
+    - Percentage CPU (%CPU) and memory (%MEM) used
+    - Execution time (TIME+)
+    - Command (COMMAND)
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
