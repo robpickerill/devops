@@ -3582,6 +3582,30 @@
     with virtual machines, which has some of its idle CPU time taken
     for other uses.
 
+*** Fourth and Fifth line of top output
+    #+BEGIN_EXAMPLE
+    KiB Mem:   3932648 total,  1931168 used,  2001480 free,   120424 buffers
+    KiB Swap:  8388604 total,        0 used,  8388604 free.   895892 cached Mem
+    #+END_EXAMPLE
+    
+    The fourth and fifth line displays memory usage. This is divided
+    into two categories:
+    - Physical memory (RAM) - displayed on line 4
+    - Swap space - displayed on line 5
+
+    Both categories display total available space, used space, free
+    space.
+
+    Memory usage should be monitored carefully to ensure good system
+    performance. Once the physical memory is exhausted system starts
+    using swap space, and since accessing disk is much slower than
+    accessing RAM, this will negatively affect system
+    performance. 
+
+    If the system starts using swap more often, we can add more swap
+    space. However, adding more physical RAM should also be
+    considered.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
