@@ -171,7 +171,15 @@
                 calculations. The slow error is even worse than a fast
                 error. Therefore its important to track error latency,
                 as opposed to just filtering out errors.
-   - Traffic :: 
+   - Traffic :: A measure of how much demand is being placed on the
+                system, measured in a high-level system-specific
+                metric. For a web service, this measurement is usually
+                HTTP requests per second, perhaps broken out by the
+                nature of the requests. For an audio streaming system,
+                this measurement might focus on network I/O rate or
+                concurrent sessions. For a key-value storage system,
+                this measurement might be transactions and retrievals
+                per second.
    3. Errors
    4. Saturation
 
