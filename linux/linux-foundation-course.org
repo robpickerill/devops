@@ -3625,6 +3625,16 @@
     - Execution time (TIME+)
     - Command (COMMAND)
 
+*** Interactive keys with top
+    Besides reporting information, *top* can be utilized interactively
+    for monitoring and controlling processes. While top is running in
+    a terminal window we can enter single-letter commands to change
+    its behavior. For example we can view the top-ranked processes
+    based on CPU or memory usage. If needed, we can alter the
+    priorities of running processes or we can stop/kill a process.
+
+    
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
