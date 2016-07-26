@@ -3634,6 +3634,46 @@
     priorities of running processes or we can stop/kill a process.
 
     
+* Load averages
+  Load average is the average of load number for a given period of
+  time. It takes into account processes that are:
+  1. Actively running on a CPU.
+  2. Waiting for a CPU to become available
+  3. Sleeping; i.e. waiting for some kind of resource (typically,
+     I/O) to become available.
+     
+  The load average can be obtained by running *w*, *top* or *uptime*
+  command.
+
+  The load average is displayed using three sets of numbers as shown
+  below:
+  #+BEGIN_EXAMPLE
+  19:42:37 up 22 min,  3 users,  load average: 0.34, 0.35, 0.31
+  #+END_EXAMPLE
+
+  Assuming our system is a single cpu system, the 0.31 means that for
+  past one minute, on average, the system has been 31%
+  utilized. Number in the next position 0.35 indicates that over past
+  5 minute, on average, the system has been 35% utilized. Number in
+  the next position 0.34 indicates that over past 15 minutes, on
+  average, the system has been 34% utilized.
+
+  If we see a 1.0 in the second position that means the single-CPU
+  system has been 100% utilized over past 5 minutes. If the number is
+  greater than 1.0 that means CPU was over utilized, and there were
+  processes waiting for CPU to be free.
+
+  If we had more than one CPU, say a quad-CPU system, we would divide
+  the load average numbers by the number of CPU. For example seeing a
+  1 minute load average of 4.00 implies that the system as a whole was
+  100% (4.0/4) utilized during the last minute.
+
+  Short term increases are usually not a problem. A high peak we see
+  is likely a burst of activity, not a new level. For example at
+  startup, many processes starts, and then activity settles down. But
+  if a high peek is seen over past 5 and 15 minutes load averages,
+  then its a matter of concern.
+
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
