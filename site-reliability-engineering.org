@@ -180,8 +180,15 @@
                 concurrent sessions. For a key-value storage system,
                 this measurement might be transactions and retrievals
                 per second.
-   3. Errors
-   4. Saturation
+   - Errors :: The rate of requests that fail, either explicitly
+               (e.g., HTTP 500s), implicitly (for example, an HTTP 200
+               success response, but coupled with the wrong content),
+               or by policy (for example, "If you committed to
+               one-second response times, any request over one second
+               is an error").
+   - Saturation :: How full your service is. A measure of your system
+                   fraction, emphasizing the resources that are most
+                   constrained.
 
 * TODO
   1. Translate the text - "Google grew at a time when the traditional
