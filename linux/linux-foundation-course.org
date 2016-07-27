@@ -3632,11 +3632,11 @@
     its behavior. For example we can view the top-ranked processes
     based on CPU or memory usage. If needed, we can alter the
     priorities of running processes or we can stop/kill a process.
-
     
 * Load averages
   Load average is the average of load number for a given period of
   time. It takes into account processes that are:
+
   1. Actively running on a CPU.
   2. Waiting for a CPU to become available
   3. Sleeping; i.e. waiting for some kind of resource (typically,
@@ -3674,6 +3674,39 @@
   if a high peek is seen over past 5 and 15 minutes load averages,
   then its a matter of concern.
 
+* Background and Foreground Processes
+  Linux allows running of processes both in background as well as
+  foreground. Foreground jobs run directly from the shell, when one
+  job is running other job has to wait for the shell access.
+
+  The background processes run with lower priority, and returns shell
+  for further execution of command. Running processes in the
+  background is useful when the execution time is high, and we could
+  rather use that time for other processing.
+
+  By default processes are executed in foreground. We can run a job in
+  the background by suffixing =&= to the command.
+  #+BEGIN_EXAMPLE
+  updatedb &
+  #+END_EXAMPLE
+
+  We can do =ctrl-z= to suspend a foreground job or =ctrl-c= to
+  terminate a foreground job and can always use the =bg= and =fg=
+  command to run a process in background and foreground respectively.
+  #+BEGIN_EXAMPLE
+  root@machine:~# updatedb &
+  [1] 3755
+  root@machine:~# sleep 100
+  ^Z[1]   Done                    updatedb
+  
+  [2]+  Stopped                 sleep 100
+  root@machine:~# bg
+  [2]+ sleep 100 &
+  root@machine:~# fg
+  sleep 100
+  ^C
+  root@machine:~# 
+  #+END_EXAMPLE
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
