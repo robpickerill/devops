@@ -3725,6 +3725,16 @@
   The background jobs are connected to the terminal window, so the
   =jobs= utility will only shows jobs started for the same terminal.
   
+* Scheduling future processes
+** at
+   We can schedule tasks to run in future using =at= command.
+   #+BEGIN_EXAMPLE
+   $ at 22:36
+   warning: commands will be executed using /bin/sh
+   at> ls
+   at> <EOT>
+   job 5 at Wed Jul 27 22:36:00 2016
+   #+END_EXAMPLE
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
