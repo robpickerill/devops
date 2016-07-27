@@ -3675,9 +3675,9 @@
   then its a matter of concern.
 
 * Background and Foreground Processes
-  Linux allows running of processes both in background as well as
-  foreground. Foreground jobs run directly from the shell, when one
-  job is running other job has to wait for the shell access.
+  Linux allows foreground and background job processing. Foreground
+  jobs run directly from the shell, when one job is running other job
+  has to wait for the shell access.
 
   The background processes run with lower priority, and returns shell
   for further execution of command. Running processes in the
@@ -3708,6 +3708,23 @@
   root@machine:~# 
   #+END_EXAMPLE
 
+* Managing jobs
+  The =jobs= utility displays all jobs running in background, with
+  their job id, state and command.
+  #+BEGIN_EXAMPLE
+  [1]-  Running                 emacs linux-foundation-course.org &
+  [2]+  Stopped                 sleep 100
+  #+END_EXAMPLE
+  
+  =jobs -l= command provides jobs listing with their process id as
+  well.
+  #+BEGIN_EXAMPLE
+  [1]+  3369 Running                 emacs linux-foundation-course.org &
+  #+END_EXAMPLE
+
+  The background jobs are connected to the terminal window, so the
+  =jobs= utility will only shows jobs started for the same terminal.
+  
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
