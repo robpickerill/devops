@@ -3735,6 +3735,12 @@
    at> <EOT>
    job 5 at Wed Jul 27 22:36:00 2016
    #+END_EXAMPLE
+** cron
+   cron is a time-based scheduling utility program. It can launch
+   routine background jobs at specific times and/or days on an
+   on-going basis. cron is driven by a configuration file called
+   =/etc/crontab= (cron table) which contains the various shell
+   commands that need to be run at the particularly scheduled time.
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
