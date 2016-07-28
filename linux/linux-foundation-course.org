@@ -3736,11 +3736,49 @@
    job 5 at Wed Jul 27 22:36:00 2016
    #+END_EXAMPLE
 ** cron
-   cron is a time-based scheduling utility program. It can launch
-   routine background jobs at specific times and/or days on an
-   on-going basis. cron is driven by a configuration file called
-   =/etc/crontab= (cron table) which contains the various shell
-   commands that need to be run at the particularly scheduled time.
+   cron is a time-based program used to launch routine background jobs
+   at specific time. It is driven by configuration file
+   =/etc/crontab=, which contains the shell commands that are to be
+   run at a scheduled time. There is a system wide configuration file
+   as well as individual user level. 
+
+   Each line of crontab file is composed of cron expression, which
+   decides the scheduled time followed by a shell command to execute.
+
+   =crontab -e= command will open the configuration file to edit the
+   existing command or to add new commands.
+
+   Each line will have following six fields:
+   |--------+----------------------------+------------------------|
+   | *Field | Description                |                 Value* |
+   |--------+----------------------------+------------------------|
+   | MIN    | Scheduled minute           |                   0-59 |
+   |--------+----------------------------+------------------------|
+   | HOUR   | Scheduled hour             |                   0-23 |
+   |--------+----------------------------+------------------------|
+   | DOM    | Scheduled day of the month |                   1-31 |
+   |--------+----------------------------+------------------------|
+   | MON    | Scheduled month            |                   1-12 |
+   |--------+----------------------------+------------------------|
+   | DOW    | Scheduled day of the week  |          0-6(0=sunday) |
+   |--------+----------------------------+------------------------|
+   | CMD    | Command to run             | Any command to execute |
+   |--------+----------------------------+------------------------|
+
+   1. Following entry in crontab schedules the job to run every minute
+      of every hour of every day of the month, and every month and
+      every day in the week.
+      #+BEGIN_EXAMPLE
+      * * * * * /usr/bin/script.sh
+      #+END_EXAMPLE
+
+  2. Following entry in crontab schedules the job to run at 08:30 on
+     1st Jan, irrespective of the day of the week.
+     #+BEGIN_EXAMPLE
+     30 08 1 2 * /home/sys-admin/full-backup
+     #+END_EXAMPLE
+
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
