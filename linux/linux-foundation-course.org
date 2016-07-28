@@ -3778,6 +3778,26 @@
      30 08 1 2 * /home/sys-admin/full-backup
      #+END_EXAMPLE
 
+** sleep
+   Sometimes a job must be suspended/delayed from the execution. For
+   example suppose a process has read and processed the data, and now
+   needs to save a report on a backup system, backup system may not be
+   ready yet, then the process can be made to sleep(wait) until the
+   device is ready.
+
+   *sleep* suspends execution for at least the specified period of
+   time, which can be given as the number of seconds, minutes, hours
+   or days. After that time has passed, or interrupting signal is
+   received the process will resume execution.
+   
+   #+BEGIN_EXAMPLE
+   sleep NUMBER[SUFFIX]
+   #+END_EXAMPLE
+   Where suffix may be:
+   1. =s= for seconds(the default)
+   2. =m= for minutes
+   3. =h= for hours
+   4. =d= for days
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
