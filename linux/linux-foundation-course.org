@@ -3799,6 +3799,10 @@
    3. =h= for hours
    4. =d= for days
 
+   *sleep* and *at* commands are different, sleep command suspends the
+   execution for a specified period of time, whereas at command start
+   the execution at the specified time.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
