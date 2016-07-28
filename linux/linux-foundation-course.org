@@ -3727,7 +3727,8 @@
   
 * Scheduling future processes
 ** at
-   We can schedule tasks to run in future using =at= command.
+   We can schedule non-interactive tasks to run in future using =at=
+   command.
    #+BEGIN_EXAMPLE
    $ at 22:36
    warning: commands will be executed using /bin/sh
