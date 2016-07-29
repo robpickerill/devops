@@ -3827,6 +3827,16 @@
      30 08 1 2 * /home/sys-admin/full-backup
      #+END_EXAMPLE
 
+  3. Add a cron job to crontab.
+     #+BEGIN_EXAMPLE
+     $ crontab -l
+     $ cat mycron 
+     0 10 * * * ping google.com
+     $ crontab mycron 
+     $ crontab -l
+     0 10 * * * ping google.com
+     #+END_EXAMPLE
+
 ** sleep
    Sometimes a job must be suspended/delayed from the execution. For
    example suppose a process has read and processed the data, and now
