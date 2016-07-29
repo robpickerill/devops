@@ -3708,6 +3708,14 @@
   root@machine:~# 
   #+END_EXAMPLE
 
+  To bring a particular into background or foreground, we can specify
+  the job id of the job in the command as follows. job id can be found
+  using =jobs= command described below.
+  #+BEGIN_EXAMPLE
+  $ fg %1
+  $ bg %1
+  #+END_EXAMPLE
+
 * Managing jobs
   The =jobs= utility displays all jobs running in background, with
   their job id, state and command.
@@ -3725,6 +3733,31 @@
   The background jobs are connected to the terminal window, so the
   =jobs= utility will only shows jobs started for the same terminal.
   
+  #+BEGIN_EXAMPLE
+  $ (date; sleep 60; date; sleep 180; date) > output.txt
+  $ jobs
+  [1]-  Running                 emacs linux-foundation-course.org &
+  [2]+  Running                 ( date; sleep 60; date; sleep 180; date ) > output.txt &
+  $ fg %2
+  ( date; sleep 60; date; sleep 180; date ) > output.txt  
+  ^Z
+  [2]+  Stopped                 ( date; sleep 60; date; sleep 180; date ) > output.txt
+  yogesh@machine:~/work/projects/linux-system-administration/linux$ jobs
+  [1]-  Running                 emacs linux-foundation-course.org &
+  [2]+  Stopped                 ( date; sleep 60; date; sleep 180; date ) > output.txt
+  $ bg %2
+  [2]+ ( date; sleep 60; date; sleep 180; date ) > output.txt &
+  yogesh@machine:~/work/projects/linux-system-administration/linux$ jobs
+  [1]-  Running                 emacs linux-foundation-course.org &
+  [2]+  Running                 ( date; sleep 60; date; sleep 180; date ) > output.txt &
+  $ kill %2
+  yogesh@machine:~/work/projects/linux-system-administration/linux$ jobs
+  [1]-  Running                 emacs linux-foundation-course.org &
+  [2]+  Terminated              ( date; sleep 60; date; sleep 180; date ) > output.txt
+  yogesh@machine:~/work/projects/linux-system-administration/linux$ jobs
+  [1]+  Running                 emacs linux-foundation-course.org &
+  #+END_EXAMPLE
+
 * Scheduling future processes
 ** at
    We can schedule non-interactive tasks to run in future using =at=
@@ -3800,9 +3833,9 @@
    3. =h= for hours
    4. =d= for days
 
-   *sleep* and *at* commands are different, sleep command suspends the
-   execution for a specified period of time, whereas at command start
-   the execution at the specified time.
+   *sleep* and *at* commands are different, =sleep= command suspends
+   the execution for a specified period of time, whereas =at= command
+   start the execution at the specified time.
 
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
