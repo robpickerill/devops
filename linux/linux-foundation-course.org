@@ -3862,6 +3862,11 @@
    the execution for a specified period of time, whereas =at= command
    start the execution at the specified time.
 
+   Example: Create a reminder for a meeting at 10 mins from now.
+   #+BEGIN_EXAMPLE
+   $ (sleep 600; echo "meeting")
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
