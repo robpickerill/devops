@@ -3780,16 +3780,22 @@
    
 ** cron
    cron is a time-based program used to launch routine background jobs
-   at specific time. It is driven by configuration file
+   at specific time. It is driven by a configuration file
    =/etc/crontab=, which contains the shell commands that are to be
-   run at a scheduled time. There is a system wide configuration file
-   as well as individual user level. 
+   run at a scheduled time. 
+
+   There is a system wide configuration file as well as individual
+   user level. File at =/etc/crontab= is a system level configuration
+   file. There is a one file for each user's crontab under
+   =/var/spool/cron/crontabs= directory.
 
    Each line of crontab file is composed of cron expression, which
    decides the scheduled time followed by a shell command to execute.
 
+   =crontab= command maintains crontab files for individual users.
    =crontab -e= command will open the configuration file to edit the
-   existing command or to add new commands.
+   existing command or to add new commands to the crontab. After we
+   exit from the editor crontab will be installed automatically.
 
    Each line will have following six fields:
    |--------+----------------------------+------------------------|
