@@ -3769,6 +3769,15 @@
    at> <EOT>
    job 5 at Wed Jul 27 22:36:00 2016
    #+END_EXAMPLE
+   
+   #+BEGIN_EXAMPLE
+   $ at now + 10 minutes
+   warning: commands will be executed using /bin/sh
+   at> bash pintest.sh
+   at> <EOT>
+   job 8 at Fri Jul 29 08:53:00 2016
+   #+END_EXAMPLE
+   
 ** cron
    cron is a time-based program used to launch routine background jobs
    at specific time. It is driven by configuration file
