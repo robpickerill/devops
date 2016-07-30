@@ -1965,7 +1965,8 @@
     #+END_EXAMPLE
 *** Ping
     Ping command is used to check whether or not a machine attached to
-    the network is online and is responding.
+    the network is online and is responding. It can also be used to
+    measure network latency between machines.
 
     Ping is frequently used for network testing and management.
     #+BEGIN_EXAMPLE
@@ -3881,6 +3882,7 @@
     ln -s /etc/passwd /tmp/tempfile
     echo "test" > /tmp/tempfile
     #+END_EXAMPLE
+  - Revise processes
 * Useful links
   - http://linuxcommand.org/tlcl.php (resource for commands help)
   - https://www.centos.org/docs/ (centos documentaion)
