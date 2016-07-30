@@ -3522,7 +3522,7 @@
 ** Process tree
    At some point one of our applications may stop working
    properly. Then to view the relationship of the application process
-   with its parent and siblings we can =pstree= command.
+   with its parent and siblings we can use =pstree= command.
    
    =pstree= displays processes running on the system in the form of
    a *tree diagram* showing the relationship between a process and its
