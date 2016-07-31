@@ -10,4 +10,15 @@
   Connectivity is the idea that two computers in different parts of
   the world can connect to one another and exchange data. If we
   connect our computer to the internet we suddenly can talk with all
-  the other computers connected to the internet.
+  the other computers connected on the internet.
+* Network Applications
+  Read and write data over network. Dominant model: bidirectional,
+  reliable byte stream connection.
+  - One side reads what the other writes
+  - Operates in both directions
+  - Reliable (unless connection breaks)
+
+  The basic model is: there are two computers each running a program
+  locally, and these two programs communicate over the network. The
+  most common communication model used is a bidirectional reliable
+  stream of bytes.
