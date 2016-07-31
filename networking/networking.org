@@ -20,5 +20,27 @@
 
   The basic model is: there are two computers each running a program
   locally, and these two programs communicate over the network. The
-  most common communication model used is a bidirectional reliable
+  most common communication model used is a bidirectional, reliable
   stream of bytes.
+* World Wide Web(HTTP)
+  The world wide web works using HTTP, which stands for HyperText
+  Transfer Protocol.
+
+  In HTTP a client opens a connection to a server and sends commands
+  to it. Server after receiving the request checks if client is
+  authorized to access the resource, and then sends a response. The
+  response also contains a numeric code. There are various types of
+  commands such as GET, PUT, DELETE, INFO, as well as other responses
+  such as 400 Bad Request. HTTP is all in ASCII text: for example, the
+  beginning of a GET request looks like:
+  #+BEGIN_EXAMPLE
+  GET / HTTP/1.1
+  #+END_EXAMPLE
+  and the beginning of a response to a successful requests looks like:
+  #+BEGIN_EXAMPLE
+  HTTP/1.1 200 OK
+  #+END_EXAMPLE
+
+  The basic model is simple: client sends a requests by writing to the
+  connection, the server reads the request, processes it, and writes a
+  response to the connection, which the client then reads.
