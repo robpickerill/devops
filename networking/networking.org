@@ -6,3 +6,8 @@
 * Introduction
   This document discusses about the networking concepts learned from
   Netorking-SP course in [[https://lagunita.stanford.edu/courses/Engineering/Networking-SP/SelfPaced/courseware][edx.org]].
+* Connectivity
+  Connectivity is the idea that two computers in different parts of
+  the world can connect to one another and exchange data. If we
+  connect our computer to the internet we suddenly can talk with all
+  the other computers connected to the internet.
