@@ -44,3 +44,23 @@
   The basic model is simple: client sends a requests by writing to the
   connection, the server reads the request, processes it, and writes a
   response to the connection, which the client then reads.
+* Skype
+  Unlike the web, where there is a client and a server, in Skype case
+  we have two clients. So rather than having a personal computer
+  requesting for data from a dedicated server, we have two personal
+  computers requesting data from each other. This difference turns out
+  to have really big implication to how Skype works.
+
+  The complication comes from NAT, or Network Address
+  Translation. NATs are everywhere today. A small home wireless router
+  is a NAT. When a mobile phone connects to the internet, it is behind
+  a NAT.
+  
+  Consider a scenario: Client B is behind NAT, Client A is not behind
+  NAT. Now client A wants to talk to client B. We will how Skype
+  accomplishes this.
+
+* COMMENT TODO
+  1. join emacs group
+  2. Understanding the Linux Kernel
+  3. Check if we can make two concurrent calls in skype to a user.
