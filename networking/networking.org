@@ -54,11 +54,27 @@
   The complication comes from NAT, or Network Address
   Translation. NATs are everywhere today. A small home wireless router
   is a NAT. When a mobile phone connects to the internet, it is behind
-  a NAT.
+  a NAT. If a computer is behind NAT, then it can open a connection to
+  the internet, but other nodes on the internet can't easily open
+  connections to that computer.
   
   Consider a scenario: Client B is behind NAT, Client A is not behind
-  NAT. Now client A wants to talk to client B. We will how Skype
-  accomplishes this.
+  NAT. Now client A wants to talk to client B. The complication here
+  is that client A, can't open a connection to client B, as it is
+  behind NAT. Skype uses Rendezvous server to allow communication in
+  such scenario. When we login to Skype, client opens a connection to
+  a network of control servers. In this case, client B opens a
+  connection to the Rendezvous server. 
+
+  When client A wants to communicate with client B, it tries to
+  connect to client B, but it could not. So instead it sends a message
+  to a computer to which client B, is already connected to. Which then
+  tells client B, that there is a call from A. If client B accepts the
+  call, then it opens a connection to client A. Since client A isn't
+  behind NAT, this connection can open normally. This is called
+  reverse connection, as it reverses the expected direction of
+  initiating the connection. when the connection gets established they
+  exchange data over that channel.
 
 * COMMENT TODO
   1. join emacs group
