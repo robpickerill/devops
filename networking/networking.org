@@ -87,6 +87,11 @@
   the relay forwards it to client A through the connection that A
   opened.
 
+  A very simple abstraction - a bidirectional and reliable data
+  stream, can be used in many interesting ways. By changing how
+  programs open connections and what different programs do, we can
+  create complex applications.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
