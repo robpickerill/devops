@@ -76,7 +76,19 @@
   initiating the connection. when the connection gets established they
   exchange data over that channel.
 
+  When both the clients A and B are behind NATs, we can't reverse the
+  connection. Client A can not open connection to client B and client
+  B can not open connection to client A. To handle this case Skype
+  introduces a second kind of server, called a relay. Relay can't be
+  behind NATs. If both client A and client B are behind NATs, then
+  they communicate through relay server. They both open connections to
+  the relay. When client A sends data, the relay forwards it to client
+  B through the connection that B opened. When client B sends data,
+  the relay forwards it to client A through the connection that A
+  opened.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
   3. Check if we can make two concurrent calls in skype to a user.
+  4. Skype works on which port?
