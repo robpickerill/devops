@@ -92,40 +92,23 @@
   programs open connections and what different programs do, we can
   create complex applications.
 
-* Problem
-  You own a large gaming company and want to distribute an update to
-  all of your players. The size of the update is 1GB and your server
-  can send data at up to 1GB/s. Your engineers have found that
-  assuming every player can download at 1MB/s leads to very accurate
-  estimates of network performance. Furthermore, they've found you can
-  assume that the server splits its capacity evenly across
-  clients. You have 100,000 players.
+* Internet 4-layer model
+  Applications want to send and receive data without having to worry
+  about the path, or route that data takes across the internet. And
+  they also need to be confident that data is delivered correctly,
+  with any lost or corrupted data automatically retransmitted until is
+  received correctly.
 
-  One of your engineers recommends that you distribute the update by
-  having all users download the full file from your company's
-  server. You walk through this calculation with the engineer and
-  determine it will take 100,000 seconds (~28 hours) for all of your
-  players to download the update. The server can support 1,000 players
-  downloading the update at once by splitting its 1GB/s across 1,000
-  1MB/s clients. It will take 100 rounds of 1,000 players for everyone
-  (all 100,000) to receive the update. As it takes 1,000 seconds for a
-  1MB/s connection to download 1GB, each round will take 1,000
-  seconds. 100 rounds of 1,000 seconds is 100,000 seconds, or 28
-  hours.
+  Four layers are as follows:
+  1. Application layer
+  2. Transport layer
+  3. Network layer
+  4. Link layer
 
-  Another engineer recommends a different, peer-to-peer, strategy. In
-  this strategy, players who have downloaded the patch allow other
-  players to download it from them. So in the first round, 1,000
-  players download the patch from the server. In the second round,
-  1,000 new players download the patch from the server, and 1,000 new
-  players pair with the first round downloaders. In the third round,
-  1,000 new players download the patch from the server, and 3,000 new
-  players download the patch from players who have already downloaded
-  it.
-
-  Calculate how long it will take until the last player to receive the
-  update using the second strategy. How much faster is it than the
-  first strategy?
+  Early internet pioneers designed this four layer model to describe
+  the operations that make up the internet, so that we can reuse these
+  instead of creating them again for each and every application.
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
