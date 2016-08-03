@@ -22,6 +22,19 @@
   locally, and these two programs communicate over the network. The
   most common communication model used is a bidirectional, reliable
   stream of bytes.
+
+* Byte Stream model
+  Computer B is waiting for other computers to connect to it. Computer
+  A wants to communicate to B. A and B set up a connection. Now when A
+  writes data to the connection, B can read it and when B writes data
+  to the connection, A can read it. Either side can close the
+  connection. Computer A(client) can close the connection, or computer
+  B(server) can also close the connection. The error message
+  "connection reset by peer", means the server closed the connection
+  when client was not expecting it. Server can refuse the connection
+  as well, or have a browser wait for a long time because the server
+  isn't even responding with a refusal.
+
 * World Wide Web(HTTP)
   The world wide web works using HTTP, which stands for HyperText
   Transfer Protocol.
