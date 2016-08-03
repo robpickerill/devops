@@ -108,7 +108,15 @@
   Early internet pioneers designed this four layer model to describe
   the operations that make up the internet, so that we can reuse these
   instead of creating them again for each and every application.
-  
+
+** Link layer
+   Ethernet and wifi are two example of link layer. Its job is to
+   carry packets by link by link, one link at a time.
+
+** Network layer
+   Network layer's job is to deliver packet end to end, across the
+   internet from the source to the destination.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
