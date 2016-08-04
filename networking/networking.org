@@ -108,9 +108,9 @@
 * Internet 4-layer model
   Applications want to send and receive data without having to worry
   about the path, or route that data takes across the internet. And
-  they also need to be confident that data is delivered correctly,
-  with any lost or corrupted data automatically retransmitted until is
-  received correctly.
+  almost all applications also need to be confident that data is
+  delivered correctly, with any lost or corrupted data automatically
+  retransmitted until is received correctly.
 
   Four layers are as follows:
   1. Application layer
@@ -119,12 +119,22 @@
   4. Link layer
 
   Early internet pioneers designed this four layer model to describe
-  the operations that make up the internet, so that we can reuse these
-  instead of creating them again for each and every application.
+  the hierarchy of operations that make up the internet, so that
+  applications can reuse the same building blocks over and over again
+  instead of creating them from scratch for every application.
+
+  It helps to remember that all 4 layers are there to enable reliable
+  communication between end-hosts applications. Each layer has a
+  different responsibility of building a service on top of the one
+  below, all the way to the top where we have bidirectional, reliable
+  byte stream communication between applications.
 
 ** Link layer
-   Ethernet and wifi are two example of link layer. Its job is to
-   carry packets by link by link, one link at a time.
+   Its job is to carry data one link at a time. Data is delivered
+   hop-by-hop over each link in turn. Ethernet and wifi are two
+   examples of link layer. Data is delivered in packets. Packet is a
+   self contained unit which contains data to be delivered and headers
+   such as - where it came from, where it is going and so on.
 
 ** Network layer
    Network layer's job is to deliver packet end to end, across the
