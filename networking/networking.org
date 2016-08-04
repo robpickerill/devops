@@ -137,8 +137,24 @@
    such as - where it came from, where it is going and so on.
 
 ** Network layer
-   Network layer's job is to deliver packet end to end, across the
-   internet from the source to the destination.
+   Network layer packets are called datagrams. The network layer hands
+   the datagram to the Link layer below, telling it to send the
+   datagram over the first link. The network layer examines the
+   destination address of the datagram, and is responsible for routing
+   the datagram one hop at a time, towards its eventual destination.
+
+   Network layer does not need to concern itself, how link layer
+   transmits the data. This also means that single network layer has a
+   common way to talk to many different link layers by simply handing
+   over the datagrams. 
+
+   This separation of concerns is made possible by the modularity of
+   each layer and a common well -define API to the layer below.
+
+   Network layer uses IP protocol. Which provides following features:
+   1. Best effort attempt to deliver datagrams but no promises.
+   2. Datagrams may get delivered out of order, may get corrupted, it
+      does not provide any guarantees.
 
 * COMMENT TODO
   1. join emacs group
