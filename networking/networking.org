@@ -129,14 +129,14 @@
   below, all the way to the top where we have bidirectional, reliable
   byte stream communication between applications.
 
-** Link layer
+** Link Layer
    Its job is to carry data one link at a time. Data is delivered
    hop-by-hop over each link in turn. Ethernet and wifi are two
    examples of link layer. Data is delivered in packets. Packet is a
    self contained unit which contains data to be delivered and headers
    such as - where it came from, where it is going and so on.
 
-** Network layer
+** Network Layer
    Network layer packets are called datagrams. The network layer hands
    the datagram to the Link layer below, telling it to send the
    datagram over the first link. The network layer examines the
@@ -149,12 +149,40 @@
    over the datagrams. 
 
    This separation of concerns is made possible by the modularity of
-   each layer and a common well -define API to the layer below.
+   each layer and a common well-define API to the layer below.
 
-   Network layer uses IP protocol. Which provides following features:
-   1. Best effort attempt to deliver datagrams but no promises.
+   When we send packets to internet we mush use Internet Protocol
+   (IP). Which provides following features:
+   1. Makes best-effort attempt to deliver datagrams to the other end,
+      but no promises.
    2. Datagrams may get delivered out of order, may get corrupted, it
       does not provide any guarantees.
+
+** Transport Layer
+   If an application wants its data to be retransmitted when lost, and
+   wants to be delivered in order without corruption, then it needs to
+   use another protocol called *Transfer Control Protocol (TCP)*,
+   running on top of IP.
+
+   TCP/IP application uses both TCP and IP together.
+
+   TCP provides a service to application which guarantees correct
+   in-order delivery of data, running on top of network layer service,
+   which provides an unreliable datagram delivery service.
+
+   Example of application which uses TCP is email client. These
+   applications employ TCP for correct delivery of data. Applications
+   don't have to implement their own mechanism for this. They can
+   reuse the TCP service, developed by other developers.
+
+   Some applications don't need TCP service. Example: If a video
+   streaming application sending a video snippet in a packet, then
+   there is no point waiting for packet to be retransmitted multiple
+   times, better to just move on. Such applications can use much
+   simpler *User Datagram Protocol (UDP)*. UDP bundles application
+   data and hands it over to network layer for delivery. UDP offers no
+   delivery guarantees.
+   
 
 * COMMENT TODO
   1. join emacs group
