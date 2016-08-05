@@ -183,6 +183,12 @@
    data and hands it over to network layer for delivery. UDP offers no
    delivery guarantees.
    
+** Application Layer
+   Application protocol uses their own syntax and semantics to
+   represent data. Example of application layer is HTTP. It sends GET
+   request to server, requesting for some data. Application layer does
+   not worry about, how the data got there, wan there any
+   retransmission required.
 
 * COMMENT TODO
   1. join emacs group
