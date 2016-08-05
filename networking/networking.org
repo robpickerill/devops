@@ -171,7 +171,10 @@
 
    TCP provides a service to application which guarantees correct
    in-order delivery of data, running on top of network layer service,
-   which provides an unreliable datagram delivery service.
+   which provides an unreliable datagram delivery service. If the
+   network layer drops some datagrams, TCP will retransmit them
+   multiple times if needed. If the network layer delivers them out of
+   order - TCP will put the data back into the right order again.
 
    Example of application which uses TCP is email client. These
    applications employ TCP for correct delivery of data. Applications
