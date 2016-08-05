@@ -131,10 +131,12 @@
 
 ** Link Layer
    Its job is to carry data one link at a time. Data is delivered
-   hop-by-hop over each link in turn. Ethernet and wifi are two
-   examples of link layer. Data is delivered in packets. Packet is a
-   self contained unit which contains data to be delivered and headers
-   such as - where it came from, where it is going and so on.
+   hop-by-hop over each link in turn. Delivers data over a single link
+   between an end host and router, or between routers. Ethernet and
+   wifi are two examples of link layer. Data is delivered in
+   packets. Packet is a self contained unit which contains data to be
+   delivered and headers such as - where it came from, where it is
+   going and so on.
 
 ** Network Layer
    Network layer packets are called datagrams. The network layer hands
