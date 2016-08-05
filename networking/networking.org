@@ -1,11 +1,12 @@
-#+Title: Netwokring
+#+Title: Introduction to Computer Networks
 #+Author: Yogesh Agrawal
 #+Email: yogeshiiith@gmail.com
 #+Date: <2016-07-31 Sun>
 
 * Introduction
-  This document discusses about the networking concepts learned from
-  Netorking-SP course in [[https://lagunita.stanford.edu/courses/Engineering/Networking-SP/SelfPaced/courseware][edx.org]].
+  This document discusses about the computer networking concepts
+  learnt from Netorking-SP course in [[https://lagunita.stanford.edu/courses/Engineering/Networking-SP/SelfPaced/courseware][edx.org]].
+
 * Connectivity
   Connectivity is the idea that two computers in different parts of
   the world can connect to one another and exchange data. If we
@@ -192,6 +193,13 @@
    not worry about, how the data got there, wan there any
    retransmission required.
 
+* IP
+  IP is considered to be a thin waist. If we want to use internet we
+  have to use IP, there is no choice. IP can be used with many
+  different link layers such as wifi, ethernet, 3G etc. On top of IP,
+  there can be many different transport layers such as TCP, UDP, RTP
+  etc. Similarly it can also be used with many different application
+  layers such as HTTP, SSH, FTP, SMTP etc.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
