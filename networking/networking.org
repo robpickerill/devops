@@ -142,9 +142,13 @@
 ** Network Layer
    Network layer packets are called datagrams. The network layer hands
    the datagram to the Link layer below, telling it to send the
-   datagram over the first link. The network layer examines the
-   destination address of the datagram, and is responsible for routing
-   the datagram one hop at a time, towards its eventual destination.
+   datagram over the first link. At the other end of the link is a
+   router. The Link layer of the router accepts the datagram and hands
+   it up to the network layer. Network layer examines the destination
+   address of the datagram, and is responsible for routing the
+   datagram one hop at a time, towards its eventual destination. It
+   does this by sending it to the Link layer again, and so on until it
+   reaches the Network layer at the destination.
 
    Network layer does not need to concern itself, how link layer
    transmits the data. This also means that single network layer has a
@@ -154,7 +158,7 @@
    This separation of concerns is made possible by the modularity of
    each layer and a common well-define API to the layer below.
 
-   When we send packets to internet we mush use Internet Protocol
+   When we send packets to internet we must use Internet Protocol
    (IP). Which provides following features:
    1. Makes best-effort attempt to deliver datagrams to the other end,
       but no promises.
