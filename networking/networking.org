@@ -166,19 +166,20 @@
       does not provide any guarantees.
 
 ** Transport Layer
-   If an application wants its data to be retransmitted when lost, and
-   wants to be delivered in order without corruption, then it needs to
-   use another protocol called *Transfer Control Protocol (TCP)*,
-   running on top of IP.
+   If an application wants a guarantee that its data will be
+   retransmitted when lost, and will be delivered in order and without
+   corruption, then it needs to use another protocol called *Transfer
+   Control Protocol (TCP)*, running on top of IP.
 
-   TCP/IP application uses both TCP and IP together.
+   TCP/IP applications uses both TCP and IP together.
 
    TCP provides a service to application which guarantees correct
    in-order delivery of data, running on top of network layer service,
    which provides an unreliable datagram delivery service. If the
    network layer drops some datagrams, TCP will retransmit them
    multiple times if needed. If the network layer delivers them out of
-   order - TCP will put the data back into the right order again.
+   order - perhaps because packets follow different path to reach
+   destination, TCP will put the data back into the right order again.
 
    Example of application which uses TCP is email client. These
    applications employ TCP for correct delivery of data. Applications
