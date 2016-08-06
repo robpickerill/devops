@@ -195,11 +195,18 @@
    delivery guarantees.
    
 ** Application Layer
+   While each application is different, it can reuse the Transport
+   Layer service using the well-defined API from the application layer
+   to the TCP/UDP service beneath.
+
    Application protocol uses their own syntax and semantics to
-   represent data. Example of application layer is HTTP. It sends GET
-   request to server, requesting for some data. Application layer does
-   not worry about, how the data got there, wan there any
-   retransmission required.
+   represent data. For example when application requests a page from a
+   web server, it sends a GET request to the server. HTTP dictates
+   that the GET command be sent as ASCII text. As far as application
+   layer is concerned, it send data directly to the application layer
+   of the server. Application layer does not need to worry about how
+   the data got there, which routes it followed, was there any
+   retransmission etc.
 
 * IP
   IP is considered to be a thin waist. If we want to use internet we
