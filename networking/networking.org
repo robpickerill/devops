@@ -215,6 +215,16 @@
   there can be many different transport layers such as TCP, UDP, RTP
   etc. Similarly it can also be used with many different application
   layers such as HTTP, SSH, FTP, SMTP etc.
+
+  IP datagrams consist of a header and some data. When the transport
+  layers has data to send, it hands a Transport Segment to the network
+  layer below. The network layer puts the transport segment inside a
+  new IP datagram with some header fields. IP's job is to deliver the
+  datagram to the other end. But first, it has to make its way to the
+  first link to the first router. For this it hands the IP datagram to
+  the link layer. Link layer puts the IP datagram inside a Link Frame,
+  such as Ethernet packet and ships it off to the first router.
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
