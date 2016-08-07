@@ -209,12 +209,12 @@
    retransmission etc.
 
 * IP
-  IP is considered to be a thin waist. If we want to use internet we
-  have to use IP, there is no choice. IP can be used with many
-  different link layers such as wifi, ethernet, 3G etc. On top of IP,
-  there can be many different transport layers such as TCP, UDP, RTP
-  etc. Similarly it can also be used with many different application
-  layers such as HTTP, SSH, FTP, SMTP etc.
+  IP is considered to be a thin waist, because if we want to use
+  internet we have to use IP, there is no choice. But IP can be used
+  with many different link layers such as wifi, ethernet, 3G etc. On
+  top of IP, there can be many different transport layers such as TCP,
+  UDP, RTP etc. Similarly it can also be used with many different
+  application layers such as HTTP, SSH, FTP, SMTP etc.
 
   IP datagrams consist of a header and some data. When the transport
   layers has data to send, it hands a Transport Segment to the network
@@ -224,7 +224,50 @@
   first link to the first router. For this it hands the IP datagram to
   the link layer. Link layer puts the IP datagram inside a Link Frame,
   such as Ethernet packet and ships it off to the first router.
-  
+
+  Datagrams are routed through the network hop by hop, from source to
+  the destination. Router contains a routing table which it uses to
+  find where to send the packet. Router indexes the table based on the
+  destination address and forwards it to the next hop. Hop by hop,
+  step by step the packet makes it way from source to the destination
+  using only the destination address in the datagram.
+
+  IP datagram service is connectionless, it maintains no state at all
+  related to a communication. The communication does not start by
+  establishing a end to end connection. For example when we make a
+  skype call lasting several minutes, consisting of several IP
+  datagrams, the IP layer maintains no knowledge about the call and
+  simply routes each datagram packet individually and independent of
+  all the others.
+ 
+** IP Service Model
+   |----------------+--------------------------------|
+   | *Property      | Behaviour*                     |
+   |----------------+--------------------------------|
+   | Datagram       | Individual packet routing;     |
+   |                | Hop-by-hop routing.            |
+   |----------------+--------------------------------|
+   | Unreliable     | No delivery guarantee;         |
+   |----------------+--------------------------------|
+   | Connectionless | No per-flow state.             |
+   |                | Packets might be mis-sequenced |
+   |----------------+--------------------------------|
+ 
+   There are various reasons to why IP model was designed to be very
+   simple:
+   1. To make internet faster, more reliable, low cost to build and
+      maintain. If the network is kept simple, packets can be
+      delivered quickly. The simple network can be made to run very
+      fast, using dedicated hardware.
+
+   2. The end-to-end principle: It says if we can correctly implement
+      a feature at the end host, then we should. The basic idea is to
+      place as much intelligence as possible in the end host. It is
+      better to implement feature in the software rather than baked
+      into the hardware. The congestion control, reliability should be
+      implemented at the end hosts - by the source and destination
+      computers, not by the network.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
