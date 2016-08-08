@@ -279,6 +279,27 @@
    4. Works over any link layer. IP makes very few assumptions about
       the Link layer below.
 
+** Additional services provided by IP
+*** Prevents looping
+    IP routers forward packets hop-by-hop, it is possible for the
+    routing table in a router to be wrong. In that case packet might
+    end up looping between the routers, following the same path. This
+    is most likely to happen when the forwarding tables are changing
+    and they temporarily get into an inconsistent state.
+
+    IP tries to prevent packets from looping into the network. Rather
+    than preventing the loops from ever happening - which would take a
+    lot of complexity, it uses a simple technique to catch and delete
+    packets that appeared to be stuck in a loop. To do this, IP simply
+    adds a hop-count field in the header of every datagram. It is
+    called the time to live, or *TTL* field. It starts out with a
+    number like 128 and then decremented by 1 by every router it
+    passes through. When the value of the TTL reaches 0, router
+    concludes that the packet must have been stuck in a loop, hence
+    drops the datagram. IP does not guarantee loops won't happen, it
+    just tries to limit the damage caused by a flood of endlessly
+    looping packets in the network.
+    
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
