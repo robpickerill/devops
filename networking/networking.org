@@ -255,7 +255,7 @@
  
    There are various reasons to why IP model was designed to be very
    simple:
-   1. To make internet faster, more reliable, low cost to build and
+   1. To make internet faster, more reliable, lower cost to build and
       maintain. If the network is kept simple, packets can be
       delivered quickly. The simple network can be made to run very
       fast, using dedicated hardware.
@@ -264,9 +264,20 @@
       a feature at the end host, then we should. The basic idea is to
       place as much intelligence as possible in the end host. It is
       better to implement feature in the software rather than baked
-      into the hardware. The congestion control, reliability should be
+      into the hardware. In internet it was decided that features such
+      as congestion control, reliable communications should be
       implemented at the end hosts - by the source and destination
       computers, not by the network.
+
+   3. IP being a unreliable service provides freedom for applications
+      to chose to run reliable or unreliable service on top of IP. For
+      example real time applications don't need reliable service, if
+      any packet is lost in the network, then if re-transmitted packet
+      via reliable service is delivered late, it will not be
+      useful.
+
+   4. Works over any link layer. IP makes very few assumptions about
+      the Link layer below.
 
 * COMMENT TODO
   1. join emacs group
