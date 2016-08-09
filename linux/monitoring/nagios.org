@@ -72,6 +72,15 @@
         service_description             HTTP
         check_command                   check_http
         }
+
+     define service{
+        use                             generic-service
+        host_name                       cfbase-prod
+        service_description             http-8082
+        check_command                   check_http!-p 8082 -e "HTTP/1.1 404"
+        contacts                        yogesh
+        check_interval                  1
+     }
      #+END_EXAMPLE
    - Set folder permission correctly
      #+BEGIN_EXAMPLE
@@ -138,3 +147,4 @@
   - https://www.digitalocean.com/community/tutorials/how-to-install-nagios-on-centos-6
   - http://tecadmin.net/install-nrpe-on-ubuntu/
   - https://access.redhat.com/documentation/en-US/Red_Hat_Storage/3/html/Console_Administration_Guide/Configuring_Nagios_to_Send_Mail_Notifications.html
+  - http://thelinuxfaq.com/389-how-to-check-300-400-200-codes-etc-with-check-http-in-nagios
