@@ -1,6 +1,6 @@
 #+Title: Nagios Monitoring
 #+Author: Yogesh Agrawal
-#+Email: yogesh.agrwal@capitalfloat.com; yogeshiiith@gmail.com
+#+Email: yogeshiiith@gmail.com
 #+Date: <2016-07-22 Fri>
 
 * Introduction
@@ -100,6 +100,12 @@
      from.
      #+BEGIN_EXAMPLE
      allowed_hosts=127.0.0.1, <nagios-server-ip>
+     command[check_hda1]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/xvda1
+     #+END_EXAMPLE
+   - Add or edit nrpe commands as per the requriements, for example we changed
+     the disk partition to monitor from =/dev/hda1= to =/dev/xvda1=.
+     #+BEGIN_EXAMPLE
+     command[check_hda1]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/xvda1
      #+END_EXAMPLE
    - Setup firewall rules to allow connections from our Monitoring server to
      clients
