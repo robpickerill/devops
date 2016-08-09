@@ -323,6 +323,12 @@
     location. It is security problem if packets are accidentally and
     frequently sent to the wrong place because of a mistake by the
     router along the way.
+*** IP version
+    There are two versions of IP protocol - IPv4 and IPv6. IPv4 uses
+    32bit address spaces, and IPv6 uses 128 bit address space. We are
+    running out of addresses in IPv4, and IPv6 provides more number of
+    addresses. Internet is gradually shifting from IPv4 to IPv6.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
