@@ -325,7 +325,7 @@
     router along the way.
 *** IP version
     There are two versions of IP protocol - IPv4 and IPv6. IPv4 uses
-    32bit address spaces, and IPv6 uses 128 bit address space. We are
+    32 bit address spaces, and IPv6 uses 128 bit address space. We are
     running out of addresses in IPv4, and IPv6 provides more number of
     addresses. Internet is gradually shifting from IPv4 to IPv6.
 
@@ -334,6 +334,30 @@
     new fields in the header, requires extra processing by the router,
     and router should be able to support that feature. In practise
     very few fields are processed by the router.
+** IPv4 Datagram Header
+   Following are the important fields in the IPv4 datagram header:
+   1. Source address
+   2. Destination address
+   3. Protocol ID :: This field tells what is inside the data
+                     field. It helps end hosts to demultiplex the
+                     packets and send to correct code for
+                     processing. For example, ID "6" tells the data
+                     contains a TCP segment, and so we can safely pass
+                     the datagram to the TCP code, and it will be able
+                     to parse the segment correctly.
+   4. IP version :: Version tells which version of IP is it, whether
+                    IPv4 or IPv6.
+   5. Packet length :: The total packet length can be upto 64kBytes
+                       including header and all the data.
+   6. TTL :: Time to live field helps to prevent looping of the
+             packets in the network.
+   7. Packet ID :: The packet-id, flags and fragment offset all help
+                   routers to fragment IP packets into smaller
+                   self-contained packets.
+   8. Type of service :: The type of service gives hint to the router
+        how important the packet is.
+   9. Checksum
+   10. Header length
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
