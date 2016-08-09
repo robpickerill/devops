@@ -316,6 +316,13 @@
     fragment the datagrams into two self-contained IP datagrams and
     reassemble the data correctly again at the end host.
 
+*** Header checksum
+    IP uses a header checksum, to prevent delivery of packets at the
+    wrong destination. IP includes a checksum field in the datagram
+    header, to make sure datagrams are delivered at the right
+    location. It is security problem if packets are accidentally and
+    frequently sent to the wrong place because of a mistake by the
+    router along the way.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
