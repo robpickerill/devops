@@ -302,11 +302,20 @@
     
 *** Fragment packets
     IP will fragment the packets if they are too long. IP is designed
-    to run on over any kind of link. Most links have a limit on the
+    to run on over any kind of link and most links have a limit on the
     size of packets they can carry. For example ethernet can only
     carry packets shorter than 1500 bytes. If an application has more
-    than 1500 bytes to send, it has to be broken into 1500 pieces,
+    than 1500 bytes to send, data has to be broken into 1500 pieces,
     before sending in an IP datagram.
+
+    The size limit between the two links may be different. For example
+    router may receive datagrams of size 1500 bytes each, but the
+    outgoing link requires packets to be of size 1000 bytes each. In
+    that case router will break the datagram into two individual
+    datagrams. IP provides header fields which helps router to
+    fragment the datagrams into two self-contained IP datagrams and
+    reassemble the data correctly again at the end host.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
