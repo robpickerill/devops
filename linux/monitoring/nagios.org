@@ -28,9 +28,6 @@
      #+BEGIN_EXAMPLE
      http://<nagios-ip>/nagios/
      #+END_EXAMPLE
-   - For public port we can monitor ping, any open ports such as webserver,
-     e-mail server, etc. For internal service that are listening on localhost,
-     such as Mysql, memcached, system services, we will need to use NRPE.
    - Create config files for each servers
      #+BEGIN_EXAMPLE
      mkdir /etc/nagios/servers
@@ -83,6 +80,12 @@
      #+END_EXAMPLE
    - Navigate to monitoring server's ip address http://IP/nagios
 ** Client setup
+   From public ports, we can monitor ping, any open ports such as webserver,
+   e-mail server, etc.
+
+   For internal services that are listening on localhost, such as MySQL,
+   memcached, system services, we will have to use NRPE.
+
    - Install NRPE on clients
      #+BEGIN_EXAMPLE  (centos)
      sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
@@ -97,6 +100,15 @@
      from.
      #+BEGIN_EXAMPLE
      allowed_hosts=127.0.0.1, <nagios-server-ip>
+     #+END_EXAMPLE
+   - Setup firewall rules to allow connections from our Monitoring server to
+     clients
+     #+BEGIN_EXAMPLE
+     iptables -N NRPE
+     iptables -I INPUT -s 0/0 -p tcp --dport 5666 -j NRPE
+     iptables -I NRPE -s 198.211.117.251 -j ACCEPT
+     iptables -A NRPE -s 0/0 -j DROP
+     /etc/init.d/iptables save
      #+END_EXAMPLE
    - Restart nrpe
      #+BEGIN_EXAMPLE
