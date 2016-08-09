@@ -329,6 +329,11 @@
     running out of addresses in IPv4, and IPv6 provides more number of
     addresses. Internet is gradually shifting from IPv4 to IPv6.
 
+*** Add new fields
+    IP allows new fields to be added to the datagram header. Adding
+    new fields in the header, requires extra processing by the router,
+    and router should be able to support that feature. In practise
+    very few fields are processed by the router.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
