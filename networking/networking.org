@@ -248,6 +248,9 @@
    |                | Hop-by-hop routing.            |
    |----------------+--------------------------------|
    | Unreliable     | No delivery guarantee;         |
+   |                | Packets might be dropped.      |
+   |----------------+--------------------------------|
+   | Best-effort    | ..but only if necessary        |
    |----------------+--------------------------------|
    | Connectionless | No per-flow state.             |
    |                | Packets might be mis-sequenced |
@@ -363,10 +366,9 @@
         about how important the packet is.
    9. Header length :: Header length tells us how big the header is.
    10. Checksum :: A checksum is calculated over the whole header, so
-                   just in case the header is corrupted we are not
+                   just in case the header is corrupted, we are not
                    likely to deliver a packet to the wrong destination
                    by mistake.
-   11. Header length
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
