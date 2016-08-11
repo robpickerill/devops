@@ -369,6 +369,25 @@
                    just in case the header is corrupted, we are not
                    likely to deliver a packet to the wrong destination
                    by mistake.
+* TCP Byte stream
+** TCP Three way handshake
+   Internet 4-layer model takes a stream of data from the application
+   layer and hands it to transport layer. Transport layer breaks the
+   stream into segments of data that it reliably delivers to
+   application running on another computer.
+
+   Client and server does three way handshake to establish a
+   connection. A server listens for connection requests, to open a
+   connection client issues a connection request.
+  
+   The first step of handshake is when the client sends a synchronize
+   message called "SYN". Second step is when the server responds with
+   a synchronize message that is also acknowledgement to the client
+   called "SYN-ACK". The third and final step is when client responds
+   by acknowledging the server synchronize, called "ACK". So the three
+   wat handshake is described as "synchronize, synchronize and
+   acknowledge, acknowledge" or "SYN, SYN-ACK, ACK".
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
