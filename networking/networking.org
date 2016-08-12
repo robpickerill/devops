@@ -405,18 +405,24 @@
    port 80.
 
 ** Router
-   A router works according to its routing table. Routing table
-   contains ip addresses patterns to link pair. When a packet arrives
-   at the router, it matches the destination address against the IP
-   patterns. It finds the best match, and decides where to forward
-   the incoming packets.
+   A router can have many links connecting to it. As each packet
+   arrives, router decides which link to send packet to. A router
+   works according to its routing table. Routing table contains set of
+   ip addresses patterns and the link to send across for each
+   pattern. When a packet arrives at the router, it matches the
+   packets against the IP addresses patterns. It finds the best match,
+   using longest prefix match algorithm and decides where to forward
+   the packet.
 
-   Router itself has an ip address. So router might forward the
-   packet to its software, destined to them. This happens when we
-   connect to router over TCP.
+   Router itself has an ip address. So router might not forward the
+   packet, but deliver to its own software. This happens when we login
+   to router over TCP, the IP packets are destined to the router's own
+   IP address.
 
-   For example router may also contain default route, which matches
-   every packets and forwarded to a particular link.
+   Router may also contain default route, which is the least specific
+   route and matches every IP address. If when a packet arrives and
+   there is no specific match, then the default one is used. The
+   default route is usually useful in edge networks.
 
 * COMMENT TODO
   1. join emacs group
