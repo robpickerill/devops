@@ -394,15 +394,29 @@
    the application. From the network layer perspective, packets sent
    to different application but same computer look the same. So when a
    program wants to talk to another program, we need two
-   addresses. One is an IP address that is used by the network layer
-   to deliver the packet to the end host. Second is port, that is used
-   by the transport layer to deliver the data to the correct
-   application.
+   addresses. The first One is an IP address that is used by the
+   network layer to deliver the packet to the end host. Second is
+   port, that is used by the transport layer to deliver the data to
+   the correct application.
 
-   For example, web server usually runs on port 80. So when we send a
+   For example, web servers usually run on port 80. So when we send a
    request to the web server, the packets have destination IP
    address. Those IP packets have TCP segments that has destination
    port 80.
+
+** Router
+   A router works according to its routing table. Routing table
+   contains ip addresses patterns to link pair. When a packet arrives
+   at the router, it matches the destination address against the IP
+   patterns. It finds the best match, and decides where to forward
+   the incoming packets.
+
+   Router itself has an ip address. So router might forward the
+   packet to its software, destined to them. This happens when we
+   connect to router over TCP.
+
+   For example router may also contain default route, which matches
+   every packets and forwarded to a particular link.
 
 * COMMENT TODO
   1. join emacs group
