@@ -424,6 +424,15 @@
    there is no specific match, then the default one is used. The
    default route is usually useful in edge networks.
 
+* Packet Switching
+  A network switch does following job:
+  1. Forwards the packet to its outgoing link.
+  2. Share the resources efficiently.
+  3. No per flow state.
+
+  - Flow :: A collection of datagrams belonging to the same end-to-end
+            communication.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
