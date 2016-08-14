@@ -446,6 +446,20 @@
    packet. This is not considered secure, because someone could trick
    to forward the packet to somewhere where it should not go.
 
+** Optimized routing
+   Today's world switches along the path contains a table called
+   routing table, that decides where to forward the packet. Switches
+   lookup the destination address in the table, and decide where to
+   forward the packet. In this model When packet needs to contain the
+   destination address.
+
+   For example: consider source wants to send the packet to
+   destination. Source puts destination address in the packet and
+   sends the packet to next hop A. A sees the packet to be send to
+   destination, it then lookups the table and send the packet to
+   B. Similarly B sends it to C and finally packet reaches the
+   destination.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
