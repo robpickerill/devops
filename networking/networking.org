@@ -456,9 +456,19 @@
    For example: consider source wants to send the packet to
    destination. Source puts destination address in the packet and
    sends the packet to next hop A. A sees the packet to be send to
-   destination, it then lookups the table and send the packet to
+   destination, it then lookups its local table and send the packet to
    B. Similarly B sends it to C and finally packet reaches the
    destination.
+
+** Properties of switch
+*** Sharing properties of switch
+    Switches efficiently share the links between different
+    parties. For example suppose two people are browsing the internet
+    using the home wireless router. One is reading a page from the
+    internet, and the second one can download the file from the
+    internet with full speed. When the first one starts loading new a
+    web page, the link can be shared among the two. Once the download
+    completes the first person can use the full link speed.
 
 * COMMENT TODO
   1. join emacs group
