@@ -425,13 +425,26 @@
    default route is usually useful in edge networks.
 
 * Packet Switching
-  A network switch does following job:
-  1. Forwards the packet to its outgoing link.
-  2. Share the resources efficiently.
-  3. No per flow state.
+  Independently for each arriving packet, pick its outgoing link. If
+  the link is free send the packet to that link, else hold the packet
+  for later.
 
-  - Flow :: A collection of datagrams belonging to the same end-to-end
-            communication.
+** Source routing
+   Each packet contains an explicit route, specifying IDs of each
+   switch along the path. We call this "self routing" or "source
+   routing" because the source specifies the route.
+
+   For example, consider a path : source->A->B->c->destination. When
+   the source sends the packet it puts A, B, C, destination ID in the
+   packet. When A receives the packet it reads the header and forward
+   the packet to B. When B receives the packet it reads the header and
+   forward to C, C forwards to the destination. This method of routing
+   is called source routing, as source is deciding the path.
+
+   Source routing is supported by the internet, but it is turned
+   off. Router owner does not want us to tell how to send the
+   packet. This is not considered secure, because someone could trick
+   to forward the packet to somewhere where it should not go.
 
 * COMMENT TODO
   1. join emacs group
