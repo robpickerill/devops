@@ -461,7 +461,12 @@
    destination.
 
 ** Properties of switch
-*** Sharing properties of switch
+*** Simple forwarding
+    Switch does not maintain state of the packets. It does not care
+    whether packet is part of large transfer of a skype call, or its
+    just a firmware update for your computer. It just forwards the
+    packet individually, independent of each others.
+*** Sharing property
     Switches efficiently share the links between different
     parties. For example suppose two people are browsing the internet
     using the home wireless router. One is reading a page from the
