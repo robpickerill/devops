@@ -467,6 +467,9 @@
     just a firmware update for your computer. It just forwards the
     packet individually, independent of each others.
 *** Sharing property
+    - Flow :: Collection of datagrams belonging to same end-to-end
+              communication.
+
     Switches efficiently share the links between different
     parties. For example suppose two people are browsing the internet
     using the home wireless router. One is reading a page from the
@@ -474,6 +477,9 @@
     internet with full speed. When the first one starts loading new a
     web page, the link can be shared among the two. Once the download
     completes the first person can use the full link speed.
+
+    By treating all the traffic as just packets, the wireless router
+    can very effectively and simply share the link.
 
 * COMMENT TODO
   1. join emacs group
