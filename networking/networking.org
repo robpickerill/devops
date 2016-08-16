@@ -481,6 +481,25 @@
     By treating all the traffic as just packets, the wireless router
     can very effectively and simply share the link.
 
+* Encapsulation
+  We want to breakup data into discrete units, called packets. Each
+  packet contains data from multiple layers. Encapsulation is the
+  principle by which we organize information in the packet so that we
+  can maintain layers, yet let them share the contents of our packets.
+
+  - Layer N data is payload to layer N-1
+  - Example:
+    + HTTP(application) pay load in
+    + a TCP transport segment in
+    + an IP network packet in
+    + a Wifi link frame
+
+  Each protocol layer has some headers, followed by its payload,
+  followed by some footers. For example, IP packet has source address
+  and destination address. It has TCP segment as its pay load. IP does
+  not care about the payload, it just delivers the packet to the end
+  host. When the packet arrives, host looks inside the payload, see
+  that its a TCP segment and processes it accordingly.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
