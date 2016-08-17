@@ -482,26 +482,57 @@
     can very effectively and simply share the link.
 
 * Encapsulation
-  We want to breakup data into discrete units, called packets. Each
-  packet contains data from multiple layers. Encapsulation is the
-  principle by which we organize information in the packet so that we
-  can maintain layers, yet let them share the contents of our packets.
+** Encapsulation Principle
+   We want to breakup data into discrete units, called packets. Each
+   packet contains data from multiple layers. Encapsulation is the
+   principle by which we organize information in the packet so that we
+   can maintain layers, yet let them share the contents of our packets.
 
-  - Layer N data is payload to layer N-1
-  - Example:
-    + HTTP(application) pay load in
-    + a TCP transport segment in
-    + an IP network packet in
-    + a Wifi link frame
+   - Layer N data is payload to layer N-1
+   - Example:
+     + HTTP(application) pay load in
+     + a TCP transport segment in
+     + an IP network packet in
+     + a Wifi link frame
 
-  Each protocol layer has some headers, followed by its payload,
-  followed by some footers. For example, IP packet has source address
-  and destination address. It has TCP segment as its pay load. IP does
-  not care about the payload, it just delivers the packet to the end
-  host. When the packet arrives, host looks inside the payload, see
-  that its a TCP segment and processes it accordingly.
+   Each protocol layer has some headers, followed by its payload,
+   followed by some footers. For example, IP packet has source address
+   and destination address. It has TCP segment as its pay load. IP does
+   not care about the payload, it just delivers the packet to the end
+   host. When the packet arrives, host looks inside the payload, see
+   that its a TCP segment and processes it accordingly.
+** Encapsulation Flexibility
+   Encapsulation allows to recursively layer protocols. Example:
+   =Virtual Private Network (VPN)=, in VPN layering is as follows:
+   - HTTP (web) application payload in
+   - TCP transport segment in
+   - IP network packet in
+   - a secured TLS presentation message in
+   - TCP transport segment in
+   - IP network packet in
+   - Ethernet link frame
+
+*** VPN
+    VPN is used to open a secure connection to a network we trust,
+    such as corporate private network. This is achieved using
+    Transport Layer Security protocol (TLS). Instead of sending
+    packets to internet normally we send inside the VPN connection, so
+    that packets go to office private network. Then this packet is
+    routed by end host VPN gateway normally. This lets us access
+    private resources of the network. VPN is a single source of
+    entrance to the private network, so instead of sprinkle security,
+    single node should be made secure, and restricted to allowed
+    clients.
+
+    In VPN, client generates packet with HTTP request, that is
+    encapsulated inside TCP segment, and then IP packet. Then it is
+    encapsulated inside TLS segment, which protects the message. Then
+    this packet is encapsulated inside TCP segment, inside IP packet
+    and then ethernet frame.
+    
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
   3. Check if we can make two concurrent calls in skype to a user.
   4. Skype works on which port?
+  5. How VPN works, connect to VPN and capture packets.
