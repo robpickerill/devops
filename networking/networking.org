@@ -525,10 +525,14 @@
     clients.
 
     In VPN, client generates packet with HTTP request, that is
-    encapsulated inside TCP segment, and then IP packet. Then it is
-    encapsulated inside TLS segment, which protects the message. Then
-    this packet is encapsulated inside TCP segment, inside IP packet
-    and then ethernet frame.
+    encapsulated inside TCP segment, and then inside IP packet
+    destined to company's internal web server. We can not directly
+    communicate with the internal web server. So computer puts this
+    inside a TLS segment. TLS protects the message and keep it
+    secret. Then this TLS session is inside TCP segment, that
+    terminates at the virtual private gateway. This is then
+    encapsulated inside IP packet destined to the vpn gateway and then
+    ethernet frame.
     
 * COMMENT TODO
   1. join emacs group
