@@ -540,3 +540,4 @@
   3. Check if we can make two concurrent calls in skype to a user.
   4. Skype works on which port?
   5. How VPN works, connect to VPN and capture packets.
+  6. How internal web address is resolved in VPN.
