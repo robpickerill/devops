@@ -534,6 +534,12 @@
     encapsulated inside IP packet destined to the vpn gateway and then
     ethernet frame.
     
+* Byte order and packet formats
+** Little Endian
+   Least significant byte is stored at the lowest address.
+
+** Big Endian
+   Most significant byte is stored at the lowest address.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
