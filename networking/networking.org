@@ -535,6 +535,11 @@
     ethernet frame.
     
 * Byte order and packet formats
+** Communication
+   To generate a message software has to generate a copy of it in
+   memory, which is then passed to Network Interface Card. Similarly
+   when packet arrives, NIC puts it in memory which is accessed by
+   software.
 ** Little Endian
    Least significant byte is stored at the lowest address.
 
