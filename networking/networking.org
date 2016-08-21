@@ -545,6 +545,12 @@
 
 ** Big Endian
    Most significant byte is stored at the lowest address.
+** Host order and Network order
+   C networking libraries provide functions to convert between host
+   order and network order. The function htons() convert host to
+   network order. So, the right way to compare port field is to read
+   the port field from the packet structure and call ntoshs function
+   to convert bytes into host order.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
