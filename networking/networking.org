@@ -551,6 +551,14 @@
    network order. So, the right way to compare port field is to read
    the port field from the packet structure and call ntoshs function
    to convert bytes into host order.
+** Packet formats
+   Packets are written 4 bytes wide. Since IPV4 has 5 rows of required
+   fields, this means that an IPv4 header is at least 20 bytes
+   long. The total length field of an IPv4 packet is 2 bytes
+   long. This means that an IPv4 packet can't be longer than 65,535
+   bytes. When we see an example packet in wireshark, its length could
+   be 98, which is 0x0462 in hexadecimal. Packet length is written in
+   the big endian format, in the total length field.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -558,3 +566,5 @@
   4. Skype works on which port?
   5. How VPN works, connect to VPN and capture packets.
   6. How internal web address is resolved in VPN.
+  7. In https every packet will be encrypted, can we see this in
+     wireshark.
