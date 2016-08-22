@@ -535,6 +535,10 @@
     ethernet frame.
     
 * Byte order and packet formats
+  Multibyte value is represented by computer in either big endian
+  format or little endian format. In character string representation,
+  endianness does not effect the layout, because each character is one
+  byte.
 ** Communication
    To generate a message software has to generate a copy of it in
    memory, which is then passed to Network Interface Card. Similarly
