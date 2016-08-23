@@ -563,6 +563,33 @@
    bytes. When we see an example packet in wireshark, its length could
    be 98, which is 0x0462 in hexadecimal. Packet length is written in
    the big endian format, in the total length field.
+* IPv4 Addresses
+  The goal of the internet protocol was to take many networks and
+  stitch them together. For this to work protocol needed a way to
+  refer to a computer that was independent of the network it was on
+  and unique.
+  
+  An IP address version 4 is 32 bits long. It is represented as
+  a.b.c.d, 4 octets. Each device connected to internet has an IP
+  address. The IP address uniquely identifies the device in the
+  network. In association to the IP address, devices also have
+  netmask. Netmask tells the device which IP addresses are local -- on
+  the same link -- and which require going through router. For example
+  in order to send a packet to another device in the same wireless
+  network, the laptop does not need to go through an IP router. It can
+  in theory send the packet directly to the other device since it's on
+  the same link.
+  
+  Netmask is written as string of consecutive 1's starting with the
+  most significant bit. Netmask is also represented in 4 octets. A
+  netmask of 255.255.255.0, for example, means the first 3 octets are
+  all 1's, and the last octet is zero. This means that an IP address
+  which matches the first three octets is in the same network.
+
+  To compare whether two ips are on the same network or not, we can do
+  bitwise AND of the ip address with netmask. If the resulting
+  addresses are equal, they are in the same network.
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
