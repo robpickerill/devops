@@ -565,7 +565,7 @@
    the big endian format, in the total length field.
 * IPv4 Addresses
   The goal of the internet protocol was to take many networks and
-  stitch them together. For this to work protocol needed a way to
+  stitch them together. For this to work, protocol needed a way to
   refer to a computer that was independent of the network it was on
   and unique.
   
@@ -582,14 +582,18 @@
   
   Netmask is written as string of consecutive 1's starting with the
   most significant bit. Netmask is also represented in 4 octets. A
-  netmask of 255.255.255.0, for example, means the first 3 octets are
+  netmask of 255.255.255.0 for example, means the first 3 octets are
   all 1's, and the last octet is zero. This means that an IP address
-  which matches the first three octets is in the same network.
+  which matches the first three octets is in the same network. A
+  netmask of 255.255.252.0 means the netmask is 22 bits long, while
+  255.128.0.0 is a 9 bits netmask.
 
   To compare whether two ips are on the same network or not, we can do
-  bitwise AND of the ip address with netmask. If the resulting
-  addresses are equal, they are in the same network.
-  
+  bitwise 'AND' of the ip address with netmask. If the resulting
+  addresses are equal, they are in the same network. For example, ip
+  addresses 171.64.15.33 and 171.19.201.2 with netmask 255.255.255.224
+  are not in the same network.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -599,3 +603,5 @@
   6. How internal web address is resolved in VPN.
   7. In https every packet will be encrypted, can we see this in
      wireshark.
+  8. What does 'route' command does. 
+  9. ping 127.0.0.10 replies, how ?
