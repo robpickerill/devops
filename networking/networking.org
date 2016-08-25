@@ -594,34 +594,40 @@
   addresses 171.64.15.33 and 171.19.201.2 with netmask 255.255.255.224
   are not in the same network.
 
-* Address Structure  
-  IP addresses were originally broken up into three classes: Class A,
-  Class B and Class C. Each class separated IP address into two
-  parts - network address plus host address. Network address is to
-  identify the correct network in the internet and host address is to
-  identify the correct device in the network.
+* Address Structure
+** Historical address
+   IP addresses were originally broken up into three classes: Class A,
+   Class B and Class C. Each class separated IP address into two
+   parts - network address plus host address. Network address is to
+   identify the correct network in the internet and host address is to
+   identify the correct device in the network.
 
-** Class A
-   |------+---------+---------|
-   | *Bit | Network | Host*   |
-   |------+---------+---------|
-   |    0 | 7 bits  | 24 bits |
-   |------+---------+---------|
+   Class A,B,C is too coarse grained, meaning they divide the
+   addresses into larger components, its not fine grained.
 
-** Class B
-   |------+-----+---------+---------|
-   | *Bit | Bit | Network | Host*   |
-   |------+-----+---------+---------|
-   |    1 |   0 | 14 bits | 16 bits |
-   |------+-----+---------+---------|
+*** Class A
+    |------+---------+---------|
+    | *Bit | Network | Host*   |
+    |------+---------+---------|
+    |    0 | 7 bits  | 24 bits |
+    |------+---------+---------|
 
-** Class C
-   |------+-----+-----+---------+--------|
-   | *Bit | Bit | Bit | Network | Host*  |
-   |------+-----+-----+---------+--------|
-   |    1 |   1 |   0 | 21 bits | 8 bits |
-   |------+-----+-----+---------+--------|
+*** Class B
+    |------+-----+---------+---------|
+    | *Bit | Bit | Network | Host*   |
+    |------+-----+---------+---------|
+    |    1 |   0 | 14 bits | 16 bits |
+    |------+-----+---------+---------|
 
+*** Class C
+    |------+-----+-----+---------+--------|
+    | *Bit | Bit | Bit | Network | Host*  |
+    |------+-----+-----+---------+--------|
+    |    1 |   1 |   0 | 21 bits | 8 bits |
+    |------+-----+-----+---------+--------|
+
+** Structure today
+   Today we use *Classless Inter-Domain Routing (CIDR)*
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
