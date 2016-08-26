@@ -595,7 +595,7 @@
   are not in the same network.
 
 * Address Structure
-** Historical address
+** Address Class
    IP addresses were originally broken up into three classes: Class A,
    Class B and Class C. Each class separated IP address into two
    parts - network address plus host address. Network address is to
@@ -626,8 +626,13 @@
     |    1 |   1 |   0 | 21 bits | 8 bits |
     |------+-----+-----+---------+--------|
 
-** Structure today
-   Today we use *Classless Inter-Domain Routing (CIDR)*
+** Classless Inter Domain Routing - CIDR
+   Today we use *Classless Inter-Domain Routing (CIDR)*. Instead of
+   having prefixes of length 8, 16 and 24 bits. CIDR allows prefixes
+   to be any number of bits. This means all CIDR prefixes define a
+   block of addresses that is a power of 2 in size. For example, CIDR
+   block as "slash 20" has netmask of length 20. This CIDR block
+   describes 2 to the power 12 addresses.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
