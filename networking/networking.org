@@ -633,6 +633,8 @@
    block of addresses that is a power of 2 in size. For example, CIDR
    block as "slash 20" has netmask of length 20. This CIDR block
    describes 2 to the power 12 addresses.
+* IPV4 address assignment
+  ICANN -> IANA -> Regional Internet Registries (RIR).
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -645,3 +647,5 @@
   8. What does 'route' command does. 
   9. ping 127.0.0.10 replies, how ?
   10. Can network layer takes do compression before sending packets?
+  11. ICANN, IANA, APNIC, RIPE NCC
+  12. http://news.stanford.edu/news/1999/january27/itss127.html
