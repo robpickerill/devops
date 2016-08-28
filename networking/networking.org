@@ -636,6 +636,15 @@
 * IPV4 address assignment
   ICANN -> IANA -> Regional Internet Registries (RIR).
 * Address Resolution Protocol - (ARP)
+  Address resolution protocol is the mechanism by which network layer
+  can discover the link address associated with a network address it's
+  directly connected to.
+
+  Link layer describes a particular network card, a unique device that
+  sends and receives link layer frames. Ethernet for example has 48
+  bits unique addresses. IP address says "this host" and link address
+  says "this ethernet card".
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -650,3 +659,5 @@
   10. Can network layer takes do compression before sending packets?
   11. ICANN, IANA, APNIC, RIPE NCC
   12. http://news.stanford.edu/news/1999/january27/itss127.html
+  13. How many mac addresses are possible in 48bits, are all devices
+      in the world have unique mac addresses.
