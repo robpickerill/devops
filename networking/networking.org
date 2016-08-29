@@ -660,6 +660,11 @@
   ip packet inside a link frame with source mac address:
   =0:18:e7:f3:ce:1b= and destination mac address: =9:9:9:9:9:9=.
 
+  Node 'A' needs to know the link layer address associated to the
+  gateway ip address. We need to be able to map layer 3, network layer
+  address to the layer 2, link layer address. This is done using ARP
+  protocol.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
