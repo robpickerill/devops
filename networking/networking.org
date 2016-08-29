@@ -645,6 +645,21 @@
   bits unique addresses. IP address says "this host" and link address
   says "this ethernet card".
 
+  Consider following network situation:
+  #+BEGIN_EXAMPLE
+  A (192.168.0.5; 00:13:72:4c:d9:6a) <--> (192.168.0.1; 0:18:e7:f3:c3:1a) gateway (171.43.22.8; 0:18:e7:f3:ce:1b) <--> (171.43.22.8; 9:9:9:9:9:9) B
+  #+END_EXAMPLE
+
+  Node 'A' wants to send packet to node 'B'. 'A' generate IP packets
+  with source ip: =192.168.0.5= and destination ip:
+  =171.43.22.8=. Node 'A' checks that the destination ip, is not in
+  the same network, so it encapsulates the ip packet inside link layer
+  frame with source mac address: =00:13:72:4c:d9:6a= and destination
+  mac address: =0:18:e7:f3:c3:1a=. Packet reaches the gateway and
+  checks destination ip address is not its ip, so it encapsulates the
+  ip packet inside a link frame with source mac address:
+  =0:18:e7:f3:ce:1b= and destination mac address: =9:9:9:9:9:9=.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -661,3 +676,4 @@
   12. http://news.stanford.edu/news/1999/january27/itss127.html
   13. How many mac addresses are possible in 48bits, are all devices
       in the world have unique mac addresses.
+  14. Why is hexadecimal chosen over binary?
