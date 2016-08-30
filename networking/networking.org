@@ -688,6 +688,10 @@
    network when all of the cached mappings expire. This makes
    debugging and troubleshooting ARP much easier.
 
+** ARP cache time out
+   ARP caches expires, within a limited time period. For example Mac
+   OSX, keeps state around for 20 minutes. Cisco devices use timeouts
+   of 4 hours. These mappings do not change very frequently.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
