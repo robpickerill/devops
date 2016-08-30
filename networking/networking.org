@@ -677,6 +677,17 @@
    The request is send to link layer broadcast address, so everyone
    hears the request, but only node with that ip address replies.
 
+** Node crash
+   ARP packet contains redundant data - network and link layer address
+   of the requester. So that when nodes receives the request, they can
+   insert/refresh entry in their cache. Nodes *only* responds to
+   requests for themselves. This means assuming no node is generating
+   incorrect packets, the only way a node can generate a mapping for
+   another node is in response to a packet that node sends. So, if a
+   node crashes or disconnects, its state will inevitably leave the
+   network when all of the cached mappings expire. This makes
+   debugging and troubleshooting ARP much easier.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
