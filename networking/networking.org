@@ -665,6 +665,33 @@
   address to the layer 2, link layer address. This is done using ARP
   protocol.
 
+** ARP request-reply
+   Arp is a simple request-reply protocol. Every node keeps a cache of
+   mappings from ip addresses on its network to link layer
+   addresses. If a node wants to send a packet to ip address it does
+   not have a mapping for, it sends ARP request to asking "Who has
+   network address x". The node with that address replies, "I have
+   network address x". When it receives the reply it generates mapping
+   and sends the packet.
+
+   The request is send to link layer broadcast address, so everyone
+   hears the request, but only node with that ip address replies.
+
+** Node crash
+   ARP packet contains redundant data - network and link layer address
+   of the requester. So that when nodes receives the request, they can
+   insert/refresh entry in their cache. Nodes *only* responds to
+   requests for themselves. This means assuming no node is generating
+   incorrect packets, the only way a node can generate a mapping for
+   another node is in response to a packet that node sends. So, if a
+   node crashes or disconnects, its state will inevitably leave the
+   network when all of the cached mappings expire. This makes
+   debugging and troubleshooting ARP much easier.
+
+** ARP cache time out
+   ARP caches expires, within a limited time period. For example Mac
+   OSX, keeps state around for 20 minutes. Cisco devices use timeouts
+   of 4 hours. These mappings do not change very frequently.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
