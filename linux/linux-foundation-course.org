@@ -2205,6 +2205,9 @@
    |                              | sed commands, operate on file and |
    |                              | put output on standard out.       |
    |------------------------------+-----------------------------------|
+   | sed -i '/^\s*$/d' <filename> | removes empty lines from file     |
+   |                              | inplace                           |
+   |------------------------------+-----------------------------------|
 
    Replace first occurrence of pattern with replace_string.
    #+BEGIN_EXAMPLE
