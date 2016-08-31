@@ -689,9 +689,14 @@
    debugging and troubleshooting ARP much easier.
 
 ** ARP cache time out
-   ARP caches expires, within a limited time period. For example Mac
+   ARP cache expires, within a limited time period. For example Mac
    OSX, keeps state around for 20 minutes. Cisco devices use timeouts
    of 4 hours. These mappings do not change very frequently.
+** Another example
+   Suppose a client 'A' wants to connect to broader internet, through
+   its gateway. But it doesn't have the gateway's Ethernet
+   address. Then client can generate an ARP request to get the
+   ethernet address of the gateway.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
