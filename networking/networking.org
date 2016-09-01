@@ -697,6 +697,20 @@
    its gateway. But it doesn't have the gateway's Ethernet
    address. Then client can generate an ARP request to get the
    ethernet address of the gateway.
+* Transmission Control Protocol
+  The Transmission Control Protocol - which is used by over 95% of
+  Internet applications. TCP is almost universally used, because it
+  provides the reliable, end-to-end, bi-directional byte-stream
+  service that almost all applications want.
+  
+  TCP is an example of transport layer. When an application wants to
+  use TCP, it hands some bytes to TCP layer. TCP places these bytes
+  into a TCP segment. Then it hands this segment to IP layer, which
+  encapsulates the segment in IP datagram. IP hands this datagram to
+  link layer, which encapsulates the datagram inside the frame with
+  the link layer address for example ethernet address. Link layer then
+  puts the data on the wire.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
