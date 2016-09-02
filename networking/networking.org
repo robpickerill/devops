@@ -720,6 +720,27 @@
   the connection, TCP keeps a state machine to keep track of how the
   connection is doing.
 
+** Connection Setup
+   The TCP connection is established using a 3-way hand shake between
+   hosts A and B. First of all host A, sends a message to host B
+   indicating that the TCP layer at A wants to establish a connection
+   with the TCP layer at B. This message is called "SYN" message which
+   is short for synchronize. A also sends a base number that it will
+   use to identify bytes in the byte stream. If A sends "0", then the
+   number will start at 0, if it sends "1000", then the number will
+   start at 1000.
+
+   Host B replies with the message "SYN + ACK". B acknowledges the
+   request sent by A, agreeing to establish the communication from A
+   to B. B also sends a "SYN" message indicating that TCP layer at B,
+   wants to establish a connection with TCP layer at A. It sends a
+   number too indicating the starting number for the byte stream.
+
+   Finally, A sends the "ACK" message, acknowledging the B request and
+   agreeing to establish a connection from B to A, in the reverse
+   direction. The connection is now setup in both directions. They are
+   now ready to start sending data to each other.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
