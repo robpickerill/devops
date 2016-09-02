@@ -711,6 +711,15 @@
   the link layer address for example ethernet address. Link layer then
   puts the data on the wire.
 
+  When two applications use TCP, they establish a two way
+  communication channel between the TCP peers at both ends. First TCP
+  establishes a communication channel from A to B. Then it establishes
+  a channel from B to A.
+
+  We call the two way communication a "connection". At both ends of
+  the connection, TCP keeps a state machine to keep track of how the
+  connection is doing.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
