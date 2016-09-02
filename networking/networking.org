@@ -741,6 +741,10 @@
    direction. The connection is now setup in both directions. They are
    now ready to start sending data to each other.
 
+** Sending data
+   Hosts send data to each other as if it is from a continuous stream
+   of bytes.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
