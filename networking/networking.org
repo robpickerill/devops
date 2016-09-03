@@ -760,6 +760,21 @@
    so we can fill the TCP segment all the way up to the maximum IP
    datagram size.
 
+** Connection Teardown
+   When A and B, finished sending data to each other they need to
+   close the connection. We say they teardown the connection, which
+   means they tell each other they are closing the connection and both
+   ends can clean up the sate associated with the state machine. 
+
+   When A finished sending data to B, it sends a "FIN" message short
+   for "FINISH" to B. B acknowledges that A has no more data to send,
+   and stops looking for new data from A. B sends a "ACK", and may be
+   along with some data to send to A.  This way communication from A
+   to B is closed. After some time when B finished sending data to A,
+   it sends a "FIN" message to A, and then A replies with the "ACK"
+   that the connection could be closed. This connection from B to A is
+   closed. When both the connections are closed, the connection is
+   fully closed.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
