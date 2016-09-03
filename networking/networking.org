@@ -743,7 +743,22 @@
 
 ** Sending data
    Hosts send data to each other as if it is from a continuous stream
-   of bytes.
+   of bytes. The stream of bytes might exist in advance such as static
+   web page, or it could be generated on the fly such as recordings
+   from camera, either way TCP sees it as a stream of bytes.
+
+   The data from application A is delivered to application B. TCP
+   layers on A and B work together to make sure data is delivered
+   correctly in order to the application B. TCP segment may need to be
+   retransmitted multiple times, in the case a segment is dropped
+   along the way, or if A doesn't receive an acknowledgement.
+
+   The TCP segment can be as small as 1 byte, for example if we are
+   typing characters in SSH session, then each character is sent one
+   at a time, rather than waiting for the whole segment to fill
+   up. This is not very efficient when we have lots of data to send;
+   so we can fill the TCP segment all the way up to the maximum IP
+   datagram size.
 
 * COMMENT TODO
   1. join emacs group
