@@ -725,16 +725,17 @@
    hosts A and B. First of all host A, sends a message to host B
    indicating that the TCP layer at A wants to establish a connection
    with the TCP layer at B. This message is called "SYN" message which
-   is short for synchronize. A also sends a base number that it will
-   use to identify bytes in the byte stream. If A sends "0", then the
-   number will start at 0, if it sends "1000", then the number will
-   start at 1000.
+   is short for synchronize, because A also sends a base number it
+   will use to identify bytes in the byte stream. If A sends "0", then
+   the number will start at 0, if it sends "1000", then the number
+   will start at 1000.
 
-   Host B replies with the message "SYN + ACK". B acknowledges the
-   request sent by A, agreeing to establish the communication from A
-   to B. B also sends a "SYN" message indicating that TCP layer at B,
-   wants to establish a connection with TCP layer at A. It sends a
-   number too indicating the starting number for the byte stream.
+   Host B replies with the message "SYN + ACK". B signals an "ACK",
+   because B is acknowledging the request sent by A and agreeing to
+   establish the communication from A to B. B also sends a "SYN"
+   message indicating that TCP layer at B, wants to establish a
+   connection with TCP layer at A. It sends a number too indicating
+   the starting number for the byte stream.
 
    Finally, A sends the "ACK" message, acknowledging the B request and
    agreeing to establish a connection from B to A, in the reverse
@@ -749,8 +750,8 @@
 
    The data from application A is delivered to application B. TCP
    layers on A and B work together to make sure data is delivered
-   correctly in order to the application B. TCP segment may need to be
-   retransmitted multiple times, in the case a segment is dropped
+   correctly in order to the application at B. TCP segment may need to
+   be retransmitted multiple times, in the case a segment is dropped
    along the way, or if A doesn't receive an acknowledgement.
 
    The TCP segment can be as small as 1 byte, for example if we are
@@ -768,13 +769,16 @@
 
    When A finished sending data to B, it sends a "FIN" message short
    for "FINISH" to B. B acknowledges that A has no more data to send,
-   and stops looking for new data from A. B sends a "ACK", and may be
-   along with some data to send to A.  This way communication from A
-   to B is closed. After some time when B finished sending data to A,
-   it sends a "FIN" message to A, and then A replies with the "ACK"
-   that the connection could be closed. This connection from B to A is
-   closed. When both the connections are closed, the connection is
-   fully closed.
+   and stops looking for new data from A. But B might have new data to
+   send to A, and is not ready to close down the connection from B to
+   A. So the message from B to A carrying the ACK can also carry some
+   data to send to A. This way communication from A to B is
+   closed. But B can keep sending data to A as long as it
+   wants. Sometime later when B finished sending data to A, it sends a
+   "FIN" message to A, to tell A, they can close the connection. Then
+   A replies with the "ACK" that the connection is now closed. Because
+   both the directions have finished the connection is now fully
+   closed and the state can be fully removed.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
