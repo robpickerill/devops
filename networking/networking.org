@@ -805,6 +805,12 @@
     be that the segment will arrive later - perhaps taking a longer
     route, or it could have gone missing, in that case sender has to
     resend the data.
+*** Flow control
+    TCP controls the flow of data from sender to the
+    receiver. Receiver keeps telling the sender if it can keep sending
+    the data. If at any point receiver is full it tells, sender to
+    stop sending more data. This prevents overwhelming receiver with
+    data, that it could not handle.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -822,3 +828,4 @@
   13. How many mac addresses are possible in 48bits, are all devices
       in the world have unique mac addresses.
   14. Why is hexadecimal chosen over binary?
+  15. Who decides tcp segment data size.
