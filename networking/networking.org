@@ -788,6 +788,12 @@
     When a TCP layer receives a packet, it sends an acknowledgement to
     the sender, to let the sender know the data arrived correctly.
   
+*** Checksum
+    Checksum detects corrupted data. TCP header contains checksum
+    field covering header and segment data to detect if the data got
+    corrupted along the way, may be due to bit-error on the wire or
+    due to faulty memory inside the router.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
