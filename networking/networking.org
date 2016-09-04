@@ -779,6 +779,15 @@
    A replies with the "ACK" that the connection is now closed. Because
    both the directions have finished the connection is now fully
    closed and the state can be fully removed.
+** Services provided to application
+   TCP provides a reliable stream of bytes between two
+   applications. It uses four mechanism to make the communication
+   reliable:
+
+*** Acknowledgement
+    When a TCP layer receives a packet, it sends an acknowledgement to
+    the sender, to let the sender know the data arrived correctly.
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
