@@ -837,6 +837,14 @@
   achieve reliability the two ends of the connection need to exchange
   more information, so they know which bytes have arrived, which are
   missing and the status of the connection.
+
+** Important TCP header fields
+*** Destination port
+    The destination port tells the TCP layer which application the
+    bytes should be delivered to at the other end. When a new
+    connection starts up, the application tells TCP which service to
+    open a connection with.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
