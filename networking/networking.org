@@ -780,42 +780,51 @@
    both the directions have finished the connection is now fully
    closed and the state can be fully removed.
 ** Services provided to application
-   TCP provides a reliable stream of bytes between two
-   applications. It uses four mechanism to make the communication
-   reliable:
+*** Reliable communication
+    TCP provides a reliable stream of bytes between two
+    applications. It uses four mechanism to make the communication
+    reliable:
 
-*** Acknowledgement
-    When a TCP layer receives a packet, it sends an acknowledgement to
-    the sender, to let the sender know the data arrived correctly.
-  
-*** Checksum
-    Checksum detects corrupted data. TCP header contains checksum
-    field covering header and segment data to detect if the data got
-    corrupted along the way, may be due to bit-error on the wire or
-    due to faulty memory inside the router.
+**** Acknowledgement
+     When a TCP layer receives a packet, it sends an acknowledgement
+     to the sender, to let the sender know the data arrived correctly.
+   
+**** Checksum
+     Checksum detects corrupted data. TCP header contains checksum
+     field covering header and segment data to detect if the data got
+     corrupted along the way, may be due to bit-error on the wire or
+     due to faulty memory inside the router.
 
-*** Sequence number
-    Sequence number detects missing data. Every segment header carries
-    sequence number field at the first byte. Suppose two hosts agree
-    on the starting sequence number to be 1000. Then the first segment
-    will have sequence number of 1000. If the segment carries 500
-    bytes of data, then the next segment will carry sequence number
-    of 1500. If a segment gets lost, then the sequence number will be
-    incorrect and TCP layer knows some data is missing. It could be
-    that the segment will arrive later - perhaps taking a longer
-    route, or it could have gone missing, in that case sender has to
-    resend the data.
+**** Sequence number
+     Sequence number detects missing data. Every segment header
+     carries sequence number field at the first byte. Suppose two
+     hosts agree on the starting sequence number to be 1000. Then the
+     first segment will have sequence number of 1000. If the segment
+     carries 500 bytes of data, then the next segment will carry
+     sequence number of 1500. If a segment gets lost, then the
+     sequence number will be incorrect and TCP layer knows some data
+     is missing. It could be that the segment will arrive later -
+     perhaps taking a longer route, or it could have gone missing, in
+     that case sender has to resend the data.
 
-*** Flow control
-    Flow-control controls overrunning the receiver. If host A is much
-    faster than host B, then its possible that host A will overwhelm B
-    by sending data so fast that Host B can't keep up. TCP prevents
-    this from happening using Flow-control. In TCP, receiver keeps
-    telling the sender if it can keep sending the data. More
-    specifically it tells sender how much room it has in its buffer to
-    accept new data. If at any point receiver is full it tells, sender
-    to stop sending more data. When it has space, it tells sender to
-    send more data.
+**** Flow control
+     Flow-control controls overrunning the receiver. If host A is much
+     faster than host B, then its possible that host A will overwhelm
+     B by sending data so fast that Host B can't keep up. TCP prevents
+     this from happening using Flow-control. In TCP, receiver keeps
+     telling the sender if it can keep sending the data. More
+     specifically it tells sender how much room it has in its buffer
+     to accept new data. If at any point receiver is full it tells,
+     sender to stop sending more data. When it has space, it tells
+     sender to send more data.
+*** In-sequence delivery
+    TCP delivers the data to the application in the right sequence. In
+    other words whatever sequence the segment was delivered from the
+    application to TCP layer at host A, this is the same order in
+    which segments are delivered from TCP layer at host B to the
+    application. If segments arrive out of order, TCP re-sequences
+    them to the correct order using the sequence number before
+    delivering to the application.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
