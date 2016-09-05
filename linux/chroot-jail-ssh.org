@@ -1,0 +1,59 @@
+#+Title: Chroot Jail SSH Access
+#+Author: Yogesh Agrawal
+#+Date: <2016-09-05 Mon>
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document discusses the creation of jail ssh user access.
+
+* Steps
+  - Setup group.
+    #+BEGIN_EXAMPLE
+    groupadd sshusers
+    adduser -g sshusers user
+    #+END_EXAMPLE
+  - Setup jail directories
+    #+BEGIN_EXAMPLE
+    mkdir -p /var/jail/{dev,etc,lib,usr,bin}
+    mkdir mkdir -p /var/jail/usr/bin
+    chown root:root /var/jail
+    mknod -m 666 /var/jail/dev/null c 1 3
+    cd /var/jail/etc
+    cp /etc/ld.so.cache .
+    cp /etc/ld.so.conf .
+    cp /etc/nsswitch.conf .
+    cp /etc/hosts .
+    #+END_EXAMPLE
+  - Copy binaries of the commands that we want users to be accessible
+    inside the jail environment:
+    #+BEGIN_EXAMPLE
+    cd /var/jail/usr/bin
+    cp /usr/bin/ls .
+    cp /usr/bin/bash .
+    #+END_EXAMPLE
+  - Add proper shared libraries. To find out what libraries are we
+    can run =ldd /path/to/bin=, and then copy each file to the lib
+    directory in our jail.
+    #+BEGIN_EXAMPLE
+    $ ldd /bin/ls
+         linux-gate.so.1 =>    (0xb7f2b000)
+         librt.so.1 => /lib/librt.so.1 (0xb7f1d000)
+         libacl.so.1 => /lib/libacl.so.1 (0xb7f16000)
+         libc.so.6 => /lib/libc.so.6 (0xb7dcf000)
+         libpthread.so.0 => /lib/libpthread.so.0 (0xb7db7000)
+         /lib/ld-linux.so.2 (0xb7f2c000)
+         libattr.so.1 => /lib/libattr.so.1 (0xb7db2000)
+    #+END_EXAMPLE
+  - Copy =/etc/skel= to =/var/jail/home/user=, to get .bashrc file to
+    set PS1 variable.
+  - Configure SSHd to chroot users by editing =/etc/ssh/sshd_config=
+    #+BEGIN_EXAMPLE
+    Match group sshusers
+          ChrootDirectory /var/jail/
+          X11Forwarding no
+          AllowTcpForwarding no
+    #+END_EXAMPLE
+
+* References
+  - http://allanfeid.com/content/creating-chroot-jail-ssh-access
+
