@@ -830,8 +830,13 @@
    TCP provides a service to the whole network, by controlling the
    congestion. TCP tries to divide the network capacity equally among
    all the TCP connections, using the network.
+
 * TCP Segment Format
-  
+  TCP header is much longer and more complicated than IP headers or
+  Ethernet headers. This is because the TCP connection is reliable. To
+  achieve reliability the two ends of the connection need to exchange
+  more information, so they know which bytes have arrived, which are
+  missing and the status of the connection.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -850,3 +855,6 @@
       in the world have unique mac addresses.
   14. Why is hexadecimal chosen over binary?
   15. Who decides tcp segment data size.
+  16. When we open multiple ssh sessions, how does the source port
+      number is decided. Is it decided by the application or TCP
+      layer.
