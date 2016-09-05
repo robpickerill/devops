@@ -797,15 +797,16 @@
 
 **** Sequence number
      Sequence number detects missing data. Every segment header
-     carries sequence number field at the first byte. Suppose two
-     hosts agree on the starting sequence number to be 1000. Then the
-     first segment will have sequence number of 1000. If the segment
-     carries 500 bytes of data, then the next segment will carry
-     sequence number of 1500. If a segment gets lost, then the
-     sequence number will be incorrect and TCP layer knows some data
-     is missing. It could be that the segment will arrive later -
-     perhaps taking a longer route, or it could have gone missing, in
-     that case sender has to resend the data.
+     carries the sequence number, in the stream of bytes - of the
+     first byte in the segment. Suppose two hosts agree on the
+     starting sequence number to be 1000. Then the first segment will
+     have sequence number of 1000. If the segment carries 500 bytes of
+     data, then the next segment will carry sequence number
+     of 1500. If a segment gets lost, then the sequence number will be
+     incorrect and TCP layer knows some data is missing. It could be
+     that the segment will arrive later - perhaps taking a longer
+     route, or it could have gone missing, in that case sender has to
+     resend the data.
 
 **** Flow control
      Flow-control controls overrunning the receiver. If host A is much
@@ -829,6 +830,8 @@
    TCP provides a service to the whole network, by controlling the
    congestion. TCP tries to divide the network capacity equally among
    all the TCP connections, using the network.
+* TCP Segment Format
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
