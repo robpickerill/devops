@@ -708,8 +708,8 @@
   into a TCP segment. Then it hands this segment to IP layer, which
   encapsulates the segment in IP datagram. IP hands this datagram to
   link layer, which encapsulates the datagram inside the frame with
-  the link layer address for example ethernet address. Link layer then
-  puts the data on the wire.
+  the link layer address, for example ethernet address. Link layer
+  then puts the data on the wire.
 
   When two applications use TCP, they establish a two way
   communication channel between the TCP peers at both ends. First TCP
@@ -801,16 +801,21 @@
     will have sequence number of 1000. If the segment carries 500
     bytes of data, then the next segment will carry sequence number
     of 1500. If a segment gets lost, then the sequence number will be
-    incorrect and TCP layer will knows some data is missing. It could
-    be that the segment will arrive later - perhaps taking a longer
+    incorrect and TCP layer knows some data is missing. It could be
+    that the segment will arrive later - perhaps taking a longer
     route, or it could have gone missing, in that case sender has to
     resend the data.
+
 *** Flow control
-    TCP controls the flow of data from sender to the
-    receiver. Receiver keeps telling the sender if it can keep sending
-    the data. If at any point receiver is full it tells, sender to
-    stop sending more data. This prevents overwhelming receiver with
-    data, that it could not handle.
+    Flow-control controls overrunning the receiver. If host A is much
+    faster than host B, then its possible that host A will overwhelm B
+    by sending data so fast that Host B can't keep up. TCP prevents
+    this from happening using Flow-control. In TCP, receiver keeps
+    telling the sender if it can keep sending the data. More
+    specifically it tells sender how much room it has in its buffer to
+    accept new data. If at any point receiver is full it tells, sender
+    to stop sending more data. When it has space, it tells sender to
+    send more data.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
