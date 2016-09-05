@@ -825,6 +825,10 @@
     application. If segments arrive out of order, TCP re-sequences
     them to the correct order using the sequence number before
     delivering to the application.
+** Services provided to the whole network
+   TCP provides a service to the whole network, by controlling the
+   congestion. TCP tries to divide the network capacity equally among
+   all the TCP connections, using the network.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
