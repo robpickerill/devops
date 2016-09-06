@@ -845,6 +845,18 @@
     connection starts up, the application tells TCP which service to
     open a connection with.
 
+*** Source port
+    The source port tells the TCP layer at the other end, to which
+    port it should send data back. When host B replies, it should put
+    the host A's source port as the destination port field for the
+    segment travelling from host B to A, so that TCP layer at host A
+    can deliver data to the correct application.
+
+    When a new connection starts, the initiator of the connection for
+    example Host A, generates a unique source port which
+    differentiates the connection from all other connections between
+    host A and B, to the same service.
+    
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -866,3 +878,4 @@
   16. When we open multiple ssh sessions, how does the source port
       number is decided. Is it decided by the application or TCP
       layer.
+  17. Any other vs all other.
