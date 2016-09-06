@@ -876,6 +876,10 @@
     piggybacks acknowledgement on the data segments travelling in the
     other direction.
 
+*** Checksum
+    16-bit checksum is calculated over the segment header and data, to
+    detect data corruption due to bit-error in the wire or memory
+    fault in the router.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
