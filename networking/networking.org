@@ -857,6 +857,13 @@
     differentiates the connection from all other connections between
     host A and B, to the same service.
     
+*** Sequence number
+    Sequence number indicates the position in the byte stream of the
+    first byte in the TCP data field. For example, if the initial
+    sequence number is 1000, and is the first segment then the
+    sequence number would be 1000. If the segment is 500 bytes long,
+    then the sequence number in the next segment would be 1,500 and so
+    on.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
