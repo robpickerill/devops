@@ -864,6 +864,18 @@
     sequence number would be 1000. If the segment is 500 bytes long,
     then the sequence number in the next segment would be 1,500 and so
     on.
+
+*** Acknowledgement sequence number
+    The acknowledgement sequence number tells the other end which byte
+    we are expecting next. It also tells that the it has successfully
+    received every byte up until the one before this byte number. For
+    example if the acknowledgement sequence number is 1001, it means
+    that it has received all the bytes upto 1000, and
+    including 1000. Now it is expecting 1001 byte. Note that there are
+    sequence number for both the directions in a segment. This way TCP
+    piggybacks acknowledgement on the data segments travelling in the
+    other direction.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -886,3 +898,10 @@
       number is decided. Is it decided by the application or TCP
       layer.
   17. Any other vs all other.
+* COMMENT References
+  -
+    http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
+   (TCP)
+  -
+    https://lagunita.stanford.edu/courses/Engineering/Networking-SP/SelfPaced/courseware
+   (stanford course ware)
