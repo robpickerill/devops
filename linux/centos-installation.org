@@ -1,0 +1,45 @@
+#+Title: CentOS Installation
+#+Date: <2016-09-07 Wed>
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document describes how to install CentOS for a production
+  environment.
+
+* Difference between various versions
+** Live
+   The "live" flavor of the CentOS install is simply a live/bootable
+   CentOS ISO image. Meaning we don't install that but rather burn
+   that to a DVD or a USB flash drive and then boot off of that DVD or
+   a USB flash drive. This is good for testing hardware and if we need
+   a minimal portable CentOS OS for use for temporary use for some
+   reason.
+
+** Bin
+   This is the standard CentOS OS install which includes the GUI and
+   other stuff like that. We would burn this to a DVD or a USB flash
+   drive and then use that DVD or a USB flash drive to install CentOS
+   onto another system. This is the preferred install for desktop
+   users and not really appropriate for servers due to the desktop/GUI
+   application "bloat".
+
+** Minimal
+   This is a minimal version of the "bin" CentOS OS install. We would
+   use this instead of "bin" if we do not need anything but a truly
+   utterly bare CentOS OS install with pretty much no GUI. This is
+   good for server environments where we really only need terminal
+   access and a core OS.
+
+** Netinstall
+   This is a minimal version of CentOS OS that would require a URL to
+   be set for CentOS to download and install the ISO from a CentOS
+   software mirror. The end result would be the same as "bin" but the
+   benefit of a "netinstall" is basically like a "thin client" version
+   of the "bin" install. This method is favored for enterprise/LAN
+   environments like an office and such.
+
+* Reference
+  -
+    http://superuser.com/questions/968889/what-is-the-difference-between-live-bin-minimal-and-netinstall-versions-of-ce
+   (live, bin, minimal, netinstall)
