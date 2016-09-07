@@ -886,6 +886,20 @@
     options fields are optional. The header length tells us how many
     option fields are present. Usually there are none.
 
+*** Flags
+    There are bunch of flags used to signal information from one end
+    of the connection to the other end.
+    - ACK: This flag tells that the acknowledgement number is valid
+      and we are acknowledging the bytes.
+    - SYN: This flag tells that this is a synchronize message, which
+      is part of the 3-way handshake, to setup the connection.
+    - FIN: This flag signals to close the connection of one direction.
+    - PSH: This flag signals the TCP layer to deliver the immediately
+      upon arrival, to the application. This is useful for short
+      segments carrying time-critical data, such as a key stroke. We
+      don't want TCP to wait to accumulate many key strokes before
+      delivering to the application.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
