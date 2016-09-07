@@ -880,6 +880,12 @@
     16-bit checksum is calculated over the entire header and data, and
     helps the receiver to detect corrupt data. For example bit-errors
     on the wire or faulty memory in the router.
+
+*** Header Length
+    Header length field tells us how long the TCP header is. The TCP
+    options fields are optional. The header length tells us how many
+    option fields are present. Usually there are none.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
