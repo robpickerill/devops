@@ -900,6 +900,24 @@
       don't want TCP to wait to accumulate many key strokes before
       delivering to the application.
 
+* TCP Connection ID
+  A TCP connection is uniquely identified by five pieces of
+  information in the TCP and IP headers.
+
+  The IP source and destination address uniquely identifies the end
+  points, and the IP protocol ID of TCP tells us the connection is
+  TCP.
+  
+  The TCP source and destination port uniquely identifies the
+  application processes on the end host. Together at any instant, all
+  5 fields uniquely identify the TCP connection internet-wide.
+
+  The unique ID only holds if few things hold. First of all we need to
+  make sure Host A the initiator of the connection picks up a unique
+  source port ID. It should not accidentally chose the same source
+  port number, which it already using in some other connection to the
+  same service on Host B.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
