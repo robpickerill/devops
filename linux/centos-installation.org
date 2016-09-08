@@ -39,7 +39,76 @@
    of the "bin" install. This method is favored for enterprise/LAN
    environments like an office and such.
 
+* Hardening Linux
+** Minimize package to minimize vulnerability
+   Find and remove or disable unwanted services from the server to
+   minimize vulnerability. We can use the 'chkconfig' command to find
+   out services which are running on runlevel 3.
+   #+BEGIN_EXAMPLE
+   chkconfig --list | grep '3:on'
+   #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   chkconfig serviceName off
+   #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   yum remove <package-name>
+   #+END_EXAMPLE
+** Check Listening Network Ports
+   Check all open ports and use chkconfig command to disable them.
+   #+BEGIN_EXAMPLE
+   netstat -tunlp
+   #+END_EXAMPLE
+** Secure Shell
+   Configure shell for better security. Configuration file is at
+   =/etc/ssh/sshd_config=.
+   1. Disable root login
+      #+BEGIN_EXAMPLE
+      PermitRootLogin no
+      #+END_EXAMPLE
+   2. Only allow specific users
+      #+BEGIN_EXAMPLE
+      AllowUsers username
+      #+END_EXAMPLE
+   3. Use SSH protocol version 2
+      #+BEGIN_EXAMPLE
+      Protocol 2
+      #+END_EXAMPLE
+** Update system
+   Always keep system updated with latest releases patches, security
+   fixes and kernel when its available.
+   #+BEGIN_EXAMPLE
+   yum update
+   yum check-update
+   #+END_EXAMPLE
+** Lockdown cronjobs
+   Cron has built in features, where it allows to specify who may, and
+   who may not want to run jobs. This is controlled by the use of
+   files called =/etc/cron.deny= and =/etc/cron.allow=. To lock a user
+   using cron, simply add username in cron.deny, and to allow a user
+   add username in cron.allow. To disable all users from using cron,
+   add 'ALL' line to cron.deny.
+   #+BEGIN_EXAMPLE
+   echo ALL >> /etc/cron.deny
+   #+END_EXAMPLE
+** Turn on selinux
+   - Check selinux status
+     #+BEGIN_EXAMPLE
+     sestatus
+     #+END_EXAMPLE
+   - Enable selinux
+     #+BEGIN_EXAMPLE
+     setenforce enforcing
+     #+END_EXAMPLE
+** Lock and unlock account
+   #+BEGIN_EXAMPLE
+   passwd -l accountName
+   #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   passwd -u accountName
+   #+END_EXAMPLE
 * Reference
   -
     http://superuser.com/questions/968889/what-is-the-difference-between-live-bin-minimal-and-netinstall-versions-of-ce
    (live, bin, minimal, netinstall)
+  - http://www.tecmint.com/linux-server-hardening-security-tips/ (hardening)
+  - https://wiki.centos.org/HowTos/OS_Protection (hardening)
