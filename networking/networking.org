@@ -912,7 +912,6 @@
   application processes on the end host. Together at any instant, all
   5 fields uniquely identify the TCP connection internet-wide.
 
-
   The unique ID only holds if few things hold:
 
 ** Unique source port
@@ -941,20 +940,11 @@
    A, it supplies its own initial sequence number for the stream of
    bytes from B to A.
 
-** Unique source port
-   First of all we need to make sure Host A - the initiator of the
-   connection picks a unique source port ID. We need to make sure it
-   doesn't accidentally pick the same source port number, it is
-   already using with another connection to the same service on Host
-   B. Host A uses a simple method to minimize the chances: It
-   increments the source port number for every new connection. The
-   field is 16bits, so it takes 64k new connections before the field
-   wraps around.
-
-   If Host A suddenly creates a lot of new connections to Host B, it
-   might still wrap around and try to create two connections with the
-   same global ID. If this happens the bytes from one connection might
-   become confused, with the bytes from another connection.
+   The sequence number in a segment from A to B, includes the sequence
+   number of the first byte, offset by the initial sequence
+   number. And the ACK sequence number in the segment from B back to
+   A, includes the sequence number of the first byte it is expecting
+   next, offset by A's initial sequence number.
 
 * COMMENT TODO
   1. join emacs group
@@ -979,6 +969,10 @@
       layer.
   17. Any other vs all other.
   18. How does browser identifies different tabs.
+  19. How does TCP detects between first and second packet. What if
+      second packet reaches destination before first one.
+  20. Does TCP sends one packet at a time, receive ack and then second
+      packet or it sends multiple packets at once.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
