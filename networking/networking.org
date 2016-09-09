@@ -912,11 +912,49 @@
   application processes on the end host. Together at any instant, all
   5 fields uniquely identify the TCP connection internet-wide.
 
-  The unique ID only holds if few things hold. First of all we need to
-  make sure Host A the initiator of the connection picks up a unique
-  source port ID. It should not accidentally chose the same source
-  port number, which it already using in some other connection to the
-  same service on Host B.
+
+  The unique ID only holds if few things hold:
+
+** Unique source port
+   We need to make sure Host A, the initiator of the connection picks
+   the unique source port when connecting to the service at Host B. It
+   should not pick the same source port number which is already in use
+   by another connection to the same service on Host B. Host A uses a
+   simple method to minimize the chances, it increments the source
+   port number for every new connection. The field is 16bits, so it
+   will make 65536 new connections before the field wraps around.
+
+   There is also a very slight danger that if Host A suddenly creates
+   lot of new connections to Host B, the field might still wrap around
+   and try to create two connections with the same global ID. If this
+   happens the bytes from one connection might become confused with
+   the bytes from another connection. This could happen for example,
+   if a TCP segment somehow lived for a long time in the network,
+   stuck inside a router buffer or circulating in a temporary loop.
+
+   To reduce the chances of confusion, the TCP connections initialize
+   with a random initial sequence number to refer to bytes in the byte
+   stream. While not totally fool proof, it does reduce the chances of
+   confusion. When Host A initiates the connection it declares the
+   initial sequence number it will use, to refer to stream of bytes
+   from A to B. When B replies and initiates the connection from B to
+   A, it supplies its own initial sequence number for the stream of
+   bytes from B to A.
+
+** Unique source port
+   First of all we need to make sure Host A - the initiator of the
+   connection picks a unique source port ID. We need to make sure it
+   doesn't accidentally pick the same source port number, it is
+   already using with another connection to the same service on Host
+   B. Host A uses a simple method to minimize the chances: It
+   increments the source port number for every new connection. The
+   field is 16bits, so it takes 64k new connections before the field
+   wraps around.
+
+   If Host A suddenly creates a lot of new connections to Host B, it
+   might still wrap around and try to create two connections with the
+   same global ID. If this happens the bytes from one connection might
+   become confused, with the bytes from another connection.
 
 * COMMENT TODO
   1. join emacs group
@@ -940,6 +978,7 @@
       number is decided. Is it decided by the application or TCP
       layer.
   17. Any other vs all other.
+  18. How does browser identifies different tabs.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
