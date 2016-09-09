@@ -979,6 +979,10 @@
       layer.
   17. Any other vs all other.
   18. How does browser identifies different tabs.
+  19. How does TCP detects between first and second packet. What if
+      second packet reaches destination before first one.
+  20. Does TCP sends one packet at a time, receive ack and then second
+      packet or it sends multiple packets at once.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
