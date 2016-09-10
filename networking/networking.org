@@ -946,6 +946,11 @@
    A, includes the sequence number of the first byte it is expecting
    next, offset by A's initial sequence number.
 
+* UDP
+  UDP - User Datagram Protocol is used by the applications that don't
+  need the guaranteed delivery service of TCP. Either because
+  application handles re-transmissions in its own private way or
+  because the application just doesn't need reliable delivery.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
