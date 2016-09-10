@@ -951,6 +951,19 @@
   need the guaranteed delivery service of TCP. Either because
   application handles re-transmissions in its own private way or
   because the application just doesn't need reliable delivery.
+
+** UDP Datagram Format
+*** Source Port
+    Source port indicates which application the data comes from.
+*** Destination Port
+    Destination port indicates to which application the data is going
+    to.
+*** Checksum
+    Checksum is for checking that the data in not corrupted along the
+    path.
+*** Length
+    Length is the length of the packet header and data.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
