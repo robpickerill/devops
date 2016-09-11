@@ -958,11 +958,21 @@
 *** Destination Port
     Destination port indicates to which application the data is going
     to.
-*** Checksum
-    Checksum is for checking that the data in not corrupted along the
-    path.
 *** Length
-    Length is the length of the packet header and data.
+    The 16-bit length field specifies the size of the packet header
+    plus data, in bytes. The length will be atleast 8-bytes long as
+    that is the size of the header.
+
+*** Checksum
+    UDP checksum is optional in the header. If it is not included it
+    is all zeros. If it is included it is calculated over UDP data and
+    the header.
+
+    UDP checksum calculation also includes the portion of IPv4
+    header. It includes the source ip address, destination ip address
+    and the protocol id. This violate the principle of layering. But
+    the rationale is, it allows UDP layer to detect datagrams that
+    were delivered to the wrong location.
 
 * COMMENT TODO
   1. join emacs group
