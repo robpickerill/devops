@@ -903,12 +903,15 @@
 * TCP Connection ID
   A TCP connection is uniquely identified by five pieces of
   information in the TCP and IP headers.
+  - Source port
+  - Destination port
+  - Source IP
+  - Destination IP
+  - Protocol ID
 
   The IP source and destination address uniquely identifies the end
   points, and the IP protocol ID of TCP tells us the connection is
-  TCP.
-  
-  The TCP source and destination port uniquely identifies the
+  TCP. The TCP source and destination port uniquely identifies the
   application processes on the end host. Together at any instant, all
   5 fields uniquely identify the TCP connection internet-wide.
 
@@ -945,6 +948,11 @@
    number. And the ACK sequence number in the segment from B back to
    A, includes the sequence number of the first byte it is expecting
    next, offset by A's initial sequence number.
+
+* TCP port de-multiplexing
+  Server uses source port and destination port to de-multiplex the
+  different connections. However, these two fields may not be
+  sufficient so it uses ip addresses to de-multiplex the connections.
 
 * UDP
   UDP - User Datagram Protocol is used by the applications that don't
