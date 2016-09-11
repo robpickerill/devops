@@ -991,6 +991,25 @@
    UDP is used by applications that handle re-transmission by
    themselves, or does not care about re-transmission. 
 
+** Application using UDP
+*** DNS
+    DNS uses UDP. Client sends DNS request with UDP protocol to
+    convert hostname into ip address. The request is self contained in
+    one datagram and using UDP makes DNS faster. If the DNS request
+    was successful its lightweight and fast, if it was not successful
+    the request times out and is resent.
+  
+*** DHCP
+    Dynamic host configuration protocol uses UDP. Computer finds its
+    ip address when it joins a network from DHCP server, using UDP.
+
+*** NTP
+    Network time protocol uses UDP.
+*** Audio and video streaming
+    A few real-time streaming audio and video application uses
+    UDP. This is much less common that it used to be. Most audio and
+    video streams of http today, which uses TCP.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
