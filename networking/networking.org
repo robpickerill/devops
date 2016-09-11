@@ -968,11 +968,28 @@
     is all zeros. If it is included it is calculated over UDP data and
     the header.
 
-    UDP checksum calculation also includes the portion of IPv4
-    header. It includes the source ip address, destination ip address
-    and the protocol id. This violate the principle of layering. But
-    the rationale is, it allows UDP layer to detect datagrams that
-    were delivered to the wrong location.
+    UDP checksum calculation also includes a portion of IPv4 header as
+    well. The calculation includes the source ip address, destination
+    ip address and the protocol id. This violate the principle of
+    layering. But the rationale is, it allows UDP layer to detect
+    datagrams that were delivered to the wrong destination.
+
+** UDP Service model
+   |---------------------+--------------------------------|
+   | *Property           | Behavior*                      |
+   |---------------------+--------------------------------|
+   | Connectionless      | No connection established      |
+   | Datagram Service    | packets may show up in         |
+   |                     | any order                      |
+   |---------------------+--------------------------------|
+   | Unreliable Delivery | No acknowledgements            |
+   |                     | No mechanism to detect missing |
+   |                     | or mis-sequenced datagrams     |
+   |                     | No flow control                |
+   |---------------------+--------------------------------|
+
+   UDP is used by applications that handle re-transmission by
+   themselves, or does not care about re-transmission. 
 
 * COMMENT TODO
   1. join emacs group
@@ -1001,6 +1018,7 @@
       second packet reaches destination before first one.
   20. Does TCP sends one packet at a time, receive ack and then second
       packet or it sends multiple packets at once.
+  21. Capture DHCP packets, using wireshark.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
