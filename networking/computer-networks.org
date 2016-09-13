@@ -675,7 +675,7 @@
    and specifying the mappings.
 
 ** ARP request-reply
-   Arp is a simple request-reply protocol. Every node keeps a cache of
+   ARP is a simple request-reply protocol. Every node keeps a cache of
    mappings from ip addresses on its network to link layer
    addresses. If a node wants to send a packet to ip address it does
    not have a mapping for, it sends ARP request to asking "Who has
@@ -683,11 +683,45 @@
    network address x". When it receives the reply it generates mapping
    and sends the packet.
 
-   The request is send to link layer broadcast address, so everyone
-   hears the request, but only node with that ip address replies.
-
    Suppose a client 'A' wants to connect to broader internet, through
    its gateway. But it doesn't have the gateway's Ethernet address.
+   - A: Ethernet address - 68:a8:6d:05:85:22, IP address -
+     192.168.0.5, IP Netmask - 0xffffff00, IP Gateway - 192.168.0.1.
+   - Gateway: Ethernet address - 0:18:e7:f3:ce:1a, IP address -
+     192.168.0.1.
+
+*** ARP request
+    The client will generate an ARP request whose source address is
+    its ethernet address i.e. 68:a8:6d:05:85:22. The destination link
+    layer address is the broadcast address - ff:ff:ff:ff:ff:ff all 1s.
+
+    The ARP request will specify that the hardware is Ethernet, which
+    is value 1, the protocol is IP, which is value 0x0800, the
+    hardware address length is 6, and the protocol length is 4. The
+    opcode will be request whose value is 1. The ARP source hardware
+    address will be requester's ethernet address:
+    68:a8:6d:05:85:22. The source protocol field is the requester's ip
+    address: 192.168.0.5. The destination hardware address can be set
+    to anything that is what ARP is trying to find out. The
+    destination protocol address is the address the client is trying
+    to find mapping for: 192.168.0.1. The client sends this frame on
+    the Ethernet, every node in the network receives it and refreshes
+    its mapping between link address, 68:a8:6d:05:85:22 and its
+    network address, 192.168.0.5, or inserts a mapping if does not
+    already exists.
+
+*** ARP reply
+    The gateway sees that the request is for its IP address and so
+    generates a reply.
+
+    Like the request, gateway will specify hardware is ethernet,
+    protocol is IP, hardware length is 6, and protocol length
+    is 4. The opcode will be reply whose value is 2. The ARP source
+    hardware address will be replier's ethernet address:
+    0:18:e7:f3:ce:1a. The source protocol address will be:
+    192.168.0.1. The destination hardware address is the:
+    68:a8:6d:05:85:22 and the destination protocol address will be:
+    192.168.0.5.
 
 ** Node crash
    ARP packet contains redundant data - network and link layer address
