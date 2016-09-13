@@ -665,6 +665,15 @@
   address to the layer 2, link layer address. This is done using ARP
   protocol.
 
+** ARP Packet Format
+   ARP packet has 10 fields. The *hardware field* states what link
+   layer this request or response is for. The *protocol field* states
+   what protocol this request or response is for. The *length* field
+   specifies how long the link layer address and network layer
+   addresses are. The *opcode* specifies whether the packet is a
+   request or response. The *four address fields* are for requesting
+   and specifying the mappings.
+
 ** ARP request-reply
    Arp is a simple request-reply protocol. Every node keeps a cache of
    mappings from ip addresses on its network to link layer
@@ -676,6 +685,9 @@
 
    The request is send to link layer broadcast address, so everyone
    hears the request, but only node with that ip address replies.
+
+   Suppose a client 'A' wants to connect to broader internet, through
+   its gateway. But it doesn't have the gateway's Ethernet address.
 
 ** Node crash
    ARP packet contains redundant data - network and link layer address
@@ -692,11 +704,6 @@
    ARP cache expires, within a limited time period. For example Mac
    OSX, keeps state around for 20 minutes. Cisco devices use timeouts
    of 4 hours. These mappings do not change very frequently.
-** Another example
-   Suppose a client 'A' wants to connect to broader internet, through
-   its gateway. But it doesn't have the gateway's Ethernet
-   address. Then client can generate an ARP request to get the
-   ethernet address of the gateway.
 * Transmission Control Protocol
   The Transmission Control Protocol - which is used by over 95% of
   Internet applications. TCP is almost universally used, because it
@@ -999,7 +1006,7 @@
    UDP is used by applications that handle re-transmission by
    themselves, or does not care about re-transmission. 
 
-** Application using UDP
+** Applications using UDP
 *** DNS
     DNS uses UDP. Client sends DNS request with UDP protocol to
     convert hostname into ip address. The request is self contained in
@@ -1018,6 +1025,8 @@
     UDP. This is much less common that it used to be. Most audio and
     video streams of http today, which uses TCP.
 
+* ICMP
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
