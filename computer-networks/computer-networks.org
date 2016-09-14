@@ -1077,7 +1077,8 @@
     + Helps us diagnose problems.
 
 ** ICMP Service Model
-   ICMP runs above the Network Layer.
+   ICMP runs above the Network Layer, so its a transport layer
+   protocol.
    |-------------------+------------------------------------------|
    | *Property         | Behavior*                                |
    |-------------------+------------------------------------------|
@@ -1086,6 +1087,8 @@
    | Unreliable        | Simple datagram service - no retries.    |
    |-------------------+------------------------------------------|
 
+** ICMP Usage
+   Tools such as 'ping' and 'traceroute' both rely on ICMP.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
