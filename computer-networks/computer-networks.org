@@ -1089,6 +1089,20 @@
 
 ** ICMP Usage
    Tools such as 'ping' and 'traceroute' both rely on ICMP.
+*** traceroute
+    traceroute works by sending udp datagrams to the end host. It sets
+    the *TTL* value to be 1 for first packet, then keep incrementing
+    it by one for further datagrams. Router when receives the packet,
+    it decrements the ttl value by one, and when it reaches zero,
+    router replies with an ICMP error message to the host, indicating
+    ttl has expired. This way host gets the addresses of intermediate
+    routers.
+
+    It sets the destination port number as random number, so when the
+    udp datagram reaches end host, the end host replies with the port
+    unreachable icmp error message. This way traceroute knows end host
+    is reached.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
