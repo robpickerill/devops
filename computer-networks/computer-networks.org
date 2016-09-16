@@ -1103,6 +1103,19 @@
     unreachable icmp error message. This way traceroute knows end host
     is reached.
 
+* End to End Principle
+  The function in question can be completely and correctly implemented
+  only with the knowledge and help of the application at the end
+  points of the communication system. Therefore, providing that
+  questioned function as a feature of the communication system itself
+  is not possible. (Sometimes an incomplete version of the function
+  provided by the communication system may be useful as a performance
+  enhancement).
+
+  If the system is to work correctly then the end points need to be
+  responsible for making sure it does. Nobody else has the information
+  necessary to do this correctly.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -1138,3 +1151,4 @@
   -
     https://lagunita.stanford.edu/courses/Engineering/Networking-SP/SelfPaced/courseware
    (stanford course ware)
+  - RFC-1958
