@@ -1116,6 +1116,32 @@
   responsible for making sure it does. Nobody else has the information
   necessary to do this correctly.
 
+** File Transfer example
+   Suppose a file is to be transferred from source to the
+   destination. File will pass through various computers in between
+   source and destination.
+   #+BEGIN_EXAMPLE
+   Source -> C -> D -> E -> Destination
+   #+END_EXAMPLE
+   Each link - source to C, C to D, D to E and then E to destination
+   has error detection. If a packet of data is corrupted in
+   transmission, then the recipient can detect this and reject the
+   packet. The sender will figure out the packet didn't arrive
+   successfully, for example through TCP acknowledgements and resend
+   it.
+
+   With this setup, one can claim that the packets won't be corrupted
+   at any link, because we have checks. If it will not be corrupted at
+   any link, it won't be corrupted. Therefore if it arrives
+   successfully at destination, there's no corruption, and the file
+   has been arrived successfully.
+
+   This claim is wrong. Suppose computer D had buggy memory, such that
+   sometimes some bit values gets flipped. Packet arrived at D, it
+   checked for the error and no error was detected. Then it will move
+   the data to main memory, at which point they would become
+   corrupted.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
