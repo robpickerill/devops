@@ -1163,6 +1163,28 @@
    applications must perform end to end data check. Bit torrent does
    that, it uses TCP to transfer chunks, and after each chunk is
    complete, it checks that it arrived successfully using a hash.
+** Wireless - performance enhancement
+   According to end to end argument, correctness features should be
+   implemented at the end points. The network can include an
+   incomplete version of the correctness function as performance
+   enhancement but it can't be made responsible.
+
+   Wireless link layer provides such a performance enhancement. Wired
+   data transmission is considered to be highly reliable, almost
+   99.99% of packets sent on wired link arrive successfully at the
+   next hop. Whereas wireless can sometimes be like only 50-80%
+   reliable. 
+
+   TCP doesn't work well with low reliability. To improve reliability,
+   wireless link layer re-transmits the packets at the link layer. For
+   example when our laptop sends data to access point, the access
+   point after receiving the packet immediately -- just a few
+   microseconds later -- sends a link layer acknowledgement back to
+   the laptop. If the laptop does not receive a link layer
+   acknowledgement it re-transmits. It does this several times. These
+   link layer acknowledgment can boost the poor link, with 80%
+   reliability to 99% or higher. This lets TCP work much better.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
