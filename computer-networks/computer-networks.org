@@ -1154,6 +1154,15 @@
    successfully. The network can help, but it can't be responsible for
    correctness.
 
+** TCP example
+   TCP is responsible for reliable data delivery. But the reliability
+   is not perfect. It's very unlikely that TCP will deliver corrupted
+   data to the application. But there is a chance that TCP delivers
+   some bad data, for example because there is some bug in our TCP
+   stack, or some error creeps in from somewhere. In that case
+   applications must perform end to end data check. Bit torrent does
+   that, it uses TCP to transfer chunks, and after each chunk is
+   complete, it checks that it arrived successfully using a hash.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
