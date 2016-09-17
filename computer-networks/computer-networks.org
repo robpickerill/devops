@@ -1117,9 +1117,9 @@
   necessary to do this correctly.
 
 ** File Transfer example
-   Suppose a file is to be transferred from source to the
-   destination. File will pass through various computers in between
-   source and destination.
+   Suppose a file is to be transferred between two computers. The file
+   data will pass through several computers between the source and the
+   destination.
    #+BEGIN_EXAMPLE
    Source -> C -> D -> E -> Destination
    #+END_EXAMPLE
@@ -1133,14 +1133,26 @@
    With this setup, one can claim that the packets won't be corrupted
    at any link, because we have checks. If it will not be corrupted at
    any link, it won't be corrupted. Therefore if it arrives
-   successfully at destination, there's no corruption, and the file
-   has been arrived successfully.
+   successfully at the destination, there's no corruption, and the
+   file has been arrived successfully.
 
    This claim is wrong. Suppose computer D had buggy memory, such that
    sometimes some bit values gets flipped. Packet arrived at D, it
    checked for the error and no error was detected. Then it will move
    the data to main memory, at which point they would become
-   corrupted.
+   corrupted. It would then forward the packet, but because error
+   detection occurs on the link, from the link's perspective the
+   packet looked fine and it would pass E's check. The link error
+   detection was designed for errors in *transmission*, not for errors
+   in storage.
+
+   The only way to be sure the file transferred successfully is to
+   perform end to end check. When the source sends the file it
+   includes some error detection information. When the receiver
+   reassembles the file and check whether the file, in its entirety
+   has any errors. This is the only way one can be sure it arrived
+   successfully. The network can help, but it can't be responsible for
+   correctness.
 
 * COMMENT TODO
   1. join emacs group
