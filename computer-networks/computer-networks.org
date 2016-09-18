@@ -1104,86 +1104,105 @@
     is reached.
 
 * End to End Principle
-  The function in question can be completely and correctly implemented
-  only with the knowledge and help of the application at the end
-  points of the communication system. Therefore, providing that
-  questioned function as a feature of the communication system itself
-  is not possible. (Sometimes an incomplete version of the function
-  provided by the communication system may be useful as a performance
-  enhancement).
+** First Version
+   The function in question can be completely and correctly
+   implemented only with the knowledge and help of the application at
+   the end points of the communication system. Therefore, providing
+   that questioned function as a feature of the communication system
+   itself is not possible. (Sometimes an incomplete version of the
+   function provided by the communication system may be useful as a
+   performance enhancement).
 
-  If the system is to work correctly then the end points need to be
-  responsible for making sure it does. Nobody else has the information
-  necessary to do this correctly.
+*** File Transfer example
+    Suppose a file is to be transferred between two computers. The file
+    data will pass through several computers between the source and the
+    destination.
+    #+BEGIN_EXAMPLE
+    Source -> C -> D -> E -> Destination
+    #+END_EXAMPLE
+    Each link - source to C, C to D, D to E and then E to destination
+    has error detection. If a packet of data is corrupted in
+    transmission, then the recipient can detect this and reject the
+    packet. The sender will figure out the packet didn't arrive
+    successfully, for example through TCP acknowledgements and resend
+    it.
 
-** File Transfer example
-   Suppose a file is to be transferred between two computers. The file
-   data will pass through several computers between the source and the
-   destination.
-   #+BEGIN_EXAMPLE
-   Source -> C -> D -> E -> Destination
-   #+END_EXAMPLE
-   Each link - source to C, C to D, D to E and then E to destination
-   has error detection. If a packet of data is corrupted in
-   transmission, then the recipient can detect this and reject the
-   packet. The sender will figure out the packet didn't arrive
-   successfully, for example through TCP acknowledgements and resend
-   it.
+    With this setup, one can claim that the packets won't be corrupted
+    at any link, because we have checks. If it will not be corrupted at
+    any link, it won't be corrupted. Therefore if it arrives
+    successfully at the destination, there's no corruption, and the
+    file has been arrived successfully.
 
-   With this setup, one can claim that the packets won't be corrupted
-   at any link, because we have checks. If it will not be corrupted at
-   any link, it won't be corrupted. Therefore if it arrives
-   successfully at the destination, there's no corruption, and the
-   file has been arrived successfully.
+    This claim is wrong. Suppose computer D had buggy memory, such that
+    sometimes some bit values gets flipped. Packet arrived at D, it
+    checked for the error and no error was detected. Then it will move
+    the data to main memory, at which point they would become
+    corrupted. It would then forward the packet, but because error
+    detection occurs on the link, from the link's perspective the
+    packet looked fine and it would pass E's check. The link error
+    detection was designed for errors in *transmission*, not for errors
+    in storage.
 
-   This claim is wrong. Suppose computer D had buggy memory, such that
-   sometimes some bit values gets flipped. Packet arrived at D, it
-   checked for the error and no error was detected. Then it will move
-   the data to main memory, at which point they would become
-   corrupted. It would then forward the packet, but because error
-   detection occurs on the link, from the link's perspective the
-   packet looked fine and it would pass E's check. The link error
-   detection was designed for errors in *transmission*, not for errors
-   in storage.
+    The only way to be sure the file transferred successfully is to
+    perform end to end check. When the source sends the file it
+    includes some error detection information. When the receiver
+    reassembles the file and check whether the file, in its entirety
+    has any errors. This is the only way one can be sure it arrived
+    successfully. The network can help, but it can't be responsible for
+    correctness.
 
-   The only way to be sure the file transferred successfully is to
-   perform end to end check. When the source sends the file it
-   includes some error detection information. When the receiver
-   reassembles the file and check whether the file, in its entirety
-   has any errors. This is the only way one can be sure it arrived
-   successfully. The network can help, but it can't be responsible for
-   correctness.
+*** TCP example
+    TCP is responsible for reliable data delivery. But the reliability
+    is not perfect. It's very unlikely that TCP will deliver corrupted
+    data to the application. But there is a chance that TCP delivers
+    some bad data, for example because there is some bug in our TCP
+    stack, or some error creeps in from somewhere. In that case
+    applications must perform end to end data check. Bit torrent does
+    that, it uses TCP to transfer chunks, and after each chunk is
+    complete, it checks that it arrived successfully using a hash.
+*** Wireless - performance enhancement
+    According to the end to end argument, correctness features should
+    be implemented at the end points. The network can include an
+    incomplete version of the correctness function as performance
+    enhancement but it can't be made responsible.
 
-** TCP example
-   TCP is responsible for reliable data delivery. But the reliability
-   is not perfect. It's very unlikely that TCP will deliver corrupted
-   data to the application. But there is a chance that TCP delivers
-   some bad data, for example because there is some bug in our TCP
-   stack, or some error creeps in from somewhere. In that case
-   applications must perform end to end data check. Bit torrent does
-   that, it uses TCP to transfer chunks, and after each chunk is
-   complete, it checks that it arrived successfully using a hash.
-** Wireless - performance enhancement
-   According to end to end argument, correctness features should be
-   implemented at the end points. The network can include an
-   incomplete version of the correctness function as performance
-   enhancement but it can't be made responsible.
+    Wireless link layer provides such a performance enhancement. Wired
+    data transmission is considered to be highly reliable, almost
+    99.99% of packets sent on wired link arrive successfully at the
+    next hop. Whereas wireless can sometimes be like only 50-80%
+    reliable. 
 
-   Wireless link layer provides such a performance enhancement. Wired
-   data transmission is considered to be highly reliable, almost
-   99.99% of packets sent on wired link arrive successfully at the
-   next hop. Whereas wireless can sometimes be like only 50-80%
-   reliable. 
+    TCP doesn't work well with low reliability. Thus, to improve
+    reliability, wireless link layer re-transmits the packets at the
+    link layer. For example when our laptop sends data to access point,
+    the access point after receiving the packet immediately -- just a
+    few microseconds later -- sends a link layer acknowledgement back
+    to the laptop. If the laptop does not receive a link layer
+    acknowledgement it re-transmits. It does this several times. These
+    link layer acknowledgments can boost the poor link, with 80%
+    reliability to 99% or higher. This lets TCP work much better.
 
-   TCP doesn't work well with low reliability. To improve reliability,
-   wireless link layer re-transmits the packets at the link layer. For
-   example when our laptop sends data to access point, the access
-   point after receiving the packet immediately -- just a few
-   microseconds later -- sends a link layer acknowledgement back to
-   the laptop. If the laptop does not receive a link layer
-   acknowledgement it re-transmits. It does this several times. These
-   link layer acknowledgment can boost the poor link, with 80%
-   reliability to 99% or higher. This lets TCP work much better.
+
+** Second Version
+   The network's job is to transmit datagrams as efficiently and as
+   flexibility as possible. Everything else should be done at fringes.
+   If the system is to work correctly then the end points need to be
+   responsible for making sure it does. Nobody else has the
+   information necessary to do this correctly.
+
+   If the network implements certain piece of functionality at the
+   middle. It assumes something about the end applications. For
+   example when wireless link layer uses re-transmission to improve
+   the reliability so that TCP can work better. It is assuming that
+   increased re-transmission latency is worth the reliability. This is
+   not always true. There are some protocols that would send a new,
+   different packet rather than retry sending an old one. But link
+   layer has incorporated these protocols are stuck with it. This can
+   and does act as impediment to innovation and progress. As layers
+   start to add optimization assuming what the layers above and below
+   them do, it becomes harder and harder to redesign the layers. In
+   the case of wireless, it's a link layer that assumes certain
+   behavior at the network and transport layers.
 
 * COMMENT TODO
   1. join emacs group
