@@ -1182,7 +1182,6 @@
     link layer acknowledgments can boost the poor link, with 80%
     reliability to 99% or higher. This lets TCP work much better.
 
-
 ** Second Version
    The network's job is to transmit datagrams as efficiently and as
    flexibility as possible. Everything else should be done at fringes.
@@ -1203,6 +1202,23 @@
    them do, it becomes harder and harder to redesign the layers. In
    the case of wireless, it's a link layer that assumes certain
    behavior at the network and transport layers.
+
+* Error Detection
+  Networks are not perfect and neither to hosts that run on them, they
+  can introduce errors. We need to be able to detect these errors.
+
+  There are three algorithms to detect the errors:
+
+** Checksum
+   Checksum just adds all of the data in the packet. Checksum are nice
+   because they are very fast and cheap to compute, even in
+   software. Their major drawbacks is that they provide very weak
+   error detection guarantee. It can detect random errors but its easy
+   to fool a checksum with as few as 2 bit errors, if the two bit
+   errors cancel each other out. For example if one bit error adds 32
+   and another bit error subtracts 32, then a checksum won't catch the
+   error.
+
 
 * COMMENT TODO
   1. join emacs group
