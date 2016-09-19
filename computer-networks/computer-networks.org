@@ -1223,7 +1223,7 @@
    its easy to fool a checksum with as few as 2 bit errors, if the two
    bit errors cancel each other out. For example if one bit error adds
    32 and another bit error subtracts 32, then a checksum won't catch
-   the error.
+   the error. This is used by TCP and IP.
 
 ** Cyclic Redundancy Code - CRC
    A CRC is much more computationally expensive than a checksum, but
