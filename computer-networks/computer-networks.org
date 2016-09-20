@@ -1232,6 +1232,20 @@
    ways, TCP and IP can get away with checksums because the link
    layers use CRCs.
    
+** Message Authentication Code - MAC
+   Message authentication codes uses cryptography, a branch of
+   mathematics that deals with secrets. The idea behind most message
+   authentication codes is that the two parties share a secret s. This
+   secret is just a set of randomly generated bits (random so it's
+   hard to guess). To calculate the message authentication code C,
+   apply the MAC algorithm to the message M and the secret s.
+
+   Message authentication codes are very useful, but they're first and
+   foremost a security mechanism. Being able to get both error
+   detection and security with one mechanism is efficient and nice,
+   but their security properties mean their error detection isn't as
+   good as other approaches.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
