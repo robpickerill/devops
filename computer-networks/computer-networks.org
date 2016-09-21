@@ -1204,8 +1204,9 @@
    behavior at the network and transport layers.
 
 * Error Detection
-  Networks are not perfect and neither to hosts that run on them, they
-  can introduce errors. We need to be able to detect these errors.
+  Networks are not perfect and neither are the hosts that run on them,
+  they can introduce errors. We need to be able to detect these
+  errors.
 
   At a high level, we have a payload of data, we calculate some error
   detection bits over that data and either append it or prepend it to
@@ -1245,6 +1246,23 @@
    detection and security with one mechanism is efficient and nice,
    but their security properties mean their error detection isn't as
    good as other approaches.
+
+* Finite State Machine
+  Finite state machine, is composed of a finite number of states. A
+  state is a particular configuration of the system.
+
+  State1 -> State2
+  - events causing state transition
+  - actions taken on state transition
+
+  Edges between the states define how we transition between them. When
+  we draw an edge, we first specify what events cause the transition
+  to occur. Below this we can state what actions system will take when
+  transitions occurs. This part is optional because not all
+  transitions have actions associated with them.
+  
+  If the system is in a state and an event arrives for which there is
+  no transition described, then the behavior of the FSM is undefined.
 
 * COMMENT TODO
   1. join emacs group
