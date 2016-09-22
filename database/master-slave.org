@@ -20,7 +20,19 @@
   system, then the system is considered to exhibit replication
   transparency.
 
+  Database replication is a process that allows to easily maintain
+  multiple copies of a MySQL data by having them copied automatically
+  from master to a slave database. This is helpful for many reasons
+  including facilitating a backup for the data, a way to analyze it
+  without using the main database, or simply as a means to scale out.
+
+* Setup
+
 * Reference
   - https://en.wikipedia.org/wiki/Master/slave_(technology)
   - http://stackoverflow.com/questions/3736969/master-master-vs-master-slave-database-architecture
   - https://en.wikipedia.org/wiki/Replication_(computing)#DATABASE
+  - https://www.quora.com/What-are-Master-and-Slave-databases-and-how-does-pairing-them-make-web-apps-faster
+  - /usr/bin/mysql_secure_installation
+  - https://www.digitalocean.com/community/tutorials/how-to-set-up-master-slave-replication-in-mysql
+  - /usr/share/doc/mysql-server-5.5/README.Debian.gz
