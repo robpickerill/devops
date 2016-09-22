@@ -1,0 +1,26 @@
+#+Title: Master Slave
+#+Date: <2016-09-22 Thu>
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document talks about the master slave configuration.
+
+* Database Replication
+  Database replication can be used in many database management system,
+  usually with a master/slave relationship between the original and
+  the copies. Master logs the updates which are then ripple through to
+  the slaves. The slave outputs the message stating that it has
+  received the update successfully, thus allowing the sending of
+  subsequent updates.
+
+  When data is replicated between database servers, such that data
+  remains consistent throughout the database system and users can not
+  tell or even know which database they are using in the database
+  system, then the system is considered to exhibit replication
+  transparency.
+
+* Reference
+  - https://en.wikipedia.org/wiki/Master/slave_(technology)
+  - http://stackoverflow.com/questions/3736969/master-master-vs-master-slave-database-architecture
+  - https://en.wikipedia.org/wiki/Replication_(computing)#DATABASE
