@@ -27,7 +27,130 @@
   without using the main database, or simply as a means to scale out.
 
 * Setup
+** configure the master database
+   - Edit =/etc/mysql/my.cnf= as follows:
+     + Update bind address to server ip, instead of localhost
+       #+BEGIN_EXAMPLE
+       bind-address            = 127.0.0.1
+       #+END_EXAMPLE
+       #+BEGIN_EXAMPLE
+       bind-address            = 12.34.56.789 
+       #+END_EXAMPLE
+     + Set server id, the number must be unique and cannot match any
+       other server-id in the replication group.
+       #+BEGIN_EXAMPLE
+       server-id = 1
+       #+END_EXAMPLE
+     + The slave will copy all the changes that are registered in the
+       log. For this step we simply need to uncomment the line that
+       refers to log_bin:
+       #+BEGIN_EXAMPLE
+       log_bin                 = /var/log/mysql/mysql-bin.log
+       #+END_EXAMPLE
+     + Designate database that is to be replicated on the slave
+       server. We can include more database by repeating this line
+       for all the databases:
+       #+BEGIN_EXAMPLE
+       binlog_do_db            = newdatabase
+       #+END_EXAMPLE
+   - Refresh mysql
+     #+BEGIN_EXAMPLE
+     sudo service mysql restart
+     #+END_EXAMPLE
+   - Open mysql shell
+     #+BEGIN_EXAMPLE
+     mysql -u root -p
+     #+END_EXAMPLE
+   - Grant privileges to the slave
+     #+BEGIN_EXAMPLE
+     grant replication slave on *.* to 'slave_user'@'%' identified by 'password';
+     #+END_EXAMPLE
+   - Flush privileges
+     #+BEGIN_EXAMPLE
+     FLUSH PRIVILEGES;
+     #+END_EXAMPLE
+   - Switch to new database
+     #+BEGIN_EXAMPLE
+     use newdatabase;
+     #+END_EXAMPLE
+   - Lock the database to prevent any new changes
+     #+BEGIN_EXAMPLE
+     FLUSH TABLES WITH READ LOCK;
+     #+END_EXAMPLE
+   - See master status
+     #+BEGIN_EXAMPLE
+     mysql> SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++------------------+----------+--------------+------------------+
+| mysql-bin.000001 |      107 | newdatabase  |                  |
++------------------+----------+--------------+------------------+
+     1 row in set (0.00 sec)
+     #+END_EXAMPLE
+     This is the position from where slave database will start
+     replicating. Record this number they will come in useful later.
+   - Open a new tab or window, because if we make new changes in the
+     same window database will automatically unlock.
+   - Take database dump from bash shell
+     #+BEGIN_EXAMPLE
+     mysqldump -u root -p --databases  newdatabase > dump
+     #+END_EXAMPLE
+   - Return to original window and unlock the database
+     #+BEGIN_EXAMPLE
+     UNLOCK TABLES;
+     #+END_EXAMPLE
+   - Quit from shell
+     #+BEGIN_EXAMPLE
+     QUIT;
+     #+END_EXAMPLE
 
+** Configure slave database
+   - Open the mysql shell.
+   - create new database
+     #+BEGIN_EXAMPLE
+     create database newdatabase;
+     #+END_EXAMPLE
+   - Exit the shell
+     #+BEGIN_EXAMPLE
+     exit;
+     #+END_EXAMPLE
+   - Import the database
+     #+BEGIN_EXAMPLE
+     mysql -u root -p newdatabase < dump
+     #+END_EXAMPLE
+   - Edit =/etc/mysql/my.cnf= file as follows:
+     + Set server id, this must be unique:
+       #+BEGIN_EXAMPLE
+       server-id               = 2
+       #+END_EXAMPLE
+     + Set following three criteria
+       #+BEGIN_EXAMPLE
+       relay-log               = /var/log/mysql/mysql-relay-bin.log
+       log_bin                 = /var/log/mysql/mysql-bin.log
+       binlog_do_db            = newdatabase
+       #+END_EXAMPLE
+   - Restart mysql
+     #+BEGIN_EXAMPLE
+     sudo service mysql restart
+     #+END_EXAMPLE
+   - Open mysql shell
+   - Set master
+     #+BEGIN_EXAMPLE
+     CHANGE MASTER TO MASTER_HOST='12.34.56.789',MASTER_USER='slave_user', MASTER_PASSWORD='password', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=  107;
+     #+END_EXAMPLE
+     + It designates current server as the slave of our master server.
+     + It provides server the correct login credentials.
+     + Lets slave know where to start replicating from; the master
+       log file and log position
+   - Activate the slave server
+     #+BEGIN_EXAMPLE
+     start slave;
+     #+END_EXAMPLE
+   - See details of slave replication, =\G= rearranges text to make
+     it more readable.
+     #+BEGIN_EXAMPLE
+     show slave status\G
+     #+END_EXAMPLE
 * Reference
   - https://en.wikipedia.org/wiki/Master/slave_(technology)
   - http://stackoverflow.com/questions/3736969/master-master-vs-master-slave-database-architecture
