@@ -1282,6 +1282,26 @@
    So, here we have three states: *idle*, *page requesting*
    and *request pending*.
 
+   On one hand this is a nice, and simple FSM. But if you were to try
+   to implement it, it leaves a lot unsaid. Specifically we have 4
+   events in the system: page request, more requests, receive
+   response, and connection closed. So what happens if the connection
+   closes when we're in the request pending state? Or when we receive
+   a page request while in the page requesting state? Or receive
+   response while in the idle state?
+
+   If we want to completely explicit we should specify what happens on
+   each state for every event. But this can lead to complicated FSMs
+   which have tons of edges. So often instead we specify only common
+   cases for the ease of understanding, and have some supporting text
+   about other transitions. Or, in some cases, it can even be
+   acceptable to leave something undefined. The Internet Engineering
+   Task Force, for example, often doesn't completely specify every
+   FSM. The idea is that by specifying only the parts that are
+   necessary for inter operability, we can leave the specification
+   flexible for future exploration. As people use it they will figure
+   out if something is important and can add that extra part later.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
