@@ -819,8 +819,8 @@
    for "FINISH" to B. B acknowledges that A has no more data to send,
    and stops looking for new data from A. But B might have new data to
    send to A, and is not ready to close down the connection from B to
-   A. So the message from B to A carrying the ACK can also carry some
-   data to send to A. This way communication from A to B is
+   A. So the message from B to A carrying the "ACK" can also carry
+   some data to send to A. This way communication from A to B is
    closed. But B can keep sending data to A as long as it
    wants. Sometime later when B finished sending data to A, it sends a
    "FIN" message to A, to tell A, they can close the connection. Then
@@ -1258,11 +1258,29 @@
   Edges between the states define how we transition between them. When
   we draw an edge, we first specify what events cause the transition
   to occur. Below this we can state what actions system will take when
-  transitions occurs. This part is optional because not all
+  that transitions occurs. This part is optional because not all
   transitions have actions associated with them.
   
   If the system is in a state and an event arrives for which there is
   no transition described, then the behavior of the FSM is undefined.
+
+** HTTP Request
+   In our starting state we are either *viewing a page* or
+   otherwise *idle*. When we want to load a new page, we transition to
+   the *page requesting state*. So the event is load new page, and the
+   action is open a connection to the web server. Once we've opened a
+   connection, we are now in the page requesting state. We'll
+   transition back to the idle state when the connection closes or
+   when we finish requesting every resource on the page.
+
+   We need one more state, which describes where we are in requesting
+   a page. On the event of having more resources to request, we take
+   the action of requesting a resource with an HTTP GET. This puts us
+   in the *request pending state*. On the event of receiving the
+   response, out system transitions back to the page requesting state.
+
+   So, here we have three states: *idle*, *page requesting*
+   and *request pending*.
 
 * COMMENT TODO
   1. join emacs group
