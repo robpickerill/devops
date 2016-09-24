@@ -1325,9 +1325,16 @@
 
    First step of handshake connection is when a client tries to open a
    connection and sends a SYN packet to the server. First transition
-   for the client side of the connection from closed to the SYN SENT
-   state. This happens when the client program calls connect -- the
-   event -- and the client sends a SYN message.
+   for the client side of the connection from *CLOSED* to the *SYN
+   SENT* state. This happens when the client program calls connect --
+   the event -- and the client sends a SYN message.
+   
+   So once the first SYN is sent, the client is in the *SYN SENT*
+   state and the server is in the *LISTEN* state. When the SYN arrives
+   at the server, this leads to a transition. The event is receiving a
+   SYN message. The action is to send a SYN/ACK message in
+   response. Now the server is in the *SYN RECEIVED* state.
+
 
 * COMMENT TODO
   1. join emacs group
