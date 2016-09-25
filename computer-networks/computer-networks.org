@@ -1335,6 +1335,15 @@
    SYN message. The action is to send a SYN/ACK message in
    response. Now the server is in the *SYN RECEIVED* state.
 
+   Client was in the *SYN SENT* state. When it receives the SYN/ACK
+   from the server, it transitions to the *ESTABLISHED* state. Its
+   action is to send an ACK message, the third message of the SYN,
+   SYN/ACK, ACK handshake. Now the client can start sending data to
+   the server.
+
+   Now the server which was in the *SYN RECEIVED* state, when it
+   receives the ACK from the client, it transitions to
+   the *ESTABLISHED* state and can send data to the client.
 
 * COMMENT TODO
   1. join emacs group
