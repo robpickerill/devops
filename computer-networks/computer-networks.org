@@ -1345,6 +1345,23 @@
    receives the ACK from the client, it transitions to
    the *ESTABLISHED* state and can send data to the client.
 
+   So now our sockets are in the ESTABLISHED state. They are
+   exchanging data. It's sometimes useful to talk about "tearing down"
+   a connection because the word "close" means something in terms of
+   system calls. A connection exists after one side "closes" it, as we
+   will see.
+
+   There is a symmetry between connection establishment and connection
+   tear down. Where connection establishment uses synchronization or
+   "SYN" packets, connection tear down uses finish or "FIN"
+   packets. If one of the sides of the connection calls close, it
+   traverses along to the *FIN WAIT 1* state. The action is to send a
+   FIN packet to the other side of the connection. This is called the
+   "active closer" because it starts the operation. The other side
+   receives the FIN and transit to *CLOSE WAIT* state. It remains in
+   this state until the program on its side calls close, at which
+   point it sends a FIN.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
@@ -1373,6 +1390,8 @@
   20. Does TCP sends one packet at a time, receive ack and then second
       packet or it sends multiple packets at once.
   21. Capture DHCP packets, using wireshark.
+  22. How if active closer has closed the connection, it can
+      acknowledges the received data.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
