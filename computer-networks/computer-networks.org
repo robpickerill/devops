@@ -1385,6 +1385,13 @@
    this case we transition to the *CLOSING* state, and when our FIN is
    acknowledged we transition to the *TIME_WAIT* state.
 
+   TCP transition from *FIN WAIT 2* state to *TIME WAIT* state when we
+   receive FIN from the other side. It then stays in *TIME WAIT* state
+   for a period of time, until it can safely transition to close.
+
+   TCP transition from *LAST ACK* to *CLOSED*, when the passive
+   closer's FIN is acknowledged.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
