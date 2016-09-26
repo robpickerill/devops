@@ -1325,7 +1325,7 @@
 
    First step of handshake connection is when a client tries to open a
    connection and sends a SYN packet to the server. First transition
-   for the client side of the connection from *CLOSED* to the *SYN
+   for the client side of the connection is from *CLOSED* to the *SYN
    SENT* state. This happens when the client program calls connect --
    the event -- and the client sends a SYN message.
    
@@ -1361,6 +1361,29 @@
    receives the FIN and transit to *CLOSE WAIT* state. It remains in
    this state until the program on its side calls close, at which
    point it sends a FIN.
+
+   A TCP connection is bidirectional. The active closer has closed its
+   direction of the connection, so it can't write any more data. But
+   it could be, that the passive closer has more data to send. So it
+   can continue to send data, which the active closer receives and
+   acknowledges. Or it could close its side of connection too. Or it
+   could even have decided to close the connection at the same time,
+   such that we have two FIN packets crossing each other in the
+   network.
+
+   From the *FIN WAIT 1* state, where the active closer is, there are
+   three possible outcomes. First, the passive closer might
+   acknowledge the FIN but not send a FIN. In this case, the passive
+   closer is in the *CLOSE WAIT* state and can continue to send
+   data. And the active closer enters the *FIN WAIT 2* state. Second
+   the passive closer might close its side too, acknowledging the FIN
+   and send a FIN of its own. In this case active closer transits to
+   the *TIME_WAIT* state. Finally, it could be that both sides
+   actively closed at almost the same time, and sent FINs to each
+   other. In this case, both are in the *FIN WAIT 1* state. Each one
+   will see a FIN from the other side that doesn't ACK its own FIN. In
+   this case we transition to the *CLOSING* state, and when our FIN is
+   acknowledged we transition to the *TIME_WAIT* state.
 
 * COMMENT TODO
   1. join emacs group
