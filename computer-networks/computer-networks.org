@@ -1392,6 +1392,23 @@
    TCP transition from *LAST ACK* to *CLOSED*, when the passive
    closer's FIN is acknowledged.
 
+* Flow Control
+  Flow control provides reliable efficient communication. The basic
+  problem flow control tries to solve is when a sender can send data
+  faster than the receiver can process it.
+
+  Suppose A can send some 500,000 packets per second but the receiver
+  B, can only process 200,000 packets per second. This could be
+  because B has slower processor, or its network card is not that
+  good.
+
+  So if A sends data at this full rate of 500,000 packets per second,
+  the 300,000 of those are going to have to be dropped at B. That is B
+  will not be able to process them. Only 40% of the packets will come
+  through. So this is lot of wasted effort on A's part, its a lot of
+  wasted effort in the network and its also going to completely
+  saturate B.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
