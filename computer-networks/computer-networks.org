@@ -1419,6 +1419,21 @@
    feedback, whether its implicit feedback or explicit feedback,
    whether its to slow down or speed up or to set a rate.
 
+** Stop and Wait
+   Stop and wait algorithm is very simple. It has at most one packet
+   in flight at any time from the sender to the receiver.
+
+   So the basic algorithm is sender sends one packet, it then wait for
+   acknowledgement from the receiver. When it receives the
+   acknowledgement, if it has more data to send then it sends another
+   packet.
+
+   If it waits for some time, which is a timeout, and has not heard an
+   acknowledgement, then it assumes the packet has been lost. It could
+   be that packet was dropped on the router, or it was dropped at the
+   receiver or the acknowledgement was dropped. And it resends the
+   packet.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
