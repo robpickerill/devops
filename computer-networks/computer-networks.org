@@ -1432,7 +1432,14 @@
    acknowledgement, then it assumes the packet has been lost. It could
    be that packet was dropped on the router, or it was dropped at the
    receiver or the acknowledgement was dropped. And it resends the
-   packet.
+   packet. So there is a timeout, at which point it tries
+   again. That's the basic algorithm.
+
+   The receiver has one state - finite state machine, which is wait
+   for packet. When it receives new data, it sends an acknowledgement,
+   or when it receives data it sends an acknowledgement for that
+   data. And if the data is new, it delivers that data to the
+   application.
 
 * COMMENT TODO
   1. join emacs group
@@ -1472,3 +1479,5 @@
     https://lagunita.stanford.edu/courses/Engineering/Networking-SP/SelfPaced/courseware
    (stanford course ware)
   - RFC-1958
+  - http://lxr.free-electrons.com/source/net/ipv4/tcp.c (tcp
+    implementation)
