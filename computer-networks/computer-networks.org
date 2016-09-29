@@ -1490,7 +1490,10 @@
      packet is lost. So now first re-transmission of the first data
      packet arrives at the receiver and the receiver acknowledges
      it. The sender does not know whether this acknowledgement here,
-     this ACK for, is for the re-transmission here 
+     is for the re-transmission here of the data or it's for the new
+     data packet. And so here we can have error, where if it assumes
+     it was for the re-transmission of the old data somebody has to
+     keep track of that.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
