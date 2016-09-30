@@ -15,3 +15,5 @@
 *.srt
 *.html
 *.svg
+*.log
+*.tex
