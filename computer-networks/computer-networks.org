@@ -1431,7 +1431,7 @@
    If it waits for some time, which is a timeout, and has not heard an
    acknowledgement, then it assumes the packet has been lost. It could
    be that packet was dropped on the router, or it was dropped at the
-   receiver or the acknowledgement was dropped. And it resends the
+   receiver or the acknowledgement was dropped. And it re-sends the
    packet. So there is a timeout, at which point it tries
    again. That's the basic algorithm.
 
@@ -1454,13 +1454,12 @@
     does nothing, it goes back to wait for data. If there is more data
     to send it will send new data. Or if there is no more data to send
     it will wait until the software calls send. The second transition
-    is when where there's a timeout. So, this is the case where it has
-    sent a packet of data but it hasn't received any
-    acknowledgement. It's waiting and then time's up. So then it just
-    tries re-sending. So it want's to pick this time out so that it's
-    conservative. It's pretty sure that the data or the subsequent
-    acknowledgement has been lost. So, it has only one packet in the
-    network at any time.
+    is when there's a timeout. So, this is the case where it has sent
+    a packet of data but it hasn't received any acknowledgement. It's
+    waiting and then time's up. So then it just tries re-sending. So
+    it want's to pick this time out so that it's conservative. It's
+    pretty sure that the data or the subsequent acknowledgement has
+    been lost. So, it has only one packet in the network at any time.
     
 *** Sample Execution
     There are four sample executions:
@@ -1490,10 +1489,10 @@
      packet is lost. So now first re-transmission of the first data
      packet arrives at the receiver and the receiver acknowledges
      it. The sender does not know whether this acknowledgement here,
-     is for the re-transmission here of the data or it's for the new
-     data packet. And so here we can have error, where if it assumes
-     it was for the re-transmission of the old data somebody has to
-     keep track of that.
+     is for the re-transmission of the data or it's for the new data
+     packet. And so here we can have error, where if it assumes it was
+     for the re-transmission of the old data somebody has to keep
+     track of that.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
