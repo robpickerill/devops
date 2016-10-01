@@ -770,13 +770,15 @@
 
 ** Connection Setup
    The TCP connection is established using a 3-way hand shake between
-   hosts A and B. First of all host A, sends a message to host B
-   indicating that the TCP layer at A wants to establish a connection
-   with the TCP layer at B. This message is called "SYN" message which
-   is short for synchronize, because A also sends a base number it
-   will use to identify bytes in the byte stream. If A sends "0", then
-   the number will start at 0, if it sends "1000", then the number
-   will start at 1000.
+   hosts A and B.
+
+   First of all host A, sends a message to host B indicating that the
+   TCP layer at A wants to establish a connection with the TCP layer
+   at B. This message is called "SYN" message which is short for
+   synchronize, because A also sends a base number it will use to
+   identify bytes in the byte stream. If A sends "0", then the number
+   will start at 0, if it sends "1000", then the number will start
+   at 1000.
 
    Host B replies with the message "SYN + ACK". B signals an "ACK",
    because B is acknowledging the request sent by A and agreeing to
@@ -816,7 +818,7 @@
    ends can clean up the sate associated with the state machine. 
 
    When A finished sending data to B, it sends a "FIN" message short
-   for "FINISH" to B. B acknowledges that A has no more data to send,
+   for "FINISH" to B. B acknowledges, that A has no more data to send,
    and stops looking for new data from A. But B might have new data to
    send to A, and is not ready to close down the connection from B to
    A. So the message from B to A carrying the "ACK" can also carry
@@ -920,9 +922,9 @@
     example if the acknowledgement sequence number is 1001, it means
     that it has received all the bytes upto 1000, and
     including 1000. Now it is expecting 1001 byte. Note that there are
-    sequence number for both the directions in a segment. This way TCP
-    piggybacks acknowledgement on the data segments travelling in the
-    other direction.
+    sequence numbers for both the directions in a segment. This way
+    TCP piggybacks acknowledgement on the data segments travelling in
+    the other direction.
 
 *** Checksum
     16-bit checksum is calculated over the entire header and data, and
@@ -1481,8 +1483,8 @@
      Suppose something happens in the network, suddenly a link becomes
      very slow, or there's a big queue somewhere in the network, and
      the acknowledgement is delayed past the time of the timeout. So
-     the sender sends some data and acknowledges when it comes, but
-     the sender resends the data before the acknowledgement
+     the sender sends some data and receiver acknowledges when it
+     comes, but the sender resends the data before the acknowledgement
      arrives. The acknowledgement then arrives very shortly. And now
      the sender knows that the data was acknowledged and it sends
      another data packet. But let's say that, in fact, this data
@@ -1493,6 +1495,30 @@
      packet. And so here we can have error, where if it assumes it was
      for the re-transmission of the old data somebody has to keep
      track of that.
+
+     Something the finite state machines has to keep track of. If it
+     assumes it's for the new data, that data might not have
+     arrived. It could be assuming that data has arrived but it has
+     not.
+
+     So, this is a basic problem that comes up in any reliable
+     protocol, it comes up in flow control, which is how do we detect
+     duplicates. How do we know when acknowledgements are from
+     re-transmissions or duplicated copies of packets versus new data.
+
+     So, in the case of stop and wait, we can solve the problem with a
+     one bit counter. And so the idea is that use this one bit counter
+     on all data and acknowledgement packets.
+
+     Sender sends data zero, sender receives ACK zero, data one, ACK
+     one, data zero, ACK zero. Now the receiver can tell if this is
+     new data or a duplicate.
+
+     Single-bit counter makes two simplifying assumptions:
+     - First the network is not duplicating packets itself.
+     - Second, the packets are not being delayed for multiple
+       timeouts.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
