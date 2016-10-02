@@ -1479,7 +1479,7 @@
      ACK state, it times out and it resends the data. This causes
      receiver to send another acknowledgement, at which point sender
      gets the acknowledgement and continues as in the first case.
-**** Failure
+**** Duplicate Packet
      Suppose something happens in the network, suddenly a link becomes
      very slow, or there's a big queue somewhere in the network, and
      the acknowledgement is delayed past the time of the timeout. So
@@ -1502,13 +1502,14 @@
      not.
 
      So, this is a basic problem that comes up in any reliable
-     protocol, it comes up in flow control, which is how do we detect
-     duplicates. How do we know when acknowledgements are from
-     re-transmissions or duplicated copies of packets versus new data.
+     protocol, it comes up in flow control, which is how do we
+     detect *duplicates*. How do we know when acknowledgements are
+     from re-transmissions or duplicated copies of packets versus new
+     data.
 
-     So, in the case of stop and wait, we can solve the problem with a
-     one bit counter. And so the idea is that use this one bit counter
-     on all data and acknowledgement packets.
+     So, in the case of stop and wait, we can solve the problem with
+     a *one bit counter*. And so the idea is that use this one bit
+     counter on all data and acknowledgement packets.
 
      Sender sends data zero, sender receives ACK zero, data one, ACK
      one, data zero, ACK zero. Now the receiver can tell if this is
