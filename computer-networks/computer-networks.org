@@ -1521,6 +1521,7 @@
        timeouts.
 
 ** Sliding Window
+   Sliding window is a generalization of stop and wait.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
