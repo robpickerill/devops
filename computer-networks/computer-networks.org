@@ -1518,7 +1518,25 @@
      Single-bit counter makes two simplifying assumptions:
      - First the network is not duplicating packets itself.
      - Second, the packets are not being delayed for multiple
-       timeouts.
+       timeouts. So if packets are not duplicated for more than a
+       round trip time, stop and wait works.
+
+***** Issues with stop and wait 
+      Suppose there is a 10Mb/s link between A and B, and B can
+      receive at 10Mb/s. The round trip time is 50 milliseconds, that
+      means A can send one packet to B, if that packet is received
+      successfully 50 milliseconds later, we will get an
+      acknowledgement. Let's assume we are sending Ethernet frames, so
+      the size of data is basically 1.5 kilobytes or 12 kilobits. 1000
+      milliseconds divided by 50, means we can send 20 packets per
+      second. Now 20 packets per second times 12 kilobits is equal to
+      240 kilobits per second. Assuming no packets are lost, just a
+      constant RTT 50 milliseconds. But the bottle neck is 10Mb/s, so
+      this means that this stop and wait protocol is using two percent
+      of what the communication could be. So stop and wait works but
+      it can be astonishingly inefficient. Node A could be sending
+      data much faster than what stop and wait allows. Solution is to
+      use sliding window protocol.
 
 ** Sliding Window
    Sliding window is a generalization of stop and wait.
