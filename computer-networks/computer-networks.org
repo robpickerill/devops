@@ -1521,7 +1521,7 @@
        timeouts. So if packets are not duplicated for more than a
        round trip time, stop and wait works.
 
-***** Issues with stop and wait 
+***** Issues with stop and wait
       Suppose there is a 10Mb/s link between A and B, and B can
       receive at 10Mb/s. The round trip time is 50 milliseconds, that
       means A can send one packet to B, if that packet is received
@@ -1539,7 +1539,16 @@
       use sliding window protocol.
 
 ** Sliding Window
-   Sliding window is a generalization of stop and wait.
+   Sliding window is a generalization of stop and wait. Where stop and
+   wait allows only 1 packet in flight at any point in time, a sliding
+   window protocol allows up to N packets in flight. So, when n is
+   equal to one, a sliding window protocol acts like a stop and wait.
+
+   Lets say we have a sliding window protocol with an N equal to lets
+   say 5 packets. This means node A can have five packets in flight
+   and simultaneously there can be five acknowledgements coming back
+   from B.
+   
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
