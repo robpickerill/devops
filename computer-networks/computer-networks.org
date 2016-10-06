@@ -1544,10 +1544,15 @@
    window protocol allows up to N packets in flight. So, when n is
    equal to one, a sliding window protocol acts like a stop and wait.
 
-   Lets say we have a sliding window protocol with an N equal to lets
-   say 5 packets. This means node A can have five packets in flight
-   and simultaneously there can be five acknowledgements coming back
-   from B.
+   Lets say we have a sliding window protocol with an N equal to 5
+   packets. This means node A can have five packets in flight and
+   simultaneously there can be five acknowledgements coming back from
+   B.
+
+   The idea here is that, if we set N to the correct value then we can
+   keep the pipe full. If the link bandwidth is 10Mb/s, then by
+   configuring sliding window size, we can have node A send data at a
+   rate equal to 10 megabits per second.
    
 * COMMENT TODO
   1. join emacs group
