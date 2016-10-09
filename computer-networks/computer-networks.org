@@ -1553,6 +1553,13 @@
    keep the pipe full. If the link bandwidth is 10Mb/s, then by
    configuring sliding window size, we can have node A send data at a
    rate equal to 10 megabits per second.
+
+   So, in this particular case if we have RTT of 50 milliseconds and a
+   bottleneck of 10Mb/s, let's say we are sending ethernet frames at
+   10 kilobits per packet. And we have 20 round trip times, that means
+   the sliding window is gonna be 10Mb/s divided by twenty round trip
+   times, which is equal to 500 kilobits per round trip time. So we
+   are looking at a sliding window of around 41 packets.
    
 * COMMENT TODO
   1. join emacs group
