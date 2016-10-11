@@ -1559,8 +1559,33 @@
    10 kilobits per packet. And we have 20 round trip times, that means
    the sliding window is gonna be 10Mb/s divided by twenty round trip
    times, which is equal to 500 kilobits per round trip time. So we
-   are looking at a sliding window of around 41 packets.
+   are looking at a sliding window of around 41 packets, that would be
+   492 kilobits. So if we had a sliding window of 40 packets, then we
+   would be able to sustain a ten megabit connection from San
+   Francisco to Boston with a round trip time of 50 milliseconds.
    
+   Let's say we have a sliding window of size 3. Sender will send
+   three packets. Let's call them D0, D1, D2 and the receiver can then
+   acknowledge them. Ack zero, ack one and ack two. As soon as the
+   acknowledgement zero arrives the sender can then send data three,
+   as soon as the acknowledgement one arrives, the sender can then
+   send data four, as soon as the acknowledgement two arrives the
+   sender can then send data five. This is the basic idea, rather than
+   having one packet we could have many packets.
+
+   First in the sliding window protocol, every segment has a sequence
+   number. So in protocols like TCP this is usually done in terms of
+   bytes because they can be of variable size. For simplicity sake we
+   will just do in terms of packet numbers. So there is a sequence
+   number for every segment. So the sender maintains three variables,
+   the *size of its sending window*, the *last acknowledgement it
+   received from the receiver* and the *last segment it sent*. The
+   sender job is to maintain this invariant, that the last segment
+   sent minus the last acknowledgement received has to be less than or
+   equal to the send window size. So this means that if it has
+   received packet N, a packet with a sequence number of n, the sender
+   can not send packet past (n + SWS).
+
    The receiver, specifies the flow control window using the window
    field, this in terms of bytes. So it basically says this is the
    buffer size that I have on the receiver and so the set of packets
@@ -1571,7 +1596,6 @@
    buffer. And so this is the way for the receiver to essentially set
    what the send window size is.
 
-   
    
 * COMMENT TODO
   1. join emacs group
