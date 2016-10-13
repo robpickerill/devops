@@ -1619,15 +1619,24 @@
    it. Now if the receive packet is less than this acceptable packet,
    then it will send an acknowledgement.
 
-   The receiver, specifies the flow control window using the window
-   field, this in terms of bytes. So it basically says this is the
-   buffer size that I have on the receiver and so the set of packets
-   that I will accept. So a TCP receiver will only handle data equal
-   to the acknowledged sequence number plus the window. So the sender
-   is not allowed to send data past ack plus window. That's to make
-   sure it doesn't send data which the receiver is not going to
-   buffer. And so this is the way for the receiver to essentially set
-   what the send window size is.
+*** Cumulative Acknowledgement
+    We send an acknowledgment for not the data we received, but rather
+    what is the end of the contiguous data we received, that is
+    cumulative? If we acknowledge three, that means that I have
+    received 3 and everything before it, not just 3. And so it
+    represents a cumulative state of reception across the entire
+    communication.
+
+*** something
+    The receiver, specifies the flow control window using the window
+    field, this in terms of bytes. So it basically says this is the
+    buffer size that I have on the receiver and so the set of packets
+    that I will accept. So a TCP receiver will only handle data equal
+    to the acknowledged sequence number plus the window. So the sender
+    is not allowed to send data past ack plus window. That's to make
+    sure it doesn't send data which the receiver is not going to
+    buffer. And so this is the way for the receiver to essentially set
+    what the send window size is.
 
    
 * COMMENT TODO
