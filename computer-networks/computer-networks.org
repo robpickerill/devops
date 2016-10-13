@@ -1586,6 +1586,39 @@
    received packet N, a packet with a sequence number of n, the sender
    can not send packet past (n + SWS).
 
+   Let's say sending window size is 5, and the last acknowledgement
+   received is 11. This means that the sender cannot send a packet
+   past 12, 13, 14, 15 and 16. It is not allowed to send seventeen
+   until it gets acknowledgement for 12. When we acknowledgement we
+   advance LAR as necessary and we buffer upto the sending window size
+   segments, in case suddenly we get an acknowledgement and then we
+   want to send whole bunch of new data.
+
+   Let's say we have a send window which includes 5, 6 and 7. And 5 is
+   lost, but 6 and 7 arrive at the receiver and are acknowledged. The
+   sender can not advance the window past five until five is
+   acknowledged. So the send window is stalling. The window can stall
+   where most of the data in the window has been delivered. It can not
+   move past the first unacknowledged piece of data. So it can not
+   advance the window past that.
+
+   The receiver also maintains three variables:
+   - window size
+   - the last acceptable segments - this is the last segment it will
+     receive and won't drop on the floor. If it receives segment past
+     this value, it will assume something is wrong or it's not gonna
+     buffer, it will just discard it.
+   - last segment actually received.
+
+   So the receiver maintains this invariant, that the last acceptable
+   segment minus that last thing we received must be less than or
+   equal to the receive window size. So if we have a receive window
+   size equal to 5 and a last segment received equal to 3, then its
+   not going to accept anything past 4, 5, 6, 7 and 8. So if it
+   receives suddenly segment 10, it won't accept it and it will drop
+   it. Now if the receive packet is less than this acceptable packet,
+   then it will send an acknowledgement.
+
    The receiver, specifies the flow control window using the window
    field, this in terms of bytes. So it basically says this is the
    buffer size that I have on the receiver and so the set of packets
