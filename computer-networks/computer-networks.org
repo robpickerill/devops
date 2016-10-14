@@ -1612,7 +1612,7 @@
 
    So the receiver maintains this invariant, that the last acceptable
    segment minus that last thing we received must be less than or
-   equal to the receive window size. So if we have a receive window
+   equal to the receive window size. So if we have a "receive window"
    size equal to 5 and a last segment received equal to 3, then its
    not going to accept anything past 4, 5, 6, 7 and 8. So if it
    receives suddenly segment 10, it won't accept it and it will drop
@@ -1622,11 +1622,45 @@
 *** Cumulative Acknowledgement
     We send an acknowledgment for not the data we received, but rather
     what is the end of the contiguous data we received, that is
-    cumulative? If we acknowledge three, that means that I have
-    received 3 and everything before it, not just 3. And so it
-    represents a cumulative state of reception across the entire
-    communication.
+    cumulative. If we acknowledge 3, that means that I have received 3
+    and everything before it, not just 3. And so it represents a
+    cumulative state of reception across the entire communication.
 
+    So in this example, if a receiver received one, two, three, and
+    five and then suddenly receives five, it doesn't acknowledge five,
+    it acknowledges three.
+
+    TCP doesn't acknowledge the data its received but rather N plus
+    one. So TCP acknowledgements are in terms of bytes, ans so if TCP
+    has received up to byte N, its acknowledgement packets will say N
+    plus one. So its the first byte of data that's expected. So if we
+    are ever looking at a TCP trace or trying to see how the TCP
+    protocol works, we should remember this. The acknowledgement value
+    in a TCP header isn't the last byte received, the cumulative
+    acknowledgment, rather the next byte, the first missing byte.
+
+*** Go-back-N
+    If we have a receive window size of one, and a sending window size
+    that's larger than one. Well in this case we are gonna need
+    sending window size plus one sequence number. Well say send window
+    size is equal to three, so the sender sends zero, one, and two,
+    and lets say those are all acknowledged, and so the receiver
+    acknowledges a zero, and acknowledges one, and acknowledges
+    two. Well when it acknowledges zero, the senders gonna send three,
+    slide the window forward, when it acknowledges one, its gonna send
+    four, and when it acknowledges two, it's gonna send five. So lets
+    say that three is dropped. The receiver is still going to receive
+    four and five, so it can ack two, its going to send ack two, ack
+    two. The sender is going to timeout and re-send three. This is
+    called Go-Back-N protocol. Because, the receive window size was
+    one, the receiver can not buffer four or five. When a single
+    packet is lost in this case three, the sender has to go back and
+    has to re-transmit the entire send window worth of packets. It has
+    to re-transmit three, four and five. In contrast if the receive
+    window size have been three then the receiver could have buffered
+    four and five. The sender would only have had to re-transmit
+    three, then we get an ack five, and it could go on and send six,
+    seven and eight.
 *** something
     The receiver, specifies the flow control window using the window
     field, this in terms of bytes. So it basically says this is the
