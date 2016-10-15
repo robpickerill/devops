@@ -1661,12 +1661,13 @@
     four and five. The sender would only have had to re-transmit
     three, then we get an ack five, and it could go on and send six,
     seven and eight.
-*** something
-    The receiver, specifies the flow control window using the window
-    field, this in terms of bytes. So it basically says this is the
-    buffer size that I have on the receiver and so the set of packets
-    that I will accept. So a TCP receiver will only handle data equal
-    to the acknowledged sequence number plus the window. So the sender
+*** Flow Control
+    TCP uses sliding window protocol for flow control. The receiver,
+    specifies the flow control window using the window field, this in
+    terms of bytes. So it basically says this is the buffer size that
+    I have on the receiver and so the set of packets that I will
+    accept. So a TCP receiver will only handle data equal to
+    the *acknowledged sequence number plus the window*. So the sender
     is not allowed to send data past ack plus window. That's to make
     sure it doesn't send data which the receiver is not going to
     buffer. And so this is the way for the receiver to essentially set
