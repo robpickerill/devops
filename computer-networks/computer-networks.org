@@ -1693,8 +1693,8 @@
     So now we have this case where ack three has been sent, packet
     four is lost, then packet five arrives at the receiver. Now the
     receiver is going to send another acknowledgement three, again
-    because of cumulative acknowledgements, and its now sender heard
-    ack three and then another ack three, waits times out and re-sends
+    because of cumulative acknowledgements, and now sender heard ack
+    three and then another ack three, waits times out and re-sends
     four. So it will resend four and lets say four arrives. Now this
     receiver can acknowledge four so it can ack four, but because its
     received window size was two, it actually had five buffered, and
