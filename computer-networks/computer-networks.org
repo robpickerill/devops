@@ -1577,10 +1577,12 @@
    number. So in protocols like TCP this is usually done in terms of
    bytes because they can be of variable size. For simplicity sake we
    will just do in terms of packet numbers. So there is a sequence
-   number for every segment. So the sender maintains three variables,
-   the *size of its sending window*, the *last acknowledgement it
-   received from the receiver* and the *last segment it sent*. The
-   sender job is to maintain this invariant, that the last segment
+   number for every segment. So the sender maintains three variables:
+   - size of its sending window
+   - last acknowledgement it received from the receiver
+   - last segment it sent
+
+   The sender job is to maintain this invariant, that the last segment
    sent minus the last acknowledgement received has to be less than or
    equal to the send window size. So this means that if it has
    received packet N, a packet with a sequence number of n, the sender
@@ -1603,12 +1605,12 @@
    advance the window past that.
 
    The receiver also maintains three variables:
-   - window size
+   - receive window size
    - the last acceptable segments - this is the last segment it will
      receive and won't drop on the floor. If it receives segment past
      this value, it will assume something is wrong or it's not gonna
-     buffer, it will just discard it.
-   - last segment actually received.
+     buffer, it will just discard it
+   - last segment actually received
 
    So the receiver maintains this invariant, that the last acceptable
    segment minus that last thing we received must be less than or
@@ -1663,9 +1665,9 @@
     seven and eight.
 *** Flow Control
     TCP uses sliding window protocol for flow control. The receiver,
-    specifies the flow control window using the window field, this in
-    terms of bytes. So it basically says this is the buffer size that
-    I have on the receiver and so the set of packets that I will
+    specifies the flow control window using the window field, this is
+    in terms of bytes. So it basically says this is the buffer size
+    that I have on the receiver and so the set of packets that I will
     accept. So a TCP receiver will only handle data equal to
     the *acknowledged sequence number plus the window*. So the sender
     is not allowed to send data past ack plus window. That's to make
@@ -1673,7 +1675,37 @@
     buffer. And so this is the way for the receiver to essentially set
     what the send window size is.
 
-   
+*** Example
+    The sequence number space for the packets - from zero up
+    to 29. Let's say we have a receive window size equal to two and a
+    send window size equal to three. So, communication begins, and the
+    sender is going to send zero, one and two. Let's say all three of
+    those packets arrive. So the receiver, receives zero, its gonna
+    acknowledge zero. It's then going to receive one, acknowledge one,
+    receive two, and acknowledge two. When the sender receives ack
+    zero, it will advance the window, it will then send three. When it
+    hears the acknowledgement for one, it will advance the window and
+    send four. When it hears the acknowledgement for two, it will
+    advance the window and send five. Now lets say packet three
+    arrived successfully and is acknowledged, but packet four is lost
+    in the network.
+
+    So now we have this case where ack three has been sent, packet
+    four is lost, then packet five arrives at the receiver. Now the
+    receiver is going to send another acknowledgement three, again
+    because of cumulative acknowledgements, and its now sender heard
+    ack three and then another ack three, waits times out and re-sends
+    four. So it will resend four and lets say four arrives. Now this
+    receiver can acknowledge four so it can ack four, but because its
+    received window size was two, it actually had five buffered, and
+    so it can acknowledge five, and will send ack five.
+
+    So the sliding window flow control algorithm allows an
+    unacknowledged, a whole window of unacknowledged packets to be in
+    flight. And so this allows, if we can set the window size
+    appropriately, it allows the sender to be able to actually fully
+    utilize the capacity that the receiver has.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
