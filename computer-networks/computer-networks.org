@@ -44,9 +44,9 @@
   to it. Server after receiving the request checks if client is
   authorized to access the resource, and then sends a response. The
   response also contains a numeric code. There are various types of
-  commands such as GET, PUT, DELETE, INFO, as well as other responses
-  such as 400 Bad Request. HTTP is all in ASCII text: for example, the
-  beginning of a GET request looks like:
+  commands such as *GET*, *PUT*, *DELETE*, *INFO*, as well as other
+  responses such as 400 Bad Request. HTTP is all in ASCII text: for
+  example, the beginning of a GET request looks like:
   #+BEGIN_EXAMPLE
   GET / HTTP/1.1
   #+END_EXAMPLE
