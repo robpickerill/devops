@@ -1706,6 +1706,15 @@
     appropriately, it allows the sender to be able to actually fully
     utilize the capacity that the receiver has.
 
+*** Window size
+    Generally speaking if the two windows are the same size, we need
+    basically their sum, RWS plus SWS sequence number. We need
+    sequence number spaces at least as big as the sum of the window
+    sizes.
+
+    TCP uses a large sequence number space just for ease of use and to
+    really be robust against heavily delayed packets.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
