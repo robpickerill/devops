@@ -1715,6 +1715,24 @@
     TCP uses a large sequence number space just for ease of use and to
     really be robust against heavily delayed packets.
 
+* Re-transmission Strategies
+  We are maintaining our re-transmission timer for each of these
+  packets based on when they were sent. And essentially maintaining
+  conservative estimate of, if we haven't received the acknowledgement
+  for the packet by this time. Then this means that it is almost
+  certain that packet was lost and so we should re-transmit it. And so
+  the question is given this set of parameters which are generally
+  used for reliable transport, how is the protocol going to behave?
+  What is its re-transmission strategy going to look like.
+
+** Go-back-N
+   If a single packet is lost, then we are going to re-transmit
+   outstanding window of packets. This is a pessimistic approach.
+
+** Selective repeat
+   One loss will lead to only that packet re-transmitting. This is
+   optimistic approach.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
