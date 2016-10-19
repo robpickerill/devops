@@ -1,0 +1,80 @@
+#+Title: HTTP and Web Authentication
+#+Date: <2016-10-09 Sun>
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document discusses web security.
+
+* HTTP
+  HTTP resources are identified and located on the network by uniform
+  resource locators (URLs), using the uniform resource identifier
+  (URI) schemes http and https.
+
+** Request Methods
+   HTTP defines methods (sometimes referred to as verbs) to indicate
+   the desired action to be performed on the identified resource.
+
+** Status Codes
+   The first line of the HTTP response is called the status line and
+   includes a numeric status code and a textual response
+   phrase. Custom status code can be used since, if the user agent
+   encounters a code it does not recognize, it can use the first digit
+   of the code to determine the general class of the response.
+
+   HTTP status code is primarily divided into five groups for better
+   explanation of request and responses between client and server as
+   named:
+   - Informational : 1xx
+   - Successful : 2xx
+   - Redirection : 3xx
+   - Client Error : 4xx
+   - Server Error : 5xx
+
+** Persistent Connections
+   In HTTP/0.9 and 1.0, the connection is closed after a single
+   request/response pair. In HTTP/1.1 a keep-alive-mechanism was
+   introduced, where a connection could be reused for more than one
+   request. Such persistent connections reduce request latency
+   perceptibly, because the client does not need to re-negotiate the
+   TCP 3-way-handshake connection after the first request has been
+   sent. Another positive side effect is that in general the
+   connection becomes faster with time due to TCP's slow-start
+   mechanism.
+
+** HTTP Session state
+   HTTP is a stateless protocol. A stateless protocol does not require
+   the HTTP server to retain information or status about each user for
+   the duration of multiple requests. However some web applications
+   implement state or server side sessions using for instance HTTP
+   cookies or hidden variables within web forms.
+
+** Encrypted Connections
+   The most popular way of establishing an encrypted HTTP connection
+   is HTTP secure.
+
+** Message Formats
+   The client and server communicate by sending plain-text (ASCII)
+   messages. The client send requests to the server and the server
+   sends responses.
+*** Request Message
+    - A request line
+    - Request header fields
+    - An empty line
+    - An optional message body
+
+*** Response Message
+    - A status line which includes the status code and reason message
+    - Response Header fields
+    - An empty line
+    - An optional message body
+* References
+  -
+    https://scottiestech.info/2015/09/12/how-does-password-authentication-work-on-web-sites/
+   (hacker hacked the password stored in md5 hash)
+  - https://www.wilmerhale.com/blog/fintech/post/?id=17179872815
+    (fintech security)
+  -
+    http://www.cio.com/article/3107785/financial-it/how-3-fintech-startups-are-shaking-up-security.html
+  - http://www.fintechcybersummit.com.au/
+  - http://www.forbes.com/sites/johnvillasenor/2016/08/25/ensuring-cybersecurity-in-fintech-key-trends-and-solutions/#63be677e1fa5t
