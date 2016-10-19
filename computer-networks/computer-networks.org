@@ -1726,12 +1726,16 @@
   What is its re-transmission strategy going to look like.
 
 ** Go-back-N
-   If a single packet is lost, then we are going to re-transmit
-   outstanding window of packets. This is a pessimistic approach.
+   This is a very pessimistic approach, that is because if a single
+   packet is lost, then we are going to re-transmit the entire
+   outstanding window of packets.
+
+   So with a window size of N if we lose a packet, we are going back N
+   transmission, so we transmit all of them.
 
 ** Selective repeat
-   One loss will lead to only that packet re-transmitting. This is
-   optimistic approach.
+   This is a very optimistic approach. If we lose a packet, its not
+   acknowledged, we will re-transmit that packet and only that packet.
 
 * COMMENT TODO
   1. join emacs group
