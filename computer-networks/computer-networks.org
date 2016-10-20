@@ -1733,6 +1733,18 @@
    So with a window size of N if we lose a packet, we are going back N
    transmission, so we transmit all of them.
 
+   So, lets say we have a window of size equal to four, so the sender
+   sends packet one, two, three, four and packet two is lost. So here
+   are our four transmissions. In response to packet one, the receiver
+   is going to send acknowledgement one. But its not going to send
+   acknowledgement two. Then in the go back n protocol, what the
+   sender is going to do is it's going to re-transmit the entire
+   outstanding window into some kind of timing. So window is going to
+   include five because in response to this one, it can send five. So
+   the transmitter seeing the packet two was lost, its going to assume
+   that the entire window is lost and re-transmit the entire
+   window. So its conservative, very pessimistic.
+
 ** Selective repeat
    This is a very optimistic approach. If we lose a packet, its not
    acknowledged, we will re-transmit that packet and only that packet.
