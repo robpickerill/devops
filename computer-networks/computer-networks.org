@@ -1748,6 +1748,12 @@
 ** Selective repeat
    This is a very optimistic approach. If we lose a packet, its not
    acknowledged, we will re-transmit that packet and only that packet.
+   The receiver accepts out-of-order frames and buffers them. The
+   sender individually transmit frames that have timed out.
+
+   So, lets say we have a window of size N=four, we transmit one, two,
+   three, four. Packet two is lost, packet one is acknowledged, which
+   lets us send five.
 
 * COMMENT TODO
   1. join emacs group
