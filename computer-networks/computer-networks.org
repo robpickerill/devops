@@ -1753,7 +1753,16 @@
 
    So, lets say we have a window of size N=four, we transmit one, two,
    three, four. Packet two is lost, packet one is acknowledged, which
-   lets us send five.
+   lets us send five. And the selective repeat protocol, the
+   transmitter is going to re-transmit two and we will continue
+   execution and transmit six, seven, eight and nine. So re-transmit
+   only the packet that were not acknowledged.
+
+   In selective repeat, if actually all of those packets were lost, if
+   packet two, three, four and five were all lost, in order to do each
+   of this re-transmission involves timers and round trip times. So it
+   can be much slower. If there is a burst of losses, a selective
+   repeat protocol will be off and slower to recover.
 
 * COMMENT TODO
   1. join emacs group
