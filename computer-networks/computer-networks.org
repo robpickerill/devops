@@ -1764,6 +1764,15 @@
    can be much slower. If there is a burst of losses, a selective
    repeat protocol will be off and slower to recover.
 
+   So there is a trade off between amount of data we send, how quickly
+   we send it and then how much of it is wasted versus the speed of
+   recovery from significant errors.
+
+** Example
+   Lets walk through two example transport protocols and their
+   configuration and see how they behave, what happens. So in this
+   first one, our sender has a window of size N=4.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
