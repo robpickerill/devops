@@ -1768,10 +1768,28 @@
    we send it and then how much of it is wasted versus the speed of
    recovery from significant errors.
 
-** Example
-   Lets walk through two example transport protocols and their
-   configuration and see how they behave, what happens. So in this
-   first one, our sender has a window of size N=4.
+** Examples
+*** Sender's window=4 and receiver's window=1
+    Lets walk through two example transport protocols and their
+    configuration and see how they behave, what happens. So in this
+    first one, our sender has a window of size N=4, and the receiver
+    has a window of size one. So based on this, is the protocol going
+    to behave just go back N or selective repeat. So let's walk
+    through what happens.
+
+    So the sender is going to send one, two, three, four. And lets say
+    packet two is lost so it doesn't arrive. Receiver is going to
+    acknowledge one, which will allow sender to send five. But the
+    receiver is not going to acknowledge two. Now at some point, its
+    retransmission timer is going to fire, and it will retransmit
+    two. But the thing is, that because the receiver has a receive
+    window size of only one, it has been unable to buffer packets
+    three, four and five. And so when it receives packet two, its
+    going to ack two. The sender has not received ack for three, its
+    going to retransmit three. And the receiver can then acknowledge
+    three. The fact that receiver has a window size of only one, its
+    going to force the sender to retransmit every single packet in the
+    window. So we see that this behaves as go-back-n.
 
 * COMMENT TODO
   1. join emacs group
