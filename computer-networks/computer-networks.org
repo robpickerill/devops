@@ -1791,6 +1791,46 @@
     going to force the sender to retransmit every single packet in the
     window. So we see that this behaves as go-back-n.
 
+*** Sender's window=n and receiver's window=n
+    In this example, sender has a window size of n=4 and the receiver
+    has a window size of n=4. In this case protocol be go-back-n or
+    selective repeat.
+
+    So the sender is going to send one, two, three and four. Two is
+    lost. Ack one result in packet five being sent. At some point
+    two's retransmission timer fires so we resend two. Now the
+    receiver has been able to buffer these packets because there is a
+    window of size n, so it had three packets buffered, so when packet
+    two arrives it can then acknowledge five. It might be that the
+    sender was little aggressive, maybe it did retransmit three or
+    four or something, but the point is that it doesn't have to. So
+    for this to operate correctly, say sender just waited for those
+    transmission timers or did slow transmissions, etc. that sender is
+    going to resend only packet two. Only the outstanding packet that
+    was not acknowledged, the rest of the buffered. So we see this
+    behaves as selective repeat.
+
+** Design approach
+   So when we are implementing transmit protocols, the only thing we
+   want to think about is how to handle retransmission. One of the
+   important thing is we don't retransmit earlier than we should. Its
+   not okay when two has retransmit timer fires, retransmit entire
+   window. Because it could be very well that three, four and five
+   have been correctly received. By retransmitting early we are very
+   aggressively putting additional packets in the network, three, four
+   and five could still be in the network, but with retransmission we
+   are putting additional copies of them.
+
+   So, in that way we want to be very careful about the number of
+   packets we put in there. We have to be careful about the
+   retranmission policy.
+   
+   - one packet was lost - retransmit entire window with the go-back-n
+     policy.
+   - one packet was lost - retransmit one packet, wait for one round
+     trip time, and see if we get acknowledgement and see where the
+     acknowledgement puts and then just do selective repeat.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
