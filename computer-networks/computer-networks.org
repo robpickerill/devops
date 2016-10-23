@@ -1827,6 +1827,14 @@
        we get acknowledgement and see where the acknowledgement puts
        and then just do selective repeat.
 
+* Reliable Communications - TCP Headers
+  Standard TCP headers is 20 bytes long. So there are five rows of
+  four octets each. 
+
+  - First two fields in the header are the =source port= and
+    =destination port=. Each of these are sixteen bits or two octets.
+
+    
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
