@@ -68,6 +68,12 @@
     - Response Header fields
     - An empty line
     - An optional message body
+* RFC-2617
+  - Proxies must be completely transparent regarding user agent
+    authentication by origin servers. That is, they must forward the
+    www-authenticate and authorization headers untouched.
+* TODO
+  - understand cookies, sessions, tokens, oauth
 * References
   -
     https://scottiestech.info/2015/09/12/how-does-password-authentication-work-on-web-sites/
@@ -78,3 +84,13 @@
     http://www.cio.com/article/3107785/financial-it/how-3-fintech-startups-are-shaking-up-security.html
   - http://www.fintechcybersummit.com.au/
   - http://www.forbes.com/sites/johnvillasenor/2016/08/25/ensuring-cybersecurity-in-fintech-key-trends-and-solutions/#63be677e1fa5t
+  - https://www.appsflyer.com/blog/how-we-solved-authentication-and-authorization-in-our-microservices-architecture/
+  - https://redlock.io/
+  - https://www.conjur.net/solutions/authorization-for-containers
+  - http://nordicapis.com/how-to-control-user-identity-within-microservices/
+  - http://oauth.net/2/
+  - http://presos.dsyer.com/decks/microservice-security.html
+  - http://security.stackexchange.com/questions/755/how-does-basic-http-auth-work
+  - https://tools.ietf.org/html/rfc2617
+  - https://tools.ietf.org/html/rfc7235
+  - https://curl.haxx.se/docs/httpscripting.html#Background
