@@ -1839,8 +1839,8 @@
     sequence number of the data contained in this segment, as well as
     what is the acknowledgement number from that endpoint.
 
-    The sequence number denotes the first byte of the data region,
-    which follows the segment header. The acknowledgement number
+    The =sequence number= denotes the first byte of the data region,
+    which follows the segment header. The =acknowledgement number=
     acknowledges the last byte received plus one. And so if I were to
     send the segment 4000 to 4999 and the other side received it, it
     would have send an acknowledgement number of 4500. That is in TCP,
@@ -1852,7 +1852,11 @@
     direction, but there is no data coming back. If the flow is
     bidirectional then these acknowledgement numbers are just going to
     be incorporated onto the data segment as they are being sent.
-    
+  
+  - The next field is =checksum=, which is computed over the TCP
+    pseudo header - which is the TCP header as well as some of the IP
+    header.
+  
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
