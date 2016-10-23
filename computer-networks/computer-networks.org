@@ -1834,6 +1834,24 @@
   - First two fields in the header are the =source port= and
     =destination port=. Each of these are sixteen bits or two octets.
 
+  - The next two fields are the TCP sequence number. So this denote
+    from the source of this packet to its destination, what is the
+    sequence number of the data contained in this segment, as well as
+    what is the acknowledgement number from that endpoint.
+
+    The sequence number denotes the first byte of the data region,
+    which follows the segment header. The acknowledgement number
+    acknowledges the last byte received plus one. And so if I were to
+    send the segment 4000 to 4999 and the other side received it, it
+    would have send an acknowledgement number of 4500. That is in TCP,
+    the ACK is not for the last byte received but that plus one.
+
+    TCP ACK packets are TCP segments that have no data. All they are
+    doing is counting the acknowledgement numbers for it. This happens
+    when traffic is unidirectional, sending lots of data in one
+    direction, but there is no data coming back. If the flow is
+    bidirectional then these acknowledgement numbers are just going to
+    be incorporated onto the data segment as they are being sent.
     
 * COMMENT TODO
   1. join emacs group
