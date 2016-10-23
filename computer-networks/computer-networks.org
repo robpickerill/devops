@@ -1421,299 +1421,295 @@
    feedback, whether its implicit feedback or explicit feedback,
    whether its to slow down or speed up or to set a rate.
 
-** Stop and Wait
-   Stop and wait algorithm is very simple. It has at most one packet
-   in flight at any time from the sender to the receiver.
+* Reliable Communications - Stop and Wait
+  Stop and wait algorithm is very simple. It has at most one packet in
+  flight at any time from the sender to the receiver.
 
-   So the basic algorithm is sender sends one packet, it then wait for
-   acknowledgement from the receiver. When it receives the
-   acknowledgement, if it has more data to send then it sends another
-   packet.
+  So the basic algorithm is sender sends one packet, it then wait for
+  acknowledgement from the receiver. When it receives the
+  acknowledgement, if it has more data to send then it sends another
+  packet.
 
-   If it waits for some time, which is a timeout, and has not heard an
-   acknowledgement, then it assumes the packet has been lost. It could
-   be that packet was dropped on the router, or it was dropped at the
-   receiver or the acknowledgement was dropped. And it re-sends the
-   packet. So there is a timeout, at which point it tries
-   again. That's the basic algorithm.
+  If it waits for some time, which is a timeout, and has not heard an
+  acknowledgement, then it assumes the packet has been lost. It could
+  be that packet was dropped on the router, or it was dropped at the
+  receiver or the acknowledgement was dropped. And it re-sends the
+  packet. So there is a timeout, at which point it tries again. That's
+  the basic algorithm.
 
-*** Receiver FSM
-    The receiver has one state - finite state machine, which is wait
-    for packet. When it receives new data, it sends an
-    acknowledgement, or when it receives data it sends an
-    acknowledgement for that data. And if the data is new, it delivers
-    that data to the application.
+** Receiver FSM
+   The receiver has one state - finite state machine, which is wait
+   for packet. When it receives new data, it sends an acknowledgement,
+   or when it receives data it sends an acknowledgement for that
+   data. And if the data is new, it delivers that data to the
+   application.
 
-*** Sender FSM
-    The sender finite state machine has two states. The first state,
-    it's waiting for data from the application. This is where it's
-    ready to send, but the data, the application has not yet provided
-    the data to send. When the application calls send, the protocol
-    sends a packet with that data, or as much as it can fit in a
-    packet. It then enters the wait for ACK state. In this state
-    there's are two transitions. The first is if it receives an
-    acknowledgement. If the protocol receives an acknowledgement it
-    does nothing, it goes back to wait for data. If there is more data
-    to send it will send new data. Or if there is no more data to send
-    it will wait until the software calls send. The second transition
-    is when there's a timeout. So, this is the case where it has sent
-    a packet of data but it hasn't received any acknowledgement. It's
-    waiting and then time's up. So then it just tries re-sending. So
-    it want's to pick this time out so that it's conservative. It's
-    pretty sure that the data or the subsequent acknowledgement has
-    been lost. So, it has only one packet in the network at any time.
-    
-*** Sample Execution
-    There are four sample executions:
-**** No loss
-     Everything works perfectly. The sender sends its data, the
-     receiver receives it, sends an acknowledgement. And now, the
-     sender, if it had more data, could send more.
-**** Data is lost
-     Second case, data is lost. The sender sends data, it's lost in
-     the network and so the sender times out, and tries re-sending the
-     data. So it is sitting in the waiting for ACK state.
-**** Acknowledgement is lost
-     Third case is when the data is successfully delivered, but the
-     acknowledgement is lost. And so now the sender is in the wait for
-     ACK state, it times out and it resends the data. This causes
-     receiver to send another acknowledgement, at which point sender
-     gets the acknowledgement and continues as in the first case.
-**** Duplicate Packet
-     Suppose something happens in the network, suddenly a link becomes
-     very slow, or there's a big queue somewhere in the network, and
-     the acknowledgement is delayed past the time of the timeout. So
-     the sender sends some data and receiver acknowledges when it
-     comes, but the sender resends the data before the acknowledgement
-     arrives. The acknowledgement then arrives very shortly. And now
-     the sender knows that the data was acknowledged and it sends
-     another data packet. But let's say that, in fact, this data
-     packet is lost. So now first re-transmission of the first data
-     packet arrives at the receiver and the receiver acknowledges
-     it. The sender does not know whether this acknowledgement here,
-     is for the re-transmission of the data or it's for the new data
-     packet. And so here we can have error, where if it assumes it was
-     for the re-transmission of the old data somebody has to keep
-     track of that.
-
-     Something the finite state machines has to keep track of. If it
-     assumes it's for the new data, that data might not have
-     arrived. It could be assuming that data has arrived but it has
-     not.
-
-     So, this is a basic problem that comes up in any reliable
-     protocol, it comes up in flow control, which is how do we
-     detect *duplicates*. How do we know when acknowledgements are
-     from re-transmissions or duplicated copies of packets versus new
-     data.
-
-     So, in the case of stop and wait, we can solve the problem with
-     a *one bit counter*. And so the idea is that use this one bit
-     counter on all data and acknowledgement packets.
-
-     Sender sends data zero, sender receives ACK zero, data one, ACK
-     one, data zero, ACK zero. Now the receiver can tell if this is
-     new data or a duplicate.
-
-     Single-bit counter makes two simplifying assumptions:
-     - First the network is not duplicating packets itself.
-     - Second, the packets are not being delayed for multiple
-       timeouts. So if packets are not duplicated for more than a
-       round trip time, stop and wait works.
-
-*** Major problem with stop and wait
-    Suppose there is a 10Mb/s link between A and B, and B can receive
-    at 10Mb/s. The round trip time is 50 milliseconds, that means A
-    can send one packet to B, if that packet is received successfully
-    50 milliseconds later, we will get an acknowledgement. Let's
-    assume we are sending Ethernet frames, so the size of data is
-    basically 1.5 kilobytes or 12 kilobits. 1000 milliseconds divided
-    by 50, means we can send 20 packets per second. Now 20 packets per
-    second times 12 kilobits is equal to 240 kilobits per
-    second. Assuming no packets are lost, just a constant RTT 50
-    milliseconds. But the bottle neck is 10Mb/s, so this means that
-    this stop and wait protocol is using two percent of what the
-    communication could be. So stop and wait works but it can be
-    astonishingly inefficient. Node A could be sending data much
-    faster than what stop and wait allows. Solution is to use sliding
-    window protocol.
-
-** Sliding Window
-   Sliding window is a generalization of stop and wait. Where stop and
-   wait allows only 1 packet in flight at any point in time, a sliding
-   window protocol allows up to "N" packets in flight. So, when n is
-   equal to one, a sliding window protocol acts like a stop and wait.
-
-   Lets say we have a sliding window protocol with an N equal to 5
-   packets. This means node A can have five packets in flight and
-   simultaneously there can be five acknowledgements coming back from
-   B.
-
-   The idea here is that, if we set N to the correct value then we can
-   keep the pipe full. If the link bandwidth is 10Mb/s, then by
-   configuring sliding window size, we can have node A send data at a
-   rate equal to 10 megabits per second.
-
-   So, in this particular case if we have RTT of 50 milliseconds and a
-   bottleneck of 10Mb/s, let's say we are sending ethernet frames at
-   10 kilobits per packet. And we have 20 round trip times, that means
-   the sliding window is gonna be 10Mb/s divided by twenty round trip
-   times, which is equal to 500 kilobits per round trip time. So we
-   are looking at a sliding window of around 41 packets, that would be
-   492 kilobits. So if we had a sliding window of 40 packets, then we
-   would be able to sustain a ten megabit connection from San
-   Francisco to Boston with a round trip time of 50 milliseconds.
+** Sender FSM
+   The sender finite state machine has two states. The first state,
+   it's waiting for data from the application. This is where it's
+   ready to send, but the data, the application has not yet provided
+   the data to send. When the application calls send, the protocol
+   sends a packet with that data, or as much as it can fit in a
+   packet. It then enters the wait for ACK state. In this state
+   there's are two transitions. The first is if it receives an
+   acknowledgement. If the protocol receives an acknowledgement it
+   does nothing, it goes back to wait for data. If there is more data
+   to send it will send new data. Or if there is no more data to send
+   it will wait until the software calls send. The second transition
+   is when there's a timeout. So, this is the case where it has sent a
+   packet of data but it hasn't received any acknowledgement. It's
+   waiting and then time's up. So then it just tries re-sending. So it
+   want's to pick this time out so that it's conservative. It's pretty
+   sure that the data or the subsequent acknowledgement has been
+   lost. So, it has only one packet in the network at any time.
    
-   Let's say we have a sliding window of size 3. Sender will send
-   three packets. Let's call them D0, D1, D2 and the receiver can then
-   acknowledge them. Ack zero, ack one and ack two. As soon as the
-   acknowledgement zero arrives the sender can then send data three,
-   as soon as the acknowledgement one arrives, the sender can then
-   send data four, as soon as the acknowledgement two arrives the
-   sender can then send data five. This is the basic idea, rather than
-   having one packet we could have many packets.
+** Sample Execution
+   There are four sample executions:
+*** No loss
+    Everything works perfectly. The sender sends its data, the
+    receiver receives it, sends an acknowledgement. And now, the
+    sender, if it had more data, could send more.
+*** Data is lost
+    Second case, data is lost. The sender sends data, it's lost in the
+    network and so the sender times out, and tries re-sending the
+    data. So it is sitting in the waiting for ACK state.
+*** Acknowledgement is lost
+    Third case is when the data is successfully delivered, but the
+    acknowledgement is lost. And so now the sender is in the wait for
+    ACK state, it times out and it resends the data. This causes
+    receiver to send another acknowledgement, at which point sender
+    gets the acknowledgement and continues as in the first case.
+*** Duplicate Packet
+    Suppose something happens in the network, suddenly a link becomes
+    very slow, or there's a big queue somewhere in the network, and
+    the acknowledgement is delayed past the time of the timeout. So
+    the sender sends some data and receiver acknowledges when it
+    comes, but the sender resends the data before the acknowledgement
+    arrives. The acknowledgement then arrives very shortly. And now
+    the sender knows that the data was acknowledged and it sends
+    another data packet. But let's say that, in fact, this data packet
+    is lost. So now first re-transmission of the first data packet
+    arrives at the receiver and the receiver acknowledges it. The
+    sender does not know whether this acknowledgement here, is for the
+    re-transmission of the data or it's for the new data packet. And
+    so here we can have error, where if it assumes it was for the
+    re-transmission of the old data somebody has to keep track of
+    that.
 
-   First in the sliding window protocol, every segment has a sequence
-   number. So in protocols like TCP this is usually done in terms of
-   bytes because they can be of variable size. For simplicity sake we
-   will just do in terms of packet numbers. So there is a sequence
-   number for every segment. So the sender maintains three variables:
-   - size of its sending window
-   - last acknowledgement it received from the receiver
-   - last segment it sent
+    Something the finite state machines has to keep track of. If it
+    assumes it's for the new data, that data might not have
+    arrived. It could be assuming that data has arrived but it has
+    not.
 
-   The sender job is to maintain this invariant, that the last segment
-   sent minus the last acknowledgement received has to be less than or
-   equal to the send window size. So this means that if it has
-   received packet N, a packet with a sequence number of n, the sender
-   can not send packet past (n + SWS).
+    So, this is a basic problem that comes up in any reliable
+    protocol, it comes up in flow control, which is how do we
+    detect *duplicates*. How do we know when acknowledgements are from
+    re-transmissions or duplicated copies of packets versus new data.
 
-   Let's say sending window size is 5, and the last acknowledgement
-   received is 11. This means that the sender cannot send a packet
-   past 12, 13, 14, 15 and 16. It is not allowed to send seventeen
-   until it gets acknowledgement for 12. When we acknowledgement we
-   advance LAR as necessary and we buffer upto the sending window size
-   segments, in case suddenly we get an acknowledgement and then we
-   want to send whole bunch of new data.
+    So, in the case of stop and wait, we can solve the problem with
+    a *one bit counter*. And so the idea is that use this one bit
+    counter on all data and acknowledgement packets.
 
-   Let's say we have a send window which includes 5, 6 and 7. And 5 is
-   lost, but 6 and 7 arrive at the receiver and are acknowledged. The
-   sender can not advance the window past five until five is
-   acknowledged. So the send window is stalling. The window can stall
-   where most of the data in the window has been delivered. It can not
-   move past the first unacknowledged piece of data. So it can not
-   advance the window past that.
+    Sender sends data zero, sender receives ACK zero, data one, ACK
+    one, data zero, ACK zero. Now the receiver can tell if this is new
+    data or a duplicate.
 
-   The receiver also maintains three variables:
-   - receive window size
-   - the last acceptable segments - this is the last segment it will
-     receive and won't drop on the floor. If it receives segment past
-     this value, it will assume something is wrong or it's not gonna
-     buffer, it will just discard it
-   - last segment actually received
+    Single-bit counter makes two simplifying assumptions:
+    - First the network is not duplicating packets itself.
+    - Second, the packets are not being delayed for multiple
+      timeouts. So if packets are not duplicated for more than a
+      round trip time, stop and wait works.
 
-   So the receiver maintains this invariant, that the last acceptable
-   segment minus that last thing we received must be less than or
-   equal to the receive window size. So if we have a "receive window"
-   size equal to 5 and a last segment received equal to 3, then its
-   not going to accept anything past 4, 5, 6, 7 and 8. So if it
-   receives suddenly segment 10, it won't accept it and it will drop
-   it. Now if the receive packet is less than this acceptable packet,
-   then it will send an acknowledgement.
+** Major problem with stop and wait
+   Suppose there is a 10Mb/s link between A and B, and B can receive
+   at 10Mb/s. The round trip time is 50 milliseconds, that means A can
+   send one packet to B, if that packet is received successfully 50
+   milliseconds later, we will get an acknowledgement. Let's assume we
+   are sending Ethernet frames, so the size of data is basically 1.5
+   kilobytes or 12 kilobits. 1000 milliseconds divided by 50, means we
+   can send 20 packets per second. Now 20 packets per second times 12
+   kilobits is equal to 240 kilobits per second. Assuming no packets
+   are lost, just a constant RTT 50 milliseconds. But the bottle neck
+   is 10Mb/s, so this means that this stop and wait protocol is using
+   two percent of what the communication could be. So stop and wait
+   works but it can be astonishingly inefficient. Node A could be
+   sending data much faster than what stop and wait allows. Solution
+   is to use sliding window protocol.
 
-*** Cumulative Acknowledgement
-    We send an acknowledgment for not the data we received, but rather
-    what is the end of the contiguous data we received, that is
-    cumulative. If we acknowledge 3, that means that I have received 3
-    and everything before it, not just 3. And so it represents a
-    cumulative state of reception across the entire communication.
+* Reliable Communications - Sliding Window
+  Sliding window is a generalization of stop and wait. Where stop and
+  wait allows only 1 packet in flight at any point in time, a sliding
+  window protocol allows up to "N" packets in flight. So, when n is
+  equal to one, a sliding window protocol acts like a stop and wait.
 
-    So in this example, if a receiver received one, two, three, and
-    five and then suddenly receives five, it doesn't acknowledge five,
-    it acknowledges three.
+  Lets say we have a sliding window protocol with an N equal to 5
+  packets. This means node A can have five packets in flight and
+  simultaneously there can be five acknowledgements coming back from
+  B.
 
-    TCP doesn't acknowledge the data its received but rather N plus
-    one. So TCP acknowledgements are in terms of bytes, ans so if TCP
-    has received up to byte N, its acknowledgement packets will say N
-    plus one. So its the first byte of data that's expected. So if we
-    are ever looking at a TCP trace or trying to see how the TCP
-    protocol works, we should remember this. The acknowledgement value
-    in a TCP header isn't the last byte received, the cumulative
-    acknowledgment, rather the next byte, the first missing byte.
+  The idea here is that, if we set N to the correct value then we can
+  keep the pipe full. If the link bandwidth is 10Mb/s, then by
+  configuring sliding window size, we can have node A send data at a
+  rate equal to 10 megabits per second.
 
-*** Go-back-N
-    If we have a receive window size of one, and a sending window size
-    that's larger than one. Well in this case we are gonna need
-    sending window size plus one sequence number. Well say send window
-    size is equal to three, so the sender sends zero, one, and two,
-    and lets say those are all acknowledged, and so the receiver
-    acknowledges a zero, and acknowledges one, and acknowledges
-    two. Well when it acknowledges zero, the senders gonna send three,
-    slide the window forward, when it acknowledges one, its gonna send
-    four, and when it acknowledges two, it's gonna send five. So lets
-    say that three is dropped. The receiver is still going to receive
-    four and five, so it can ack two, its going to send ack two, ack
-    two. The sender is going to timeout and re-send three. This is
-    called Go-Back-N protocol. Because, the receive window size was
-    one, the receiver can not buffer four or five. When a single
-    packet is lost in this case three, the sender has to go back and
-    has to re-transmit the entire send window worth of packets. It has
-    to re-transmit three, four and five. In contrast if the receive
-    window size have been three then the receiver could have buffered
-    four and five. The sender would only have had to re-transmit
-    three, then we get an ack five, and it could go on and send six,
-    seven and eight.
-*** Flow Control
-    TCP uses sliding window protocol for flow control. The receiver,
-    specifies the flow control window using the window field, this is
-    in terms of bytes. So it basically says this is the buffer size
-    that I have on the receiver and so the set of packets that I will
-    accept. So a TCP receiver will only handle data equal to
-    the *acknowledged sequence number plus the window*. So the sender
-    is not allowed to send data past ack plus window. That's to make
-    sure it doesn't send data which the receiver is not going to
-    buffer. And so this is the way for the receiver to essentially set
-    what the send window size is.
+  So, in this particular case if we have RTT of 50 milliseconds and a
+  bottleneck of 10Mb/s, let's say we are sending ethernet frames at 10
+  kilobits per packet. And we have 20 round trip times, that means the
+  sliding window is gonna be 10Mb/s divided by twenty round trip
+  times, which is equal to 500 kilobits per round trip time. So we are
+  looking at a sliding window of around 41 packets, that would be 492
+  kilobits. So if we had a sliding window of 40 packets, then we would
+  be able to sustain a ten megabit connection from San Francisco to
+  Boston with a round trip time of 50 milliseconds.
+  
+  Let's say we have a sliding window of size 3. Sender will send three
+  packets. Let's call them D0, D1, D2 and the receiver can then
+  acknowledge them. Ack zero, ack one and ack two. As soon as the
+  acknowledgement zero arrives the sender can then send data three, as
+  soon as the acknowledgement one arrives, the sender can then send
+  data four, as soon as the acknowledgement two arrives the sender can
+  then send data five. This is the basic idea, rather than having one
+  packet we could have many packets.
 
-*** Example
-    The sequence number space for the packets - from zero up
-    to 29. Let's say we have a receive window size equal to two and a
-    send window size equal to three. So, communication begins, and the
-    sender is going to send zero, one and two. Let's say all three of
-    those packets arrive. So the receiver, receives zero, its gonna
-    acknowledge zero. It's then going to receive one, acknowledge one,
-    receive two, and acknowledge two. When the sender receives ack
-    zero, it will advance the window, it will then send three. When it
-    hears the acknowledgement for one, it will advance the window and
-    send four. When it hears the acknowledgement for two, it will
-    advance the window and send five. Now lets say packet three
-    arrived successfully and is acknowledged, but packet four is lost
-    in the network.
+  First in the sliding window protocol, every segment has a sequence
+  number. So in protocols like TCP this is usually done in terms of
+  bytes because they can be of variable size. For simplicity sake we
+  will just do in terms of packet numbers. So there is a sequence
+  number for every segment. So the sender maintains three variables:
+  - size of its sending window
+  - last acknowledgement it received from the receiver
+  - last segment it sent
 
-    So now we have this case where ack three has been sent, packet
-    four is lost, then packet five arrives at the receiver. Now the
-    receiver is going to send another acknowledgement three, again
-    because of cumulative acknowledgements, and now sender heard ack
-    three and then another ack three, waits times out and re-sends
-    four. So it will resend four and lets say four arrives. Now this
-    receiver can acknowledge four so it can ack four, but because its
-    received window size was two, it actually had five buffered, and
-    so it can acknowledge five, and will send ack five.
+  The sender job is to maintain this invariant, that the last segment
+  sent minus the last acknowledgement received has to be less than or
+  equal to the send window size. So this means that if it has received
+  packet N, a packet with a sequence number of n, the sender can not
+  send packet past (n + SWS).
 
-    So the sliding window flow control algorithm allows an
-    unacknowledged, a whole window of unacknowledged packets to be in
-    flight. And so this allows, if we can set the window size
-    appropriately, it allows the sender to be able to actually fully
-    utilize the capacity that the receiver has.
+  Let's say sending window size is 5, and the last acknowledgement
+  received is 11. This means that the sender cannot send a packet past
+  12, 13, 14, 15 and 16. It is not allowed to send seventeen until it
+  gets acknowledgement for 12. When we acknowledgement we advance LAR
+  as necessary and we buffer upto the sending window size segments, in
+  case suddenly we get an acknowledgement and then we want to send
+  whole bunch of new data.
 
-*** Window size
-    Generally speaking if the two windows are the same size, we need
-    basically their sum, RWS plus SWS sequence number. We need
-    sequence number spaces at least as big as the sum of the window
-    sizes.
+  Let's say we have a send window which includes 5, 6 and 7. And 5 is
+  lost, but 6 and 7 arrive at the receiver and are acknowledged. The
+  sender can not advance the window past five until five is
+  acknowledged. So the send window is stalling. The window can stall
+  where most of the data in the window has been delivered. It can not
+  move past the first unacknowledged piece of data. So it can not
+  advance the window past that.
 
-    TCP uses a large sequence number space just for ease of use and to
-    really be robust against heavily delayed packets.
+  The receiver also maintains three variables:
+  - receive window size
+  - the last acceptable segments - this is the last segment it will
+    receive and won't drop on the floor. If it receives segment past
+    this value, it will assume something is wrong or it's not gonna
+    buffer, it will just discard it
+  - last segment actually received
+
+  So the receiver maintains this invariant, that the last acceptable
+  segment minus that last thing we received must be less than or equal
+  to the receive window size. So if we have a "receive window" size
+  equal to 5 and a last segment received equal to 3, then its not
+  going to accept anything past 4, 5, 6, 7 and 8. So if it receives
+  suddenly segment 10, it won't accept it and it will drop it. Now if
+  the receive packet is less than this acceptable packet, then it will
+  send an acknowledgement.
+
+** Cumulative Acknowledgement
+   We send an acknowledgment for not the data we received, but rather
+   what is the end of the contiguous data we received, that is
+   cumulative. If we acknowledge 3, that means that I have received 3
+   and everything before it, not just 3. And so it represents a
+   cumulative state of reception across the entire communication.
+
+   So in this example, if a receiver received one, two, three, and
+   five and then suddenly receives five, it doesn't acknowledge five,
+   it acknowledges three.
+
+   TCP doesn't acknowledge the data its received but rather N plus
+   one. So TCP acknowledgements are in terms of bytes, ans so if TCP
+   has received up to byte N, its acknowledgement packets will say N
+   plus one. So its the first byte of data that's expected. So if we
+   are ever looking at a TCP trace or trying to see how the TCP
+   protocol works, we should remember this. The acknowledgement value
+   in a TCP header isn't the last byte received, the cumulative
+   acknowledgment, rather the next byte, the first missing byte.
+
+** Go-back-N
+   If we have a receive window size of one, and a sending window size
+   that's larger than one. Well in this case we are gonna need sending
+   window size plus one sequence number. Well say send window size is
+   equal to three, so the sender sends zero, one, and two, and lets
+   say those are all acknowledged, and so the receiver acknowledges a
+   zero, and acknowledges one, and acknowledges two. Well when it
+   acknowledges zero, the senders gonna send three, slide the window
+   forward, when it acknowledges one, its gonna send four, and when it
+   acknowledges two, it's gonna send five. So lets say that three is
+   dropped. The receiver is still going to receive four and five, so
+   it can ack two, its going to send ack two, ack two. The sender is
+   going to timeout and re-send three. This is called Go-Back-N
+   protocol. Because, the receive window size was one, the receiver
+   can not buffer four or five. When a single packet is lost in this
+   case three, the sender has to go back and has to re-transmit the
+   entire send window worth of packets. It has to re-transmit three,
+   four and five. In contrast if the receive window size have been
+   three then the receiver could have buffered four and five. The
+   sender would only have had to re-transmit three, then we get an ack
+   five, and it could go on and send six, seven and eight.
+** Flow Control
+   TCP uses sliding window protocol for flow control. The receiver,
+   specifies the flow control window using the window field, this is
+   in terms of bytes. So it basically says this is the buffer size
+   that I have on the receiver and so the set of packets that I will
+   accept. So a TCP receiver will only handle data equal to
+   the *acknowledged sequence number plus the window*. So the sender
+   is not allowed to send data past ack plus window. That's to make
+   sure it doesn't send data which the receiver is not going to
+   buffer. And so this is the way for the receiver to essentially set
+   what the send window size is.
+
+** Example
+   The sequence number space for the packets - from zero up
+   to 29. Let's say we have a receive window size equal to two and a
+   send window size equal to three. So, communication begins, and the
+   sender is going to send zero, one and two. Let's say all three of
+   those packets arrive. So the receiver, receives zero, its gonna
+   acknowledge zero. It's then going to receive one, acknowledge one,
+   receive two, and acknowledge two. When the sender receives ack
+   zero, it will advance the window, it will then send three. When it
+   hears the acknowledgement for one, it will advance the window and
+   send four. When it hears the acknowledgement for two, it will
+   advance the window and send five. Now lets say packet three arrived
+   successfully and is acknowledged, but packet four is lost in the
+   network.
+
+   So now we have this case where ack three has been sent, packet four
+   is lost, then packet five arrives at the receiver. Now the receiver
+   is going to send another acknowledgement three, again because of
+   cumulative acknowledgements, and now sender heard ack three and
+   then another ack three, waits times out and re-sends four. So it
+   will resend four and lets say four arrives. Now this receiver can
+   acknowledge four so it can ack four, but because its received
+   window size was two, it actually had five buffered, and so it can
+   acknowledge five, and will send ack five.
+
+   So the sliding window flow control algorithm allows an
+   unacknowledged, a whole window of unacknowledged packets to be in
+   flight. And so this allows, if we can set the window size
+   appropriately, it allows the sender to be able to actually fully
+   utilize the capacity that the receiver has.
+
+** Window size
+   Generally speaking if the two windows are the same size, we need
+   basically their sum, RWS plus SWS sequence number. We need sequence
+   number spaces at least as big as the sum of the window sizes.
+
+   TCP uses a large sequence number space just for ease of use and to
+   really be robust against heavily delayed packets.
 
 * Re-transmission Strategies
   We are maintaining our re-transmission timer for each of these
