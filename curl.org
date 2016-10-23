@@ -1,0 +1,44 @@
+#+Title: Curl
+#+Date: <2016-10-23 Sun>
+
+
+* Introduction
+  CURL documentation.
+
+* Useful commands
+  - verbose curl
+    #+BEGIN_EXAMPLE
+    curl --verbose http://google.com
+    #+END_EXAMPLE
+  - see the timing
+    #+BEGIN_EXAMPLE
+    curl --trace-ascii d.txt --trace-time http://example.com
+    #+END_EXAMPLE
+  - host
+    #+BEGIN_EXAMPLE
+    curl --resolve www.example.org:80:127.0.0.1 http://www.example.org/
+    #+END_EXAMPLE
+  - username and password
+    #+BEGIN_EXAMPLE
+    curl -u user:password http://example.org/
+    #+END_EXAMPLE
+  - GET a page
+    #+BEGIN_EXAMPLE
+    curl https://curl.haxx.se
+    #+END_EXAMPLE
+  - print response headers
+    #+BEGIN_EXAMPLE
+    curl http://google.com -i
+    #+END_EXAMPLE
+  - get just headers
+    #+BEGIN_EXAMPLE
+    curl http://google.com -I
+    #+END_EXAMPLE
+  - POST request
+    #+BEGIN_EXAMPLE
+    curl --data "birthyear=1905&press=%20OK%20"  http://www.example.com/when.cgi
+    #+END_EXAMPLE
+  - -X option
+    #+BEGIN_EXAMPLE
+    curl -X POST http://example.org/
+    #+END_EXAMPLE
