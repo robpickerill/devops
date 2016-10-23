@@ -1811,7 +1811,7 @@
     behaves as selective repeat.
 
 ** Design approach
-   So when we are implementing transmit protocols, the only thing we
+   So when we are implementing transmit protocols, the main thing we
    want to think about is how to handle retransmission. One of the
    important thing is we don't retransmit earlier than we should. Its
    not okay when two has retransmit timer fires, retransmit entire
@@ -1825,11 +1825,11 @@
    packets we put in there. We have to be careful about the
    retranmission policy.
    
-   - one packet was lost - retransmit entire window with the go-back-n
-     policy.
-   - one packet was lost - retransmit one packet, wait for one round
-     trip time, and see if we get acknowledgement and see where the
-     acknowledgement puts and then just do selective repeat.
+   - one packet was lost ::
+     + retransmit entire window with the go-back-n policy.
+     + retransmit one packet, wait for one round trip time, and see if
+       we get acknowledgement and see where the acknowledgement puts
+       and then just do selective repeat.
 
 * COMMENT TODO
   1. join emacs group
