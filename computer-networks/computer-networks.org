@@ -1827,9 +1827,9 @@
        we get acknowledgement and see where the acknowledgement puts
        and then just do selective repeat.
 
-* Reliable Communications - TCP Headers
-  Standard TCP headers is 20 bytes long. So there are five rows of
-  four octets each. 
+* Reliable Communications - TCP Header
+  Standard TCP header is 20 bytes long. So there are five rows of four
+  octets each.
 
   - First two fields in the header are the =source port= and
     =destination port=. Each of these are sixteen bits or two octets.
@@ -1841,21 +1841,25 @@
 
     The =sequence number= denotes the first byte of the data region,
     which follows the segment header. The =acknowledgement number=
-    acknowledges the last byte received plus one. And so if I were to
+    acknowledges the last byte received plus one. And so if we were to
     send the segment 4000 to 4999 and the other side received it, it
     would have send an acknowledgement number of 4500. That is in TCP,
-    the ACK is not for the last byte received but that plus one.
+    the ACK is not for the last byte received, but that plus one.
 
     TCP ACK packets are TCP segments that have no data. All they are
     doing is counting the acknowledgement numbers for it. This happens
     when traffic is unidirectional, sending lots of data in one
     direction, but there is no data coming back. If the flow is
     bidirectional then these acknowledgement numbers are just going to
-    be incorporated onto the data segment as they are being sent.
+    be incorporated into the data segment as they are being sent.
   
   - The next field is =checksum=, which is computed over the TCP
-    pseudo header - which is the TCP header as well as some of the IP
-    header.
+    pseudo header, which is the - TCP header as well as some of the IP
+    header. So, the checksum covers the pseudo header, the TCP header,
+    and then the data within the TCP segment. The checksum in some way
+    stretches before the packet to the pseudo header filled in from
+    the IP header and stretches to the end of the segment. Checksum is
+    simple one's compliment.
   
 * COMMENT TODO
   1. join emacs group
@@ -1887,6 +1891,7 @@
   21. Capture DHCP packets, using wireshark.
   22. How if active closer has closed the connection, it can
       acknowledges the received data.
+  23. If the IP checksum is wrong, what will happen?
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
@@ -1897,3 +1902,4 @@
   - RFC-1958
   - http://lxr.free-electrons.com/source/net/ipv4/tcp.c (tcp
     implementation)
+  - http://locklessinc.com/articles/tcp_checksum/ (checksum)
