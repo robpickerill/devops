@@ -72,6 +72,24 @@
   - Proxies must be completely transparent regarding user agent
     authentication by origin servers. That is, they must forward the
     www-authenticate and authorization headers untouched.
+* Cookies and Sessions
+  Cookies and Sessions are inextricably intertwined, and fundamental
+  to creating rich, interactive internet applications.
+
+** Cookies
+   A cookie is a small piece of text stored on a user's computer by
+   their browser. Common uses for cookies are authentication, storing
+   of site preferences, shopping cart items, and server session
+   identification.
+  
+   Each time the user's web browser interacts with a web server it
+   will pass the cookie information to the web server. Only the cookie
+   stored by the browser that relate to the domain in the requested
+   URL will be sent to the server.
+
+   In essence cookie is a great way of linking one page to the next
+   user's interaction with a web site or web application.
+
 * TODO
   - understand cookies, sessions, tokens, oauth
 * References
@@ -94,3 +112,8 @@
   - https://tools.ietf.org/html/rfc2617
   - https://tools.ietf.org/html/rfc7235
   - https://curl.haxx.se/docs/httpscripting.html#Background
+  - https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177
+  - https://en.wikipedia.org/wiki/Session_(computer_science) (sessions)
+  -
+    http://www.lassosoft.com/Tutorial-Understanding-Cookies-and-Sessions
+   (sessions and cookies)
