@@ -1861,6 +1861,12 @@
     the IP header and stretches to the end of the segment. Checksum is
     simple one's compliment.
   
+  - The window field is the flow control window. It tells the
+    endpoint, how much receive buffer space its sender has. So if we
+    say window of size 20,000 that means that there cannot be more
+    than 20,000 outstanding unacknowledged bytes in this connection,
+    in that direction.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
