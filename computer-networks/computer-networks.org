@@ -1328,13 +1328,13 @@
    First step of handshake connection is when a client tries to open a
    connection and sends a SYN packet to the server. First transition
    for the client side of the connection is from *CLOSED* to the *SYN
-   SENT* state. This happens when the client program calls connect --
-   the event -- and the client sends a SYN message.
+   SENT* state. This happens when the client program calls *connect --
+   the event*, and the client *sends a SYN message*.
    
    So once the first SYN is sent, the client is in the *SYN SENT*
    state and the server is in the *LISTEN* state. When the SYN arrives
-   at the server, this leads to a transition. The event is receiving a
-   SYN message. The action is to send a SYN/ACK message in
+   at the server, this leads to a transition. The event is *receiving
+   a SYN message*. The action is to *send a SYN/ACK* message in
    response. Now the server is in the *SYN RECEIVED* state.
 
    Client was in the *SYN SENT* state. When it receives the SYN/ACK
@@ -1828,66 +1828,80 @@
        and then just do selective repeat.
 
 * Reliable Communications - TCP Header
-  Standard TCP header is 20 bytes long. So there are five rows of four
-  octets each.
+** TCP header fields
+   Standard TCP header is 20 bytes long. So there are five rows of
+   four octets each.
 
-  - First two fields in the header are the =source port= and
-    =destination port=. Each of these are sixteen bits or two octets.
+   - First two fields in the header are the =source port= and
+     =destination port=. Each of these are sixteen bits or two octets.
 
-  - The next two fields are the TCP sequence number. So this denote
-    from the source of this packet to its destination, what is the
-    sequence number of the data contained in this segment, as well as
-    what is the acknowledgement number from that endpoint.
+   - The next two fields are the TCP sequence number. So this denote
+     from the source of this packet to its destination, what is the
+     sequence number of the data contained in this segment, as well as
+     what is the acknowledgement number from that endpoint.
 
-    The =sequence number= denotes the first byte of the data region,
-    which follows the segment header. The =acknowledgement number=
-    acknowledges the last byte received plus one. And so if we were to
-    send the segment 4000 to 4999 and the other side received it, it
-    would have send an acknowledgement number of 4500. That is in TCP,
-    the ACK is not for the last byte received, but that plus one.
+     The =sequence number= denotes the first byte of the data region,
+     which follows the segment header. The =acknowledgement number=
+     acknowledges the last byte received plus one. And so if we were
+     to send the segment 4000 to 4999 and the other side received it,
+     it would have send an acknowledgement number of 4500. That is in
+     TCP, the ACK is not for the last byte received, but that plus
+     one.
 
-    TCP ACK packets are TCP segments that have no data. All they are
-    doing is counting the acknowledgement numbers for it. This happens
-    when traffic is unidirectional, sending lots of data in one
-    direction, but there is no data coming back. If the flow is
-    bidirectional then these acknowledgement numbers are just going to
-    be incorporated into the data segment as they are being sent.
-  
-  - The next field is =checksum=, which is computed over the TCP
-    pseudo header, which is the - TCP header as well as some of the IP
-    header. So, the checksum covers the pseudo header, the TCP header,
-    and then the data within the TCP segment. The checksum in some way
-    stretches before the packet to the pseudo header filled in from
-    the IP header and stretches to the end of the segment. Checksum is
-    simple one's compliment.
-  
-  - The window field is the flow control window. It tells the
-    endpoint, how much receive buffer space its sender has. So if we
-    say window of size 20,000 that means that there cannot be more
-    than 20,000 outstanding unacknowledged bytes in this connection,
-    in that direction.
+     TCP ACK packets are TCP segments that have no data. All they are
+     doing is counting the acknowledgement numbers for it. This
+     happens when traffic is unidirectional, sending lots of data in
+     one direction, but there is no data coming back. If the flow is
+     bidirectional then these acknowledgement numbers are just going
+     to be incorporated into the data segment as they are being sent.
+   
+   - The next field is =checksum=, which is computed over the TCP
+     pseudo header, which is the - TCP header as well as some of the
+     IP header. So, the checksum covers the pseudo header, the TCP
+     header, and then the data within the TCP segment. The checksum in
+     some way stretches before the packet to the pseudo header filled
+     in from the IP header and stretches to the end of the
+     segment. Checksum is simple one's compliment.
+   
+   - The window field is the flow control window. It tells the
+     endpoint, how much receive buffer space its sender has. So if we
+     say window of size 20,000 that means that there cannot be more
+     than 20,000 outstanding unacknowledged bytes in this connection,
+     in that direction.
 
-  - Control bits: U, A, P, R, S and F
-    + U: Urgent bit - that means this data is particularly urgent. So
-      it gets to the application quickly.
-    + P: Push bit - push the data to the application.
-    + ACK bit - is set to one, if the acknowledgement number field is
-      valid. So ack bit is set to one for every single packet except
-      for the first one that initiates the connection. Because when we
-      initiate a connection, we don't know what the other side's
-      sequence number is, we can not acknowledge anything, so the ack
-      bit is not set. The first packet sent does not have =ACK bit=
-      set but all other packets in the connection towards the
-      termination have the =ACK bit= set.
-    + SYN bit - it says this is the starting number please synchronize
-      to this number. So when we first open a connection we sent a
-      packet with the ACK bit not set but with the =SYN bit= set and
-      then the sequence number. The other side can then respond and
-      say alright I am going to acknowledge that sequence number and
-      send you one of mine. In this case both of these fields are
-      valid. To which then initial sender will respond and say okay I
-      acknowledge your sequence number.
+   - Control bits: U, A, P, R, S and F
+     + U: Urgent bit - that means this data is particularly urgent. So
+       lets get to the application quickly.
+     + P: Push bit - push the data to the receiving application.
+     + ACK bit - is set to one, if the acknowledgement number field is
+       valid. So ack bit is set to one for every single packet except
+       for the first one that initiates the connection. Because when
+       we initiate a connection, we don't know what the other side's
+       sequence number is, we can not acknowledge anything, so the ack
+       bit is not set. The first packet sent does not have =ACK bit=
+       set but all other packets in the connection towards the
+       termination have the =ACK bit= set.
+     + SYN bit - it says this is the starting number please
+       synchronize to this number. So when we first open a connection
+       we sent a packet with the =ACK bit= not set but with the =SYN
+       bit= set and then the sequence number. The other side can then
+       respond and say alright I am going to acknowledge that sequence
+       number and send you one of mine. In this case both of these
+       fields are valid. To which then initial sender will respond and
+       say okay I acknowledge your sequence number. Now both know when
+       the byte start.
 
+** Why sequence number
+*** Security concern
+    We could always start sequence number at zero for every connection
+    for both direction but it turn out to be a real security problem
+    doing that. That means people can guess what's our sequence number
+    is. They could start intercepting packets.
+
+*** Management concern
+    If we have lots of short lived connections, these packets with
+    similar sequence numbers can be long lived with the network and we
+    won't be able to filter them out.
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
