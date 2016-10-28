@@ -1873,6 +1873,7 @@
      + U: Urgent bit - that means this data is particularly urgent. So
        lets get to the application quickly.
      + P: Push bit - push the data to the receiving application.
+     + R: Reset bit, which says we need to reset the connection.
      + ACK bit - is set to one, if the acknowledgement number field is
        valid. So ack bit is set to one for every single packet except
        for the first one that initiates the connection. Because when
@@ -1890,6 +1891,14 @@
        fields are valid. To which then initial sender will respond and
        say okay I acknowledge your sequence number. Now both know when
        the byte start.
+     + FYN bit - it says I have no more data to send.
+
+   - Offset field: This tells where the data begins. The offset field
+     is needed because its possible for TCP to have options and we
+     don't know from the header necessarily where the options are.
+
+     So if we have options then the offset tells us the size of those
+     options and our TCP stack knows to look inside these for options.
 
 ** Why sequence number
 *** Security concern
