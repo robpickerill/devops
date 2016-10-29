@@ -1927,6 +1927,16 @@
   connection, the buffers, also the port numbers that we used. There
   are these problems of connection establishment and teardown.
 
+** Connection setup
+   For connection set up there are four parts of the header that are
+   used.
+   - Sequence number
+   - Acknowledgement number
+   - Ack bit
+   - SYN bit
+
+
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
