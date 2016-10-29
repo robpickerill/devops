@@ -1911,6 +1911,14 @@
     If we have lots of short lived connections, these packets with
     similar sequence numbers can be long lived with the network and we
     won't be able to filter them out.
+* Reliable Communications - Connection setup and teardown
+  The high level problem is, if we want to communicate reliably, it
+  turns out its very helpful to have state on one or both ends of the
+  communication. We can communicate reliably with having something
+  stateless on one end or the other, but its much less
+  efficient. Having little bit of state is great, it will have much
+  better throughput.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
