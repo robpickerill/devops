@@ -1956,8 +1956,13 @@
       we randomize our starting sequence number, then it becomes very
       unlikely that some random segment or perhaps a corrupted segment
       will overlap our own sequence window.
-
    
+*** Second step
+    The passive side responds also with the SYN saying okay, I am
+    going to synchronize you, with my starting sequence number. But it
+    will also set the ACK bit which means that the acknowledgement
+    number in the packet is valid. Node acknowledges not the last byte
+    received, but rather the first byte that has not been received.
 
 * COMMENT TODO
   1. join emacs group
