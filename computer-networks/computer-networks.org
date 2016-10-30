@@ -1935,7 +1935,29 @@
    - Ack bit
    - SYN bit
 
+   In the standard 3-way handshake model, we have an active opener and
+   a passive opener. The passive opener is sitting, listening, waiting
+   for a connection request, such as a web server. The active opener
+   is the one who initiates the request, the request to start the
+   connection.
+   
+*** First step
+    In the first step, the active opener sends a TCP segment with the
+    =SYN bit= set to indicate that its synchronizing the passive side
+    to the beginning of its stream. We do this rather than just say
+    assume zero, for a bunch of reasons. Its very helpful to randomize
+    starting sequence number for security reasons.
 
+    - It means people can't guess where our stream starts and try to
+      insert data.
+
+    - If there happen to be old packets flying around the internet,
+      which sometimes happens, we get tremendous delays somewhere. If
+      we randomize our starting sequence number, then it becomes very
+      unlikely that some random segment or perhaps a corrupted segment
+      will overlap our own sequence window.
+
+   
 
 * COMMENT TODO
   1. join emacs group
