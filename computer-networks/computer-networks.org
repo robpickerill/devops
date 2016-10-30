@@ -1944,9 +1944,10 @@
 *** First step
     In the first step, the active opener sends a TCP segment with the
     =SYN bit= set to indicate that its synchronizing the passive side
-    to the beginning of its stream. We do this rather than just say
-    assume zero, for a bunch of reasons. Its very helpful to randomize
-    starting sequence number for security reasons.
+    to the beginning of its stream. Lets call sequence number to be
+    =S(a)=. We do this rather than just say assume zero, for a bunch
+    of reasons. Its very helpful to randomize starting sequence number
+    for security reasons.
 
     - It means people can't guess where our stream starts and try to
       insert data.
@@ -1959,10 +1960,17 @@
    
 *** Second step
     The passive side responds also with the SYN saying okay, I am
-    going to synchronize you, with my starting sequence number. But it
-    will also set the ACK bit which means that the acknowledgement
-    number in the packet is valid. Node acknowledges not the last byte
-    received, but rather the first byte that has not been received.
+    going to synchronize you, with my starting sequence number
+    =S(b)=. But it will also set the =ACK bit= which means that the
+    acknowledgement number in the packet is valid, ACK =S(a+1)=. Node
+    acknowledges not the last byte received, but rather the first byte
+    that has not been received.
+
+*** Third step
+    The active side then responds. It does not need to send the SYN
+    because its synchronized. So it sends a packet with sequence
+    number =S(a+1)= and ACK =S(b+1)=. This packet the sequence number
+    is =S(a+1)=, but it tends to be of zero length.
 
 * COMMENT TODO
   1. join emacs group
