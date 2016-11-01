@@ -2021,6 +2021,27 @@
    We can have simultaneous close, where they send the =FINs= in
    parallel and the same exchange occurs. 
 
+*** Can A and B forget about closed socket after final message
+    Great so now, we have exchanged these messages and acknowledged
+    them. Now when can we actually tear down the connection ? When can
+    we actually delete the state ? When can we reuse the ports ? This
+    turns out to be nontrivial.
+
+**** Problems with closed sockets
+     - Final ACK is lost in the network :: We have sent a FIN, then we
+          receive a FIN, then we ACK it. We can't immediately teardown
+          the connection because, what happens if the ACK is lost ?
+          The other side is never going to hear it. The other side
+          never going to know whether the connection was, torn down.
+
+     - Same port pair is immediately reused for a new connection :: Another
+          issue is it could be that we do a FIN, FIN ACK, and an
+          acknowledgement teardown and then the same port pair, the
+          same port pair is used immediately for a new connection. We
+          want to make sure that we don't, by accident, then corrupt
+          the data because the sequence number of spaces overlap.
+
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
