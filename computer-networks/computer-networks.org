@@ -2041,6 +2041,13 @@
           want to make sure that we don't, by accident, then corrupt
           the data because the sequence number of spaces overlap.
 
+**** Solution: active closer goes into TIMEWAIT state
+     The solution used is the active closer goes into =TIMEWAIT=. Once
+     the connection is torn down, we have to wait a little while
+     before we can reuse the state. So we keep the socket around for
+     two maximum segment lifetimes, which is on the order of say a
+     minute or so.
+
 
 * COMMENT TODO
   1. join emacs group
