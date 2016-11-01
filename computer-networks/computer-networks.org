@@ -1999,15 +1999,27 @@
      connection setup takes four messages rather than three.
 
 ** Connection Teardown
-   Connection teardown uses the sequence number, acknowledgement
-   number field and FIN bits. When a sender sends a packet with the
+   Connection teardown uses the =sequence number=, =acknowledgement
+   number field= and =FIN bits=. When a sender sends a packet with the
    FIN bit, it means sender has no more data to send, this is the end
-   of the stream, this is the end of the stream. This is causing to
-   call close or shut down, in the application. But its not until both
-   sides have nothing to send that we actually terminate the
-   connection because it could be that one side is done but the other
-   side has more data to send. And so its not until both sides have
-   FINed and we've acknowledged those, we can tear things down.
+   of the stream. This is causing to call close or shut down, in the
+   application. But its not until both sides have nothing to send,
+   that we actually terminate the connection because it could be that
+   one side is done but the other side has more data to send. And so
+   its not until both sides have FINed and we've acknowledged those,
+   we can tear things down.
+
+   Example: If A and B are communicating, and A closes first and so it
+   sends a packet with a =FIN= bit with sequence number =S sub A= and
+   acknowledging =S sub B=. B then sends a packet to acknowledge this
+   FIN, so =ACK S sub A + one=. Then at some point later, B decides it
+   needs to close its side of connection so it sends a FIN, sequence
+   number =S sub b=, which then A responds saying, I will acknowledge
+   =S sub b + one=. So, FIN like SYN represents the last byte of the
+   connection.
+
+   We can have simultaneous close, where they send the =FINs= in
+   parallel and the same exchange occurs. 
 
 * COMMENT TODO
   1. join emacs group
