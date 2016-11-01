@@ -2048,6 +2048,10 @@
      two maximum segment lifetimes, which is on the order of say a
      minute or so.
 
+     This approach of two maximum segment lifetimes can pose problems
+     with servers. In particular if we have a server and it has tons
+     and tons of sockets, which is in this =time wait= state, this can
+     slow down the server, when closing first.
 
 * COMMENT TODO
   1. join emacs group
