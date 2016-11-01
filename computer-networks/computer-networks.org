@@ -1927,75 +1927,76 @@
   connection, the buffers, also the port numbers that we used. There
   are these problems of connection establishment and teardown.
 
-** Connection setup
-   For connection set up there are four parts of the header that are
-   used.
-   - Sequence number
-   - Acknowledgement number
-   - Ack bit
-   - SYN bit
+** Connection Setup
+*** 3-way handshake Connection setup
+    For connection set up there are four parts of the header that are
+    used.
+    - Sequence number
+    - Acknowledgement number
+    - Ack bit
+    - SYN bit
 
-   In the standard 3-way handshake model, we have an active opener and
-   a passive opener. The passive opener is sitting, listening, waiting
-   for a connection request, such as a web server. The active opener
-   is the one who initiates the request, the request to start the
-   connection.
-   
-*** First step
-    In the first step, the active opener sends a TCP segment with the
-    =SYN bit= set to indicate that its synchronizing the passive side
-    to the beginning of its stream. Lets call sequence number to be
-    =S(a)=. We do this rather than just say assume zero, for a bunch
-    of reasons. Its very helpful to randomize starting sequence number
-    for security reasons.
+    In the standard 3-way handshake model, we have an active opener and
+    a passive opener. The passive opener is sitting, listening, waiting
+    for a connection request, such as a web server. The active opener
+    is the one who initiates the request, the request to start the
+    connection.
+    
+**** First step
+     In the first step, the active opener sends a TCP segment with the
+     =SYN bit= set to indicate that its synchronizing the passive side
+     to the beginning of its stream. Lets call sequence number to be
+     =S(a)=. We do this rather than just say assume zero, for a bunch
+     of reasons. Its very helpful to randomize starting sequence
+     number for security reasons.
 
-    - It means people can't guess where our stream starts and try to
-      insert data.
+     - It means people can't guess where our stream starts and try to
+       insert data.
 
-    - If there happen to be old packets flying around the internet,
-      which sometimes happens, we get tremendous delays somewhere. If
-      we randomize our starting sequence number, then it becomes very
-      unlikely that some random segment or perhaps a corrupted segment
-      will overlap our own sequence window.
-   
-*** Second step
-    The passive side responds also with the SYN saying okay, I am
-    going to synchronize you, with my starting sequence number
-    =S(p)=. But it will also set the =ACK bit= which means that the
-    acknowledgement number in the packet is valid, ACK =S(a+1)=. Node
-    acknowledges not the last byte received, but rather the first byte
-    that has not been received.
+     - If there happen to be old packets flying around the internet,
+       which sometimes happens, we get tremendous delays somewhere. If
+       we randomize our starting sequence number, then it becomes very
+       unlikely that some random segment or perhaps a corrupted
+       segment will overlap our own sequence window.
+    
+**** Second step
+     The passive side responds also with the SYN saying okay, I am
+     going to synchronize you, with my starting sequence number
+     =S(p)=. But it will also set the =ACK bit= which means that the
+     acknowledgement number in the packet is valid, ACK =S(a+1)=. Node
+     acknowledges not the last byte received, but rather the first
+     byte that has not been received.
 
-*** Third step
-    The active side then responds. It does not need to send the SYN
-    because its synchronized. So it sends a packet with sequence
-    number =S(a+1)= and ACK =S(p+1)=. This initial packet, the
-    sequence number is =S(a+1)=, but it tends to be of zero length. So
-    if there were a byte in the packet, it would be =S(a+1)= but its
-    not, and this is of zero length. This is just a simple control
-    packet, and so there is a sequence number from which the bytes
-    would start, but there are no bytes.
+**** Third step
+     The active side then responds. It does not need to send the SYN
+     because its synchronized. So it sends a packet with sequence
+     number =S(a+1)= and ACK =S(p+1)=. This initial packet, the
+     sequence number is =S(a+1)=, but it tends to be of zero
+     length. So if there were a byte in the packet, it would be
+     =S(a+1)= but its not, and this is of zero length. This is just a
+     simple control packet, and so there is a sequence number from
+     which the bytes would start, but there are no bytes.
 
-** Simultaneous open connection setup
-   TCP also supports another way of opening connections, called
-   simultaneous open. In this both the sides are active. Both know
-   each other's port numbers. So, the node on the left knows the port
-   number that node on the right is issuing a connection request from,
-   the node on the right knows the same for the node on the left. And
-   so they are using the correct port numbers.
+*** Simultaneous open connection setup
+    TCP also supports another way of opening connections, called
+    simultaneous open. In this both the sides are active. Both know
+    each other's port numbers. So, the node on the left knows the port
+    number that node on the right is issuing a connection request
+    from, and the node on the right knows the same for the node on the
+    left. And so they are using the correct port numbers.
 
-*** First step
-    In simultaneous open both sides send the SYNs at the same time. So
-    one on the left sends a SYN - =S sub a=. But, at the same time,
-    node on the right sends a SYN - =S sub p=.
+**** First step
+     In simultaneous open both sides send the SYNs at the same
+     time. So one on the left sends a SYN - =S sub a=. But, at the
+     same time, node on the right sends a SYN - =S sub p=.
 
-*** Second step
-    Then node on the left responds and it sends SYN - =S sub a=, ACK -
-    =S sub p+1=. Similarly the one on the right side responds with
-    =SYN sub p=, ACK - =S sub a+1=. At this point we have now
-    established the connection, both sides are synchronized, we know
-    the starting sequence numbers that acknowledged that. This
-    connection setup takes four messages rather than three.
+**** Second step
+     Then node on the left responds and it sends SYN - =S sub a=,
+     ACK - =S sub p+1=. Similarly the one on the right side responds
+     with =SYN sub p=, ACK - =S sub a+1=. At this point we have now
+     established the connection, both sides are synchronized, we know
+     the starting sequence numbers that acknowledged that. This
+     connection setup takes four messages rather than three.
 
 
 * COMMENT TODO
