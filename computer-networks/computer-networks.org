@@ -1977,7 +1977,7 @@
      simple control packet, and so there is a sequence number from
      which the bytes would start, but there are no bytes.
 
-*** Simultaneous open connection setup
+*** 4-way - simultaneous open connection setup
     TCP also supports another way of opening connections, called
     simultaneous open. In this both the sides are active. Both know
     each other's port numbers. So, the node on the left knows the port
@@ -2048,10 +2048,19 @@
      two maximum segment lifetimes, which is on the order of say a
      minute or so.
 
+**** Can pose problems with servers
      This approach of two maximum segment lifetimes can pose problems
      with servers. In particular if we have a server and it has tons
      and tons of sockets, which is in this =time wait= state, this can
      slow down the server, when closing first.
+
+     There are tricks around this, we can send the reset and delete
+     the socket. We can set =SO_LINGER= socket option to make the
+     linger time to be zero.
+     
+     Another issue is that OS might not let us reuse a port because
+     its still in use, =SO_REUSEADDR= option lets us re-bind used port
+     numbers.
 
 * COMMENT TODO
   1. join emacs group
