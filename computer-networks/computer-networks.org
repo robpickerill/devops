@@ -2062,6 +2062,23 @@
      its still in use, =SO_REUSEADDR= option lets us re-bind used port
      numbers.
 
+* Packet Switching
+** Circuit Switching
+   - Each call has its own private, guaranteed, isolated data rate
+     from end-to-end.
+
+   - A call has three phases:
+     1. Establish circuit from end-to-end ("dialing")
+     2. Communicate
+     3. Close circuit ("tear down")
+
+   - Originally, a circuit was an end-to-end physical wire.
+   - Nowadays, a circuit is like a virtual private wire.
+
+   The key thing to remember is that every phone call has its own
+   dedicated 64kb/s circuit that it doesn't have to share with anyone
+   else.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
