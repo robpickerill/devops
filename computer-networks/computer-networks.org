@@ -2125,6 +2125,18 @@
     nobody else can use. So it is very inefficient, very inefficient
     use of the capacity of the network as a whole.
 
+*** Fixed rate
+    Computers tend to have very diverse applications that need very
+    different rates. So a web server might be streaming video at say
+    one, five or even six megabits per second. But when we compare
+    this with us typing one character every second, there is a huge
+    difference in the rates that network needs to support.
+
+    So if we pick a fixed rate circuit for the video and then we use
+    it for typing, it will be barely used. Or vice versa then we
+    wouldn't be even able to stream the video. So a fixed rate circuit
+    really is not much use at all.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
