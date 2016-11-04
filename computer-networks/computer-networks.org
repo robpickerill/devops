@@ -2098,6 +2098,10 @@
    else. Each call has its own private guaranteed isolated data rate
    from end to end.
 
+   Originally, a circuit was an end-to-end physical wire. Nowadays, a
+   circuit is like a virtual private wire. Its gonna share that wire
+   with others but it has its own dedicated circuit within that wire.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
