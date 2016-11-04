@@ -2068,16 +2068,35 @@
      from end-to-end.
 
    - A call has three phases:
-     1. Establish circuit from end-to-end ("dialing")
-     2. Communicate
-     3. Close circuit ("tear down")
 
-   - Originally, a circuit was an end-to-end physical wire.
-   - Nowadays, a circuit is like a virtual private wire.
+     1. Establish circuit from end-to-end ("dialing") :: First we pick
+          up the handset and dial the number and dialing the number is
+          saying where do we want to be connected to. This creates a
+          dedicated circuit from one end to another. So that dedicated
+          circuit is gonna go through all the circuits along the
+          way. And the system has told each of the circuits to connect
+          an incoming wire to an outgoing wire. So each switch is
+          going to maintain the state to map the incoming circuit to
+          the correct outgoing circuit.
+	  
+     2. Communicate :: In the second phase we talk, in a digital phone
+                       system our voice is sampled and digitized at
+                       the first switch. Then it is sent over
+                       dedicated circuit as a typically 64 kilobits
+                       channel for voice.
+
+     3. Close circuit ("tear down") :: The circuit is to be removed
+          and any state in the switches along the path has to be
+          removed as well.
+
+   In practise between the switches there are trunk lines which are
+   really, really fast. They have a very high data rate. Many thousand
+   phone call can share the same trunk line between cities.
 
    The key thing to remember is that every phone call has its own
    dedicated 64kb/s circuit that it doesn't have to share with anyone
-   else.
+   else. Each call has its own private guaranteed isolated data rate
+   from end to end.
 
 * COMMENT TODO
   1. join emacs group
