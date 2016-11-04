@@ -2103,9 +2103,27 @@
    with others but it has its own dedicated circuit within that wire.
 
 ** Problems with circuit switching
-   - When the connection is idle, the resources are not utilized.
-   - Intermediates switches needs to maintain state, which should be
-     cleaned up when the connection tears down.
+   When we are thinking about using circuit switching for the Internet
+   or any computer communications, there are few shortcomings that we
+   need to consider.
+
+   So we are gonna go through three main problems:
+
+*** Inefficient
+    Communication between computers tend to be very bursty. We tend to
+    send data in bursts of may be a few seconds, a few packets, may be
+    even a few minutes, depending on the application we are
+    running. For example if I am typing over an SSH connection then I
+    am gonna have characters that I am gonna send every now and
+    again. Sometimes a flurry of characters as I type a word and then
+    long periods of silence in between. Or if I am reading a sequence
+    of web pages, I might have a burst as I fill up one page, a burst
+    as I fill up the figures to populate that page, and then a period
+    of pause while I read those web pages. So it tends to be very
+    bursty. Because during those times of silence, when I am not doing
+    anything, there is no activity. There is a dedicated circuit which
+    nobody else can use. So it is very inefficient, very inefficient
+    use of the capacity of the network as a whole.
 
 * COMMENT TODO
   1. join emacs group
