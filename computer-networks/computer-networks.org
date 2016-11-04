@@ -2102,6 +2102,11 @@
    circuit is like a virtual private wire. Its gonna share that wire
    with others but it has its own dedicated circuit within that wire.
 
+** Problems with circuit switching
+   - When the connection is idle, the resources are not utilized.
+   - Intermediates switches needs to maintain state, which should be
+     cleaned up when the connection tears down.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
