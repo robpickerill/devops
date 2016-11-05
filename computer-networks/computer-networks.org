@@ -2150,6 +2150,27 @@
     had thousands or hundreds of thousands of communications going on
     at the same time, that just lot of work that has to be done.
 
+** Packet Switching
+   In packet switching there is no dedicated circuit to carry our
+   data. Instead we just send when we are ready at any time, we want
+   to send a block of data by adding a header to it that's what we
+   call a packet. A header contains the address of where the packet is
+   going just like an envelope tells the post office where to send the
+   letter.
+
+   Packet switched network consists of end hosts, the links, and
+   packet switches. When we send the packet its routed one hope at a
+   time from the source, all the way through to the destination. If we
+   look at the packet it has the data in it and it also has the
+   address, where its going to.
+
+   So when we send the packet its gonna be routed hop-by-hop from the
+   source to the destination. Each packet switch along the way is
+   gonna look up the address in a forwarding table. So it keeps a
+   local forwarding table at all of the packet switches. S1 will look
+   in the forwarding table, and forward it to S2, then eventually to
+   the correct destination.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
