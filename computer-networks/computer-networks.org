@@ -2137,6 +2137,19 @@
     wouldn't be even able to stream the video. So a fixed rate circuit
     really is not much use at all.
 
+*** State maintenance
+    We need to maintain some state for every phone call that's going
+    on. Every time we establish a call, we need to setup the circuit
+    mapping from the ingress to the egress of every switch along the
+    way. If a circuit fails, or a switch fails, or a link fails, we
+    need to go in and change all of that state in order to reroute the
+    calls. So we have to manage it, and at the end we need to remember
+    to take the state out. If anything fails then we may find that the
+    state becomes inconsistent, and then we have a problem. So state
+    management in circuit switching is considered a problem. And if we
+    had thousands or hundreds of thousands of communications going on
+    at the same time, that just lot of work that has to be done.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
