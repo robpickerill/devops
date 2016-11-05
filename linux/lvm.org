@@ -1,0 +1,25 @@
+#+Title: Logical Volume Management
+#+Date: <2016-09-24 Sat>
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document describes the logical volume management.
+
+* lvm
+  LVM stands for logical volume management. It is a system of managing logical
+  volumes, or filesystems, that is much more advanced and flexible than the
+  traditional method of parititioning a disk into one or more segments and
+  formatting that paritition with a filesystem.
+
+** Basics
+   There are three concepts that LVM manages:
+*** Volume Groups
+*** Physical Volumes
+*** Logical Volumes
+
+* Refereces
+  - https://wiki.ubuntu.com/Lvm
+  - https://www.centos.org/docs/5/html/Deployment_Guide-en-US/ch-lvm.html
+  - https://www.centos.org/docs/5/html/Cluster_Logical_Volume_Manager/
+  - http://www.techotopia.com/index.php/Adding_a_New_Disk_to_a_CentOS_Volume_Group_and_Logical_Volume

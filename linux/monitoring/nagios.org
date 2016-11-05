@@ -149,3 +149,4 @@
   -
     http://thelinuxfaq.com/389-how-to-check-300-400-200-codes-etc-with-check-http-in-nagios
   - https://kura.io/2010/03/21/configuring-nagios-to-monitor-remote-load-disk-using-nrpe/
+  - http://xmodulo.com/monitor-server-memory-usage-nagios-remote-plugin-executor.html (check memory usage)
