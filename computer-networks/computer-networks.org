@@ -2206,6 +2206,9 @@
       it can be immediately followed by another packet using the
       entire link belonging to a different communication.
 
+    - Packet switching allows more resilient networks. Networks that
+      are resilient to failure of links and routers.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
