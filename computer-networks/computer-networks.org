@@ -2168,8 +2168,36 @@
    source to the destination. Each packet switch along the way is
    gonna look up the address in a forwarding table. So it keeps a
    local forwarding table at all of the packet switches. S1 will look
-   in the forwarding table, and forward it to S2, then eventually to
-   the correct destination.
+   in the forwarding table, and forward it to S2, and then eventually
+   to the correct destination.
+
+   In internet there are lots of different types of packet
+   switch. Some of them are called routers because they deal with
+   internet addresses. There is also called ethernet switches.
+
+   There will be millions and millions of packets flowing in all sorts
+   of direction at the same time. So these packet switches have lots
+   of work to do.
+
+   - Buffers :: If packets arrive at the same time and lets say they
+                are arriving at the full line rate, of outgoing link,
+                then the packet has to hold one while it sends the
+                other, it can't send them both at the same time. So
+                its gonna send one at a time. And because it might
+                have many incoming links, the packet switch has to
+                have a buffer to hold perhaps many packets. These
+                packets buffers can be quite large in
+                practise. Buffers hold packets, when two normal
+                packets arrive at the same time.
+
+		Particularly during congestion, when there are lots of
+                lots packets coming in at all the input links, all
+                trying to get to same output, it may actually have
+                quite big buffers to hold packets during those times
+                of congestion.
+
+   Routers does not maintain per communication state. It just
+   maintains the forwarding table.
 
 * COMMENT TODO
   1. join emacs group
@@ -2202,6 +2230,8 @@
   22. How if active closer has closed the connection, it can
       acknowledges the received data.
   23. If the IP checksum is wrong, what will happen?
+  24. Are routers multi threaded, in the sense do they process
+      multiple packets at time, or single packet.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
