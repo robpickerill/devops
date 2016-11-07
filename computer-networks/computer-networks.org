@@ -2179,25 +2179,30 @@
    of direction at the same time. So these packet switches have lots
    of work to do.
 
-   - Buffers :: If packets arrive at the same time and lets say they
-                are arriving at the full line rate, of outgoing link,
-                then the packet has to hold one while it sends the
-                other, it can't send them both at the same time. So
-                its gonna send one at a time. And because it might
-                have many incoming links, the packet switch has to
-                have a buffer to hold perhaps many packets. These
-                packets buffers can be quite large in
-                practise. Buffers hold packets, when two normal
-                packets arrive at the same time.
+*** Packet switch features
+    - Packet switches have forwarding table to tell where the packet
+      goes next.
+  
+    - They also have *buffers*. If packets arrive at the same time and
+      lets say they are arriving at the full link rate, of outgoing
+      link, then the packet switch has to hold one while it sends the
+      other, it can't send them both at the same time, so its gonna
+      send one at a time. And because it might have many incoming
+      links, the packet switch has to have a buffer to hold perhaps
+      many packets. These packets buffers can be quite large in
+      practise. Buffers hold packets, when two normal packets arrive
+      at the same time.
 
-		Particularly during congestion, when there are lots of
-                lots packets coming in at all the input links, all
-                trying to get to same output, it may actually have
-                quite big buffers to hold packets during those times
-                of congestion.
+      Particularly during congestion, when there are lots of lots
+      packets coming in at all the input links, all trying to get to
+      the same output, it may actually have quite big buffers to hold
+      packets during those times of congestion.
 
-   Routers does not maintain per communication state. It just
-   maintains the forwarding table.
+      Packets are routed individually by looking up the address in the
+      router's local forwarding table.
+
+    - Routers does not maintain per communication state. It just
+      maintains the forwarding table.
 
 *** Why packet switching
     - Packet switching allows us to use expensive links
@@ -2242,6 +2247,8 @@
   23. If the IP checksum is wrong, what will happen?
   24. Are routers multi threaded, in the sense do they process
       multiple packets at time, or single packet.
+  25. Can we add more intelligence into TCP headers? Will intermediate
+      devices be able to adapt the change.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
