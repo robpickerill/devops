@@ -2212,7 +2212,20 @@
       entire link belonging to a different communication.
 
     - Packet switching allows more resilient networks. Networks that
-      are resilient to failure of links and routers.
+      are resilient to failure of links and routers. And the reason
+      for this is, that because each packet is individually routed
+      along the path, if something happens if something breaks, a link
+      breaks or a router breaks. Then we can, because we have no state
+      in all of the switches for this particular flow, we can simply
+      send the packet on a different path. We can send it over a
+      different link, to a different router, and it will find its way
+      eventually.
+
+    - Internet was originally designed as an interconnection of the
+      existing networks. And at that time, pretty much all widely used
+      communication networks were packet switched. So if internet was
+      to connect all of those existing networks, then it too needed to
+      be packet switched as well.
 
 * COMMENT TODO
   1. join emacs group
