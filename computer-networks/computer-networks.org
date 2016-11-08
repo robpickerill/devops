@@ -2228,13 +2228,13 @@
       be packet switched as well.
 
 * End to End delay and queueing delay
-** Propogation Delay
+** Propogation Delay (t_l)
    The time it takes a single bit to travel over a link at propogation
    speed =c=. Propogation delay is determined by how long the link
    is. Speed of propogation is very close to the speed of light.
 
    #+BEGIN_EXAMPLE
-   t = l/c
+   t_l = l/c
    #+END_EXAMPLE
 
    Propogation delay doesn't depend on the data rate of the
@@ -2242,6 +2242,29 @@
    propogation delay is just the function of speed of propogation of
    each bit and the length of the cable.
 
+** Packetization Delay (t_p)
+   The time from when the first to the last bit of a packet is
+   transmitted.
+   
+   #+BEGIN_EXAMPLE
+   t_p = p/r
+   #+END_EXAMPLE
+
+   Where =p= is length of the packet in terms of number of bits, and
+   =r= is rate at which we put bits on to the link.
+
+   - Example1: A 64byte packet takes 5.12 micro seconds to be
+     transmitted onto a 100Mb/s link.
+     #+BEGIN_EXAMPLE
+     p/r = (64*8)/(100*1000000) = 5.12 micro seconds
+     #+END_EXAMPLE
+
+   - Example2: A 1kbit packet takes 1.024 seconds to be transmitted
+     onto a 1kb/s link.
+     #+BEGIN_EXAMPLE
+     p/r = (1*1024)/(1000) = 1.024 seconds
+     #+END_EXAMPLE
+   
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
