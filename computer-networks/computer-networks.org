@@ -2227,6 +2227,21 @@
       to connect all of those existing networks, then it too needed to
       be packet switched as well.
 
+* End to End delay and queueing delay
+** Propogation Delay
+   The time it takes a single bit to travel over a link at propogation
+   speed =c=. Propogation delay is determined by how long the link
+   is. Speed of propogation is very close to the speed of light.
+
+   #+BEGIN_EXAMPLE
+   t = l/c
+   #+END_EXAMPLE
+
+   Propogation delay doesn't depend on the data rate of the
+   link. Doesn't matter if the link is running at 1kb/s or 10gb/s. The
+   propogation delay is just the function of speed of propogation of
+   each bit and the length of the cable.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
