@@ -2265,6 +2265,38 @@
      p/r = (1*1024)/(1000) = 1.024 seconds
      #+END_EXAMPLE
    
+** End to End Delay
+   How long will it take for a packet of length =p= to travel from A
+   to B, from when the first bit is sent, until the last bit arrives.
+
+   End to end delay for the first link would be sum of its
+   packetization delay and propogation delay. This is because bits are
+   travelling one behind another and it takes time equal to
+   packetization delay to put last bit on the network.
+
+   #+BEGIN_EXAMPLE
+   end-to-end-delay-for-first-link = p/r + l/c
+   #+END_EXAMPLE
+
+   Internet routers are what we call store and forward devices. That
+   means switch S1 is gonna wait until the whole packet arrives, until
+   it looks up the address and decides where to send it next. So the
+   end to end delay from A to B would be sum of individual end to end
+   delay
+   #+BEGIN_EXAMPLE
+   end-to-end-delay = sum(p/r_i + l_i/c)
+   #+END_EXAMPLE
+
+   We also need to incorporate congestion delay also in our overall
+   end to end delay. =Q(t)= is the queuing delay of a packet in the
+   que due to congestion.
+   #+BEGIN_EXAMPLE
+   end-to-end-delay = sum(p/r_i + l_i/c + Q_i(t))
+   #+END_EXAMPLE
+
+   Queuing delay is non deterministic, whereas packetization delay and
+   propogation delay are deterministic.
+
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
