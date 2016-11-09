@@ -2196,7 +2196,8 @@
       Particularly during congestion, when there are lots of lots
       packets coming in at all the input links, all trying to get to
       the same output, it may actually have quite big buffers to hold
-      packets during those times of congestion.
+      packets during those times of congestion, to prevent us having
+      to drop any packets.
 
       Packets are routed individually by looking up the address in the
       router's local forwarding table.
@@ -2260,14 +2261,16 @@
      #+END_EXAMPLE
 
    - Example2: A 1kbit packet takes 1.024 seconds to be transmitted
-     onto a 1kb/s link.
+     onto a 1kb/s link. 1kbit packet actually means 1024 bits packet
+     and 1kb/s means 1000 bits per second.
      #+BEGIN_EXAMPLE
      p/r = (1*1024)/(1000) = 1.024 seconds
      #+END_EXAMPLE
    
 ** End to End Delay
    How long will it take for a packet of length =p= to travel from A
-   to B, from when the first bit is sent, until the last bit arrives.
+   to B, from when the =1st= bit is sent, until the =last= bit
+   arrives.
 
    End to end delay for the first link would be sum of its
    packetization delay and propogation delay. This is because bits are
@@ -2279,23 +2282,34 @@
    #+END_EXAMPLE
 
    Internet routers are what we call store and forward devices. That
-   means switch S1 is gonna wait until the whole packet arrives, until
-   it looks up the address and decides where to send it next. So the
-   end to end delay from A to B would be sum of individual end to end
-   delay
+   means switch =S1= is gonna wait until the whole packet arrives,
+   until it looks up the address and decides where to send it next. So
+   the end to end delay from A to B would be sum of individual end to
+   end delay.
+
    #+BEGIN_EXAMPLE
    end-to-end-delay = sum(p/r_i + l_i/c)
    #+END_EXAMPLE
 
    We also need to incorporate congestion delay also in our overall
    end to end delay. =Q(t)= is the queuing delay of a packet in the
-   que due to congestion.
+   queue due to congestion. Some people call queue as packet buffers
+   but generally these are first come first serve queue.
+
    #+BEGIN_EXAMPLE
    end-to-end-delay = sum(p/r_i + l_i/c + Q_i(t))
    #+END_EXAMPLE
 
    Queuing delay is non deterministic, whereas packetization delay and
-   propogation delay are deterministic.
+   propagation delay are deterministic. Queuing delay depends on the
+   traffic sent by other users in the network. So end to end delay is
+   unpredictable.
+
+   In summary end to end delay depends on:
+   - Propagation delay (fixed)
+   - Packetization delay (fixed)
+   - Queuing delay (variable)
+
 
 * COMMENT TODO
   1. join emacs group
@@ -2332,6 +2346,7 @@
       multiple packets at time, or single packet.
   25. Can we add more intelligence into TCP headers? Will intermediate
       devices be able to adapt the change.
+  26. What limits the data rate of a link.
 * COMMENT References
   -
     http://www.enterprisenetworkingplanet.com/netsp/article.php/3593936/Networking-101--Understanding-TCP-the-Protocol.htm
