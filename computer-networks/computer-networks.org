@@ -2228,24 +2228,34 @@
       to connect all of those existing networks, then it too needed to
       be packet switched as well.
 
-* End to End delay and queueing delay
-** Propogation Delay (t_l)
-   The time it takes a single bit to travel over a link at propogation
-   speed =c=. Propogation delay is determined by how long the link
-   is. Speed of propogation is very close to the speed of light.
+* End to End delay and queuing delay
+** Propagation Delay (t_l)
+   Propagation delay is the time it takes a single bit to travel over
+   a link at propagation speed =c=. Propagation delay is determined by
+   how long the link is. Speed of propagation is very close to the
+   speed of light.
 
    #+BEGIN_EXAMPLE
    t_l = l/c
    #+END_EXAMPLE
 
-   Propogation delay doesn't depend on the data rate of the
+   Propagation delay doesn't depend on the data rate of the
    link. Doesn't matter if the link is running at 1kb/s or 10gb/s. The
-   propogation delay is just the function of speed of propogation of
+   propagation delay is just the function of speed of propagation of
    each bit and the length of the cable.
 
 ** Packetization Delay (t_p)
-   The time from when the first to the last bit of a packet is
-   transmitted.
+   This the time from when the first bit of the packet is put onto the
+   link until the last bit is put onto the link.
+
+   The time it takes to put all of the bits onto the link is gonna be
+   function of the number of bits we are putting on to the link, and
+   the distance between them all. The number of bits per second that
+   we can put onto the link. So essentially the data rate of a link is
+   determined by how close together we can pack the bits.
+
+   If for example, a link runs at one gigabit per second, we can put
+   one bit onto the link every nanosecond.
    
    #+BEGIN_EXAMPLE
    t_p = p/r
@@ -2260,9 +2270,9 @@
      p/r = (64*8)/(100*1000000) = 5.12 micro seconds
      #+END_EXAMPLE
 
-   - Example2: A 1kbit packet takes 1.024 seconds to be transmitted
-     onto a 1kb/s link. 1kbit packet actually means 1024 bits packet
-     and 1kb/s means 1000 bits per second.
+   - Example2: A 1kbit packet takes 1.024 seconds in order to transmit
+     onto a 1kb/s link. One kilobit per second means 1000 bits per
+     second whereas one kilobit in the packet is 1,024 bits.
      #+BEGIN_EXAMPLE
      p/r = (1*1024)/(1000) = 1.024 seconds
      #+END_EXAMPLE
@@ -2273,9 +2283,7 @@
    arrives.
 
    End to end delay for the first link would be sum of its
-   packetization delay and propogation delay. This is because bits are
-   travelling one behind another and it takes time equal to
-   packetization delay to put last bit on the network.
+   packetization delay and propagation delay.
 
    #+BEGIN_EXAMPLE
    end-to-end-delay-for-first-link = p/r + l/c
@@ -2291,10 +2299,23 @@
    end-to-end-delay = sum(p/r_i + l_i/c)
    #+END_EXAMPLE
 
-   We also need to incorporate congestion delay also in our overall
-   end to end delay. =Q(t)= is the queuing delay of a packet in the
-   queue due to congestion. Some people call queue as packet buffers
-   but generally these are first come first serve queue.
+   Packets share the links with packets from other users. When several
+   packets show up at the same time wanting to go on the same link,
+   all of the packets are gonna have to fight or contend for that
+   outgoing link.
+
+   Packet buffer helps prevent us from having to drop any packets. The
+   bigger the buffer is the less likely we are to have to drop a
+   packet, that wants to travel across the link. These packet buffers
+   are going to be in all of the switches. Every packet switch has
+   buffers, and they are fundamental to packet switching. If we did
+   not have packet buffers, then we would lose a packet every time two
+   packets showed up at the same time wanting to travel across a link.
+
+   We also need to incorporate congestion delay in our overall end to
+   end delay. =Q(t)= is the queuing delay of a packet in the queue due
+   to congestion. Some people call queue as packet buffers but
+   generally these are first come first serve queues.
 
    #+BEGIN_EXAMPLE
    end-to-end-delay = sum(p/r_i + l_i/c + Q_i(t))
@@ -2309,7 +2330,6 @@
    - Propagation delay (fixed)
    - Packetization delay (fixed)
    - Queuing delay (variable)
-
 
 * COMMENT TODO
   1. join emacs group
