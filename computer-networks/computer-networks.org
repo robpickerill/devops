@@ -2277,16 +2277,47 @@
      p/r = (1*1024)/(1000) = 1.024 seconds
      #+END_EXAMPLE
    
+** Queuing Delay Q(t)
+   Packets share the links with packets from other users. When several
+   packets show up at the same time wanting to go on the same link,
+   then some of the packets have to wait in the router's =queue=.
+
+   Some people call this queue =packet buffers=, but in general these
+   are first come first serve queues, in which the packets are gonna
+   depart in the same order they arrive.
+
+   The =packet buffer= helps prevent us from having to drop any
+   packets. The bigger the buffer is the less likely we are to have to
+   drop a packet, that wants to travel across the link. These packet
+   buffers are going to be in all of the switches. Every packet switch
+   has buffers, and they are fundamental to packet switching. If we
+   did not have packet buffers, then we would lose a packet every time
+   two packets showed up at the same time wanting to travel across the
+   same link.
+
+   If our packet arrives and queue has some packets in it, then its
+   going to delay the time that it can be forwarded on to the next
+   link. Because it will have to wait for the packets that are ahead
+   of it to leave first before our packet gets to go. This delay will
+   vary over time and it will depend on how many other packets are
+   showing up from other users. So, if there are three packets ahead
+   of us, we will have to wait for three packetization delays before
+   its our turn to go.
+
+   #+BEGIN_EXAMPLE
+   queuing delay = Q(t)
+   #+END_EXAMPLE
+
 ** End to End Delay
    How long will it take for a packet of length =p= to travel from A
    to B, from when the =1st= bit is sent, until the =last= bit
    arrives.
 
    End to end delay for the first link would be sum of its
-   packetization delay and propagation delay.
+   packetization delay, propagation delay and queuing delay.
 
    #+BEGIN_EXAMPLE
-   end-to-end-delay-for-first-link = p/r + l/c
+   end-to-end-delay-for-first-link = p/r + l/c + Q(t)
    #+END_EXAMPLE
 
    Internet routers are what we call store and forward devices. That
@@ -2294,28 +2325,6 @@
    until it looks up the address and decides where to send it next. So
    the end to end delay from A to B would be sum of individual end to
    end delay.
-
-   #+BEGIN_EXAMPLE
-   end-to-end-delay = sum(p/r_i + l_i/c)
-   #+END_EXAMPLE
-
-   Packets share the links with packets from other users. When several
-   packets show up at the same time wanting to go on the same link,
-   all of the packets are gonna have to fight or contend for that
-   outgoing link.
-
-   Packet buffer helps prevent us from having to drop any packets. The
-   bigger the buffer is the less likely we are to have to drop a
-   packet, that wants to travel across the link. These packet buffers
-   are going to be in all of the switches. Every packet switch has
-   buffers, and they are fundamental to packet switching. If we did
-   not have packet buffers, then we would lose a packet every time two
-   packets showed up at the same time wanting to travel across a link.
-
-   We also need to incorporate congestion delay in our overall end to
-   end delay. =Q(t)= is the queuing delay of a packet in the queue due
-   to congestion. Some people call queue as packet buffers but
-   generally these are first come first serve queues.
 
    #+BEGIN_EXAMPLE
    end-to-end-delay = sum(p/r_i + l_i/c + Q_i(t))
