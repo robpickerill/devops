@@ -2340,6 +2340,24 @@
    - Packetization delay (fixed)
    - Queuing delay (variable)
 
+** Sample problems
+   We wish to send a message of size 150,000 bytes over the
+   network. There are four hops each of length 20km and running at 100
+   Mb/s. However, before sending we split the message into 1500 byte
+   packets. What is the end to end delay of the message? Use speed of
+   light in copper = c = 2 * 10^8 m/s, and round the answer to nearest
+   integer millisecond.
+
+   #+BEGIN_EXAMPLE
+   packetization delay = 0.12
+   propagation delay = 0.1
+   for four hops = 4*(0.12 + 0.1) = 0.88 ms
+   
+   rest of the message = 150000 - 1500 = 149500
+   propagation delay = (149500 * 8)/(100 * 10^6) = 11.96 ms
+
+   total = 11.96 + 0.88 = 12.84 ~ 13 ms
+   #+END_EXAMPLE
 * COMMENT TODO
   1. join emacs group
   2. Understanding the Linux Kernel
