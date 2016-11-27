@@ -1,0 +1,16 @@
+#+Title: Unix Administration Guide
+#+Author: Yogesh Agrawal
+#+Date: <2016-11-27 Sun>
+
+* Introduction
+  This document describes the unix administration guide.
+
+
+* System administrator responsibilities
+  - Routine backup of filesystem
+  - Reading root's mail
+  - Writing scripts
+  - Maintain logbook or documentation
+
+* References
+  - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
