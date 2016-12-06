@@ -31,6 +31,21 @@
     backup services on the slave without corrupting the corresponding
     master database.
    
+*** Analytics
+    Analysis of the information can take place on the slave without
+    affecting the performance of the master.
+
+*** Long-distance data distribution
+    We can create a local copy of the data for use without requiring
+    permanent access to the master.
+
+** Synchronous vs Asynchronous
+   Replication in MySQL features support for one-way, =asynchronous=
+   replication, in which one server acts as the master, while one or
+   more other servers act as slaves. This is in contrast to the
+   =synchronous= replication which is a characteristic of MySQL
+   cluster.
+
 * Setup
 ** configure the master database
    - Edit =/etc/mysql/my.cnf= as follows:
