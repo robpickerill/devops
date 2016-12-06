@@ -4,27 +4,18 @@
 #+Email: yogeshiiith@gmail.com
 
 * Introduction
-  This document talks about the master slave configuration.
+  This document discusses about the myql master slave setup.
 
 * Database Replication
-  Database replication can be used in many database management system,
-  usually with a master/slave relationship between the original and
-  the copies. Master logs the updates which are then ripple through to
-  the slaves. The slave outputs the message stating that it has
-  received the update successfully, thus allowing the sending of
-  subsequent updates.
-
-  When data is replicated between database servers, such that data
-  remains consistent throughout the database system and users can not
-  tell or even know which database they are using in the database
-  system, then the system is considered to exhibit replication
-  transparency.
-
-  Database replication is a process that allows to easily maintain
-  multiple copies of a MySQL data by having them copied automatically
-  from master to a slave database. This is helpful for many reasons
-  including facilitating a backup for the data, a way to analyze it
-  without using the main database, or simply as a means to scale out.
+  Replication enables data from one mysql database server(the master)
+  to be replicated to one or more MySQL database servers(the
+  slaves). Replication is *asynchronous* by default, therefore slaves
+  do not need to be connected permanently to receive updates from the
+  master. This means that updates can occur over long-distance
+  connections and even over temporary or intermittent connections such
+  as a dial-up service. Depending on the configuration, we can
+  replicate all databases, selected databases, or even selected tables
+  within a database.
 
 * Setup
 ** configure the master database
@@ -41,9 +32,7 @@
        #+BEGIN_EXAMPLE
        server-id = 1
        #+END_EXAMPLE
-     + The slave will copy all the changes that are registered in the
-       log. For this step we simply need to uncomment the line that
-       refers to log_bin:
+     + Enable logging by uncomment the line that refers to log_bin:
        #+BEGIN_EXAMPLE
        log_bin                 = /var/log/mysql/mysql-bin.log
        #+END_EXAMPLE
@@ -159,3 +148,4 @@
   - /usr/bin/mysql_secure_installation
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-master-slave-replication-in-mysql
   - /usr/share/doc/mysql-server-5.5/README.Debian.gz
+  - http://dev.mysql.com/doc/refman/5.6/en/replication.html
