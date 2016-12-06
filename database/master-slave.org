@@ -27,9 +27,10 @@
     increasing read speed across an increasing number of slaves.
 
 *** Data Securiy
-    
+    Slave can pause the replication process, it is possible to run
+    backup services on the slave without corrupting the corresponding
+    master database.
    
-
 * Setup
 ** configure the master database
    - Edit =/etc/mysql/my.cnf= as follows:
