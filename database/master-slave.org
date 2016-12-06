@@ -46,6 +46,29 @@
    =synchronous= replication which is a characteristic of MySQL
    cluster.
 
+* Replication Configuration
+  Replication between servers in MySQL is based on the binary logging
+  mechanism. Master writes updates and changes as "events" to the
+  binary log. The information in the binary is stored in different
+  logging formats according to the database changes being
+  recorded. Slaves are configured to read the binary log from the
+  master and to execute the events in the binary log on the slave's
+  local database.
+
+  Once binary logging has been enabled, all statements are recorded in
+  the binary log. Each slave receives a copy of the entire contents of
+  the binary log.
+
+  Each slave keeps a record of the binary log coordinates: The file
+  name and position within the file that it has read and processed
+  from the master. This means that multiple slaves can be connected to
+  the master and executing different parts of the same binary
+  log. Because the slaves control this process, individual slaves can
+  be connected and disconnected from the server without affecting the
+  master's operation. Also, because each slave records the current
+  position within the binary log, it is possible for slaves to be
+  disconnected, reconnect and then resume processing.
+
 * Setup
 ** configure the master database
    - Edit =/etc/mysql/my.cnf= as follows:
