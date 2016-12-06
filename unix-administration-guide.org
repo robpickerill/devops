@@ -1,0 +1,21 @@
+#+Title: Unix Administration Guide
+#+Author: Yogesh Agrawal
+#+Date: <2016-11-27 Sun>
+
+* Introduction
+  This document describes the unix administration guide.
+
+
+* System administrator responsibilities
+  - Routine backup of filesystem
+  - Reading root's mail
+  - Writing scripts
+  - Maintain logbook or documentation
+
+* System Device Directory
+  Device directory in UNIX systems - =/dev=, holds from 30 to several
+  hundreds entries each making a potential connection between some
+  piece of hardware and the file system.
+
+* References
+  - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
