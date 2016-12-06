@@ -17,6 +17,19 @@
   replicate all databases, selected databases, or even selected tables
   within a database.
 
+** Advantages of replication in MySQL
+*** Scale-out solutions
+    Spreading the load among multiple slaves to improve
+    performance. In this environment, all writes and updates must take
+    place on the master server. Reads, however, may take place on one
+    or more slaves. This model can improve the performance of writes
+    (since the master is dedicated to updates), while dramatically
+    increasing read speed across an increasing number of slaves.
+
+*** Data Securiy
+    
+   
+
 * Setup
 ** configure the master database
    - Edit =/etc/mysql/my.cnf= as follows:
