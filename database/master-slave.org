@@ -165,17 +165,21 @@
      #+END_EXAMPLE
 
 ** Configure slave database
+   *Slave IO_thread* reads binlog file from the master and stores them
+   in relay log; *Slave SQL thread* reads relay log and applies the
+   changes to local database.
+
    - Edit =/etc/mysql/my.cnf= file as follows:
      + Set server id, this must be unique:
        #+BEGIN_EXAMPLE
        server-id               = 2
        #+END_EXAMPLE
-     + +Set following three criteria+
+     + Set following three criteria
        #+BEGIN_EXAMPLE
        relay-log               = /var/log/mysql/mysql-relay-bin.log
        log_bin                 = /var/log/mysql/mysql-bin.log
        binlog_do_db            = newdatabase
-       #+END_EXAMPLE
+       #+END_EXAMPLE       
    - Open the mysql shell.
    - create new database
      #+BEGIN_EXAMPLE
@@ -220,3 +224,6 @@
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-master-slave-replication-in-mysql
   - /usr/share/doc/mysql-server-5.5/README.Debian.gz
   - http://dev.mysql.com/doc/refman/5.6/en/replication.html
+  - https://dev.mysql.com/doc/refman/5.7/en/slave-logs-relaylog.html
+  - http://dba.stackexchange.com/questions/41050/is-it-safe-to-delete-mysql-bin-files
+  - http://dev.mysql.com/doc/mysql-utilities/1.6/en/utils-task-purge-log-bin.html
