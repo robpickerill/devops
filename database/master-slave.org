@@ -26,7 +26,7 @@
     (since the master is dedicated to updates), while dramatically
     increasing read speed across an increasing number of slaves.
 
-*** Data Securiy
+*** Data Security
     Slave can pause the replication process, it is possible to run
     backup services on the slave without corrupting the corresponding
     master database.
@@ -45,6 +45,10 @@
    more other servers act as slaves. This is in contrast to the
    =synchronous= replication which is a characteristic of MySQL
    cluster.
+
+   MySQL supports delayed replication such that a slave server
+   deliberately lags behind the master by at least a specified amount
+   of time.
 
 * Replication Configuration
   Replication between servers in MySQL is based on the binary logging
@@ -69,24 +73,37 @@
   position within the binary log, it is possible for slaves to be
   disconnected, reconnect and then resume processing.
 
-* Setup
-** configure the master database
+  The master and each slave must be configured with a unique ID. In
+  addition, each slave must be configured with information about the
+  master host name, log file name, and position within that file.
+
+* Set up
+** Setting the Replication Master Configuration
+   On a replication server we must enable binary logging and establish
+   a unique server ID. If this has not already been done, a server
+   restart is required.
+
+   Binary logging must be enabled on the master because the binary log
+   is the basis for replicating changes from the master to its
+   slave. If binary logging is not enabled using log-bin option,
+   replication is not possible.
+
    - Edit =/etc/mysql/my.cnf= as follows:
+     + Set server id, the number must be unique and cannot match any
+       other server-id in the replication group.
+       #+BEGIN_EXAMPLE
+       server-id = 1
+       #+END_EXAMPLE
+     + Enable logging by uncommenting the line that refers to log_bin:
+       #+BEGIN_EXAMPLE
+       log_bin                 = /var/log/mysql/mysql-bin.log
+       #+END_EXAMPLE
      + Update bind address to server ip, instead of localhost
        #+BEGIN_EXAMPLE
        bind-address            = 127.0.0.1
        #+END_EXAMPLE
        #+BEGIN_EXAMPLE
        bind-address            = 12.34.56.789 
-       #+END_EXAMPLE
-     + Set server id, the number must be unique and cannot match any
-       other server-id in the replication group.
-       #+BEGIN_EXAMPLE
-       server-id = 1
-       #+END_EXAMPLE
-     + Enable logging by uncomment the line that refers to log_bin:
-       #+BEGIN_EXAMPLE
-       log_bin                 = /var/log/mysql/mysql-bin.log
        #+END_EXAMPLE
      + Designate database that is to be replicated on the slave
        server. We can include more database by repeating this line
@@ -102,9 +119,10 @@
      #+BEGIN_EXAMPLE
      mysql -u root -p
      #+END_EXAMPLE
-   - Grant privileges to the slave
+   - Grant =Replication slave= privileges to the slave
      #+BEGIN_EXAMPLE
-     grant replication slave on *.* to 'slave_user'@'%' identified by 'password';
+     create user 'slave_user'@'%' identified by 'slavepasswd'
+     grant replication slave on *.* to 'slave_user'@'%';
      #+END_EXAMPLE
    - Flush privileges
      #+BEGIN_EXAMPLE
@@ -114,27 +132,28 @@
      #+BEGIN_EXAMPLE
      use newdatabase;
      #+END_EXAMPLE
-   - Lock the database to prevent any new changes
+   - Flush all tables and block write statements by executing
      #+BEGIN_EXAMPLE
      FLUSH TABLES WITH READ LOCK;
      #+END_EXAMPLE
-   - See master status
+   - In a different session, see master status to determine the
+     current binary log file name and position:
      #+BEGIN_EXAMPLE
      mysql> SHOW MASTER STATUS;
-+------------------+----------+--------------+------------------+
-| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
-+------------------+----------+--------------+------------------+
-| mysql-bin.000001 |      107 | newdatabase  |                  |
-+------------------+----------+--------------+------------------+
+     +------------------+----------+--------------+------------------+
+     | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
+     +------------------+----------+--------------+------------------+
+     | mysql-bin.000001 |      107 | newdatabase  |                  |
+     +------------------+----------+--------------+------------------+
      1 row in set (0.00 sec)
      #+END_EXAMPLE
      This is the position from where slave database will start
      replicating. Record this number they will come in useful later.
-   - Open a new tab or window, because if we make new changes in the
+   - Open a new tab or window, because if we make any changes in the
      same window database will automatically unlock.
    - Take database dump from bash shell
      #+BEGIN_EXAMPLE
-     mysqldump -u root -p --databases  newdatabase > dump
+     mysqldump -u root -p --all-databases > dump
      #+END_EXAMPLE
    - Return to original window and unlock the database
      #+BEGIN_EXAMPLE
@@ -146,6 +165,17 @@
      #+END_EXAMPLE
 
 ** Configure slave database
+   - Edit =/etc/mysql/my.cnf= file as follows:
+     + Set server id, this must be unique:
+       #+BEGIN_EXAMPLE
+       server-id               = 2
+       #+END_EXAMPLE
+     + +Set following three criteria+
+       #+BEGIN_EXAMPLE
+       relay-log               = /var/log/mysql/mysql-relay-bin.log
+       log_bin                 = /var/log/mysql/mysql-bin.log
+       binlog_do_db            = newdatabase
+       #+END_EXAMPLE
    - Open the mysql shell.
    - create new database
      #+BEGIN_EXAMPLE
@@ -159,17 +189,6 @@
      #+BEGIN_EXAMPLE
      mysql -u root -p newdatabase < dump
      #+END_EXAMPLE
-   - Edit =/etc/mysql/my.cnf= file as follows:
-     + Set server id, this must be unique:
-       #+BEGIN_EXAMPLE
-       server-id               = 2
-       #+END_EXAMPLE
-     + Set following three criteria
-       #+BEGIN_EXAMPLE
-       relay-log               = /var/log/mysql/mysql-relay-bin.log
-       log_bin                 = /var/log/mysql/mysql-bin.log
-       binlog_do_db            = newdatabase
-       #+END_EXAMPLE
    - Restart mysql
      #+BEGIN_EXAMPLE
      sudo service mysql restart
