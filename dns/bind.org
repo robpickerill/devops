@@ -1,0 +1,16 @@
+#+Title: Private DNS using bind
+#+Author: Yogesh Agrawal
+#+Date: <2016-12-20 Tue>
+#+Email: yogesh.agrawal@capitalfloat.com
+
+* Introduction
+  Setup private bind dns server.
+
+* Setup
+** Installation
+   
+  
+
+* References
+  - https://help.ubuntu.com/community/BIND9ServerHowto
+  - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
