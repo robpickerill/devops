@@ -173,3 +173,4 @@
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
   - http://www.tldp.org/HOWTO/DNS-HOWTO-7.html
+  - http://dyn.com/blog/recursive-dns-how-does-it-work/
