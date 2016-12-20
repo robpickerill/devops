@@ -105,6 +105,71 @@
   sudo /etc/init.d/bind9 restart
   #+END_EXAMPLE
 
+* Primary Master Server Configuration
+  In this section BIND9 will be configured as the primary master for
+  the domain =example.com=. We can replace example.com with our fully
+  qualified domain name.
+
+** Zone file
+   To add a dns zone to BIND9, turning BIND9 into a Primary Master
+   server, we have to edit =named.conf.local= as follows:
+   #+BEGIN_EXAMPLE
+           [...]
+
+        zone "example.com" {
+             type master;
+             file "/etc/bind/db.example.com";
+        };
+
+        [...]
+   #+END_EXAMPLE
+
+   Now we can use the existing zone file as a template:
+   
+   #+BEGIN_EXAMPLE
+   sudo cp /etc/bind/db.local /etc/bind/db.example.com
+   #+END_EXAMPLE
+
+   Edit the new zone file /etc/bind/db.example.com change =localhost.=
+   to the FQDN of our server. Leaving the additional "." at the
+   end. Change =127.0.0.1= to the nameserver's IP Address and
+   root.localhost to a valid email address, but with a "." instead of
+   the "@", also leaving "." at the end.
+
+   Also, create an =A record= for ns.example.com the name server.
+
+   #+BEGIN_EXAMPLE
+   ;
+   ; BIND data file for local loopback interface
+   ;
+   $TTL    604800
+   @       IN      SOA     ns.example.com. root.example.com. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+   ;
+   @       IN      NS      ns.example.com.
+   ns      IN      A       192.168.1.10
+   
+   ;also list other computers
+   box     IN      A       192.168.1.21
+   #+END_EXAMPLE
+
+   We must increment the serial number every time we make changes to
+   the zone file.
+
+   *Tip:* Many people like to use last date edited as the serial
+   number yyyymmddss (where s is serial), as the serial number.
+   
+   Once we have made any changes to the dns zone file, it will require
+   restart:
+   #+BEGIN_EXAMPLE
+   sudo /etc/init.d/bind9 restart
+   #+END_EXAMPLE
+   
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
+  - http://www.tldp.org/HOWTO/DNS-HOWTO-7.html
