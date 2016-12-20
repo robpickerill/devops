@@ -72,6 +72,16 @@
    ns      IN    A      1.2.3.4
    #+END_EXAMPLE
 
+* Configuring BIND9
+  - Configuration files are stored in:
+    #+BEGIN_EXAMPLE
+    /etc/bind
+    #+END_EXAMPLE
+    #+BEGIN_EXAMPLE
+    /etc/bind/named.conf
+    /etc/bind/named.conf.options
+    /etc/bind/named.conf.local
+    #+END_EXAMPLE
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
