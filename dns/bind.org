@@ -25,6 +25,14 @@
    referred to as zones) for a registered domain name or an imaginary
    one (but only if used on a restricted network).
 
+** Secondary Master Server
+   A secondary master DNS server is used to complement a primary
+   master DNS server by serving a copy of the zone(s) configured on
+   the primary server. Secondary servers are recommended in larger
+   setups. If we intend to serve a registered domain name then ensure
+   that DNS zone is still available even if our primary server is not
+   online.
+
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
