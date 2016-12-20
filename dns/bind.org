@@ -60,6 +60,18 @@
    mail IN A 1.2.3.4
    #+END_EXAMPLE
 
+** Name Server Records
+   Used to define which servers serve copies of this zone. It must
+   point to an A record, not a CNAME. This is where Primary and
+   Secondary servers are defined.
+   #+BEGIN_EXAMPLE
+           IN    NS     ns.example.com.
+
+        [...]
+
+   ns      IN    A      1.2.3.4
+   #+END_EXAMPLE
+
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
