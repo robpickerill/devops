@@ -43,13 +43,23 @@
    Used to create alias from an existing A record. We can create a
    CNAME record pointing to another CNAME record. But it doubles the
    number of requests made to the nameserver, thus making it an
-   inefficient way to do so
+   inefficient way to do so.
    
    #+BEGIN_EXAMPLE
    mail IN CNAME www
    www IN A 1.2.3.4
    #+END_EXAMPLE
    
+** Mail Exchange Records
+   Used to specify where email should be sent to and at what
+   priority. Must point to an A record, not a CNAME. Multiple MX
+   records can exist if multiple mail servers are responsible for that
+   domain.
+   #+BEGIN_EXAMPLE
+        IN MX 10 mail.example.com.
+   mail IN A 1.2.3.4
+   #+END_EXAMPLE
+
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
