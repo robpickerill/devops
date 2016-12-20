@@ -6,10 +6,19 @@
 * Introduction
   Setup private bind dns server.
 
-* Setup
-** Installation
-   
+* Installation
+  #+BEGIN_EXAMPLE
+  sudo apt-get install bind9 bind9utils bind9-doc
+  #+END_EXAMPLE
   
+* Configuration Scenarios
+  BIND9 can provide many different DNS services.
+
+** Caching Server
+   In this configuration BIND9 will find answer to name queries and
+   remember the answer for the next query. This can be useful for slow
+   internet connection. By caching DNS queries, we will reduce
+   bandwidth and (more importantly) latency.
 
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
