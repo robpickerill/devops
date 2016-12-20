@@ -39,6 +39,17 @@
    #+BEGIN_EXAMPLE
    www IN A 1.2.3.4
    #+END_EXAMPLE
+** Alias Records
+   Used to create alias from an existing A record. We can create a
+   CNAME record pointing to another CNAME record. But it doubles the
+   number of requests made to the nameserver, thus making it an
+   inefficient way to do so
+   
+   #+BEGIN_EXAMPLE
+   mail IN CNAME www
+   www IN A 1.2.3.4
+   #+END_EXAMPLE
+   
 * References
   - https://help.ubuntu.com/community/BIND9ServerHowto
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
