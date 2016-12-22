@@ -174,3 +174,5 @@
   - https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-14-04 
   - http://www.tldp.org/HOWTO/DNS-HOWTO-7.html
   - http://dyn.com/blog/recursive-dns-how-does-it-work/
+  - https://kb.isc.org/article/AA-00269/0/What-has-changed-in-the-behavior-of-allow-recursion-and-allow-query-cache.html
+  - http://www.zytrax.com/books/dns/ch7/queries.html#allow-recursion
