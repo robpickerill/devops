@@ -86,7 +86,7 @@
    Logrotate command can be run manually using following command,
    =-s= option specifies the filename to write logrotate status.
    #+BEGIN_EXAMPLE
-   logrotate -s /var/log/logstatus logrotate.conf
+   sudo logrotate -s /var/log/logstatus logrotate.conf
    #+END_EXAMPLE
 
 * Reference
