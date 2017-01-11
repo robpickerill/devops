@@ -167,6 +167,50 @@
    detach the load balancer from the gree group or reduce the group
    size of the green group to zero.
 
+** Update Auto Scaling Group Launch Configurations
+   Auto scaling groups have their own launch configurations. A launch
+   configuration contains information like AMI ID, instance type, key
+   pair, one or more security groups, and a block device mapping.
+
+   We can associate only one launch configuraion with an ASG at a
+   time, and it can't be modified after we create it.
+
+   To change the launch configuration associated with an ASG, replace
+   the existing launch configuration with a new one. After a new
+   launch configuration is in place, any new instances that are
+   launched use the new launch configuration parameters, but existing
+   instances are not affected.
+
+   When Auto Scaling removes instances (referred to as scaling in)
+   from the group, the default termination policy is to remove
+   instances with the oldest launch configuration. However we should
+   know that if the Availability Zones were unbalanced to begin with,
+   then Auto Scaling could remove an instance with a new launch
+   configuration to balance the zones. *In such situations, we should
+   have processes in place to compensate for this effect.*
+
+   [[./blue-green-deployment-launchconfig-state-1.jpg]]
+
+   To deploy the new version of the application in the green
+   environment, update the Auto Scaling group with the new launch
+   configuration, and then scale the Auto Scaling group to twice its
+   original size.
+   
+   [[./blue-green-deployment-launchconfig-state-2.jpg]]
+
+   Then, shrink the ASG back to the original size. By default,
+   instances with the old launch configuration are removed first. We
+   can also leverage a group's Standby state to temporarily remove
+   instances from an Auto Scaling group. Having the instance in
+   Standby state helps in quick rollbacks, if required. As soon as we
+   are confident about the newly deployed version of the application,
+   we can permanently remove instances in Standby state.
+
+   [[./blue-green-deployment-launchconfig-state-3.jpg]]
+
+   To perform a rollback, update the Auto Scaling group with the old
+   launch configuration. Then, do the preceding steps in reverse. Or
+   if the instnaces are in standby stage, bring them online.
 
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
