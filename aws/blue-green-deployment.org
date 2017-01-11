@@ -92,6 +92,40 @@
    capabilities to swap the environment URLs, facilitating blue/gree
    deployment.
 
+* Techniques
+** Update DNS routing
+   DNS is the mechanism for switching traffic from the blue
+   environment to the green and vice versa, if rollback is necessary.
+
+   This technique applies to environments that are:
+   - Single instances, with a public or Elastic IP address
+   - Group of instances behind an ELB
+   - Instances in an Auto Scaling group with an ELB as the front end
+   - Elastic Beanstalk environment
+
+   We can shift traffic all at once or we can do a weighted
+   distribution. With Route53 we can define a percentage of traffic to
+   go to the green environment and gradually update the weights until
+   the green environment carries the full production traffic. A
+   weighted distribution provides the ability to perform canary
+   analysis where a small percentage of production traffic is
+   introduced to a new environment.
+
+   [[./blue-green-deployment-weighted-dns.jpg]]
+   
+   If issues arise during the deployment, we achive rollback by
+   updating the DNS record to shift traffic back to the blue
+   environment. Although DNS routing is simple to implement for
+   blue/green, the question is how quickly we can complete a
+   rollback. DNS TTL determines how long clients cache query
+   results. However, with older clients and potentially misbehaving
+   clients in the wild, certain sessions may still be tied to the
+   previous environment.
+   
+   For a full cutover, be sure to tune Auto Scaling policy to scale as
+   expected and remember that the new ELB endpoint may need time to
+   scale up as well.
+
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
   - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
