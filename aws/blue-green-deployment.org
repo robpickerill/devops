@@ -71,6 +71,20 @@
    instances. ELB scales in response to incoming requests, performs
    health checking against EC2 resources, and naturally integrates
    with other AWS tools, such as auto scaling.
+** Auto Scaling
+   Auto Scaling helps maintain application availability and lets
+   customers scale EC2 capacity up or down automatically according to
+   defined conditions. The templates used to launch EC2 instances in
+   an auto scaling group are called launch configurations. We can
+   attach different versions of auto scaling group to enable
+   blue/green deployment. We can also configure Auto Scaling for use
+   with an Elastic Load Balancing load balancer. In this configuration
+   ELB balances the traffic across the EC2 instances running in an
+   Auto Scaling group.
+
+   Auto scaling also allows instances to be placed in a Standby state,
+   instead of termination, which helps quick rollback when required.
+
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
   - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
