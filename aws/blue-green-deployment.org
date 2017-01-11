@@ -57,6 +57,15 @@
    | Cost                     | Operating budget               |
    |--------------------------+--------------------------------|
 
+* AWS Tools and Services Enabling Blue/Green Deployments
+** Amazon Route 53
+   DNS is a classic approach to blue/green deployments, allowing
+   administrators to direct traffic by simply updating DNS records in
+   the hosted zone. 
+   
+   Also, time to live (TTL) can be adjusted for resource records, a
+   shorter TTL allows record changes to propogate faster to clients.
+
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
   - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
