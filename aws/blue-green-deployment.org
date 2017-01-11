@@ -219,6 +219,47 @@
    launch configuration. Then, do the preceding steps in reverse. Or
    if the instnaces are in standby stage, bring them online.
 
+** Swap the environment of an Elastic BeanStalk Application
+   To deploy an application using EB, upload an application version in
+   the form of an application bundle (for example java, .war file or
+   .zip file).
+
+   EB provides several deployment policies that we can configure to
+   use, ranging from policies that perform an in-place update on
+   existing instances, to immutable deployment using a set of new
+   instances. Because EB performs an in-place update when we update
+   our application versions, our application may become unavailable to
+   users for a short period of time.
+
+   To avoid this downtime, we can deploy the new version of the
+   application to a separate environment. The existing environment's
+   configuration is copied and used to launch the green environment
+   with the new version of the application. The new green environment
+   will have its own URL. When it's time to promote the green
+   environment to serve production traffic, we can use EB Swap
+   environment URLs feature as explained here:
+   http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
+
+   - Diagram-8:
+     [[./blue-green-deployment-eb-state-1.jpg]]
+   
+   EB, provides an environment URL when the application is up and
+   running. Then, the green environment is spun up with its own
+   environment URL. At this time, two environments are up and running,
+   but only the blue environment is service production traffic.
+
+   - Diagram-9:  
+     [[./blue-green-deployment-eb-state-2.jpg]]
+
+   To promote the green environment to serve production traffic, we go
+   to the environment's dashboard in the EB console and choose *Swap
+   Environment URL* from the *Actions* menu. EB performs a DNS switch,
+   which typically takes a few minutes. When the DNS changes have
+   propogated, we can terminate the blue environment. To perform a
+   rollback, invoke *Swap Environment URL* again.
+
+   
+
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
   - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
@@ -227,3 +268,4 @@
   - https://aws.amazon.com/answers/web-applications/aws-web-app-deployment-java/
   - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.html
   - http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html
+  - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
