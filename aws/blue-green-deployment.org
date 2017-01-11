@@ -17,6 +17,7 @@
     identified, we can roll back by reverting traffic back to the blue
     environment.
 
+    Diagram-1:
     [[./blue-green-deployment.jpg]]
 
   - Blue/Green deployment isn't a new concept, we don't commonly see
@@ -111,7 +112,8 @@
    analysis where a small percentage of production traffic is
    introduced to a new environment.
 
-   [[./blue-green-deployment-weighted-dns.jpg]]
+   - Diagram-2:
+     [[./blue-green-deployment-weighted-dns.jpg]]
    
    If issues arise during the deployment, we achive rollback by
    updating the DNS record to shift traffic back to the blue
@@ -147,14 +149,16 @@
    instance from the pool and drains current connections before they
    terminate.
 
-   [[./blue-green-deployment-asg-state-1.jpg]]
+   - Diagram-3:
+     [[./blue-green-deployment-asg-state-1.jpg]]
 
    A blue group carries the production load while a green group is
    staged and deployed with the new code. When it's time to deploy, we
    simply attach the green group to the existing load balancer to
    introduce traffic to the new environment.
 
-   [[./blue-green-deployment-asg-state-2.jpg]]
+   - Diagram-4:
+     [[./blue-green-deployment-asg-state-2.jpg]]
 
    As we scale up the green Auto Scaling group, we can take blue Auto
    Scaling group instances out of service by either terminating them
@@ -189,14 +193,16 @@
    configuration to balance the zones. *In such situations, we should
    have processes in place to compensate for this effect.*
 
-   [[./blue-green-deployment-launchconfig-state-1.jpg]]
+   - Diagram-5:
+     [[./blue-green-deployment-launchconfig-state-1.jpg]]
 
    To deploy the new version of the application in the green
    environment, update the Auto Scaling group with the new launch
    configuration, and then scale the Auto Scaling group to twice its
    original size.
-   
-   [[./blue-green-deployment-launchconfig-state-2.jpg]]
+     
+   - Diagram-6:
+     [[./blue-green-deployment-launchconfig-state-2.jpg]]
 
    Then, shrink the ASG back to the original size. By default,
    instances with the old launch configuration are removed first. We
@@ -205,8 +211,9 @@
    Standby state helps in quick rollbacks, if required. As soon as we
    are confident about the newly deployed version of the application,
    we can permanently remove instances in Standby state.
-
-   [[./blue-green-deployment-launchconfig-state-3.jpg]]
+   
+   - Diagram-7:
+     [[./blue-green-deployment-launchconfig-state-3.jpg]]
 
    To perform a rollback, update the Auto Scaling group with the old
    launch configuration. Then, do the preceding steps in reverse. Or
