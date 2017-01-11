@@ -66,6 +66,11 @@
    Also, time to live (TTL) can be adjusted for resource records, a
    shorter TTL allows record changes to propogate faster to clients.
 
+** Elastic Load Balancing
+   ELB distributes incoming application traffic across designated EC2
+   instances. ELB scales in response to incoming requests, performs
+   health checking against EC2 resources, and naturally integrates
+   with other AWS tools, such as auto scaling.
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
   - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
