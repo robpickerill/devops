@@ -6,21 +6,56 @@
 * Introduction
   Blue Green Deployment of services.
 
-* Blue/Green Deployment
-  Blue/Green deployment is a technique for releasing applications by
-  shifting traffic between two identical environments running
-  different versions of the application. Blue/Green deployments
-  provide near zero-downtime relase and rollback capabilities.
+* Blue/Green Deployment Methodology
+  - Blue/Green deployment is a technique for releasing applications by
+    shifting traffic between two identical environments running
+    different versions of the application. Blue/Green deployments
+    provide near zero-downtime relase and rollback capabilities.
 
-  After the green environment is ready and tested, production traffic
-  is redirected from blue to green.
+  - After the green environment is ready and tested, production
+    traffic is redirected from blue to green. If any problems are
+    identified, we can roll back by reverting traffic back to the blue
+    environment.
 
-** Benefits
-   - It ensures spinning up a parallel green environment does not
+    [[./blue-green-deployment.jpg]]
+
+  - Blue/Green deployment isn't a new concept, we don't commonly see
+    it used in traditional, on-premises hosted environment due to the
+    cost and effort required to provision additional resources.
+
+** Benefits of Blue/Green
+   - It ensures spinning up a parallel green environment, does not
      affect resources and underpinning your blue environment.
-   - No overwrites of faulty application
-   - Rollback is easy
-   - 
+
+   - After we deploy the green environment we have the opportunity to
+     validate it. We can do that with the test traffic before sending
+     production traffic to the green environment, or by using a very
+     small fraction of production traffic, to better reflect real user
+     traffic. This is called *canary analysis* or *canary testing*. If
+     we discover the green environment is not operating as expected,
+     there is no impact on the blue environment. We can route traffic
+     back to it, minimizing impaired operation or downtime, and
+     limiting the blast radius of impact.
+
+   - Once the deployment succeeds, we decommission the blue
+     environment and stop paying for the resources it was using.
+
+** Factors Affecting the deployment
+   |--------------------------+--------------------------------|
+   | *Factors                 | Criteria*                      |
+   |--------------------------+--------------------------------|
+   | Application Architecture | Dependencies                   |
+   |--------------------------+--------------------------------|
+   | Organizational           | Speed and number of iterations |
+   |--------------------------+--------------------------------|
+   | Risk and complexity      | Impact of failed radius        |
+   |--------------------------+--------------------------------|
+   | People                   | Expertise                      |
+   |--------------------------+--------------------------------|
+   | Process                  | Testing/QA                     |
+   |--------------------------+--------------------------------|
+   | Cost                     | Operating budget               |
+   |--------------------------+--------------------------------|
 
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
