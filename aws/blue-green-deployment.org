@@ -1,0 +1,31 @@
+#+Title: Blue Green Deployment of Services
+#+Author: Yogesh Agrawal
+#+Email: yogeshiiith@gmail.com
+#+Date: <2017-01-10 Tue>
+
+* Introduction
+  Blue Green Deployment of services.
+
+* Blue/Green Deployment
+  Blue/Green deployment is a technique for releasing applications by
+  shifting traffic between two identical environments running
+  different versions of the application. Blue/Green deployments
+  provide near zero-downtime relase and rollback capabilities.
+
+  After the green environment is ready and tested, production traffic
+  is redirected from blue to green.
+
+** Benefits
+   - It ensures spinning up a parallel green environment does not
+     affect resources and underpinning your blue environment.
+   - No overwrites of faulty application
+   - Rollback is easy
+   - 
+
+* References
+  - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
+  - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
+  - http://www.spinnaker.io/
+  - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
+  - https://aws.amazon.com/answers/web-applications/aws-web-app-deployment-java/
+  - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.html
