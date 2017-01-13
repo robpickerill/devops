@@ -258,7 +258,6 @@
    propogated, we can terminate the blue environment. To perform a
    rollback, invoke *Swap Environment URL* again.
 
-   
 * References
   - https://www.thoughtworks.com/insights/blog/implementing-blue-green-deployments-aws
   - https://d0.awsstatic.com/whitepapers/AWS_Blue_Green_Deployments.pdf
@@ -268,3 +267,4 @@
   - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.html
   - http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html
   - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.CNAMESwap.html
+  - https://aws.amazon.com/blogs/devops/deploying-a-spring-boot-application-on-aws-using-aws-elastic-beanstalk/
