@@ -3896,9 +3896,8 @@
   - http://linuxcommand.org/tlcl.php (resource for commands help)
   - https://www.centos.org/docs/ (centos documentaion)
   - http://refspecs.linuxfoundation.org/fhs.shtml (file system)
-  -
-    https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
-   (filesystem)
+  - https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
+    (filesystem)
   - http://www.pathname.com/fhs/pub/fhs-2.3.pdf (Filesystem hierarchy
     standard
   - http://askubuntu.com/a/801191/499885 (hard vs soft link)
