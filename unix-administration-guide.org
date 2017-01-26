@@ -45,5 +45,13 @@
    individual and group owner identification, date-time stamps showing
    the last time the file was read or written to.
 
+** Inode
+   Inode or information node, contains all the information about a
+   file, except the file's name and the actual data in the file. The
+   owner, group owner, number of directory entries (links),
+   permissions, file type, file size, list of the disk blocks that
+   contain the data in the file, and three dates are part of the
+   inode.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
