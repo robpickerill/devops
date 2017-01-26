@@ -27,5 +27,13 @@
    invokes system call which request the kernel to do the defined
    task.
 
+** Process
+   A process is a program in execution. Kernel loads the program into
+   memory as the result of an exec (execute) system call. The process
+   may freely read or write its own data, but must make system calls
+   to read or write to the file system, or do anything beyond
+   manipulating its memory space.
+
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
