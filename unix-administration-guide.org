@@ -88,5 +88,10 @@
    in blocks, so all reading and writing are also in block-size
    pieces.
 
+** Character devices
+   Character devices work with any number of bytes of data, from one
+   byte at a time, to large blocks of data. Devices such as terminals,
+   modems, or printers are character devices.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
