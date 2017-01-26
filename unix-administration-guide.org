@@ -34,6 +34,10 @@
    to read or write to the file system, or do anything beyond
    manipulating its memory space.
 
+** Shell
+   The shell is a program designed to interact with people
+   (users). Shell programs interpret lines typed by users and start
+   other programs.
 
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
