@@ -53,5 +53,8 @@
    contain the data in the file, and three dates are part of the
    inode.
 
+** Directory
+   A directory file contains the names of other files.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
