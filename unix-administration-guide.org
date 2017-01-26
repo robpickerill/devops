@@ -82,5 +82,11 @@
    The minor device number provides information to the device driver
    about which specific device to access.
 
+** Block devices
+   Block devices work with block-sized groups of data. Typically, a
+   Block is a multiple of 512 bytes. Disk and tape devices store data
+   in blocks, so all reading and writing are also in block-size
+   pieces.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
