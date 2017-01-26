@@ -68,5 +68,15 @@
    particular type of device. For each different type of device in a
    system, there is a device driver.
 
+** Major device number
+   The major device number identifies the device driver. There is a
+   unique major device number for each device driver. The long listing
+   of a device file displays the major device number first, followed
+   by the minor device number.
+   #+BEGIN_EXAMPLE
+   $ ls -l /dev/autofs
+   crw-------  1 root root     10, 235 Jan 25 18:47 autofs
+   #+END_EXAMPLE
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
