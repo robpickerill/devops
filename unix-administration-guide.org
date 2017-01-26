@@ -22,5 +22,10 @@
    during startup and stays in memory. The kernel manages the system
    hardware, that is, the memory, disks, and communications.
 
+** System Call
+   When a user programs want to execute any privileged programs, it
+   invokes system call which request the kernel to do the defined
+   task.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
