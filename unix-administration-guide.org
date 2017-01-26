@@ -78,5 +78,9 @@
    crw-------  1 root root     10, 235 Jan 25 18:47 autofs
    #+END_EXAMPLE
 
+** Minor device number
+   The minor device number provides information to the device driver
+   about which specific device to access.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
