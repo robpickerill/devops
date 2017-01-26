@@ -5,7 +5,6 @@
 * Introduction
   This document describes the unix administration guide.
 
-
 * System administrator responsibilities
   - Routine backup of filesystem
   - Reading root's mail
@@ -16,6 +15,12 @@
   Device directory in UNIX systems - =/dev=, holds from 30 to several
   hundreds entries each making a potential connection between some
   piece of hardware and the file system.
+
+* Basic Terminology
+** Kernel
+   Kernel or operating system "program", gets loaded into computer
+   during startup and stays in memory. The kernel manages the system
+   hardware, that is, the memory, disks, and communications.
 
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
