@@ -63,5 +63,10 @@
    instead two special numbers, the major and minor device numbers,
    which uniquely identify the device to the kernel.
 
+** Device driver
+   Device driver is part of the kernel code, that controls a
+   particular type of device. For each different type of device in a
+   system, there is a device driver.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
