@@ -56,5 +56,12 @@
 ** Directory
    A directory file contains the names of other files.
 
+** Device file
+   A device file contains device information. Disk partitions and
+   other computer hardware can be referred to through the file system
+   by using the device file. Device files contain no data, but have
+   instead two special numbers, the major and minor device numbers,
+   which uniquely identify the device to the kernel.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
