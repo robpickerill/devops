@@ -394,29 +394,35 @@
    #+END_EXAMPLE
 
 ** Hard and Soft links
-   - Soft link :: Soft link is a new file which only contains the name
-                  of the original file. It has different inode number
-                  than the original file. Symlinks works across the
-                  filesystem. If the original file is deleted the
-                  symlink will no longer be valid, however the file
-                  will continue to exist.
-                  #+BEGIN_EXAMPLE
-                  ln -s original-file symlink
-                  #+END_EXAMPLE
-   - Hard link :: Hard link is a new file which points to the same
-                  inode number as the original file. If original file
-                  is deleted the hard link will still exist. When
-                  either of the hard link or original file is modified
-                  the changes are reflected in both of the files. If
-                  we delete the original file, the hard link will
-                  still exist. The inode will only be deleted when all
-                  the links to it are deleted. Hard link does not work
-                  across the filesytem. The hard link and the original
-                  file has to be in the same filesystem. To create a
-                  hard link use following command:
-                  #+BEGIN_EXAMPLE
-                  ln original-file hardlink
-                  #+END_EXAMPLE
+   Following diagram best illustrates the difference between a hard
+   link and a soft link.
+   
+   [[./diagrams/hard-and-soft-link.jpg]]
+
+*** Soft link
+    Soft link is a new file which only contains the name of the
+    original file. It has different inode number than the original
+    file. Symlinks works across the filesystem. If the original file
+    is deleted the symlink will no longer be valid, however the file
+    will continue to exist.
+    #+BEGIN_EXAMPLE
+    ln -s original-file symlink
+    #+END_EXAMPLE
+
+*** Hard link
+    Hard link is a new file which points to the same inode number as
+    the original file. If original file is deleted the hard link will
+    still exist. When either of the hard link or original file is
+    modified the changes are reflected in both of the files. If we
+    delete the original file, the hard link will still exist. The
+    inode will only be deleted when all the links to it are
+    deleted. Hard link does not work across the filesytem. The hard
+    link and the original file has to be in the same filesystem. To
+    create a hard link use following command:
+    #+BEGIN_EXAMPLE
+    ln original-file hardlink
+    #+END_EXAMPLE
+
 ** File streams
    When a command is run, three file descriptors are open by default
    one for reading standard input (*stdin*), one for writing standard
@@ -3886,12 +3892,12 @@
     echo "test" > /tmp/tempfile
     #+END_EXAMPLE
   - Revise processes
-* Useful links
+* Reference
   - http://linuxcommand.org/tlcl.php (resource for commands help)
   - https://www.centos.org/docs/ (centos documentaion)
   - http://refspecs.linuxfoundation.org/fhs.shtml (file system)
-  -
-    https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
-   (filesystem)
+  - https://courses.edx.org/asset-v1:LinuxFoundationX+LFS101x+1T2016+type@asset+block/LFS101_Ch3_Sec1_FSH.pdf
+    (filesystem)
   - http://www.pathname.com/fhs/pub/fhs-2.3.pdf (Filesystem hierarchy
     standard
+  - http://askubuntu.com/a/801191/499885 (hard vs soft link)
