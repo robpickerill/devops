@@ -39,5 +39,11 @@
    (users). Shell programs interpret lines typed by users and start
    other programs.
 
+** File
+   A file is a collection of data stored on a disk. Files have
+   additional properties, including a set of access permissions,
+   individual and group owner identification, date-time stamps showing
+   the last time the file was read or written to.
+
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
