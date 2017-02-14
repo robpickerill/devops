@@ -5,7 +5,6 @@
 * Introduction
   This document describes the unix administration guide.
 
-
 * System administrator responsibilities
   - Routine backup of filesystem
   - Reading root's mail
@@ -16,6 +15,83 @@
   Device directory in UNIX systems - =/dev=, holds from 30 to several
   hundreds entries each making a potential connection between some
   piece of hardware and the file system.
+
+* Basic Terminology
+** Kernel
+   Kernel or operating system "program", gets loaded into computer
+   during startup and stays in memory. The kernel manages the system
+   hardware, that is, the memory, disks, and communications.
+
+** System Call
+   When a user programs want to execute any privileged programs, it
+   invokes system call which request the kernel to do the defined
+   task.
+
+** Process
+   A process is a program in execution. Kernel loads the program into
+   memory as the result of an exec (execute) system call. The process
+   may freely read or write its own data, but must make system calls
+   to read or write to the file system, or do anything beyond
+   manipulating its memory space.
+
+** Shell
+   The shell is a program designed to interact with people
+   (users). Shell programs interpret lines typed by users and start
+   other programs.
+
+** File
+   A file is a collection of data stored on a disk. Files have
+   additional properties, including a set of access permissions,
+   individual and group owner identification, date-time stamps showing
+   the last time the file was read or written to.
+
+** Inode
+   Inode or information node, contains all the information about a
+   file, except the file's name and the actual data in the file. The
+   owner, group owner, number of directory entries (links),
+   permissions, file type, file size, list of the disk blocks that
+   contain the data in the file, and three dates are part of the
+   inode.
+
+** Directory
+   A directory file contains the names of other files.
+
+** Device file
+   A device file contains device information. Disk partitions and
+   other computer hardware can be referred to through the file system
+   by using the device file. Device files contain no data, but have
+   instead two special numbers, the major and minor device numbers,
+   which uniquely identify the device to the kernel.
+
+** Device driver
+   Device driver is part of the kernel code, that controls a
+   particular type of device. For each different type of device in a
+   system, there is a device driver.
+
+** Major device number
+   The major device number identifies the device driver. There is a
+   unique major device number for each device driver. The long listing
+   of a device file displays the major device number first, followed
+   by the minor device number.
+   #+BEGIN_EXAMPLE
+   $ ls -l /dev/autofs
+   crw-------  1 root root     10, 235 Jan 25 18:47 autofs
+   #+END_EXAMPLE
+
+** Minor device number
+   The minor device number provides information to the device driver
+   about which specific device to access.
+
+** Block devices
+   Block devices work with block-sized groups of data. Typically, a
+   Block is a multiple of 512 bytes. Disk and tape devices store data
+   in blocks, so all reading and writing are also in block-size
+   pieces.
+
+** Character devices
+   Character devices work with any number of bytes of data, from one
+   byte at a time, to large blocks of data. Devices such as terminals,
+   modems, or printers are character devices.
 
 * References
   - https://www.amazon.com/Unix-Administration-Guide-System-V/dp/0139428895
