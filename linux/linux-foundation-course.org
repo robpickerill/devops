@@ -3877,6 +3877,14 @@
    $ (sleep 600; echo "meeting")
    #+END_EXAMPLE
 
+* Learning
+** rm: remove write-protected regular empty file ?
+   To remove a file, we need write permission on the parent directory.
+
+** grep stderr
+   #+BEGIN_EXAMPLE
+   command 2>&1 > /dev/null | grep something
+   #+END_EXAMPLE
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -3901,3 +3909,6 @@
   - http://www.pathname.com/fhs/pub/fhs-2.3.pdf (Filesystem hierarchy
     standard
   - http://askubuntu.com/a/801191/499885 (hard vs soft link)
+  - https://linuxjourney.com
+  - https://web.archive.org/web/20150108210426/http://content.hccfl.edu/pollock/aunix1/filepermissions.htm
+  - http://opengroup.org/unix
