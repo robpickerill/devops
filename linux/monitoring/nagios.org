@@ -82,6 +82,10 @@
         check_interval                  1
      }
      #+END_EXAMPLE
+   - Test configuration
+     #+BEGIN_EXAMPLE
+     /usr/local/nagios/bin/nagios -v <main_config_file>
+     #+END_EXAMPLE
    - Set folder permission correctly
      #+BEGIN_EXAMPLE
      chown -R nagios. /etc/nagios

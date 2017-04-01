@@ -1,0 +1,128 @@
+#+Title: Elastic Beanstalk
+#+Author: Yogesh Agrawal
+#+Date: <2017-03-16 Thu>
+#+Email: yogeshiiith@gmail.com
+
+* Introduction
+  This document discusses about the Elastic Beanstalk
+
+* Concepts
+  Elastic Beanstalk is free to use, but the AWS resources that it
+  provides will be live (and not running in a sandbox).
+  
+** Application
+   An EB application is a logical collection of EB components,
+   including environments, versions, and environment
+   configurations. An application is conceptually similar to a folder.
+  
+** Environment
+   Each environment runs only a single application version at a
+   time. When we create an environment, EB provisions the resources
+   needed to run the application version we specified.
+
+*** Web Server Environment Tiers
+    Every environment has a CNAME (URL) that points to a load
+    balancer. The environment has a URL such as
+    =myapp.us-west-2.elasticbeanstalk.com=. This URL is aliased in
+    Route 53 to an Elastic Load Balancing URL - something like
+    =abcdef-123456.us-west-2.elb.amazonaws.com=, by using a CNAME
+    record.
+
+    The software stack running on the AWS EC2 instances is dependent
+    on the container type. A container type defines the infrastructure
+    topology and sofware stack to be used for that environment. For
+    example, an Elastic Beanstalk environment with an Apache Tomcat
+    container uses the Amazon Linux operating system, Apache web
+    server, and Apache Tomcat Software. Each Amazon EC2 server
+    instance that runs the application uses one of these containers
+    types. A software component called the host manager (HM) runs on
+    each Amazon EC2 server instance. The host manager is responsible
+    for:
+
+    - Deploying the application
+    - Aggregating events and metrics for retrieval via the console,
+      the API, or the command line.
+    - Generating instance-level events
+    - Monitoring the application log files for critical errors
+    - Monitoring the application server
+    - Patching instance components
+    - Rotating the application's log files and publishing them to
+      Amazon S3
+
+** Create an application source bundle
+   - Consists of a single zip file or war file (we can include
+     multiple war files inside a zip file)
+   - Not exceed 512 MB
+   - Not include a parent foler or top-level directory.
+
+   #+BEGIN_EXAMPLE
+   zip ../myapp.zip -r * .[^.]*
+   #+END_EXAMPLE
+
+** Security
+*** Service Role
+    A service role grants EB permission to monitor the resources in
+    our environment.
+
+*** IAM Instance profile
+    An instance profile grants the EC2 instances in our environment
+    permissions to access AWS resources.
+
+** Elastic Beanstalk Service Role
+   A service role is the IAM role that Elastic Beanstalk assumes when
+   calling other services on our behalf. For example, EB uses the
+   service role that we specify when creating an EB environment when
+   it calls EC2, ELB and Auto Scaling APIs to gather information about
+   the health of its AWS resources for enhanced health monitoring.
+
+** Elastic Beanstalk Instance Profile
+   An instance profile is an IAM role that is applied to instances
+   launched in our EB environment. When creating an EB environment, we
+   specify the instance profile that is used when our instances:
+   - write logs to aws S3
+   - In AWS X-ray integrated environments, upload debugging data to
+     X-Ray
+
+** Rolling Deployment
+   With rolling deployments, AWS EB splits the environments into
+   batches and deploys the new version of the application to one batch
+   at a time, leaving the rest of the instances in the environment
+   running the old version of the application. During a rolling
+   deployment, some instances serve requests with the old version of
+   the application, while instances in completed batches serve other
+   requests with the new version.
+
+   If we need to maintain full capacity during deployments, we can
+   configure our environment to launch a new batch of instances prior
+   to taking any instances out of service. This option is called a
+   rolling deployment with an additional batch. When the deployment
+   completes, the EB terminates them, leaving the original instances
+   untouched.
+
+   If our application doesn't pass all health checks, but still
+   operates correctly at a lower health status, we can allow instances
+   to pass health checks with a lower status, such as "warning", by
+   modifying the *Healthy threshold* option. If our deployment fails
+   because they don't pass health checks and we need to force an
+   upgrade regardless of health status, specify the *Ignore health
+   check* option.
+
+   EB detaches all instances in the batch from the load balancer,
+   deploys the new application version, and then reattach the
+   instances. If we have connection draining enabled, EB drains
+   existing connections from the EC2 instances in each batch before
+   beginning the deployment.
+
+   After reattaching the instances in a batch to the load balancer, EB
+   waits until they pass a minimum number of EB health checks and then
+   starts routing traffic to them. If no health check URL is
+   configured, this can happen very quickly, because an instance will
+   the health check as soon as it can accept a TCP connection. If a
+   health check URL is configured, the load balancer doesn't route
+   traffic to the updated instances until they return a 200 OK status
+   code in response to an HTTP GET request to the health check URL.
+
+** Blue/Green Deployment (pg. 97)
+      
+* Refereces
+  - http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/awseb-dg.pdf
