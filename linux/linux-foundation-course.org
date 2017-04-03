@@ -3885,6 +3885,29 @@
    #+BEGIN_EXAMPLE
    command 2>&1 > /dev/null | grep something
    #+END_EXAMPLE
+** SUID, SGID, and sticky bit
+*** SUID
+    set user ID. Ex
+    #+BEGIN_EXAMPLE
+    $ ls -l /bin/ping
+    -rwsr-xr-x 1 root root 44168 May  8  2014 /bin/ping
+    #+END_EXAMPLE
+    When this bit is set, then when other users run the program, the
+    process will run as owner of the file.
+
+*** SGID
+    set group ID. When this bit is set, then when other users run the
+    program, the process will run as group member of the file.
+
+*** Sticky bit
+    When sticky bit is set, the file can only be deleted by the owner
+    of the file. The directory permissions won't have affect on the
+    file permissions. It is denoted by "t".
+    #+BEGIN_EXAMPLE
+    $ ls -l /tmp
+    drwxrwxrwt   6 root root  4096 Apr  3 12:35 tmp
+    #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
