@@ -3908,6 +3908,25 @@
     drwxrwxrwt   6 root root  4096 Apr  3 12:35 tmp
     #+END_EXAMPLE
 
+** umask
+   Every file gets created with a default set of permissions. We can
+   modify this default permission, by setting the =umask=.
+
+   Instead of adding permissions, umask removes specified permissions.
+   Example: Following umask means, allow owners to access everything,
+   for groups, take away their write permission, and for others take
+   away their write permission.
+
+   #+BEGIN_EXAMPLE
+   $ touch a.txt
+   $ ls -l a.txt
+   -rw-rw-r-- 1 yogesh yogesh 0 Apr  3 13:28 a.txt
+   $ umask 022
+   $ touch b.txt
+   $ ls -l b.txt
+   -rw-r--r-- 1 yogesh yogesh 0 Apr  3 13:29 b.txt
+   #+END_EXAMPLE
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
