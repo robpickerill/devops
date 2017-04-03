@@ -3899,8 +3899,6 @@
     Modifying SUID
     #+BEGIN_EXAMPLE
     chmod u+s myfile
-    #+END_EXAMPLE
-    #+BEGIN_EXAMPLE
     chmod 4755 myfile
     #+END_EXAMPLE
 
@@ -3911,7 +3909,22 @@
 
 *** SGID
     set group ID. When this bit is set, then when other users run the
-    program, the process will run as group member of the file.
+    program, the process will run as member of the group of the
+    program.
+
+    #+BEGIN_EXAMPLE
+    $ ls -l /usr/bin/wall
+    -rwxr-sr-x 1 root tty 19024 Sep  3  2015 /usr/bin/wall
+    #+END_EXAMPLE
+
+    Modifying SGID
+
+    #+BEGIN_EXAMPLE
+    chmod g+s myfile
+    chmod 2555 myfile
+    #+END_EXAMPLE
+
+    The numerical representation for SGID is 2.
 
 *** Sticky bit
     When sticky bit is set, the file can only be deleted by the owner
