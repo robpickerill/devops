@@ -3954,6 +3954,18 @@
    -rw-r--r-- 1 yogesh yogesh 0 Apr  3 13:29 b.txt
    #+END_EXAMPLE
 
+** File System
+   - One viewpoint is the structure of file systems.
+   - Second point is maintaining enough free space in our file system
+     for trouble free operations.
+   - File systems need to be located on devices that can be read from
+     and written to at random locations. These devices are disks.
+   - A clear understanding of the *fsck* program's operation will
+     solidify the understanding of the file system and its parts.
+   - UNIX system handles the complex affair of controlling different
+     types of disks through device drivers written by system
+     programmers.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
