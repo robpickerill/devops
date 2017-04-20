@@ -114,11 +114,6 @@
      #+BEGIN_EXAMPLE
      allowed_hosts=127.0.0.1, <nagios-server-ip>
      #+END_EXAMPLE
-   - Add or edit nrpe commands as per the requriements, for example we changed
-     the disk partition to monitor from =/dev/hda1= to =/dev/xvda1=.
-     #+BEGIN_EXAMPLE
-     command[check_hda1]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/xvda1
-     #+END_EXAMPLE
    - Setup firewall rules to allow connections from our Monitoring server to
      clients
      #+BEGIN_EXAMPLE
@@ -132,6 +127,16 @@
      #+BEGIN_EXAMPLE
      sudo /etc/init.d/nagios-nrpe-server restart
      #+END_EXAMPLE
+   - Install check_mem scripts:
+     https://exchange.nagios.org/directory/Plugins/System-Metrics/Memory/check_mem-2Esh/details
+   - Add or edit nrpe commands as per the requriements, for example we changed
+     the disk partition to monitor from =/dev/hda1= to =/dev/xvda1=.
+     #+BEGIN_EXAMPLE
+     command[check_hda1]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /dev/xvda1
+     command[check_swap]=/usr/lib/nagios/plugins/check_swap -w 20 -c 10
+     command[check_mem]=/usr/lib/nagios/plugins/check_mem  -f -w 10 -c 5
+     #+END_EXAMPLE
+
 * Mail alert
   - Edit =/etc/nagios/objects/contacts.cfg= configuration file to add email
     address
