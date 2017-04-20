@@ -3877,6 +3877,95 @@
    $ (sleep 600; echo "meeting")
    #+END_EXAMPLE
 
+* Learning
+** rm: remove write-protected regular empty file ?
+   To remove a file, we need write permission on the parent directory.
+
+** grep stderr
+   #+BEGIN_EXAMPLE
+   command 2>&1 > /dev/null | grep something
+   #+END_EXAMPLE
+** SUID, SGID, and sticky bit
+*** SUID
+    set user ID. Example
+    #+BEGIN_EXAMPLE
+    $ ls -l /bin/ping
+    -rwsr-xr-x 1 root root 44168 May  8  2014 /bin/ping
+    #+END_EXAMPLE
+    This permission is denoted by =s= bit. When this bit is set, then
+    when other users run the program, the process will run as the
+    owner of the file.
+
+    Modifying SUID
+    #+BEGIN_EXAMPLE
+    chmod u+s myfile
+    chmod 4755 myfile
+    #+END_EXAMPLE
+
+    The SUID is denoted by a 4 and pre-pended to the permission
+    set. We may see the SUID denoted as a capital =S=, this means that
+    it still does the same thing, but it does not have execute
+    permissions.
+
+*** SGID
+    set group ID. When this bit is set, then when other users run the
+    program, the process will run as member of the group of the
+    program.
+
+    #+BEGIN_EXAMPLE
+    $ ls -l /usr/bin/wall
+    -rwxr-sr-x 1 root tty 19024 Sep  3  2015 /usr/bin/wall
+    #+END_EXAMPLE
+
+    Modifying SGID
+
+    #+BEGIN_EXAMPLE
+    chmod g+s myfile
+    chmod 2555 myfile
+    #+END_EXAMPLE
+
+    The numerical representation for SGID is 2.
+
+*** Sticky bit
+    When sticky bit is set, the file can only be deleted by the owner
+    of the file. The directory permissions won't have affect on the
+    file permissions. It is denoted by "t".
+    #+BEGIN_EXAMPLE
+    $ ls -l /tmp
+    drwxrwxrwt   6 root root  4096 Apr  3 12:35 tmp
+    #+END_EXAMPLE
+
+** umask
+   Every file gets created with a default set of permissions. We can
+   modify this default permission, by setting the =umask=.
+
+   Instead of adding permissions, umask removes specified permissions.
+   Example: Following umask means, allow owners to access everything,
+   for groups, take away their write permission, and for others take
+   away their write permission.
+
+   #+BEGIN_EXAMPLE
+   $ touch a.txt
+   $ ls -l a.txt
+   -rw-rw-r-- 1 yogesh yogesh 0 Apr  3 13:28 a.txt
+   $ umask 022
+   $ touch b.txt
+   $ ls -l b.txt
+   -rw-r--r-- 1 yogesh yogesh 0 Apr  3 13:29 b.txt
+   #+END_EXAMPLE
+
+** File System
+   - One viewpoint is the structure of file systems.
+   - Second point is maintaining enough free space in our file system
+     for trouble free operations.
+   - File systems need to be located on devices that can be read from
+     and written to at random locations. These devices are disks.
+   - A clear understanding of the *fsck* program's operation will
+     solidify the understanding of the file system and its parts.
+   - UNIX system handles the complex affair of controlling different
+     types of disks through device drivers written by system
+     programmers.
+
 * COMMENT TODO
   - Proposed plan to do this course is to spend daily one hour
     attending classes.
@@ -3901,3 +3990,6 @@
   - http://www.pathname.com/fhs/pub/fhs-2.3.pdf (Filesystem hierarchy
     standard
   - http://askubuntu.com/a/801191/499885 (hard vs soft link)
+  - https://linuxjourney.com
+  - https://web.archive.org/web/20150108210426/http://content.hccfl.edu/pollock/aunix1/filepermissions.htm
+  - http://opengroup.org/unix
