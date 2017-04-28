@@ -84,7 +84,7 @@
      #+END_EXAMPLE
    - Test configuration
      #+BEGIN_EXAMPLE
-     /usr/local/nagios/bin/nagios -v <main_config_file>
+     /usr/local/nagios/bin/nagios -v <main_config_file> (/etc/nagios/nagios.cfg)
      #+END_EXAMPLE
    - Set folder permission correctly
      #+BEGIN_EXAMPLE
