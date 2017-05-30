@@ -1,0 +1,11 @@
+#+Title: Linux Programming Scripting
+#+Date: <2017-05-30 Tue>
+#+Email: yogeshiiith@gmail.com
+#+Author: Yogesh Agrawal
+
+* Introduction
+  Linux programming and scripting
+
+* References
+  - NPTEL course:
+    https://www.youtube.com/playlist?list=PLbMVogVj5nJRa3VKt_eyZdJ_DitCz1cvQ
