@@ -7,6 +7,11 @@
   Linux programming and scripting
 
 * Linux
+  Linux has three main parts
+  + Shell
+  + Kernel
+  + File System
+
 ** Layers of Linux
 
    [[./diagrams/linux-layers.png]]
@@ -22,6 +27,11 @@
      + Korn Shell (sh)
      + Bourne Again Shell (bash)   
  
+** File System
+   - Linux treats everything as a file including hardware devices.
+   - Arranged as a directory hierarchy
+   - The top level directory is known as "root (/)"
+
 * References
   - NPTEL course:
     https://www.youtube.com/playlist?list=PLbMVogVj5nJRa3VKt_eyZdJ_DitCz1cvQ
