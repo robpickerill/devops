@@ -8,8 +8,8 @@
 
 * Linux
   Linux has three main parts
-  + Shell
   + Kernel
+  + Shell
   + File System
 
 ** Layers of Linux
@@ -31,6 +31,13 @@
    - Linux treats everything as a file including hardware devices.
    - Arranged as a directory hierarchy
    - The top level directory is known as "root (/)"
+
+* Linux Commands
+  - Commands tell the operating system to perform set of operations.
+  - The syntax form of the commands are
+    #+BEGIN_EXAMPLE
+    command options arguments
+    #+END_EXAMPLE
 
 * References
   - NPTEL course:
