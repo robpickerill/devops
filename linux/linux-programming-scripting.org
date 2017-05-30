@@ -6,6 +6,22 @@
 * Introduction
   Linux programming and scripting
 
+* Linux
+** Layers of Linux
+
+   [[./diagrams/linux-layers.png]]
+
+** Shell
+   - The shell is a program that sits as an interface between users
+     and kernel.
+   - It is a command interpreter and also has programming capability
+     of its own.
+   - Shell Types
+     + Bourne Shell (sh) (First shell by Bourne Shell)
+     + C Shell (sh)
+     + Korn Shell (sh)
+     + Bourne Again Shell (bash)   
+ 
 * References
   - NPTEL course:
     https://www.youtube.com/playlist?list=PLbMVogVj5nJRa3VKt_eyZdJ_DitCz1cvQ
