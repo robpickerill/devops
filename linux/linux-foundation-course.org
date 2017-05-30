@@ -79,7 +79,7 @@
   filesystems as being like a family tree and partitions as different
   families each of which as its own tree.
 
-* Filesystem hierarchy standard
+* File System hierarchy standard
   Linux filesystem names are case sensitive, that means =/boot=, =/Boot=
   and =/BOOT= represent three different directories. Many distributions
   distinguish between core utilities needed for proper system operation
@@ -150,7 +150,8 @@
     known as the Master Boot Record (MBR). The size of the MBR is just
     512 bytes. Boot loader first finds the bootable partition. Once it
     finds the bootable partition it then searches for the second level
-    boot loader - GRUB. It then loads the grub into the main memory.
+    boot loader - GRUB (GRand Unified Bootloader). It then loads the
+    grub into the main memory.
     
     Boot loader displays options which allows us to choose different
     available operating systems. After choosing the operating system
@@ -161,6 +162,16 @@
     first job is to uncompress itself. After this it will check and
     analyze the system hardware and initialize any hardware device
     driver built into the kernel.
+
+*** GRUB
+    - GRUB is a boot loader.
+    - It provides a use the choice to boot one of multiple operating
+      system installed on a computer or select specific kernel
+      configuration available on a particular operating system's
+      partition.
+    - It can download and automatically decompress operating system
+      boot images from network thus, supporting diskless systems.
+
 
 ** Linux Kernel
    The boot loader loads the kernel and initial ram file system in the
