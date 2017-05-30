@@ -39,6 +39,21 @@
     command options arguments
     #+END_EXAMPLE
 
+** chmod
+   #+BEGIN_EXAMPLE
+   $ chmod [user/group/other/all]+[permission] filename
+   #+END_EXAMPLE
+
+** whoami and who am i
+   #+BEGIN_EXAMPLE
+   $ whoami
+   yogesh
+   #+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+   $ who am i
+   yogesh   pts/10       2017-05-29 22:33 (:0)
+   #+END_EXAMPLE
+
 * References
   - NPTEL course:
     https://www.youtube.com/playlist?list=PLbMVogVj5nJRa3VKt_eyZdJ_DitCz1cvQ
