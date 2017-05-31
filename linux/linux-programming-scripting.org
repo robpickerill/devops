@@ -54,6 +54,20 @@
    yogesh   pts/10       2017-05-29 22:33 (:0)
    #+END_EXAMPLE
 
+** tar
+   tar stands for "to archive". It creates a new single file
+   containing all the files.
+   #+BEGIN_EXAMPLE
+   $ tar cvpf onefile.tar lab1 lab2 lab3
+   #+END_EXAMPLE
+
+** gzip
+   gzip reduces the size of the named files using a compression
+   algorithm. The original file will be replaced with a new compressed
+   version.
+   #+BEGIN_EXAMPLE
+   $ gzip onefile.tar
+   #+END_EXAMPLE
 * References
   - NPTEL course:
     https://www.youtube.com/playlist?list=PLbMVogVj5nJRa3VKt_eyZdJ_DitCz1cvQ
