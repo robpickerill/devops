@@ -68,6 +68,14 @@
    #+BEGIN_EXAMPLE
    $ gzip onefile.tar
    #+END_EXAMPLE
+* Linux Networking
+
+  [[./diagrams/linux-networking.png]]
+
+  [[./diagrams/client-server-communication.png]]
+
+  
+
 * References
   - NPTEL course:
     https://www.youtube.com/playlist?list=PLbMVogVj5nJRa3VKt_eyZdJ_DitCz1cvQ
