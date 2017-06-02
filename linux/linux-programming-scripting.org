@@ -82,6 +82,29 @@
      root  yogesh
      #+END_EXAMPLE
   
+* File Systems
+  - File system is an operating system facility providing a convenient
+    programming interface to disk storage.
+  - Distributed file systems support the sharing of information in the
+    form of files and hardware resources.
+  - File systems are responsible for the organization, storage,
+    retrieval, naming, sharing and protection of files.
+  
+** Storage Systems
+
+   [[./diagrams/storage-systems.png]]
+
+** File system modules
+   
+   [[./diagrams/file-system-module.png]]
+
+** File attribute record structure
+
+   [[./diagrams/file-attributes-record-struture.png]]
+
+** Unix file operations
+   
+   [[./diagrams/unix-file-operations.png]]
 
 * References
   - NPTEL course:
