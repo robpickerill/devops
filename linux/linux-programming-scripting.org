@@ -74,6 +74,13 @@
 
   [[./diagrams/client-server-communication.png]]
 
+** Email
+   - On every Linux system, user accounts have associated email
+     accounts and email is placed in the /var/spool/mail directory.
+     #+BEGIN_EXAMPLE
+     $ ls /var/spool/mail
+     root  yogesh
+     #+END_EXAMPLE
   
 
 * References
