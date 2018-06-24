@@ -4,10 +4,9 @@
 #+Email: yogeshiiith@gmail.com
 
 * Introduction
-  This document has the learning which I learn from the Linux
-  Foundation Course: LFS101x in edx.
+  Linux Foundation Course: LFS101x in edx.
 
-* Linux requirements
+* Linux flavors
   The technical differences are mainly about package management
   systems, software versions, and file locations.
 ** Key facts about Debian Family
