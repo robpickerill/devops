@@ -10,8 +10,10 @@ function usage() {
 
 function process_file() {
 file_path="$1"
-   while read -r line; do
-   echo "$line";
+   while read -r f1 f2 f3 f4 f5 f6 f7; do
+     ip_address="$f1"
+     date=${f4:1:${#f4}-1}
+     echo "$ip_address, $date";
  done < "$file_path"
 }
 
