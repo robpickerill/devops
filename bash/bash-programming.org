@@ -18,7 +18,7 @@ fi
 #+END_EXAMPLE
 
 * Loops
-** For Sample
+** For Loop
    #+BEGIN_EXAMPLE
    #!/bin/bash
    for i in $(ls); do
@@ -33,7 +33,7 @@ fi
    done
    #+END_EXAMPLE
 
-** While Sample
+** While Loop
    #+BEGIN_EXAMPLE
    #!/bin/bash
    counter=0
