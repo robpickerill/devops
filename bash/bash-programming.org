@@ -6,7 +6,6 @@
 * Introduction
   This document describes about the bash programming.
 
-
 * Conditionals
 #+BEGIN_EXAMPLE
 #!/bin/bash
@@ -136,3 +135,5 @@ fi
       mysql -uroot -e"show tables from $db"
   done
   #+END_EXAMPLE
+* Reference
+  1. https://www.gnu.org/software/bash/manual/html_node/index.html
