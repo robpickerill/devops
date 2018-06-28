@@ -139,3 +139,4 @@ fi
   1. https://www.gnu.org/software/bash/manual/html_node/index.html
   2. http://wiki.bash-hackers.org/
   3. Find bugs: https://www.shellcheck.net/
+  4. #bash channel in IRC freenode.org
